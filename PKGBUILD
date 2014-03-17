@@ -3,7 +3,7 @@
 
 pkgname=nuitka
 pkgver=0.5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python to native compiler'
 arch=('any')
 url='http://www.nuitka.net/'
