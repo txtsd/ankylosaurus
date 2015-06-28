@@ -2,7 +2,7 @@
 # Contributor: Panagiotis Mavrogiorgos (pmav99) <> (gmail)
 
 pkgname=nuitka
-pkgver=0.5.13.1
+pkgver=0.5.13.2
 pkgrel=1
 pkgdesc='Python to native compiler'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('scons')
 depends=('python' 'scons')
 options=('!emptydirs')
 source=("http://nuitka.net/releases/Nuitka-$pkgver.tar.gz")
-sha256sums=('67dcbe8bc696dff3672f32b50ce07027089aff522d4f1964978219d6e94e4162')
+sha256sums=('bd1cdb9a12980fe63bedbcc895f0aa87ca8082f9520070c690a7f8cc21ebb787')
 
 package() {
   cd "Nuitka-$pkgver"
