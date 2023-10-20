@@ -1,0 +1,139 @@
+name: Check for new Releases
+on:
+  push:
+    branches:
+      - main
+      - ci
+  schedule:
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  release_check:
+    name: Release Check
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    timeout-minutes: 5
+
+    outputs:
+      list: ${{ steps.releases.outputs.list_updates }}
+
+    steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm fd jq wget
+
+      - name: Download bumper binary
+        run: |
+          cd $HOME
+          wget "https://github.com/bcyran/bumper/releases/download/v1.0.0/bumper-1.0.0-linux-amd64.tar.gz"
+          tar xf bumper-1.0.0-linux-amd64.tar.gz
+          chmod +x bumper
+
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+
+      - name: Check for new releases
+        id: releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: sh
+        run: |
+          updates=()
+          for dir in $(fd --type d)
+          do
+            pushd ${dir%/}
+            # result=$(${HOME}/bumper --bump=false | grep -i → | wc -l)
+            # if [ $result = 1 ]; then
+            #     updates+=("${dir%/}")
+            # fi
+            updates+=("${dir%/}")
+            popd
+          done
+          echo "list_updates=$(jq -cn '$ARGS.positional' --args "${updates[@]}")" >> $GITHUB_OUTPUT
+
+  now_build:
+    needs: release_check
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    if: needs.release_check.outputs.list != '[]'
+    strategy:
+      matrix:
+        package: ${{ fromJson(needs.release_check.outputs.list) }}
+      fail-fast: false
+
+    steps:
+      - name: Test
+        run: |
+          echo ${{ matrix.package }}
+
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+
+      - name: Update system and install dependencies
+        run: |
+          pacman-key --init
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm --needed git fd jq namcap
+
+      - name: Create user to run makepkg
+        run: |
+          useradd -m dev
+          echo "dev ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/01_dev
+
+      - name: chown for dev
+        run: |
+          chown -R dev: .
+
+      - name: Install yay
+        run: |
+          runuser -u dev -- git clone https://aur.archlinux.org/yay.git
+          cd yay
+          runuser -u dev -- makepkg -csri --noconfirm
+
+      - name: Test -- Install dependencies from AUR
+        run: |
+          cd ${{ matrix.package }}
+          pacman -Ssq > pkglist
+          source PKGBUILD
+          echo ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
+          packages=()
+          for dep in ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
+          do
+            count=0
+            while IFS="" read -r p || [ -n "$p" ]
+            do
+              if [ $p == $dep ]
+              then
+                count=$((count+1))
+              fi
+            done < pkglist
+            if [ $count -eq 0 ]
+            then
+              packages+=("${dep}")
+              echo "Added $dep"
+            fi
+          done
+          echo ${packages[@]}
+          runuser -u dev -- yay -S --noconfirm --asdeps ${packages[@]}
+
+      - name: Test -- Add gpg keys
+        run: |
+          cd ${{ matrix.package }}
+          source PKGBUILD
+          for key in ${validpgpkeys[@]}
+          do
+            runuser -u dev -- gpg --recv-keys $key
+          done
+
+      - name: Test -- Build and install package
+        run: |
+          cd ${{ matrix.package }}
+          runuser -u dev -- makepkg -csri --noconfirm
+
