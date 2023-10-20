@@ -1,0 +1,6 @@
+pkg
+src
+
+*.AppImage
+*.asc
+*.tar.zst
