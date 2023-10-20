@@ -1,0 +1,18 @@
+pkgbase = zaread-git
+	pkgdesc = A (very) lightweight ebook and Office document reader
+	pkgver = r47.9239db1
+	pkgrel = 4
+	url = https://github.com/paoloap/zaread
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = zathura
+	optdepends = libreoffice: To view office suite files
+	optdepends = calibre: To view MOBI files
+	optdepends = md2pdf: To view markdown files
+	provides = zaread
+	conflicts = zaread
+	source = git+https://github.com/paoloap/zaread.git
+	sha256sums = SKIP
+
+pkgname = zaread-git
