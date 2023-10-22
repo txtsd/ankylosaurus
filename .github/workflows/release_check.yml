@@ -48,11 +48,10 @@ jobs:
           for dir in $(fd --type d --exclude jackett --exclude blockify-git)
           do
             pushd ${dir%/}
-            # result=$(${HOME}/bumper --bump=false | grep -i → | wc -l)
-            # if [ $result = 1 ]; then
-            #     updates+=("${dir%/}")
-            # fi
-            updates+=("${dir%/}")
+            result=$(${HOME}/bumper --bump=false | grep -i → | wc -l)
+            if [ $result = 1 ]; then
+              updates+=("${dir%/}")
+            fi
             popd
           done
           echo "list_updates=$(jq -cn '$ARGS.positional' --args "${updates[@]}")" >> $GITHUB_OUTPUT
