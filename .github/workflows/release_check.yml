@@ -45,7 +45,7 @@ jobs:
         shell: sh
         run: |
           updates=()
-          for dir in $(fd --type d --exclude jackett --exclude blockify-git)
+          for dir in $(fd --type d --exclude jackett --exclude blockify-git --exclude="*-git")
           do
             pushd ${dir%/}
             result=$(${HOME}/bumper --bump=false | grep -i → | wc -l)
