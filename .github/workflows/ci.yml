@@ -1,0 +1,83 @@
+name: Changes detected!
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - 'refre.sh'
+      - 'renovate.json'
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - 'refre.sh'
+      - 'renovate.json'
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  find_changes:
+    name: Find Changes
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    timeout-minutes: 5
+
+    outputs:
+      list: ${{ steps.changes.outputs.changed_pkgs }}
+
+    steps:
+      - name: Update system and install dependencies
+        run: |
+          pacman-key --init
+          pacman -Syu --noconfirm git jq
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+
+      - name: Find Changes
+        id: changes
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          if [ ${{ github.event_name }} == 'push' ]
+          then
+            if [ ${{ github.event.forced }} ]
+            then
+              commit_id=${{ github.event.commits[0].id }}
+              sensible_parent=$(git log --pretty=%P -n1 ${commit_id})
+              CHANGED_DIRS=$(git diff --name-only ${sensible_parent}..${{ github.event.after }} | cut -d / -f 1 | uniq)
+            else
+              CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }} | cut -d / -f 1 | uniq)
+            fi
+          elif [ ${{ github.event_name }} == 'pull_request' ]
+          then
+            CHANGED_DIRS=$(git diff --name-only ${{ github.event.pull_request.base.ref }} -- | cut -d / -f 1 | uniq)
+          elif [ ${{ github.event_name }} == 'workflow_dispatch' ]
+          then
+            CHANGED_DIRS=$(git diff --name-only HEAD..HEAD~1 | cut -d / -f 1 | uniq)
+          fi
+          # Remove .github from CHANGED_DIRS
+          FINAL_CHANGED_DIRS=()
+          for dir in $(echo ${CHANGED_DIRS} | sed "s/.github//")
+          do
+            FINAL_CHANGED_DIRS+=("${dir}")
+          done
+          # Set output
+          echo "changed_pkgs=$(jq -cn '$ARGS.positional' --args "${FINAL_CHANGED_DIRS[@]}")" >> $GITHUB_OUTPUT
+
+  build:
+    name: Build
+    needs: find_changes
+    uses: ./.github/workflows/build.yml
+    with:
+      packages: ${{ needs.find_changes.outputs.list }}
