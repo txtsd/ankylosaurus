@@ -1,8 +1,6 @@
 name: Schedule
+
 on:
-  push:
-    branches:
-      - main
   schedule:
     - cron: '0 0,6,12,18 * * *'
   workflow_dispatch:
@@ -45,7 +43,7 @@ jobs:
         shell: sh
         run: |
           updates=()
-          for dir in $(fd --type d --exclude jackett --exclude blockify-git --exclude="*-git")
+          for dir in $(fd --type d --exclude jackett --exclude="*-git")
           do
             pushd ${dir%/}
             result=$(${HOME}/bumper --bump=false | grep -i → | wc -l)
@@ -59,76 +57,6 @@ jobs:
   build:
     name: Build
     needs: release_check
-    runs-on: ubuntu-latest
-    container: archlinux:base-devel
-    if: needs.release_check.outputs.list != '[]'
-    strategy:
-      matrix:
-        package: ${{ fromJson(needs.release_check.outputs.list) }}
-      fail-fast: false
-
-    steps:
-      - name: Test
-        run: |
-          echo ${{ matrix.package }}
-
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: '0'
-
-      - name: Update system and install dependencies
-        run: |
-          pacman-key --init
-          pacman -Syu --noconfirm
-          pacman -S --noconfirm --needed git fd jq namcap
-
-      - name: Create user to run makepkg
-        run: |
-          useradd -m dev
-          echo "dev ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/01_dev
-
-      - name: chown for dev
-        run: |
-          chown -R dev: .
-
-      - name: Initialize gpg keyring
-        run: |
-          runuser -u dev -- gpg --list-keys
-
-      - name: Install yay
-        run: |
-          runuser -u dev -- git clone https://aur.archlinux.org/yay.git
-          cd yay
-          runuser -u dev -- makepkg -csri --noconfirm
-
-      - name: Install package dependencies from AUR
-        run: |
-          cd ${{ matrix.package }}
-          pacman -Ssq > pkglist
-          source PKGBUILD
-          echo ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
-          packages=()
-          for dep in ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
-          do
-            count=0
-            while IFS="" read -r p || [ -n "$p" ]
-            do
-              if [ $p == $dep ]
-              then
-                count=$((count+1))
-              fi
-            done < pkglist
-            if [ $count -eq 0 ]
-            then
-              packages+=("${dep}")
-              echo "Added $dep"
-            fi
-          done
-          echo ${packages[@]}
-          runuser -u dev -- yay -S --noconfirm --asdeps ${packages[@]}
-
-      - name: Build and install package
-        run: |
-          cd ${{ matrix.package }}
-          runuser -u dev -- makepkg -csri --noconfirm
-
+    uses: ./.github/workflows/build.yml
+    with:
+      packages: ${{ needs.release_check.outputs.list }}

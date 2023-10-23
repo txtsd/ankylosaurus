@@ -1,0 +1,101 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      packages:
+        description: List of packages to build
+        type: string
+        default: '[]'
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    if: ${{ inputs.packages != '[]' && inputs.packages != '[""]' && inputs.packages != '' }}
+    strategy:
+      matrix:
+        package: ${{ fromJson(inputs.packages) }}
+      fail-fast: false
+
+    steps:
+      - name: Test
+        run: |
+          echo ${{ matrix.package }}
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+
+      - name: Update system and install dependencies
+        run: |
+          sed -i 's/#\[multilib\]/\[multilib\]/' /etc/pacman.conf
+          pacman-key --init
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm --needed git fd jq namcap
+
+      - name: Create user to run makepkg
+        run: |
+          useradd -m dev
+          echo "dev ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/01_dev
+
+      - name: chown for dev
+        run: |
+          chown -R dev: .
+
+      - name: Initialize gpg keyring
+        run: |
+          runuser -u dev -- gpg --list-keys
+
+      - name: Install yay
+        run: |
+          runuser -u dev -- git clone https://aur.archlinux.org/yay.git
+          cd yay
+          runuser -u dev -- makepkg -csri --noconfirm
+
+      - name: Install package dependencies from AUR
+        run: |
+          cd ${{ matrix.package }}
+          pacman -Ssq > pkglist
+          source PKGBUILD
+          echo ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
+          packages=()
+          for dep in ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
+          do
+            count=0
+            while IFS="" read -r p || [ -n "$p" ]
+            do
+              if [ $p == $dep ]
+              then
+                count=$((count+1))
+              fi
+            done < pkglist
+            if [ $count -eq 0 ]
+            then
+              packages+=("${dep}")
+              echo "Added $dep"
+            fi
+          done
+          echo ${packages[@]}
+          runuser -u dev -- yay -S --noconfirm --asdeps ${packages[@]}
+
+      - name: Build and install package
+        run: |
+          cd ${{ matrix.package }}
+          runuser -u dev -- makepkg -csri --noconfirm
+
+      - name: Grab built package's filename
+        run: |
+          cd ${{ matrix.package }}
+          echo "filename=$(ls *.pkg.tar.zst)" >> $GITHUB_ENV
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.filename }}
+          path: ${{ matrix.package }}/**.pkg.tar.zst
