@@ -67,7 +67,7 @@ jobs:
             fi
           elif [ ${{ github.event_name }} == 'pull_request' ]
           then
-            CHANGED_DIRS=$(git diff --name-only ${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.after }}  | cut -d / -f 1 | uniq)
+            CHANGED_DIRS=$(git diff --name-only ${{ github.event.pull_request.base.ref }}...${{ github.event.after }}  | cut -d / -f 1 | uniq)
           elif [ ${{ github.event_name }} == 'workflow_dispatch' ]
           then
             CHANGED_DIRS=$(git diff --name-only HEAD..HEAD~1 | cut -d / -f 1 | uniq)
