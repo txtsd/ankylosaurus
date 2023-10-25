@@ -54,6 +54,7 @@ jobs:
         id: changes
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git fetch --all
           if [ ${{ github.event_name }} == 'push' ]
           then
             if [ ${{ github.event.forced }} ]
