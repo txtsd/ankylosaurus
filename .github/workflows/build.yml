@@ -37,7 +37,7 @@ jobs:
           sed -i 's/#\[multilib\]/\[multilib\]/' /etc/pacman.conf
           pacman-key --init
           pacman -Syu --noconfirm
-          pacman -S --noconfirm --needed git fd jq namcap
+          pacman -S --noconfirm --needed git fd jq namcap eza
 
       - name: Create user to run makepkg
         run: |
@@ -92,10 +92,23 @@ jobs:
       - name: Grab built package's filename
         run: |
           cd ${{ matrix.package }}
-          echo "filename=$(ls *.pkg.tar.zst)" >> $GITHUB_ENV
+          echo "filename=$(eza *.pkg.tar.zst -I *-debug-*.pkg.tar.zst)" >> $GITHUB_ENV
+          if eza *-debug-*.pkg.tar.zst
+          then
+            echo "filename_debug=$(eza *-debug-*.pkg.tar.zst)" >> $GITHUB_ENV
+          fi
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.filename }}
-          path: ${{ matrix.package }}/**.pkg.tar.zst
+          path: |
+            ${{ matrix.package }}/${{ env.filename }}
+
+      - name: Upload debug artifacts
+        if: env.filename_debug
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.filename }}
+          path: |
+            ${{ matrix.package }}/${{ env.filename_debug }}
