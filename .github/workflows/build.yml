@@ -65,24 +65,23 @@ jobs:
           source PKGBUILD
           echo ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
           packages=()
+          pacman_took_care_of_it=()
           for dep in ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
           do
-            count=0
-            while IFS="" read -r p || [ -n "$p" ]
-            do
-              if [ $p == $dep ]
-              then
-                count=$((count+1))
-              fi
-            done < pkglist
-            if [ $count -eq 0 ]
+            # We do this first because yay and pacman function differently with
+            # version constraints
+            if pacman -S --noconfirm --asdeps "${dep}"
             then
+              pacman_took_care_of_it+=("${dep}")
+              echo "pacman installed: ${dep}"
+            else
               packages+=("${dep}")
-              echo "Added $dep"
+              echo "Queueing for yay: ${dep}"
             fi
           done
-          echo ${packages[@]}
-          runuser -u dev -- yay -S --noconfirm --asdeps ${packages[@]}
+          echo "pacman installed these: ${pacman_took_care_of_it[@]}"
+          echo "yay will install these: ${packages[@]}"
+          runuser -u dev -- yay -S --noconfirm --asdeps "${packages[@]}"
 
       - name: Build and install package
         run: |
