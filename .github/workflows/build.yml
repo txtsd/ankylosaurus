@@ -108,6 +108,6 @@ jobs:
         if: env.filename_debug
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.filename }}
+          name: ${{ env.filename_debug }}
           path: |
             ${{ matrix.package }}/${{ env.filename_debug }}
