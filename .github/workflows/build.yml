@@ -48,9 +48,14 @@ jobs:
         run: |
           chown -R dev: .
 
-      - name: Initialize gpg keyring
+      - name: Handle PGP keys
         run: |
-          runuser -u dev -- gpg --list-keys
+          cd ${{ matrix.package }}
+          source PKGBUILD
+          for key in ${validpgpkeys}
+          do
+            runuser -u dev -- gpg --recv-keys ${key}
+          done
 
       - name: Install yay
         run: |
