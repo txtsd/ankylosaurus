@@ -54,20 +54,14 @@ jobs:
         id: changes
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git checkout ${{ github.event.pull_request.base.ref }} --
-          git checkout ${{ github.event.pull_request.head.ref }} --
           if [ ${{ github.event_name }} == 'push' ]
           then
-            if [ ${{ github.event.forced }} ]
-            then
-              commit_id=${{ github.event.commits[0].id }}
-              sensible_parent=$(git log --pretty=%P -n1 ${commit_id})
-              CHANGED_DIRS=$(git diff --name-only ${sensible_parent}..${{ github.event.after }} -- | cut -d / -f 1 | uniq)
-            else
-              CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }} -- | cut -d / -f 1 | uniq)
-            fi
+            CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }} -- | cut -d / -f 1 | uniq)
+          fi
           elif [ ${{ github.event_name }} == 'pull_request' ]
           then
+            git checkout ${{ github.event.pull_request.base.ref }} --
+            git checkout ${{ github.event.pull_request.head.ref }} --
             CHANGED_DIRS=$(git diff --name-only ${{ github.event.pull_request.base.ref }}...${{ github.event.pull_request.head.ref }} -- | cut -d / -f 1 | uniq)
           elif [ ${{ github.event_name }} == 'workflow_dispatch' ]
           then
