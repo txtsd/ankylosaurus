@@ -69,7 +69,7 @@ jobs:
           fi
           # Remove .github from CHANGED_DIRS
           FINAL_CHANGED_DIRS=()
-          for dir in $(echo ${CHANGED_DIRS} | sed "s/.github//")
+          for dir in $(echo ${CHANGED_DIRS} | sed "s/.github//" | sed "s/^LICENSE$//" | sed "s/^README.md$//" | sed "s/^refre.sh$//" | sed "s/^renovate.json$//" | uniq)
           do
             FINAL_CHANGED_DIRS+=("${dir}")
           done
