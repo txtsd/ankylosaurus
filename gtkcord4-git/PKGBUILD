@@ -2,8 +2,9 @@
 
 pkgname=gtkcord4-git
 _pkgname=gtkcord4
-pkgver=r271.dea45f4
-pkgrel=1
+_fqpn=so.libdb.${_pkgname}
+pkgver=r286.6ec8db8
+pkgrel=2
 pkgdesc='Discord client written in go and gtk4'
 arch=('x86_64' 'aarch64')
 url='https://github.com/diamondburned/gtkcord4'
@@ -41,10 +42,11 @@ package() {
     cd "${_pkgname}/build"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    sed -i "s/Chat;/Chat;InstantMessaging;/" "${srcdir}/${_pkgname}/nix/so.libdb.gtkcord4.desktop"
-    install -Dm644 "${srcdir}/${_pkgname}/nix/so.libdb.gtkcord4.desktop" "${pkgdir}/usr/share/applications/so.libdb.gtkcord4.desktop"
-    install -Dm644 "${srcdir}/${_pkgname}/so.libdb.gtkcord4.metainfo.xml" "${pkgdir}/usr/share/metainfo/so.libdb.gtkcord4.metainfo.xml"
+    sed -i "s/Chat;/Chat;InstantMessaging;/" "${srcdir}/${_pkgname}/nix/${_fqpn}.desktop"
+    install -Dm644 "${srcdir}/${_pkgname}/nix/${_fqpn}.desktop" "${pkgdir}/usr/share/applications/${_fqpn}.desktop"
+    install -Dm644 "${srcdir}/${_pkgname}/${_fqpn}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${_fqpn}.metainfo.xml"
     install -Dm644 "${srcdir}/${_pkgname}/.github/logo.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gtkcord4.png"
     install -Dm644 "${srcdir}/${_pkgname}/internal/icons/hicolor/scalable/apps/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gtkcord4.svg"
+    install -Dm644 "${srcdir}/${_pkgname}/nix/${_fqpn}.service" "${pkgdir}/usr/share/dbus-1/services/${_fqpn}.service"
 }
 
