@@ -45,11 +45,6 @@ jobs:
         with:
           fetch-depth: '0'
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
       - name: Find Changes
         id: changes
         run: |
