@@ -96,18 +96,34 @@ jobs:
       - name: Grab built package's filename
         run: |
           cd ${{ matrix.package }}
-          echo "filename=$(eza *.pkg.tar.zst -I *-debug-*.pkg.tar.zst)" >> $GITHUB_ENV
+          source PKGBUILD
+          counter=0
+          for single_package in ${pkgname}
+          do
+            ((counter++))
+            echo "filename_${counter}=$(eza ${single_package}*.pkg.tar.zst -I *-debug-*.pkg.tar.zst)" >> $GITHUB_ENV
+          done
+          echo "Found ${counter} artifacts"
           if eza *-debug-*.pkg.tar.zst
           then
             echo "filename_debug=$(eza *-debug-*.pkg.tar.zst)" >> $GITHUB_ENV
           fi
 
-      - name: Upload artifacts
+      - name: Upload artifact
+        if: env.filename_1
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.filename }}
+          name: ${{ env.filename_1 }}
           path: |
-            ${{ matrix.package }}/${{ env.filename }}
+            ${{ matrix.package }}/${{ env.filename_1 }}
+
+      - name: 'Upload artifact #2'
+        if: env.filename_2
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.filename_2 }}
+          path: |
+            ${{ matrix.package }}/${{ env.filename_2 }}
 
       - name: Upload debug artifacts
         if: env.filename_debug
