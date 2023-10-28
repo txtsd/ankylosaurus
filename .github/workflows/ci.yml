@@ -57,7 +57,6 @@ jobs:
           if [ ${{ github.event_name }} == 'push' ]
           then
             CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }} -- | cut -d / -f 1 | uniq)
-          fi
           elif [ ${{ github.event_name }} == 'pull_request' ]
           then
             git checkout ${{ github.event.pull_request.base.ref }} --
