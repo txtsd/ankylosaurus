@@ -3,7 +3,7 @@
 These are PKGBUILDs for AUR packages that I
 [maintain and co-maintain](https://aur.archlinux.org/packages?SeB=M&K=txtsd) at
 the [Arch User Repository](https://aur.archlinux.org/) using
-[txtsd/archosaur](https://github.com/txtsd/archosaur).
+[archosaur](https://github.com/txtsd/archosaur).
 
 ## Meaning
 
