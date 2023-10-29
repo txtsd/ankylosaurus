@@ -1,14 +1,34 @@
-# PKGBUILDs for the [Arch User Repository](https://aur.archlinux.org/)
+# ankylosaurus
 
-These are AUR packages that I [maintain and co-maintain](https://aur.archlinux.org/packages?SeB=M&K=txtsd).
+These are PKGBUILDs for AUR packages that I
+[maintain and co-maintain](https://aur.archlinux.org/packages?SeB=M&K=txtsd) at
+the [Arch User Repository](https://aur.archlinux.org/) using
+[txtsd/archosaur](https://github.com/txtsd/archosaur).
 
-Maintained using my fork of [txtsd/aurpublish](https://github.com/txtsd/aurpublish).
+## Meaning
 
----
+### Etymology
+
+From the genus translingual Ankylosaurus, from Ancient Greek ἀγκύλος (ankúlos,
+“crooked”) + σαῦρος (saûros, “lizard”); by surface analysis, ankylo- + -saurus.
+The word was coined in 1908 by Brown, who did not give any explanation. It may
+have been intended to refer to ankylosis, a medical condition in which bones
+fuse and can cause a deformity. Ankylosaurs have some rear ribs fused to their
+vertebrae.
+
+### Noun
+
+**ankylosaurus** (plural ankylosauri or ankylosauruses)
+
+    1. A large herbivorous dinosaur, of genus Ankylosaurus, that lived in the
+    Cretaceous period, noted for its heavy armor and club-like tail.
+    2. txtsd's favorite dinosaur.
+    3. Certainly, definitely, absolutely, not just for the AUR in the word.
 
 ## Credits
 
-I'd like to think I did most of the work myself, but I stand on the shoulders of giants:
+I'd like to think I did most of the work myself, but I stand on the shoulders
+of giants:
 
 ### Tools
 
