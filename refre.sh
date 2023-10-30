@@ -1,4 +1,7 @@
 repos=(
+    archosaur
+    archosaur-bin
+    archosaur-git
     blockbench
     blockbench-bin
     blockbench-git
@@ -54,6 +57,6 @@ repos=(
 )
 
 for repo in "${repos[@]}"; do
-    aurpublish --pull "${repo}"
+    archosaur --pull "${repo}"
 done
 
