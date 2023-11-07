@@ -1,6 +1,0 @@
-*.tar.zst
-*.xz
-*.gz
-*.log
-/src/
-/pkg/
