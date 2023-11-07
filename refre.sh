@@ -54,6 +54,8 @@ repos=(
 )
 
 for repo in "${repos[@]}"; do
+    echo ''
+    echo "--> Pulling ${repo}"
     archosaur --pull "${repo}"
 done
 
