@@ -17,9 +17,6 @@ repos=(
     gtkcord4-git
     illarion-bin
     imgbrd-grabber-appimage
-    jackett
-    jackett-bin
-    jackett-mono
     linux-command-gpt
     linux-command-gpt-git
     openssh-askpass
