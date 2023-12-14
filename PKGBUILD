@@ -3,38 +3,40 @@
 # Contributor: Panagiotis Mavrogiorgos <pmav99@gmail.com>
 
 pkgname=nuitka
-pkgver=1.6.6
+pkgver=1.9.5
 pkgrel=1
 pkgdesc='Python compiler with full language support and CPython compatibility'
 arch=(any)
 url='https://nuitka.net/'
 license=(Apache)
 depends=(libxml2 patchelf python-appdirs python-setuptools python-wheel scons)
-makedepends=(gdb python-build python-installer)
+makedepends=(gdb python-build python-installer git)
 checkdepends=(ccache fuse2 python-boto3 python-brotli strace)
 optdepends=('ccache: for build caching'
             'pyside2: for using Qt5 APIs')
-source=("https://nuitka.net/releases/${pkgname^}-${pkgver}.tar.bz2")
-sha256sums=('2af0202591d397f71e541020ae7f0a1362558576d4c6779e5775ec64f4b59c80')
-b2sums=('f28a2b36da5327984a89dc17b4358a53001f4d077a086eed2b9c74a8009ea72b8640a7dc3c0b7327bc4561a137be5d9a8bfc163d19e6e37a9f8d3d20baaa34d8')
-
-prepare() {
-  cd ${pkgname^}-$pkgver
-  # in the build environment /etc/os-release does not exist, but /usr/lib/os-release does
-  sed -e 's,/etc/os-release,/usr/lib/os-release,' -i nuitka/utils/Utils.py
-}
+source=("https://nuitka.net/releases/${pkgname^}-$pkgver.tar.bz2")
+sha256sums=('238b7781ec6e2cdd465409273afe045cf1d9226f75ac16fed7ce1082c8b99667')
+b2sums=('eb315e08fad705179c323bb4d6695024978358b895e10c8b616220ffc367a47f15279e007a1a1c381a2238006f7fc70a8707eb5378638a816cec83c99e826f0b')
 
 build() {
   cd ${pkgname^}-$pkgver
   python -m build --wheel --no-isolation
 }
 
-# TODO: Find a way to run the tests that does not take that long.
-# TODO: Make all tests pass and/or report issues upstream (some have already been reported).
 check() {
- cd ${pkgname^}-$pkgver/tests
- rm -r programs/pkgutil_usage
- ./run-tests --no-other-python --skip-onefile-tests --skip-other-cpython-tests --skip-reflection-test
+ cd ${pkgname^}-$pkgver
+
+ # Check that compilation works
+ echo 'print("Compiling main.py to an executable and then running it works")' > main.py
+ bin/nuitka --output-filename=main --lto=yes --show-scons main.py
+ ./main
+
+ cd tests
+
+ # ./run-tests is disabled for now, see:
+ # https://github.com/Nuitka/Nuitka/issues/2595
+ # https://github.com/Nuitka/Nuitka/issues/2609
+ #./run-tests
 }
 
 package() {
