@@ -3,7 +3,7 @@
 # Contributor: Panagiotis Mavrogiorgos <pmav99@gmail.com>
 
 pkgname=nuitka
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Python compiler with full language support and CPython compatibility'
 arch=(any)
@@ -16,8 +16,8 @@ optdepends=('ccache: for caching builds'
             'pyside2: for using Qt5 APIs'
             'patchelf: for using standalone mode')
 source=("https://nuitka.net/releases/${pkgname^}-$pkgver.tar.bz2")
-sha256sums=('2ebf9239a441316336cfe5f9b1b365098cd29f2467d8801992d35f866c4a168f')
-b2sums=('78dd4a1a5f04681546f2bf9ee3769f0ce5ce658dc13960223f235ec3fe019a600274f14443fd34601ac7bf838651515961d5eb18602b6005c1e2900afca874f2')
+sha256sums=('eb7bc3515d18766fcd8a6a02acdc920fb80edb8e6e4521c926e89691e536f3e7')
+b2sums=('c423f869921966726ac5ebd38915aa6da6c1844080cb7145be68dfc8bad07c7ed9370b020d02b52f25d91a652aed49a914ebc6b6aebcc27bf8bf9c442b39ad0b')
 
 build() {
   cd ${pkgname^}-$pkgver
@@ -25,18 +25,18 @@ build() {
 }
 
 check() {
- cd ${pkgname^}-$pkgver
+  cd ${pkgname^}-$pkgver
 
- # Check that compilation works
- echo 'print("Compiling main.py to an executable and then running it works")' > main.py
- bin/nuitka --output-filename=main --lto=yes --show-scons main.py
- ./main
+  # Check that compilation works
+  echo 'print("[x] Can compile main.py to an executable.\n[x] Can run the resulting executable.")' > main.py
+  bin/nuitka --output-filename=main --lto=yes --show-scons main.py
+  ./main
 
- # Tests are disabled for now. See:
- # https://github.com/Nuitka/Nuitka/issues/2595
- # https://github.com/Nuitka/Nuitka/issues/2609
- #cd tests
- #./run-tests
+  # Tests are disabled for now. See:
+  # https://github.com/Nuitka/Nuitka/issues/2595
+  # https://github.com/Nuitka/Nuitka/issues/2609
+  #cd tests
+  #./run-tests
 }
 
 package() {
