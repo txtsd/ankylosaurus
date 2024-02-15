@@ -20,10 +20,10 @@ vertebrae.
 
 **ankylosaurus** (plural ankylosauri or ankylosauruses)
 
-    1. A large herbivorous dinosaur, of genus Ankylosaurus, that lived in the
-    Cretaceous period, noted for its heavy armor and club-like tail.
-    2. txtsd's favorite dinosaur.
-    3. Certainly, definitely, absolutely, not just for the AUR in the word.
+1. A large herbivorous dinosaur, of genus Ankylosaurus, that lived in the
+Cretaceous period, noted for its heavy armor and club-like tail.
+2. txtsd's favorite dinosaur.
+3. Certainly, definitely, absolutely, not just for the AUR in the word.
 
 ## Credits
 
