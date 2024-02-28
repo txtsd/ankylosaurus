@@ -41,7 +41,7 @@ jobs:
 
   build:
     name: Build
-    needs: release_check
+    needs: vcs_check
     uses: ./.github/workflows/build.yml
     with:
       packages: ${{ needs.vcs_check.outputs.list }}
