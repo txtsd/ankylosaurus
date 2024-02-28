@@ -14,34 +14,36 @@ defaults:
 
 jobs:
   determine_architectures:
-  runs-on: ubuntu-latest
-  outputs:
-    architectures: ${{ steps.extract-architectures.outputs.architectures }}
+    name: Determine Architectures
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    outputs:
+      architectures: ${{ steps.extract-architectures.outputs.architectures }}
 
-  steps:
-    - name: Check out code
-      uses: actions/checkout@v4
-    - name: Update system and install dependencies
-      run: |
-        sed -i 's/#\[multilib\]/\[multilib\]/' /etc/pacman.conf
-        pacman-key --init
-        pacman -Syu --noconfirm
-        pacman -S --noconfirm --needed fd
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Update system and install dependencies
+        run: |
+          sed -i 's/#\[multilib\]/\[multilib\]/' /etc/pacman.conf
+          pacman-key --init
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm --needed fd
 
-    - name: Extract architectures
-      id: extract-architectures
-      run: |
-        for file in $(fd --type f -- PKGBUILD)
-        do
-          source $file
-          echo ${arch[@]}
-          if [ $arch != 'any' ]
-          then
-            echo "archictectures=${arch[@]}" >> $GITHUB_OUTPUT
-          else
-            echo "architectures=('x86_64')" >> $GITHUB_OUTPUT
-          fi
-        done
+      - name: Extract architectures
+        id: extract-architectures
+        run: |
+          for file in $(fd --type f -- PKGBUILD)
+          do
+            source $file
+            echo ${arch[@]}
+            if [ $arch != 'any' ]
+            then
+              echo "archictectures=${arch[@]}" >> $GITHUB_OUTPUT
+            else
+              echo "architectures=('x86_64')" >> $GITHUB_OUTPUT
+            fi
+          done
 
   build:
     name: Build
