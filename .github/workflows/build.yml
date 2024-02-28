@@ -39,7 +39,7 @@ jobs:
             echo ${arch[@]}
             if [ $arch != 'any' ]
             then
-              echo "archictectures=${arch[@]}" >> $GITHUB_OUTPUT
+              echo "architectures=${arch[@]}" >> $GITHUB_OUTPUT
             else
               echo "architectures=x86_64" >> $GITHUB_OUTPUT
             fi
