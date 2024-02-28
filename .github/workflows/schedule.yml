@@ -43,7 +43,7 @@ jobs:
         shell: sh
         run: |
           updates=()
-          for dir in $(fd --type d --exclude jackett --exclude="*-git")
+          for dir in $(fd --type d --exclude="*-git" --exclude="*-cvs" --exclude="*-svn" --exclude="*-hg" --exclude="*-darcs" --exclude="*-bzr")
           do
             pushd ${dir%/}
             result=$(${HOME}/bumper --bump=false | grep -i → | wc -l)
