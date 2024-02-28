@@ -1,0 +1,47 @@
+name: Schedule VCS
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  vcs_check:
+    name: VCS Check
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    timeout-minutes: 5
+
+    outputs:
+      list: ${{ steps.packages.outputs.list_packages }}
+
+    steps:
+      - name: Update system and install dependencies
+        run: |
+          pacman-key --init
+          pacman -Syu --noconfirm fd jq
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+
+      - name: Check for VCS packages
+        id: packages
+        run: |
+          updates=()
+          for dir in $(fd --type d --regex ".*-git$|.*-cvs$|.*-svn$|.*-hg$|.*-darcs$|.*-bzr$")
+          do
+            updates+=("${dir%/}")
+          done
+          echo "list_packages=$(jq -cn '$ARGS.positional' --args "${updates[@]}")" >> $GITHUB_OUTPUT
+
+  build:
+    name: Build
+    needs: release_check
+    uses: ./.github/workflows/build.yml
+    with:
+      packages: ${{ needs.vcs_check.outputs.list }}
