@@ -41,7 +41,7 @@ jobs:
             then
               echo "archictectures=${arch[@]}" >> $GITHUB_OUTPUT
             else
-              echo "architectures=('x86_64')" >> $GITHUB_OUTPUT
+              echo "architectures=x86_64" >> $GITHUB_OUTPUT
             fi
           done
 
