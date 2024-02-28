@@ -6,15 +6,16 @@ repos=(
     blockbench-bin
     blockbench-git
     blockify-git
+    dissent-git
     espanso-git
     espanso-wayland-git
     eza-git
     fast-discord-git
     flaresolverr
     flaresolverr-bin
+    gpt-engineer
     gtkcord4
     gtkcord4-bin
-    gtkcord4-git
     illarion-bin
     imgbrd-grabber-appimage
     linux-command-gpt
@@ -31,6 +32,11 @@ repos=(
     prismlauncher-qt5-git
     progress-quest-bin
     python-baycomp
+    python-langchain
+    python-langchain-community
+    python-langchain-core
+    python-langsmith
+    python-objection
     python-pox
     python-pykakasi
     python-syncedlyrics
@@ -45,7 +51,6 @@ repos=(
     thesage
     trelby
     trelby-git
-    ttf-monocraft
     ttf-mutant-emoji
     ttf-unifont
     vimv-git
