@@ -70,8 +70,8 @@ jobs:
           # Set output
           echo "changed_pkgs=$(jq -cn '$ARGS.positional' --args "${FINAL_CHANGED_DIRS[@]}")" >> $GITHUB_OUTPUT
 
-  build:
-    name: Build
+  trigger_build:
+    name: Trigger
     needs: find_changes
     uses: ./.github/workflows/build.yml
     with:
