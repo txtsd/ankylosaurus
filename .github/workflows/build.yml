@@ -66,27 +66,24 @@ jobs:
       - name: Install package dependencies from AUR
         run: |
           cd ${{ matrix.package }}
-          pacman -Ssq > pkglist
           source PKGBUILD
           echo ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
-          packages=()
-          pacman_took_care_of_it=()
-          for dep in ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
-          do
-            # We do this first because yay and pacman function differently with
-            # version constraints
-            if pacman -S --noconfirm --asdeps "${dep}"
-            then
-              pacman_took_care_of_it+=("${dep}")
-              echo "pacman installed: ${dep}"
-            else
-              packages+=("${dep}")
-              echo "Queueing for yay: ${dep}"
-            fi
-          done
-          echo "pacman installed these: ${pacman_took_care_of_it[@]}"
-          echo "yay will install these: ${packages[@]}"
-          runuser -u dev -- yay -S --noconfirm --asdeps "${packages[@]}"
+          packages_for_yay=()
+          packages_for_yay=$(pacman -S --noconfirm --asdeps ${depends[@]} ${makedepends[@]} ${checkdepends[@]} 2>&1 | rg "error: target not found: " -r "")
+          if [[ -n "${packages_for_yay}" ]]
+          then
+            mapfile -t packages < \
+              <(comm -23 \
+                <(IFS=$'\n'; echo "${depends[*]} ${makedepends[*]} ${checkdepends[*]}" | sort) \
+                <(IFS=$'\n'; echo "${packages_for_yay[*]}" | sort) \
+              )
+            echo "pacman will install these: ${packages[@]}"
+            pacman -S --noconfirm --asdeps "${packages[@]}"
+            echo "yay will install these: ${packages_for_yay[@]}"
+            runuser -u dev -- yay -S --noconfirm --asdeps "${packages_for_yay[@]}"
+          else
+            echo "pacman installed all packages successfully!"
+          fi
 
       - name: Build and install package
         run: |
