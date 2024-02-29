@@ -18,6 +18,7 @@ repos=(
     gtkcord4-bin
     illarion-bin
     imgbrd-grabber-appimage
+    java-openjdk-wakefield
     linux-command-gpt
     linux-command-gpt-git
     openssh-askpass
