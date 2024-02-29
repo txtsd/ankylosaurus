@@ -64,6 +64,7 @@ jobs:
           runuser -u dev -- makepkg -csri --noconfirm
 
       - name: Install package dependencies from AUR
+        shell: sh
         run: |
           cd ${{ matrix.package }}
           source PKGBUILD
