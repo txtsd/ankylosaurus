@@ -69,18 +69,30 @@ jobs:
           cd ${{ matrix.package }}
           source PKGBUILD
           echo ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
+          packages=()
           packages_for_yay=()
           packages_for_yay=$(pacman -S --noconfirm --asdeps ${depends[@]} ${makedepends[@]} ${checkdepends[@]} 2>&1 | rg "error: target not found: " -r "")
           if [[ -n "${packages_for_yay}" ]]
           then
-            mapfile -t packages < \
-              <(comm -23 \
-                <(IFS=$'\n'; echo "${depends[*]} ${makedepends[*]} ${checkdepends[*]}" | sort) \
-                <(IFS=$'\n'; echo "${packages_for_yay[*]}" | sort) \
-              )
-            echo "pacman will install these: ${packages[@]}"
+            for pkg in "${depends[@]}" "${makedepends[@]}" "${checkdepends[@]}"
+            do
+              found=0
+              for pkgyay in ${packages_for_yay[@]}
+              do
+                if [[ ${pkg} == ${pkgyay} ]];
+                then
+                  found=$(( found+1 ))
+                fi
+              done
+              if [[ ${found} == 0 ]]
+              then
+                packages+=("${pkg}")
+              fi
+            done
+
+            echo "pacman will install these packages: ${packages[@]}"
             pacman -S --noconfirm --asdeps "${packages[@]}"
-            echo "yay will install these: ${packages_for_yay[@]}"
+            echo "yay will install these packages: ${packages_for_yay[@]}"
             runuser -u dev -- yay -S --noconfirm --asdeps "${packages_for_yay[@]}"
           else
             echo "pacman installed all packages successfully!"
