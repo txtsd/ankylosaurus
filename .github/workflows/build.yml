@@ -54,7 +54,7 @@ jobs:
     strategy:
       matrix:
         package: ${{ fromJson(inputs.packages) }}
-        arch: ${{ fromJson(needs.determine_architectures.outputs.architectures) }}
+        arch: ${{ needs.determine_architectures.outputs.architectures }}
       fail-fast: false
 
     steps:
