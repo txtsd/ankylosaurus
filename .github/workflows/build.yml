@@ -85,7 +85,7 @@ jobs:
               found=0
               for pkgyay in ${packages_for_yay[@]}
               do
-                if [[ ${pkg} == ${pkgyay} ]];
+                if [[ "${pkg}" == "${pkgyay}" ]]
                 then
                   found=$(( found+1 ))
                 fi
