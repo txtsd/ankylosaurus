@@ -74,16 +74,16 @@ jobs:
           packages_for_yay=$(pacman -S --noconfirm --asdeps ${depends[@]} ${makedepends[@]} ${checkdepends[@]} 2>&1 | rg "error: target not found: " -r "")
           if [[ -n "${packages_for_yay}" ]]
           then
-            packages_temp=${packages_for_yay[@]}
+            packages_temp="${packages_for_yay[@]}"
             packages_for_yay=()
-            for pkg in "${packages_for_temp}"
+            for pkg in "${packages_for_temp[@]}"
             do
               packages_for_yay+=("${pkg}")
             done
             for pkg in "${depends[@]}" "${makedepends[@]}" "${checkdepends[@]}"
             do
               found=0
-              for pkgyay in ${packages_for_yay[@]}
+              for pkgyay in "${packages_for_yay[@]}"
               do
                 if [[ "${pkg}" == "${pkgyay}" ]]
                 then
