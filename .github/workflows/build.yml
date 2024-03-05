@@ -69,40 +69,37 @@ jobs:
           cd ${{ matrix.package }}
           source PKGBUILD
           echo ${depends[@]} ${makedepends[@]} ${checkdepends[@]}
-          packages=()
+          packages_all=()
+          packages_all+=("${depends[@]}")
+          packages_all+=("${makedepends[@]}")
+          packages_all+=("${checkdepends[@]}")
+          packages_for_pacman=()
           packages_for_yay=()
           packages_for_yay=$(pacman -S --noconfirm --asdeps ${depends[@]} ${makedepends[@]} ${checkdepends[@]} 2>&1 | rg "error: target not found: " -r "")
-          if [[ -n "${packages_for_yay}" ]]
-          then
-            packages_temp="${packages_for_yay[@]}"
-            packages_for_yay=()
-            for pkg in "${packages_for_temp[@]}"
+          echo "packages_for_pacman: ${packages_for_pacman[@]}"
+          echo "packages_for_yay: ${packages_for_yay[@]}"
+          echo "packages_all: ${packages_all[@]}"
+          for pkg in "${packages_all[@]}"
+          do
+            echo "pkg: ${pkg}"
+            found=0
+            for pkgyay in "${packages_for_yay[@]}"
             do
-              packages_for_yay+=("${pkg}")
-            done
-            for pkg in "${depends[@]}" "${makedepends[@]}" "${checkdepends[@]}"
-            do
-              found=0
-              for pkgyay in "${packages_for_yay[@]}"
-              do
-                if [[ "${pkg}" == "${pkgyay}" ]]
-                then
-                  found=$(( found+1 ))
-                fi
-              done
-              if [[ ${found} -eq 0 ]]
+              echo "pkgyay: ${pkgyay}"
+              if [[ "${pkg}" == "${pkgyay}" ]]
               then
-                packages+=("${pkg}")
+                found=$(( found+1 ))
               fi
             done
-
-            echo "pacman will install these packages: ${packages[@]}"
-            pacman -S --noconfirm --asdeps "${packages[@]}"
-            echo "yay will install these packages: ${packages_for_yay[@]}"
-            runuser -u dev -- yay -S --noconfirm --asdeps "${packages_for_yay[@]}"
-          else
-            echo "pacman installed all packages successfully!"
-          fi
+            if [[ ${found} -eq 0 ]]
+            then
+              packages_for_pacman+=("${pkg}")
+            fi
+          done
+          echo "pacman will install these packages: ${packages_for_pacman[@]}"
+          pacman -S --noconfirm --asdeps "${packages_for_pacman[@]}"
+          echo "yay will install these packages: ${packages_for_yay[@]}"
+          runuser -u dev -- yay -S --noconfirm --asdeps "${packages_for_yay[@]}"
 
       - name: Build and install package
         run: |
