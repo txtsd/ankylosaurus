@@ -106,12 +106,27 @@ jobs:
         run: |
           cd ${{ matrix.package }}
           source PKGBUILD
+          # Remove eza to install eza-git
           if [[ "${pkgname}" == "eza-git" ]]
           then
             echo "Removing preinstalled eza"
             pacman -R --noconfirm eza
           fi
-          runuser -u dev -- makepkg -csri --noconfirm
+          # Remove jdk-openjdk to install. It conflicts.
+          if [[ "${pkgbase}" == "java-openjdk-wakefield" ]]
+          then
+            runuser -u dev -- makepkg -csr --noconfirm
+            pacman -R --noconfirm jdk-openjdk
+            yay -U --noconfirm jre-openjdk-wakefield-headless-*.pkg.tar.zst
+            pacman -R --noconfirm jre-openjdk-wakefield-headless
+            yay -U --noconfirm jre-openjdk-wakefield-2*.pkg.tar.zst
+            pacman -R --noconfirm jre-openjdk-wakefield
+            yay -U --noconfirm jdk-openjdk-wakefield-*.pkg.tar.zst
+            yay -U jdk-openjdk-wakefield-doc-*.pkg.tar.zst
+            yay -U jdk-openjdk-wakefield-src-*.pkg.tar.zst
+          else
+            runuser -u dev -- makepkg -csri --noconfirm
+          fi
 
       - name: Grab built package's filename
         run: |
@@ -144,6 +159,30 @@ jobs:
           name: ${{ env.filename_2 }}
           path: |
             ${{ matrix.package }}/${{ env.filename_2 }}
+
+      - name: 'Upload artifact #3'
+        if: env.filename_3
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.filename_3 }}
+          path: |
+            ${{ matrix.package }}/${{ env.filename_3 }}
+
+      - name: 'Upload artifact #4'
+        if: env.filename_4
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.filename_4 }}
+          path: |
+            ${{ matrix.package }}/${{ env.filename_4 }}
+
+      - name: 'Upload artifact #5'
+        if: env.filename_5
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.filename_5 }}
+          path: |
+            ${{ matrix.package }}/${{ env.filename_5 }}
 
       - name: Upload debug artifacts
         if: env.filename_debug
