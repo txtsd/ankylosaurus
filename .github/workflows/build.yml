@@ -122,8 +122,8 @@ jobs:
             runuser -u dev -- yay -U --noconfirm jre-openjdk-wakefield-2*.pkg.tar.zst
             pacman -R --noconfirm jre-openjdk-wakefield
             runuser -u dev -- yay -U --noconfirm jdk-openjdk-wakefield-*.pkg.tar.zst
-            runuser -u dev -- yay -U openjdk-wakefield-doc-*.pkg.tar.zst
-            runuser -u dev -- yay -U openjdk-wakefield-src-*.pkg.tar.zst
+            runuser -u dev -- yay -U --noconfirm openjdk-wakefield-doc-*.pkg.tar.zst
+            runuser -u dev -- yay -U --noconfirm openjdk-wakefield-src-*.pkg.tar.zst
           elif [[ "${pkgbase}" == "espanso-git" ]]
           then
             runuser -u dev -- makepkg -csr --noconfirm
