@@ -105,6 +105,12 @@ jobs:
       - name: Build and install package
         run: |
           cd ${{ matrix.package }}
+          source PKGBUILD
+          if [[ "${pkgname}" == "eza-git" ]]
+          then
+            echo "Removing preinstalled eza"
+            pacman -R --noconfirm eza
+          fi
           runuser -u dev -- makepkg -csri --noconfirm
 
       - name: Grab built package's filename
