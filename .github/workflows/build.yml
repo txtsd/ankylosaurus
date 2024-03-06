@@ -124,6 +124,12 @@ jobs:
             yay -U --noconfirm jdk-openjdk-wakefield-*.pkg.tar.zst
             yay -U jdk-openjdk-wakefield-doc-*.pkg.tar.zst
             yay -U jdk-openjdk-wakefield-src-*.pkg.tar.zst
+          elif [[ "${pkgbase}" == "espanso-git" ]]
+          then
+            runuser -u dev -- makepkg -csr --noconfirm
+            yay -U --noconfirm espanso-x11-git-*.pkg.tar.zst
+            pacman -R --noconfirm espanso-x11-git
+            yay -U --noconfirm espanso-wayland-git-*.pkg.tar.zst
           else
             runuser -u dev -- makepkg -csri --noconfirm
           fi
