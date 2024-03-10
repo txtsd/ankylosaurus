@@ -6,16 +6,15 @@ repos=(
     blockbench-bin
     blockbench-git
     blockify-git
+    dissent
+    dissent-bin
     dissent-git
     espanso-git
-    espanso-wayland-git
     eza-git
     fast-discord-git
     flaresolverr
     flaresolverr-bin
     gpt-engineer
-    gtkcord4
-    gtkcord4-bin
     illarion-bin
     imgbrd-grabber-appimage
     java-openjdk-wakefield
@@ -36,8 +35,8 @@ repos=(
     python-langchain
     python-langchain-community
     python-langchain-core
+    python-langchain-text-splitters
     python-langsmith
-    python-objection
     python-pox
     python-pykakasi
     python-syncedlyrics
@@ -52,7 +51,6 @@ repos=(
     thesage
     trelby
     trelby-git
-    ttf-mutant-emoji
     ttf-unifont
     vimv-git
     yt-spammer-purge
