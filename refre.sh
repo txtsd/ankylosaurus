@@ -15,6 +15,9 @@ repos=(
     flaresolverr
     flaresolverr-bin
     gpt-engineer
+    halloy
+    halloy-bin
+    halloy-git
     illarion-bin
     imgbrd-grabber-appimage
     java-openjdk-wakefield
