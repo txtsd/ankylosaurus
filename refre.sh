@@ -9,6 +9,9 @@ repos=(
     dissent
     dissent-bin
     dissent-git
+    dpitunnel
+    dpitunnel-bin
+    dpitunnel-git
     espanso-git
     eza-git
     fast-discord-git
