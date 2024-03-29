@@ -3,7 +3,7 @@
 
 pkgbase=uwebsockets
 pkgname=uwebsockets
-pkgver=20.60.0
+pkgver=20.62.0
 pkgrel=1
 pkgdesc="Simple, secure & standards compliant web server for the most demanding of applications"
 url="https://github.com/uNetworking/uWebSockets"
@@ -11,7 +11,7 @@ license=('Apache')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/uNetworking/uWebSockets/archive/v$pkgver.tar.gz"
         "uwebsockets.pc")
-sha256sums=('eb72223768f93d40038181653ee5b59a53736448a6ff4e8924fd56b2fcdc00db'
+sha256sums=('03dfc8037cf43856a41e64bbc7fc5a7cf5e6369c9158682753074ecbbe09eed1'
             '5433dee099ea6f6fe97ef200cc19aadc71ca5066d7f5238070c25cd040dfb520')
 depends=( usockets )
 
