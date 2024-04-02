@@ -9,11 +9,11 @@ pkgname=(
 _pkgbase=${pkgbase%-git}
 _branch=dev
 pkgver=2.2.0.r64.gd99e5d9
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://github.com/espanso/espanso"
-license=(GPL-3.0-only)
+license=('GPL-3.0-or-later')
 makedepends=(
   bzip2
   cargo
