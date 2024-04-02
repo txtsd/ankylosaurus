@@ -2,7 +2,7 @@
 
 pkgname=python-langchain-community
 _pkgname=${pkgname#python-}
-pkgver=0.0.29
+pkgver=0.0.31
 pkgrel=1
 pkgdesc="Community contributed LangChain integrations."
 url="https://pypi.org/project/langchain-community"
@@ -56,14 +56,16 @@ depends=(python
     python-httpx
     python-urllib3
     python-psutil
+    python-requests-toolbelt
+    python-pypdf
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
 license=('MIT')
 arch=('any')
 _src_name="${_pkgname/-/_}-${pkgver}"
 source=("https://pypi.org/packages/source/${_pkgname::1}/${_pkgname}/${_src_name}.tar.gz"
-        "https://github.com/langchain-ai/langchain/raw/v0.1.13/LICENSE")
-sha256sums=('d88107fafa9fe2c5733da9630c68d9ee51cd33b1c88a4950e7a2d9a38f7e7aa3'
+        "https://github.com/langchain-ai/langchain/raw/v0.1.14/LICENSE")
+sha256sums=('9a970bc2bb59bb4c204b696d8c62c2534f6ddb31005005cc1b7d7f934e58a5fc'
             '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
 
 build() {
