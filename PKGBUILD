@@ -4,7 +4,7 @@
 
 pkgname=nuitka
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python compiler with full language support and CPython compatibility'
 arch=(any)
 url='https://nuitka.net'
@@ -13,7 +13,6 @@ depends=(libxml2 patchelf python-appdirs python-setuptools python-wheel scons)
 makedepends=(gdb python-build python-installer git)
 checkdepends=(ccache fuse2 python-boto3 python-brotli strace)
 optdepends=('ccache: for caching builds'
-            'pyside2: for using Qt5 APIs'
             'patchelf: for using standalone mode')
 source=("$url/releases/${pkgname^}-$pkgver.tar.bz2")
 sha256sums=('ef9cfa7803a181f5bf41294c3c829489ab5152d8ac779704077587ef2d5a49c7')
