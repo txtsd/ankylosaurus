@@ -1,6 +1,6 @@
 pkgbase = dissent-bin
 	pkgdesc = Discord client written in go and gtk4 (binary version)
-	pkgver = 0.0.22
+	pkgver = 0.0.23
 	pkgrel = 1
 	url = https://github.com/diamondburned/dissent
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = dissent-bin
 	provides = dissent
 	conflicts = dissent
 	conflicts = dissent-git
-	source_x86_64 = https://github.com/diamondburned/dissent/releases/download/v0.0.22/dissent-linux-amd64-v0.0.22-.tar.zst
-	sha256sums_x86_64 = 393666df1f4a31c9fa5971b7aef886dc503adc36a3ee6b9b81a055dbc86252f3
-	source_aarch64 = https://github.com/diamondburned/dissent/releases/download/v0.0.22/dissent-linux-arm64-v0.0.22-.tar.zst
-	sha256sums_aarch64 = 467504f1e65dbd0ca369f4b5804de98624f05b61de8816affca840b3f3817c52
+	source_x86_64 = dissent-linux-amd64-0.0.23.tar.zst::https://github.com/diamondburned/dissent/releases/download/v0.0.23/dissent-linux-amd64.tar.zst
+	sha256sums_x86_64 = 8b9e4ce24aa84134dc855740aee7ee118fc57d099ab987269496ef2c66ced288
+	source_aarch64 = dissent-linux-arm64-0.0.23.tar.zst::https://github.com/diamondburned/dissent/releases/download/v0.0.23/dissent-linux-arm64.tar.zst
+	sha256sums_aarch64 = e37b1315028e310374fc14a65a6623ca41f8c59606cb5c7f31a167109895456b
 
 pkgname = dissent-bin

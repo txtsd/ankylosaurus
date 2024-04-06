@@ -4,7 +4,7 @@
 pkgname=dissent-bin
 _pkgname=dissent
 _fqpn=so.libdb.${_pkgname}
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc='Discord client written in go and gtk4 (binary version)'
 arch=('x86_64' 'aarch64')
@@ -16,13 +16,12 @@ depends=('gtk4>=4.10.3' 'gobject-introspection' 'libadwaita>=1.3.2'
     'libgirepository' 'harfbuzz' 'glib2' 'graphene' 'cairo'
     'hicolor-icon-theme' 'pango' 'glibc' 'gdk-pixbuf2' 'gcc-libs')
 
-sha256sums_x86_64=('393666df1f4a31c9fa5971b7aef886dc503adc36a3ee6b9b81a055dbc86252f3')
-sha256sums_aarch64=('467504f1e65dbd0ca369f4b5804de98624f05b61de8816affca840b3f3817c52')
-source_x86_64=("https://github.com/diamondburned/dissent/releases/download/v${pkgver}/dissent-linux-amd64-v${pkgver}-.tar.zst")
-source_aarch64=("https://github.com/diamondburned/dissent/releases/download/v${pkgver}/dissent-linux-arm64-v${pkgver}-.tar.zst")
+sha256sums_x86_64=('8b9e4ce24aa84134dc855740aee7ee118fc57d099ab987269496ef2c66ced288')
+sha256sums_aarch64=('e37b1315028e310374fc14a65a6623ca41f8c59606cb5c7f31a167109895456b')
+source_x86_64=("dissent-linux-amd64-${pkgver}.tar.zst::https://github.com/diamondburned/dissent/releases/download/v${pkgver}/dissent-linux-amd64.tar.zst")
+source_aarch64=("dissent-linux-arm64-${pkgver}.tar.zst::https://github.com/diamondburned/dissent/releases/download/v${pkgver}/dissent-linux-arm64.tar.zst")
 
 package() {
     install -Dm 755 "${srcdir}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    mkdir -p "${srcdir}/share/icons/hicolor/scalable/apps/"
     cp -r "${srcdir}/share/" "${pkgdir}/usr/"
 }
