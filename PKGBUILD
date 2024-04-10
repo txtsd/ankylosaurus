@@ -3,8 +3,8 @@
 # Contributor: Panagiotis Mavrogiorgos <pmav99@gmail.com>
 
 pkgname=nuitka
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 pkgdesc='Python compiler with full language support and CPython compatibility'
 arch=(any)
 url='https://nuitka.net'
@@ -12,11 +12,9 @@ license=(Apache-2.0)
 depends=(libxml2 patchelf python-appdirs python-setuptools python-wheel scons)
 makedepends=(gdb python-build python-installer git)
 checkdepends=(ccache fuse2 python-boto3 python-brotli strace)
-optdepends=('ccache: for caching builds'
-            'patchelf: for using standalone mode')
+optdepends=('ccache: for caching builds')
 source=("$url/releases/${pkgname^}-$pkgver.tar.bz2")
-sha256sums=('ef9cfa7803a181f5bf41294c3c829489ab5152d8ac779704077587ef2d5a49c7')
-b2sums=('6e9ec660549cbe883fb9f9904b33373073749d50ee732715da193aed07f38c837e6f4b9bb0c51df51ce85b76bcfe956e9290cd1b46b13a0906485efe2309d366')
+b2sums=('7ca8b31a02853912ec7b6e8e0912d8dd8249888ce3cb1a1abe979dbe926f9763968ec2ffaea8b9d75bc9efa2df0b7739b861401291f3aad33b19f634fd6c5fce')
 
 build() {
   cd ${pkgname^}-$pkgver
