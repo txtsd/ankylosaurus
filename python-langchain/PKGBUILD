@@ -2,7 +2,7 @@
 
 pkgname=python-langchain
 _pkgname="${pkgname#python-}"
-pkgver=0.1.14
+pkgver=0.1.16
 pkgrel=1
 pkgdesc='Build context-aware reasoning applications'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 _src_name="${_pkgname/-/_}-${pkgver}"
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('d51d3ee1132dddc3b978226ba1ea2eeae31548aae5cda4c189086aa88209519b'
+sha256sums=('54192f441783c78a4ff4809cb04aacce8293977b76109888feaf370ce846fe20'
             '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
 depends=(python
     python-aiohttp
