@@ -3,8 +3,8 @@
 pkgname=flaresolverr-bin
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
-pkgver=3.3.16
-pkgrel=2
+pkgver=3.3.17
+pkgrel=1
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('x86_64')
 url='https://github.com/FlareSolverr/FlareSolverr'
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('alsa-lib' 'at-spi2-core' 'bash' 'bzip2' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'libcups' 'libdrm'
          'libffi' 'libx11' 'libxcb' 'libxkbcommon' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxrandr'
          'mesa' 'nspr' 'nss' 'openssl' 'pango' 'readline' 'util-linux-libs' 'xorg-server-xvfb' 'xz' 'zlib')
-conflicts=('flaresolverr' 'flaresolverr-git')
+conflicts=("${_pkgname}")
 options=('!strip')
 install='flaresolverr.install'
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgver}/${_pkgname}_linux_x64.tar.gz"
@@ -21,12 +21,12 @@ source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/${__pkgname}/${__pkgnam
         "flaresolverr.sysusers"
         "flaresolverr.tmpfiles"
         "flaresolverr.install")
-sha512sums=('4906ebbb17ac13cf8dc6aa511717df6aadb6e119dd0408e04b4c0efc31611518ee27466c41904e1b16ee265018469672aff9a9459661dd7be848679e4e69f6c7'
-            'ea3aa3af56f503faa7cae884748386ddd87aa7887d1dd3ec010270510c6b477a2627efde3ebddaf60f414d0a5eb34964464c212219cd5423efd0303a7055fc54'
-            '7e3c7292c16103be75e5f6caaea1b70e9b1be72d54a7594e666cb95061d23c72aa93aa8510891f4821c19979d0199852f4f587ec392aa12e92bfffb06a1a6bf8'
-            '0423d10d964a187e5a153140597e7cee3a6112bf6569dfcda7848bfbce4e5660534db3bdbe4a4de9a63fbf0ecc2b874937afd94495691f76176243d2ac4b080d'
-            'f27805d81e19547862f5e8ebf18633dd400543ebd85566301386dc143ad2de1920dd6c37d1ae38623221dcb42edecdd6b753ccfd20ad33e92a4633cfb7a50548'
-            'e12ca34e2f66524d15da36cdebea300ae061a16c8a4d7147ab0cea11cb70879d0d3061c9c852dec9593f348bc8507055f1868cfe754e2e5f92db4466ca3ec2a1')
+sha256sums=('658f2cc9ea232274aa8da29273ba7cf09e151fdf200b3bd3082aa1d3915b3a4c'
+            '822369fb1f97651e6d0b00128451987e0ce98adc3007dc886db68adbf891d2da'
+            'aaf9f1fd58b98583b2e5d2c9e2e0ceb31649a8d7034241833a0463861fbe00eb'
+            '62f114d4e559cf9dae22bfd90759eff697e42da5f700a52988e70e78f3048ae2'
+            '4a61a6d9db1a9f4ec0812d86ef524a7f575a45f272404f0ebfc79376628feeb2'
+            'f3585f385fe8dd2d619144b8e666f1883d3501ce05d81e7c3ed4a57f0d093e85')
 
 package() {
     cd "${srcdir}"
