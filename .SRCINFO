@@ -1,7 +1,7 @@
 pkgbase = gpt-engineer
 	pkgdesc = Specify what you want it to build, the AI asks for clarification, and then builds it.
-	pkgver = 0.2.8
-	pkgrel = 2
+	pkgver = 0.2.9
+	pkgrel = 1
 	url = https://pypi.org/project/gpt-engineer/
 	install = gpt-engineer.install
 	arch = any
@@ -22,7 +22,9 @@ pkgbase = gpt-engineer
 	depends = python-langchain-community
 	depends = python-tabulate
 	depends = python-toml
-	source = https://pypi.org/packages/source/g/gpt-engineer/gpt_engineer-0.2.8.tar.gz
-	sha256sums = 58d1aeff941be5620a1c17b3df80454771bcff81e780912892973d18175c6e91
+	depends = python-pyperclip
+	depends = python-tomlkit
+	source = https://pypi.org/packages/source/g/gpt-engineer/gpt_engineer-0.2.9.tar.gz
+	sha256sums = 7c780616ae4a92aeefbe661b3af89e9b687ba1aa46714d1a9aedf76e2f216e73
 
 pkgname = gpt-engineer
