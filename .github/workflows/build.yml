@@ -16,7 +16,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    container: archlinux:base-devel
+    container: registry.archlinux.org/archlinux/archlinux-docker:base-devel-master
     if: ${{ inputs.packages != '[]' && inputs.packages != '[""]' && inputs.packages != '' }}
     strategy:
       matrix:
