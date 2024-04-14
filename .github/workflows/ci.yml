@@ -29,7 +29,7 @@ jobs:
   find_changes:
     name: Find Changes
     runs-on: ubuntu-latest
-    container: registry.archlinux.org/archlinux/archlinux-docker:base-devel-master
+    container: ghcr.io/archlinux/archlinux:base-devel
     timeout-minutes: 5
 
     outputs:
