@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.zip::https://curseforge.overwolf.com/downloads/cursefo
         'curseforge'
         'LICENSE')
 license=('custom:overwolf' 'MIT' 'custom:chromium-licenses')
-options=(!strip)
+options=(!strip !debug)
 # Skip checksum check for the CurseForge binary, to avoid breakage on updates
 sha256sums=('9a17598d1f7ab7d230c070a8e3e402c0a631f7a1276b5003a5d2706fccf147f4'
             '7ab749b52d805e828b3d30276e96ae4ab3bc56c3882b505a7732ee3f6e8eff95'

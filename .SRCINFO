@@ -9,6 +9,7 @@ pkgbase = curseforge-appimage
 	license = custom:chromium-licenses
 	depends = fuse2
 	options = !strip
+	options = !debug
 	source = curseforge-appimage-0.249.3.17472.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
 	source = curseforge
 	source = LICENSE
