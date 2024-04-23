@@ -3,17 +3,17 @@
 
 _pkgname=libfm-qt
 pkgname=$_pkgname-git
-pkgver=1.3.0.5.gafc7189
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Qt port of libfm, a library providing components to build desktop file managers'
 arch=('i686' 'x86_64')
-url='https://github.com/lxqt/libfm-qt'
-license=('LGPL')
-depends=('qt5-x11extras' 'lxqt-menu-data-git' 'menu-cache' 'libexif')
-makedepends=('git' 'cmake' 'qt5-tools' 'lxqt-build-tools-git')
+url="https://lxqt-project.org"
+license=("LGPL-2.1-only")
+depends=('qt6-base' 'lxqt-menu-data-git' 'menu-cache' 'libexif')
 optdepends=(
   'gvfs: support for the trash bin and network devices'
 )
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" 'pcmanfm-qt<=0.10.0')
 source=('git+https://github.com/lxqt/libfm-qt.git')
@@ -21,14 +21,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed 's:-:.:g'
-}
-
-prepare() {
-  mkdir -p build
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
+  mkdir -p build
   cd build
 
   cmake \
@@ -46,5 +43,5 @@ package() {
 
   # CMake installs empty folders unexpectedly
   # https://gitlab.kitware.com/cmake/cmake/issues/17122
-  rmdir "$pkgdir"/usr/include/libfm-qt/{tests,translations}
+  rmdir "$pkgdir"/usr/include/libfm-qt6/{tests,translations}
 }
