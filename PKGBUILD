@@ -1,24 +1,25 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
-# Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=pcmanfm-qt
 pkgname=$_pkgname-git
-pkgver=1.3.0.8.g8a7e4b6d
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="The LXQt file manager, Qt port of PCManFM"
 arch=("i686" "x86_64")
-url="https://lxqt.org"
-license=("GPL2")
-depends=("libfm-qt-git" "qt5-x11extras")
-makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
+url="https://lxqt-project.org"
+license=("GPL-2.0-only")
+depends=('layer-shell-qt' 'libfm-qt-git')
+makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/./g"
+  cd $_pkgname
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
