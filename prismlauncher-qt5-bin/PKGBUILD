@@ -3,7 +3,7 @@
 # Maintainer: seth <getchoo at tuta dot io>
 
 pkgname=prismlauncher-qt5-bin
-pkgver=8.2
+pkgver=8.3
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('glfw: to use system GLFW libraries'
 )
 source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-Linux-Qt5-${pkgver}.tar.gz")
 noextract=("PrismLauncher-Linux-${pkgver}.tar.gz")
-sha256sums=('484f4f9240bde8d8c3b49f187f068aa4806a7a2efd793022d5774a2790f79da7')
+sha256sums=('38534b4a2d6e568e90976821ada9b41475c2cd48938b35cf6b4f0a31b9c0708d')
 
 package() {
     install -d "${pkgdir}/usr"
