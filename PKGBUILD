@@ -2,7 +2,7 @@
 
 pkgname=python-langchain-core
 _pkgname=${pkgname#python-}
-pkgver=0.1.44
+pkgver=0.1.46
 pkgrel=1
 pkgdesc="Building applications with LLMs through composability"
 url="https://pypi.org/project/langchain-core"
@@ -24,7 +24,7 @@ arch=('any')
 _src_name="${_pkgname/-/_}-${pkgver}"
 source=("https://pypi.org/packages/source/${_pkgname::1}/${_pkgname}/${_src_name}.tar.gz"
         "https://github.com/langchain-ai/langchain/raw/v0.1.16/LICENSE")
-sha256sums=('e313975d9ae2926342e6f2ad760338d31f18b1223e9b8b4dc408daeeade46a83'
+sha256sums=('17c416349f5c7a9808e70e3725749a3a2df5088f1ecca045c883871aa95f9c9e'
             '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
 
 build() {
