@@ -1,6 +1,6 @@
 pkgbase = python-langchain-community
 	pkgdesc = Community contributed LangChain integrations.
-	pkgver = 0.0.33
+	pkgver = 0.0.34
 	pkgrel = 1
 	url = https://pypi.org/project/langchain-community
 	arch = any
@@ -61,9 +61,9 @@ pkgbase = python-langchain-community
 	depends = python-psutil
 	depends = python-requests-toolbelt
 	depends = python-pypdf
-	source = https://pypi.org/packages/source/l/langchain-community/langchain_community-0.0.33.tar.gz
+	source = https://pypi.org/packages/source/l/langchain-community/langchain_community-0.0.34.tar.gz
 	source = https://github.com/langchain-ai/langchain/raw/v0.1.16/LICENSE
-	sha256sums = bb56dbc1ef11ca09f258468e11368781adda9219e144073e30cda69496d342b2
+	sha256sums = 96e9a807d9b4777820df5a970996f6bf3ad5632137bf0f4d863bd832bdeb2b0f
 	sha256sums = 4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478
 
 pkgname = python-langchain-community
