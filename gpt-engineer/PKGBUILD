@@ -2,7 +2,7 @@
 # Contributor: brokenpip3 <brokenpip3[at]gmail[dot]com>
 
 pkgname=gpt-engineer
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Specify what you want it to build, the AI asks for clarification, and then builds it."
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(python-build python-installer python-wheel python-poetry-core)
 install=gpt-engineer.install
 source=("https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname/-/_}-${pkgver}.tar.gz")
 # source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7c780616ae4a92aeefbe661b3af89e9b687ba1aa46714d1a9aedf76e2f216e73')
+sha256sums=('54f41cd5f9c144de39e6b753b5d732db6bdb7984b5f16ae413a783cbced30aaa')
 
 
 build() {
