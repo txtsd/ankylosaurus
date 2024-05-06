@@ -37,7 +37,7 @@ jobs:
           sed -i 's/#\[multilib\]/\[multilib\]/' /etc/pacman.conf
           pacman-key --init
           pacman -Syu --noconfirm
-          pacman -S --noconfirm --needed git fd jq namcap eza ripgrep rustup
+          pacman -S --noconfirm --needed git fd jq namcap eza ripgrep
 
       - name: Create user to run makepkg
         run: |
