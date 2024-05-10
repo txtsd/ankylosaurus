@@ -1,0 +1,8 @@
+[python-langchain]
+# source = "pypi"
+# pypi = "langchain"
+source = "github"
+github = "langchain-ai/langchain"
+prefix = "langchain=="
+include_regex = 'langchain==\d+\.\d+\.\d+'
+use_max_tag = true

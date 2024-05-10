@@ -2,17 +2,15 @@
 
 pkgname=python-langchain
 _pkgname="${pkgname#python-}"
-pkgver=0.1.16
+pkgver=0.1.19
 pkgrel=1
 pkgdesc='Build context-aware reasoning applications'
 arch=('any')
 url='https://github.com/langchain-ai/langchain'
 license=('MIT')
-_src_name="${_pkgname/-/_}-${pkgver}"
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('54192f441783c78a4ff4809cb04aacce8293977b76109888feaf370ce846fe20'
-            '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
+_src_name="${_pkgname/-/_}-${_pkgname/-/_}-${pkgver}"
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/langchain==${pkgver}.tar.gz")
+sha256sums=('9774b9a9362dabda4191d9eb5608e2ff9f585f86d8019622e2d990ceecd65cff')
 depends=(python
     python-aiohttp
     python-dataclasses-json
@@ -47,6 +45,5 @@ build() {
 package() {
     cd "${_src_name}/libs/${_pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    cd ${srcdir}
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_src_name}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
