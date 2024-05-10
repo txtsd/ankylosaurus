@@ -2,22 +2,22 @@
 # Contributor: mrAppleXZ <mr.applexz@gmail.com> 
 
 pkgname=blockbench
-pkgver=4.9.4
+pkgver=4.10.0
 pkgrel=1
 pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
 url="https://blockbench.net/"
-license=('GPL3')
+license=(GPL-3.0-or-later)
 provides=(blockbench)
 conflicts=(blockbench)
 
-_electron=electron
+_electron=electron29
 
-depends=("${_electron}" 'giblib')
+depends=("${_electron}" 'giblib' 'bash' 'imlib2' 'glibc' 'libx11')
 makedepends=(git npm)
 source=("${pkgname}::git+https://github.com/JannisX11/blockbench#tag=v${pkgver}"
         "${pkgname}.desktop")
-sha256sums=('SKIP'
+sha256sums=('c08a66f71f0f5d71fa8a90f6aa3ac6d74f4978e78ba263e39a8e34bb58d89750'
             '74731a9f68dbef112c93dafee1a1a8665b9de0816f94643169419ad838dbf66c')
 
 prepare() {
@@ -36,12 +36,13 @@ package() {
   _electronDist=/usr/lib/${_electron}
   _electronVersion=$(cat ${_electronDist}/version)
   _electronVersionMajor=${_electronVersion%%.*}
+  _electronDir=${_electronDist}${_electronVersionMajor}
   install -d "${pkgdir}/usr/"{bin,share/{pixmaps,applications}}
-  install -d "${pkgdir}/${_electronDist}${_electronVersionMajor}/resources"
-  echo -e "#!/bin/bash\nexec ${_electron} ${_electronDist}${_electronVersionMajor}/resources/${pkgname}.asar \"\$@\"" > "${pkgdir}/usr/bin/${pkgname}"
+  install -d "${pkgdir}${_electronDist}/resources"
+  echo -e "#!/bin/bash\nexec ${_electron} ${_electronDist}/resources/${pkgname}.asar \"\$@\"" > "${pkgdir}/usr/bin/${pkgname}"
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
   install "${srcdir}/${pkgname}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install "${srcdir}/${pkgname}/dist/linux-unpacked/resources/app.asar" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${pkgname}.asar"
-  cp -r "${srcdir}/${pkgname}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${pkgname}.asar.unpacked"
+  install "${srcdir}/${pkgname}/dist/linux-unpacked/resources/app.asar" "${pkgdir}${_electronDist}/resources/${pkgname}.asar"
+  cp -r "${srcdir}/${pkgname}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}${_electronDist}/resources/${pkgname}.asar.unpacked"
 }
