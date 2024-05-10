@@ -1,0 +1,5 @@
+[halloy-bin]
+source = "github"
+github = "squidowl/halloy"
+include_regex = "\\d+\\.\\d+"
+use_max_tag = true
