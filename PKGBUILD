@@ -2,10 +2,10 @@
 
 pkgname=python-langchain-core
 _pkgname=${pkgname#python-}
-pkgver=0.1.46
+pkgver=0.1.52
 pkgrel=1
 pkgdesc="Building applications with LLMs through composability"
-url="https://pypi.org/project/langchain-core"
+url='https://github.com/langchain-ai/langchain'
 depends=(python
     python-anyio
     python-jsonpatch
@@ -21,19 +21,17 @@ depends=(python
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
 license=('MIT')
 arch=('any')
-_src_name="${_pkgname/-/_}-${pkgver}"
-source=("https://pypi.org/packages/source/${_pkgname::1}/${_pkgname}/${_src_name}.tar.gz"
-        "https://github.com/langchain-ai/langchain/raw/v0.1.16/LICENSE")
-sha256sums=('17c416349f5c7a9808e70e3725749a3a2df5088f1ecca045c883871aa95f9c9e'
-            '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
+_src_name="${_pkgname%%-*}-${_pkgname}-${pkgver}"
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/langchain-core==${pkgver}.tar.gz")
+sha256sums=('6ee62ad7c8ce418e443f50dcf32ae61dd170a11a219a994173d872b0022872c2')
 
 build() {
-    cd "${_src_name}"
+    cd "${_src_name}/libs/${_pkgname#langchain-}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_src_name}"
+    cd "${_src_name}/libs/${_pkgname#langchain-}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_src_name}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
