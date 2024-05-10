@@ -3,13 +3,13 @@
 
 pkgname="eza-git"
 _pkgname=${pkgname%-git}
-pkgver=0.15.0.r3.g32567d0
-pkgrel=2
+pkgver=0.18.15.r0.g7437c2a
+pkgrel=1
 pkgdesc="A modern replacement for ls"
 arch=("x86_64")
 url="https://github.com/eza-community/eza"
 license=("MIT")
-depends=("libgit2.so")
+depends=("libgit2" "zlib" "gcc-libs" "glibc")
 makedepends=("git" "cargo" "pandoc")
 checkdepends=("cargo")
 provides=("${_pkgname}" "exa")
@@ -34,6 +34,7 @@ build() {
     cd "${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CFLAGS="${CFLAGS} -ffat-lto-objects"
 
     cargo build --frozen --release
 
@@ -48,11 +49,13 @@ check() {
     cd "${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CFLAGS="${CFLAGS} -ffat-lto-objects"
 
     cargo test --frozen --release
 }
 
 package() {
+    depends+=("libgit2.so" "libz.so")
     cd "${pkgname}"
 
     install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
