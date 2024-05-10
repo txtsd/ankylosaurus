@@ -1,6 +1,4 @@
 [python-langchain-core]
-# source = "pypi"
-# pypi = "langchain"
 source = "github"
 github = "langchain-ai/langchain"
 prefix = "langchain-core=="
