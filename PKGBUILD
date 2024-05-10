@@ -1,14 +1,15 @@
-# Maintainer: Robert Falkenberg <robert.falkenberg@srs.io>
+# Maintainer: The one with the braid <info@braid.business>
+# Contributor: Robert Falkenberg <robert.falkenberg@srs.io>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-static
 _pkgname=openssl
-_ver=3.1.2
+_ver=3.3.0
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with static libs)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armv7h' 'i686' 'pentium4' 'riscv64')
 url='https://www.openssl.org'
 license=('Apache')
 depends=('glibc')
@@ -21,7 +22,7 @@ options=('staticlibs')
 conflicts=('openssl')
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
 	'ca-dir.patch')
-sha256sums=('a0ce69b8b97ea6a35b96875235aa453b966ba3cba8af2de23657d8b6767d6539'
+sha256sums=('53e66b043322a606abf0087e7699a0e033a37fa13feb9742df35c3a33b18fb02'
             'SKIP'
             '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
@@ -43,7 +44,7 @@ build() {
 	export CFLAGS="-fPIC ${CFLAGS}"
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-x86_64 \
+		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-${CARCH} \
 		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
 	make depend
