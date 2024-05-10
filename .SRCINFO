@@ -1,7 +1,7 @@
 pkgbase = python-langchain
 	pkgdesc = Build context-aware reasoning applications
 	pkgver = 0.1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/langchain-ai/langchain
 	arch = any
 	license = MIT
