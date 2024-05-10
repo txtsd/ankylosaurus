@@ -1,8 +1,8 @@
 pkgbase = python-langchain-community
 	pkgdesc = Community contributed LangChain integrations.
-	pkgver = 0.0.34
+	pkgver = 0.0.38
 	pkgrel = 1
-	url = https://pypi.org/project/langchain-community
+	url = https://github.com/langchain-ai/langchain
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -61,9 +61,11 @@ pkgbase = python-langchain-community
 	depends = python-psutil
 	depends = python-requests-toolbelt
 	depends = python-pypdf
-	source = https://pypi.org/packages/source/l/langchain-community/langchain_community-0.0.34.tar.gz
-	source = https://github.com/langchain-ai/langchain/raw/v0.1.16/LICENSE
-	sha256sums = 96e9a807d9b4777820df5a970996f6bf3ad5632137bf0f4d863bd832bdeb2b0f
-	sha256sums = 4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478
+	depends = python-boto3
+	depends = python-botocore
+	depends = python-tree-sitter
+	depends = python-tree-sitter-languages-bin
+	source = langchain-community-0.0.38.tar.gz::https://github.com/langchain-ai/langchain/archive/refs/tags/langchain-community==0.0.38.tar.gz
+	sha256sums = 1bfcb77dbf4861b05ccd981254b54918cca8d1e789d6deea606ed51c12d49636
 
 pkgname = python-langchain-community
