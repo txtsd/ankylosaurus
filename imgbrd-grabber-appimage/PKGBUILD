@@ -1,5 +1,5 @@
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Maintainer: Rain Clark <rain AT melonbread DOT dev>
-# Co-maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Based on: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname=grabber
@@ -7,21 +7,21 @@ _reponame=imgbrd-grabber
 _rdnsname=org.bionus.Grabber
 
 pkgname="${_reponame}"-appimage
-pkgver=7.11.2
+pkgver=7.12.0
 pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/${_reponame}"
-license=('Apache')
-depends=('hicolor-icon-theme' 'zlib' 'fuse')
+license=('Apache-2.0')
+depends=('hicolor-icon-theme' 'zlib' 'fuse' 'glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _appimage="Grabber_v${pkgver}-${arch}.AppImage"
 noextract=("${_appimage}")
-options=('!strip')
+options=('!strip' '!debug')
 source=("https://github.com/Bionus/${_reponame}/releases/download/v${pkgver}/${_appimage}"
         "https://raw.githubusercontent.com/Bionus/${_reponame}/v${pkgver}/LICENSE")
-sha256sums=('3879af6e8d9ff378e3ed864936878e40cfd668abc232c5eed8e37a9284fc6dce'
+sha256sums=('af684b70f316341a3be0fc53bad18b2ec84ba8a2e9fb553adfa123804bd91e19'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 prepare() {
@@ -56,6 +56,6 @@ package() {
 
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s "/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 

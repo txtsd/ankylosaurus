@@ -1,0 +1,6 @@
+[imgbrd-grabber-appimage]
+source = "github"
+github = "Bionus/imgbrd-grabber"
+prefix = "v"
+include_regex = "v\\d+\\.\\d+\\.\\d+"
+use_max_tag = true
