@@ -4,7 +4,7 @@ _upstreamname='ggml'
 _pkgbase="lib${_upstreamname}"
 pkgname="${_pkgbase}-git"
 pkgver=r916.20240512.9149580
-pkgrel=1
+pkgrel=3
 pkgdesc="Tensor library for machine learning. Used by llama.cpp and whisper.cpp."
 arch=(
   'i686'
@@ -77,6 +77,11 @@ pkgver() {
 
 build() {
   cd "${srcdir}"
+
+  CFLAGS+=" -Wno-error=implicit-function-declaration"
+  CXXFLAGS+=" -Wno-error=implicit-function-declaration"
+  export CFLAGS
+  export CXXFLAGS
 
   cmake -S "${_pkgbase}" -B 'build' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
