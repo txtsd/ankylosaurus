@@ -2,7 +2,7 @@
 # Contributor: mrAppleXZ <mr.applexz@gmail.com> 
 
 pkgname=blockbench
-pkgver=4.10.0
+pkgver=4.10.1
 pkgrel=1
 pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=("${_electron}" 'giblib' 'bash' 'imlib2' 'glibc' 'libx11')
 makedepends=(git npm)
 source=("${pkgname}::git+https://github.com/JannisX11/blockbench#tag=v${pkgver}"
         "${pkgname}.desktop")
-sha256sums=('c08a66f71f0f5d71fa8a90f6aa3ac6d74f4978e78ba263e39a8e34bb58d89750'
+sha256sums=('31a9ae433a71bf28471dc622c993569732ec9326f937827c0363ec43fb1c8eed'
             '74731a9f68dbef112c93dafee1a1a8665b9de0816f94643169419ad838dbf66c')
 
 prepare() {
