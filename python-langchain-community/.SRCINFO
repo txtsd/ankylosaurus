@@ -1,6 +1,6 @@
 pkgbase = python-langchain-community
 	pkgdesc = Community contributed LangChain integrations.
-	pkgver = 0.0.38
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langchain
 	arch = any
@@ -65,7 +65,9 @@ pkgbase = python-langchain-community
 	depends = python-botocore
 	depends = python-tree-sitter
 	depends = python-tree-sitter-languages-bin
-	source = langchain-community-0.0.38.tar.gz::https://github.com/langchain-ai/langchain/archive/refs/tags/langchain-community==0.0.38.tar.gz
-	sha256sums = 1bfcb77dbf4861b05ccd981254b54918cca8d1e789d6deea606ed51c12d49636
+	depends = python-pyjwt
+	depends = python-mypy_extensions
+	source = langchain-community-0.2.0.tar.gz::https://github.com/langchain-ai/langchain/archive/refs/tags/langchain-community==0.2.0.tar.gz
+	sha256sums = 91c53acf4eff3da09e78d43f3ed4b99ea36ba8ec50e8fc2fd75248421a9b64b8
 
 pkgname = python-langchain-community
