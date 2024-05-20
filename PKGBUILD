@@ -2,7 +2,7 @@
 
 pkgname=python-langchain-community
 _pkgname=${pkgname#python-}
-pkgver=0.0.38
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Community contributed LangChain integrations."
 url='https://github.com/langchain-ai/langchain'
@@ -62,13 +62,15 @@ depends=(python
     python-botocore
     python-tree-sitter
     python-tree-sitter-languages-bin
+    python-pyjwt
+    python-mypy_extensions
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
 license=('MIT')
 arch=('any')
 _src_name="${_pkgname%%-*}-${_pkgname}-${pkgver}"
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/langchain-community==${pkgver}.tar.gz")
-sha256sums=('1bfcb77dbf4861b05ccd981254b54918cca8d1e789d6deea606ed51c12d49636')
+sha256sums=('91c53acf4eff3da09e78d43f3ed4b99ea36ba8ec50e8fc2fd75248421a9b64b8')
 
 build() {
     cd "${_src_name}/libs/${_pkgname#langchain-}"
