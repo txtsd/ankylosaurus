@@ -2,7 +2,7 @@
 
 pkgname=python-langchain-text-splitters
 _pkgname=${pkgname#python-}
-pkgver=0.0.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Building applications with LLMs through composability"
 url='https://github.com/langchain-ai/langchain'
@@ -17,7 +17,7 @@ license=('MIT')
 arch=('any')
 _src_name="${_pkgname%%-*}-${_pkgname}-${pkgver}"
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/langchain-text-splitters==${pkgver}.tar.gz")
-sha256sums=('77d4d69f540d41223bf3fed9fcc195e6c144db6972462a1c8a5443ff84c802bd')
+sha256sums=('d2668a5d5c3aba6c715b863fe819b712e93c627cbdbc2b35cc4d3dda1c3ff050')
 
 build() {
     cd "${_src_name}/libs/${_pkgname#langchain-}"
