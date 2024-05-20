@@ -3,7 +3,7 @@
 pkgname=flaresolverr-bin
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
-pkgver=3.3.17
+pkgver=3.3.18
 pkgrel=1
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('alsa-lib' 'at-spi2-core' 'bash' 'bzip2' 'cairo' 'dbus' 'expat' 'gcc-li
          'libffi' 'libx11' 'libxcb' 'libxkbcommon' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxrandr'
          'mesa' 'nspr' 'nss' 'openssl' 'pango' 'readline' 'util-linux-libs' 'xorg-server-xvfb' 'xz' 'zlib')
 conflicts=("${_pkgname}")
-options=('!strip')
+options=('!strip' '!debug')
 install='flaresolverr.install'
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgver}/${_pkgname}_linux_x64.tar.gz"
         "https://raw.githubusercontent.com/${__pkgname}/${__pkgname}/v${pkgver}/LICENSE"
@@ -21,7 +21,7 @@ source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/${__pkgname}/${__pkgnam
         "flaresolverr.sysusers"
         "flaresolverr.tmpfiles"
         "flaresolverr.install")
-sha256sums=('658f2cc9ea232274aa8da29273ba7cf09e151fdf200b3bd3082aa1d3915b3a4c'
+sha256sums=('4e7f8ca24abb0602fbbad86e0d935ec61e95d40071a95dc901ffbf832527ef19'
             '822369fb1f97651e6d0b00128451987e0ce98adc3007dc886db68adbf891d2da'
             'aaf9f1fd58b98583b2e5d2c9e2e0ceb31649a8d7034241833a0463861fbe00eb'
             '62f114d4e559cf9dae22bfd90759eff697e42da5f700a52988e70e78f3048ae2'
