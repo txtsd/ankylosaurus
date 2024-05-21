@@ -1,0 +1,4 @@
+[progress-quest-bin]
+source = "regex"
+url = "http://www.progressquest.com/dl.php"
+regex = "Progress Quest (\\d+\\.\\d+\\.\\d+)"
