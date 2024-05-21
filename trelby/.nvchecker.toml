@@ -1,0 +1,5 @@
+[trelby]
+source = "github"
+github = "trelby/trelby"
+include_regex = "\\d+\\.\\d+\\.\\d+"
+use_max_tag = true
