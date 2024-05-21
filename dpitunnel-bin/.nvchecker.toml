@@ -1,0 +1,5 @@
+[dpitunnel-bin]
+source = "github"
+github = "txtsd/DPITunnel"
+include_regex = "\\d+\\.\\d+\\.\\d+"
+use_max_tag = true
