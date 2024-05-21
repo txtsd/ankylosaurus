@@ -1,0 +1,4 @@
+[thesage]
+source = "httpheader"
+url = "https://www.sequencepublishing.com/cgi-bin/download.cgi?burbridgelinux"
+regex = "https://www\\.sequencepublishing\\.com/_files/BurbridgeLinux\\.(\\d+\\.\\d+\\.\\d+)\\.zip"
