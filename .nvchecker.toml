@@ -1,0 +1,6 @@
+[linux-command-gpt]
+source = "github"
+github = "asrul10/linux-command-gpt"
+prefix = "v"
+include_regex = "v\\d+\\.\\d+\\.\\d+"
+use_max_tag = true
