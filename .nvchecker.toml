@@ -1,0 +1,4 @@
+[openssh-askpass]
+source = "regex"
+url = "http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt&package=openssh-askpass"
+regex = "openssh-askpass-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz"
