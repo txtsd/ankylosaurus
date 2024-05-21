@@ -1,6 +1,6 @@
 pkgbase = curseforge-appimage
 	pkgdesc = CurseForge desktop client for Linux
-	pkgver = 1.250.2.17763
+	pkgver = 1.251.0.17831
 	pkgrel = 1
 	url = https://curseforge.com/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = curseforge-appimage
 	depends = fuse2
 	options = !strip
 	options = !debug
-	source = curseforge-appimage-1.250.2.17763.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
+	source = curseforge-appimage-1.251.0.17831.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
 	source = curseforge
 	source = LICENSE
 	sha256sums = SKIP
