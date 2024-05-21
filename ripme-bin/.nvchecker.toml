@@ -1,0 +1,6 @@
+[ripme-bin]
+source = "github"
+github = "ripmeapp2/ripme"
+include_regex = "\\d+\\.\\d+\\.\\d+"
+use_latest_release = true
+
