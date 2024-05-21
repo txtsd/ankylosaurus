@@ -1,0 +1,6 @@
+[python-pox]
+source = "github"
+github = "uqfoundation/pox"
+prefix = "pox-"
+include_regex = "\\d+\\.\\d+\\.\\d+"
+use_max_tag = true
