@@ -1,0 +1,3 @@
+[python-baycomp]
+source = "pypi"
+pypi = "baycomp"
