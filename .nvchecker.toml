@@ -1,0 +1,6 @@
+[otf-monocraft]
+source = "github"
+github = "IdreesInc/Monocraft"
+prefix = "v"
+include_regex = "v\\d+\\.\\d+"
+use_max_tag = true
