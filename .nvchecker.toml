@@ -1,0 +1,4 @@
+[illarion-bin]
+source = "regex"
+url = "https://illarion.org/media/java/install/"
+regex = "illarion-(\\d+\\.\\d+\\.\\d+\\.\\d+)-amd64.deb"
