@@ -14,7 +14,7 @@ pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
 license=('GPL3')
-depends=('java-runtime=17' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6' 'cmark' 'tomlplusplus')
+depends=('java-runtime=17' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'qt6-networkauth' 'zlib' 'hicolor-icon-theme' 'quazip-qt6' 'cmark' 'tomlplusplus')
 provides=('prismlauncher')
 conflicts=('prismlauncher')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'jdk17-openjdk' 'scdoc' 'ghc-filesystem' 'gamemode')

@@ -20,6 +20,7 @@ pkgbase = prismlauncher-git
 	depends = qt6-5compat
 	depends = qt6-svg
 	depends = qt6-imageformats
+	depends = qt6-networkauth
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = quazip-qt6
