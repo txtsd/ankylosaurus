@@ -34,7 +34,7 @@ jobs:
 
       - name: Update system and install dependencies
         run: |
-          sed -z 's/\#\[multilib\]\n\#/\[multilib\]\n/' -i /etc/pacman.conf
+          echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf
           cat /etc/pacman.conf
           pacman-key --init
           pacman -Syu --noconfirm
