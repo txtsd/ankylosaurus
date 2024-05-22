@@ -1,0 +1,6 @@
+[soundsense]
+source = "regex"
+url = "http://df.zweistein.cz/soundsense/"
+regex = "soundSense_(\\d+-\\d_\\d+)\\.zip"
+from_pattern = "(\\d+)-(\\d)_(\\d+)"
+to_pattern = "\\1_\\2_\\3"
