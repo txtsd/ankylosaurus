@@ -34,7 +34,7 @@ jobs:
 
       - name: Update system and install dependencies
         run: |
-          sed -i 's/#\[multilib\]/\[multilib\]/' /etc/pacman.conf
+          sed -z 's/\#\[multilib\]\n\#/\[multilib\]\n/' -i /etc/pacman.conf
           pacman-key --init
           pacman -Syu --noconfirm
           pacman -S --noconfirm --needed git fd jq namcap eza ripgrep
