@@ -135,7 +135,7 @@ jobs:
           cd ${{ matrix.package }}
           source PKGBUILD
           counter=0
-          for single_package in ${pkgname}
+          for single_package in ${pkgname[@]}
           do
             counter=$((counter+1))
             echo "filename_${counter}=$(eza ${single_package}*.pkg.tar.zst -I *-debug-*.pkg.tar.zst)" >> $GITHUB_ENV
