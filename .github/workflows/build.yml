@@ -24,10 +24,6 @@ jobs:
       fail-fast: false
 
     steps:
-      - name: Test
-        run: |
-          echo ${{ matrix.package }}
-
       - uses: actions/checkout@v4
         with:
           fetch-depth: '0'
@@ -35,7 +31,6 @@ jobs:
       - name: Update system and install dependencies
         run: |
           echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf
-          cat /etc/pacman.conf
           pacman-key --init
           pacman -Syu --noconfirm
           pacman -S --noconfirm --needed git fd jq namcap eza ripgrep
