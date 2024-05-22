@@ -1,0 +1,5 @@
+[prismlauncher-bin]
+source = "github"
+github = "PrismLauncher/PrismLauncher"
+include_regex = "\\d+\\.\\d+"
+use_max_tag = true
