@@ -2,7 +2,7 @@
 
 pkgname=python-langchain-community
 _pkgname=${pkgname#python-}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Community contributed LangChain integrations."
 url='https://github.com/langchain-ai/langchain'
@@ -70,7 +70,7 @@ license=('MIT')
 arch=('any')
 _src_name="${_pkgname%%-*}-${_pkgname}-${pkgver}"
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/langchain-community==${pkgver}.tar.gz")
-sha256sums=('91c53acf4eff3da09e78d43f3ed4b99ea36ba8ec50e8fc2fd75248421a9b64b8')
+sha256sums=('15ec63e8a8053642c7420c78f940233e322a06cd8d3b24989912c325babb7332')
 
 build() {
     cd "${_src_name}/libs/${_pkgname#langchain-}"
