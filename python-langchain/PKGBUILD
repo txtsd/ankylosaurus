@@ -2,7 +2,7 @@
 
 pkgname=python-langchain
 _pkgname="${pkgname#python-}"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Build context-aware reasoning applications'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/langchain-ai/langchain'
 license=('MIT')
 _src_name="${_pkgname%%-*}-${_pkgname}-${pkgver}"
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/langchain==${pkgver}.tar.gz")
-sha256sums=('a82483edbefed2fe461c0057d3a1fdd0640e6150d8793122092f4f490492834a')
+sha256sums=('53b768336dc950c3526d9f5c95f3b8e49dbfeb5aeec8bdafa320e158c7599ced')
 depends=(python
     python-aiohttp
     python-dataclasses-json
