@@ -1,6 +1,6 @@
 pkgbase = python-langchain-core
 	pkgdesc = Building applications with LLMs through composability
-	pkgver = 0.2.0
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langchain
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-langchain-core
 	depends = python-typing_extensions
 	depends = python-defusedxml
 	depends = python-numpy
-	source = langchain-core-0.2.0.tar.gz::https://github.com/langchain-ai/langchain/archive/refs/tags/langchain-core==0.2.0.tar.gz
-	sha256sums = 0cca30bcc340303d857f097f96dbd8234f70f7381b4c2f01d2ae6c92d974e914
+	source = langchain-core-0.2.3.tar.gz::https://github.com/langchain-ai/langchain/archive/refs/tags/langchain-core==0.2.3.tar.gz
+	sha256sums = 8e3adcd650ece0f0cfdfa11870a2711039bcc55a42f394da89f7ec957a9ae470
 
 pkgname = python-langchain-core
