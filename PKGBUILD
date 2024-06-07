@@ -1,20 +1,21 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Panagiotis Mavrogiorgos <pmav99@gmail.com>
 
 pkgname=nuitka
-pkgver=2.1.5
+pkgver=2.3
 pkgrel=1
 pkgdesc='Python compiler with full language support and CPython compatibility'
 arch=(any)
 url='https://nuitka.net'
 license=(Apache-2.0)
-depends=(libxml2 patchelf python-appdirs python-setuptools python-wheel scons)
-makedepends=(gdb python-build python-installer git)
+depends=(libxml2 patchelf python python-appdirs 'python-setuptools>=42.0' python-wheel scons)
+makedepends=(gdb git python-build python-installer)
 checkdepends=(ccache fuse2 python-boto3 python-brotli strace)
 optdepends=('ccache: for caching builds')
 source=("$url/releases/${pkgname^}-$pkgver.tar.bz2")
-b2sums=('7ca8b31a02853912ec7b6e8e0912d8dd8249888ce3cb1a1abe979dbe926f9763968ec2ffaea8b9d75bc9efa2df0b7739b861401291f3aad33b19f634fd6c5fce')
+b2sums=('f6f7346e8f898a8b62284c5b1f721d540fb44f41a026f8aa8025e626b57485af7467a678a2b1580439b5e24123d95e98d16c8f91f5742ad6a5fd48671a98c559')
 
 build() {
   cd ${pkgname^}-$pkgver
@@ -32,8 +33,8 @@ check() {
   # Tests are disabled for now. See:
   # https://github.com/Nuitka/Nuitka/issues/2595
   # https://github.com/Nuitka/Nuitka/issues/2609
-  #cd tests
-  #./run-tests
+  # cd tests
+  # ./run-tests
 }
 
 package() {
