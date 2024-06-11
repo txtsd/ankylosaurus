@@ -24,12 +24,15 @@ repos=(
     illarion-bin
     imgbrd-grabber-appimage
     java-openjdk-wakefield
+    libfm-qt-git
     linux-command-gpt
     linux-command-gpt-git
+    makemkv
     openssh-askpass
     otf-monocraft
     otf-unifont
     packwiz-git
+    pcmanfm-qt-git
     prismlauncher
     prismlauncher-bin
     prismlauncher-git
@@ -38,6 +41,7 @@ repos=(
     prismlauncher-qt5-git
     progress-quest-bin
     python-baycomp
+    python-confusables
     python-langchain
     python-langchain-community
     python-langchain-core
