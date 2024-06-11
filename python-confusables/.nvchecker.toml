@@ -1,0 +1,3 @@
+[python-confusables]
+source = "pypi"
+pypi = "confusables"
