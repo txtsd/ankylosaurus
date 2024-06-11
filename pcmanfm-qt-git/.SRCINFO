@@ -1,0 +1,20 @@
+pkgbase = pcmanfm-qt-git
+	pkgdesc = The LXQt file manager, Qt port of PCManFM
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://lxqt-project.org
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = lxqt-build-tools-git
+	depends = layer-shell-qt
+	depends = libfm-qt-git
+	provides = pcmanfm-qt=2.0.0
+	conflicts = pcmanfm-qt
+	source = git+https://github.com/lxqt/pcmanfm-qt.git
+	sha256sums = SKIP
+
+pkgname = pcmanfm-qt-git
