@@ -5,7 +5,6 @@ repos=(
     blockbench
     blockbench-bin
     blockbench-git
-    blockify-git
     dissent
     dissent-bin
     dissent-git
