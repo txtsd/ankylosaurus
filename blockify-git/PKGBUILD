@@ -3,8 +3,8 @@
 # Contributor: demian <mikar Î±Ï„ gmx Î´Î¿Ï„ de>
 
 pkgname=blockify-git
-pkgver=v3.6.3.r24.g370d321
-pkgrel=3
+pkgver=3.6.3.r24.g370d321
+pkgrel=1
 pkgdesc="Mutes Spotify advertisements."
 arch=("any")
 url="https://github.com/carlocastoldi/blockify"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd ${pkgname}
-    git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/[_-]/./g'
+    git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/[_-]/./g;s/^v//'
 }
 
 prepare() {
