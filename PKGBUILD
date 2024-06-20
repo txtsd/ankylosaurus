@@ -8,17 +8,13 @@
 _pkgname="kotatogram-desktop"
 pkgname="$_pkgname"
 pkgver=1.4.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Experimental fork of Telegram Desktop'
 url="https://github.com/kotatogram/kotatogram-desktop"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
-  # 'qt6-5compat'
-  # 'qt6-imageformats'
-  # 'qt6-svg'
-  # 'qt6-wayland'
   'abseil-cpp'
   'ffmpeg4.4'
   'glib2'
@@ -58,6 +54,7 @@ makedepends=(
   'cmake'
   'extra-cmake-modules'
   'git'
+  'glib2-devel'
   'meson'
   'microsoft-gsl'
   'ninja'
@@ -282,7 +279,7 @@ _prepare_tg_owt() (
 prepare() {
   _submodule_update() {
     local _module
-    for _module in "${_submodules[@]}" ; do
+    for _module in "${_submodules[@]}"; do
       git submodule init "${_module##*::}"
       git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
       git -c protocol.file.allow=always submodule update "${_module##*::}"
