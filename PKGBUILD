@@ -8,12 +8,12 @@
 
 _pkgname=prismlauncher
 pkgname=${_pkgname}-qt5-git
-pkgver=6.0.r238.gdeed4957
-pkgrel=2
+pkgver=8.0.r757.g98d68bafe
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
-license=('GPL3')
+license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Batch AND OFL-1.1')
 depends=('java-runtime=17' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'qt5-networkauth' 'zlib' 'hicolor-icon-theme' 'quazip-qt5' 'cmark' 'tomlplusplus')
 provides=('prismlauncher' 'prismlauncher-qt5')
 conflicts=('prismlauncher' 'prismlauncher-qt5')
@@ -23,6 +23,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
             'java-runtime=8: for older minecraft versions'
+            'flite: minecraft voice narration'
 )
 source=("git+https://github.com/PrismLauncher/PrismLauncher.git"
         "git+https://github.com/PrismLauncher/libnbtplusplus.git")
