@@ -9,7 +9,7 @@
 
 pkgname=prismlauncher
 pkgver=8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
@@ -20,7 +20,8 @@ optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
-            'java-runtime=8: for older minecraft versions')
+            'java-runtime=8: for older minecraft versions'
+            'flite: minecraft voice narration')
 source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz")
 sha256sums=('a4df9059559df2e410ddf933e05fe4bffaa01631c6eeb55e63af4a2d0d719726')
 
