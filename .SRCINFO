@@ -1,10 +1,10 @@
 pkgbase = prismlauncher-qt5-bin
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
-	pkgver = 8.3
+	pkgver = 8.4
 	pkgrel = 1
 	url = https://prismlauncher.org
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Batch AND OFL-1.1
 	depends = java-runtime=17
 	depends = libgl
 	depends = qt5-base
@@ -17,12 +17,13 @@ pkgbase = prismlauncher-qt5-bin
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
 	optdepends = java-runtime=8: support for Minecraft versions < 1.17
+	optdepends = flite: minecraft voice narration
 	provides = prismlauncher
 	provides = prismlauncher-qt5
 	conflicts = prismlauncher
 	conflicts = prismlauncher-qt5
-	noextract = PrismLauncher-Linux-8.3.tar.gz
-	source = https://github.com/PrismLauncher/PrismLauncher/releases/download/8.3/PrismLauncher-Linux-Qt5-8.3.tar.gz
-	sha256sums = 38534b4a2d6e568e90976821ada9b41475c2cd48938b35cf6b4f0a31b9c0708d
+	noextract = PrismLauncher-Linux-8.4.tar.gz
+	source = https://github.com/PrismLauncher/PrismLauncher/releases/download/8.4/PrismLauncher-Linux-Qt5-8.4.tar.gz
+	sha256sums = 3057752038a03168acd6d2eed901d22cbc90a25b0482fb8c6ef483ee45071da0
 
 pkgname = prismlauncher-qt5-bin
