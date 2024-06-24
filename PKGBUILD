@@ -1,8 +1,8 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 pkgname=python-pykakasi
-pkgver=2.2.1
-pkgrel=8
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Lightweight converter from Japanese Kana-kanji sentences into Kana-Roman"
 arch=(any)
 url='https://codeberg.org/miurahr/pykakasi'
@@ -10,7 +10,6 @@ license=(GPL-3.0-or-later)
 depends=(
     python-deprecated
     python-jaconv
-    python-setuptools
 )
 makedepends=(
     git
@@ -21,12 +20,7 @@ makedepends=(
     python-wheel
 )
 source=("git+$url.git#tag=v$pkgver")
-b2sums=('0f8dd935056cd2646722b130009504ef9c60b9cc962395e33c3163be4ee47ff4d126d3faf8ff22950fa9bb98efea8f1572027726970da4c66e5401aee898c64c')
-
-prepare() {
-  # remove build-time dependency on python-klepto
-  git -C pykakasi cherry-pick -n 110e85e6c20920ce196931269ca6642f2cda6f21
-}
+b2sums=('81cc3b366c61a552e7de5a2a900a258ad0847d6a0f60dff0ebd20c77ed6fce3604e72634901dc11041f46dbe437c83f25db617f7d74df732f4ade7e4983c10cd')
 
 build() {
   cd pykakasi
