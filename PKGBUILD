@@ -2,7 +2,7 @@
 
 pkgname=python-pykakasi
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight converter from Japanese Kana-kanji sentences into Kana-Roman"
 arch=(any)
 url='https://codeberg.org/miurahr/pykakasi'
@@ -15,6 +15,7 @@ makedepends=(
     git
     python-build
     python-installer
+    python-setuptools
     python-setuptools-scm
     python-sphinx
     python-wheel
