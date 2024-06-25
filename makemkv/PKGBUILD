@@ -1,10 +1,11 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Olaf Bauer <hydro@freenet.de>
 
 pkgname=makemkv
 pkgver=1.17.7
-pkgrel=2
+pkgrel=3
 pkgdesc="DVD and Blu-ray to MKV converter"
 arch=(x86_64 i686 aarch64)
 url="https://www.makemkv.com"
@@ -18,25 +19,11 @@ source=(${url}/download/${pkgname}-bin-${pkgver}.tar.gz
         makemkv.1
         makemkvcon.1
         mmdtsdec.1)
-noextract=(${pkgname}-bin-${pkgver}.tar.gz
-           ${pkgname}-oss-${pkgver}.tar.gz)
-sha256sums=('a760e1e484c1b28934a4557e7766cc1af8392ef717f5bb34d6eeafd38a0b0d01'
-            'f26f59705dc6bf274312d446a7b3f0b5c827f137d5b823761ee7953a528db2b7'
+sha256sums=('8c5bc831bc952b1f873cc8450c64e392db0b2479b626d180f0ffc965668951d0'
+            '762e552d46f9ec75a7c62dcb7d97c0fd9e6a15120d0ef6f5a080cee291d3a0ef'
             '5573b2e4bade10d8cd258a7c235eb46f66ef8c8c97e5d5eb090c38fa0f94389b'
             'f12c0facf2f0071a9f728b138986f0a4c2b4ff6ace2dfb2e96364e215e9fda6f'
             '2a6237d3d5ce073734c658c7ec5d2141ecd0047e6d3c45d1bd594135c928878f')
-
-prepare() {
-  cd ${srcdir}
-  mv ${pkgname}-bin-${pkgver}.tar.gz ${pkgname}-bin-${pkgver}.tar.gz.gz
-  mv ${pkgname}-oss-${pkgver}.tar.gz ${pkgname}-oss-${pkgver}.tar.gz.gz
-  gzip -df ${pkgname}-bin-${pkgver}.tar.gz.gz
-  gzip -df ${pkgname}-bin-${pkgver}.tar.gz
-  tar -xf ${pkgname}-bin-${pkgver}.tar
-  gzip -df ${pkgname}-oss-${pkgver}.tar.gz.gz
-  gzip -df ${pkgname}-oss-${pkgver}.tar.gz
-  tar -xf ${pkgname}-oss-${pkgver}.tar
-}
 
 build() {
   cd "${srcdir}/${pkgname}-oss-${pkgver}"
