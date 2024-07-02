@@ -3,7 +3,7 @@
 _upstreamname='ggml'
 _pkgbase="lib${_upstreamname}"
 pkgname="${_pkgbase}-git"
-pkgver=r1071.20240630.052f2e9
+pkgver=r1073.20240702.e3b3846
 pkgrel=1
 pkgdesc="Tensor library for machine learning. Used by llama.cpp and whisper.cpp."
 arch=(
@@ -78,8 +78,8 @@ pkgver() {
 build() {
   cd "${srcdir}"
 
-  CFLAGS+=" -Wno-error=implicit-function-declaration"
-  CXXFLAGS+=" -Wno-error=implicit-function-declaration"
+  CFLAGS+=" -lm -Wno-error=implicit-function-declaration"
+  CXXFLAGS+=" -lm -Wno-error=implicit-function-declaration"
   export CFLAGS
   export CXXFLAGS
 
