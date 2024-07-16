@@ -2,13 +2,13 @@
 
 pkgname=halloy-git
 _pkgname="${pkgname/-git}"
-pkgver=2024.7.r0.g08f4db0
+pkgver=2024.8.r28.g5c597db
 pkgrel=1
 pkgdesc='An open-source IRC client written in Rust, with the Iced GUI library'
 arch=('x86_64')
 url='https://github.com/squidowl/halloy'
 license=('GPL-3.0-or-later')
-depends=('openssl' 'glibc' 'gcc-libs' 'hicolor-icon-theme')
+depends=('openssl' 'glibc' 'gcc-libs' 'hicolor-icon-theme' 'alsa-lib')
 makedepends=('git' 'cargo')
 checkdepends=('cargo')
 provides=('halloy')
