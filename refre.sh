@@ -32,7 +32,6 @@ repos=(
     otf-unifont
     packwiz-git
     pcmanfm-qt-git
-    prismlauncher
     prismlauncher-bin
     prismlauncher-git
     prismlauncher-qt5
