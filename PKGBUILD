@@ -3,7 +3,7 @@
 _upstreamname='ggml'
 _pkgbase="lib${_upstreamname}"
 pkgname="${_pkgbase}-git"
-pkgver=r1097.20240712.3e7e5e26
+pkgver=r1102.20240722.2560b8dd
 pkgrel=1
 pkgdesc="Tensor library for machine learning. Used by llama.cpp and whisper.cpp."
 arch=(
