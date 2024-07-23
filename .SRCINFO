@@ -1,14 +1,13 @@
 pkgbase = radeon-gpu-profiler
 	pkgdesc = A suite of GUI applications that provide detailed low-level information on Radeon GPUs. (rgp, rga)
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gpuopen.com/rgp/
 	install = radeon-gpu-profiler.install
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	depends = sh
-	depends = icu70
 	options = !debug
 	source = https://gpuopen.com/download/radeon-developer-tool-suite/RadeonDeveloperToolSuite-2024-06-26-1341.tgz
 	sha512sums = b82f98a0e8cbd6ccf36cc6e09e12f6b8bb9a854be22c99bff13419f831db582d68a9e783a8806a866b24d22d51ebe5be4c398d170eab35de5e7c7e67d892175d
