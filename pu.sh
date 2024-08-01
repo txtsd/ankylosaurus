@@ -40,11 +40,6 @@ repos=(
     progress-quest-bin
     python-baycomp
     python-confusables
-    python-langchain
-    python-langchain-community
-    python-langchain-core
-    python-langchain-text-splitters
-    python-langsmith
     python-pox
     python-pykakasi
     python-syncedlyrics
