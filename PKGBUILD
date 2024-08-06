@@ -3,7 +3,7 @@
 
 pkgname=blockbench
 pkgver=4.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
 url="https://blockbench.net/"
@@ -18,7 +18,7 @@ makedepends=(git npm)
 source=("${pkgname}::git+https://github.com/JannisX11/blockbench#tag=v${pkgver}"
         "${pkgname}.desktop")
 sha256sums=('94b1d017e2e714c7fc00963213d5b65b3f5a12bc70337bd69a06c65e1cc3afc5'
-            '74731a9f68dbef112c93dafee1a1a8665b9de0816f94643169419ad838dbf66c')
+            '2dd94f6c807fac6e83fc2176098390100f3c227285671804a855a092c0a2a2e7')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
