@@ -1,18 +1,18 @@
 # Maintainer: Patrick Lühne <patrick-arch@luehne.de>
 
 pkgname=aleo-fonts
-pkgver=1.3
+pkgver=2.0
 pkgrel=1
 pkgdesc="Slab serif type family designed by Alessio Laiso"
 url="https://alessiolaiso.com/aleo-font"
 arch=(any)
 license=(custom)
 source=("https://alessiolaiso.com/downloads/Aleo_v$pkgver.zip")
-sha512sums=('53bf3f067015e86ed53d3d71d0f2439de271d0d326992b77621434b2a5b3352a65baadb2dacdd62c5ee3057b52f159af69cebf2456db3096a7dcff0a13fcc8a4')
+sha512sums=('da1d87bec966be89e12db2013c6696e11754c75edc356280ed457bda3dff48c3065cc80f476150aeb33c68e85f8769a60217e082f1437441e7984d090126b349')
 
 package() {
 	cd "Aleo_v$pkgver/"
 	install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
-	install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 "Desktop OTF"/*.otf
+	install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 "otf"/*.otf
 	install -Dm644 "SIL Open Font License 1.1.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
