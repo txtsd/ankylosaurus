@@ -1,16 +1,17 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
-pkgbase=otf-monocraft
 pkgname=(otf-monocraft ttf-monocraft)
-pkgver=3.0
+pkgbase=otf-monocraft
+pkgver=4.0
 pkgrel=1
 pkgdesc="A programming font based on the typeface used in Minecraft"
 arch=(any)
 url="https://github.com/IdreesInc/Monocraft"
-license=("custom:OFL")
+license=(OFL-1.1)
 makedepends=("fontforge")
 source=("Monocraft-$pkgver.tar.gz::https://github.com/IdreesInc/Monocraft/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('60be7b65a50788e6422ba9a031556989837233c4c91e46ceb1fa9e5760abe842')
+sha256sums=('a07fcb958aa6cf504d61eca8ab7b8641acb2844f11c9914fa3f5ead7d27c2b19')
 
 
 build() {
