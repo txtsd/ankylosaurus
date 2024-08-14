@@ -1,10 +1,9 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
-pkgname=(otf-monocraft ttf-monocraft)
-pkgbase=otf-monocraft
+pkgname=otf-monocraft
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A programming font based on the typeface used in Minecraft"
 arch=(any)
 url="https://github.com/IdreesInc/Monocraft"
@@ -20,16 +19,9 @@ build() {
     python monocraft.py
 }
 
-package_otf-monocraft() {
+package() {
     cd "Monocraft-$pkgver"
 
     install -Dm644 "dist/Monocraft.otf" "$pkgdir/usr/share/fonts/OTF/Monocraft.otf"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_ttf-monocraft() {
-    cd "Monocraft-$pkgver"
-
-    install -Dm644 "dist/Monocraft.ttf" "$pkgdir/usr/share/fonts/TTF/Monocraft.ttf"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
