@@ -54,6 +54,7 @@ repos=(
     thesage
     trelby
     trelby-git
+    ttc-monocraft
     ttf-unifont
     vimv-git
     yt-spammer-purge
