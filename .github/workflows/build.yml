@@ -138,7 +138,7 @@ jobs:
           for single_package in ${pkgname[@]}
           do
             counter=$((counter+1))
-            echo "filename_${counter}=$(eza ${single_package}*.pkg.tar.zst -I *-debug-*.pkg.tar.zst)" >> $GITHUB_ENV
+            echo "filename_${counter}=$(eza ${single_package}-${pkgver}-${pkgrel}*.pkg.tar.zst -I *-debug-*.pkg.tar.zst)" >> $GITHUB_ENV
           done
           echo "Found ${counter} artifacts"
           if eza *-debug-*.pkg.tar.zst
