@@ -112,7 +112,7 @@ jobs:
           if [[ "${pkgbase}" == "java-openjdk-wakefield" ]]
           then
             runuser -u dev -- makepkg -csr --noconfirm
-            pacman -R --noconfirm jdk-openjdk jdk21-openjdk
+            pacman -R --noconfirm jdk21-openjdk
             runuser -u dev -- yay -U --noconfirm jre-openjdk-wakefield-headless-*.pkg.tar.zst
             pacman -R --noconfirm jre-openjdk-wakefield-headless
             runuser -u dev -- yay -U --noconfirm jre-openjdk-wakefield-2*.pkg.tar.zst
