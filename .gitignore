@@ -1,0 +1,8 @@
+pkg/
+src/
+
+*.tar.gz
+*.tar.zst
+*.desktop
+*.xml
+*.png
