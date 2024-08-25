@@ -2,13 +2,14 @@
 
 pkgname=opennox
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 _suffix="-alpha13"
 pkgdesc='A modern implementation of the Nox game engine'
 arch=('x86_64')
 url='https://github.com/noxworld-dev/opennox'
 license=('GPL-3.0-or-later')
-depends=('lib32-sdl2' 'lib32-libglvnd' 'lib32-glibc' 'lib32-openal')
+depends=('lib32-sdl2' 'lib32-libglvnd' 'lib32-glibc' 'lib32-openal'
+         'hicolor-icon-theme')
 makedepends=('git' 'go' 'gcc-multilib' 'lib32-sdl_image')
 options=(!debug)
 source=("git+${url}#tag=v${pkgver}${_suffix}"

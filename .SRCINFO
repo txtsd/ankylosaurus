@@ -1,7 +1,7 @@
 pkgbase = opennox
 	pkgdesc = A modern implementation of the Nox game engine
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noxworld-dev/opennox
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -13,6 +13,7 @@ pkgbase = opennox
 	depends = lib32-libglvnd
 	depends = lib32-glibc
 	depends = lib32-openal
+	depends = hicolor-icon-theme
 	options = !debug
 	source = git+https://github.com/noxworld-dev/opennox#tag=v1.9.0-alpha13
 	source = explicit_type_cast.patch
