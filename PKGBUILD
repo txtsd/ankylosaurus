@@ -3,7 +3,7 @@
 pkgname=opennox-git
 _pkgname=${pkgname%%-git}
 pkgver=1.9.0.alpha13.r102.g587b01679
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern implementation of the Nox game engine'
 arch=('x86_64')
 url='https://github.com/noxworld-dev/opennox'
@@ -11,6 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('lib32-sdl2' 'lib32-libglvnd' 'lib32-glibc' 'lib32-openal'
          'hicolor-icon-theme')
 makedepends=('git' 'go' 'gcc-multilib' 'lib32-sdl_image')
+provides=('opennox')
 options=(!debug)
 source=("git+${url}")
 sha256sums=('SKIP')
