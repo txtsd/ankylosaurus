@@ -3,7 +3,7 @@
 pkgname=opennox-bin
 _pkgname=${pkgname%%-bin}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 _suffix="-alpha13"
 pkgdesc='A modern implementation of the Nox game engine'
 arch=('x86_64')
@@ -11,14 +11,14 @@ url='https://github.com/noxworld-dev/opennox'
 license=('GPL-3.0-or-later')
 depends=('lib32-sdl2' 'lib32-libglvnd' 'lib32-glibc' 'lib32-openal'
          'hicolor-icon-theme')
-makedepends=()
+provides=('opennox')
 options=(!debug)
 source=("${url}/releases/download/v${pkgver}${_suffix}/OpenNox-linux-v${pkgver}${_suffix}.tar.gz"
-        "${url}/raw/v1.9.0-alpha13/app/io.github.noxworld_dev.OpenNox.desktop"
-        "${url}/raw/v1.9.0-alpha13/app/io.github.noxworld_dev.OpenNox.HD.desktop"
-        "${url}/raw/v1.9.0-alpha13/app/io.github.noxworld_dev.OpenNox.metainfo.xml"
-        "${url}/raw/v1.9.0-alpha13/res/opennox_256.png"
-        "${url}/raw/v1.9.0-alpha13/res/opennox_512.png")
+        "${url}/raw/v${pkgver}${_suffix}/app/io.github.noxworld_dev.OpenNox.desktop"
+        "${url}/raw/v${pkgver}${_suffix}/app/io.github.noxworld_dev.OpenNox.HD.desktop"
+        "${url}/raw/v${pkgver}${_suffix}/app/io.github.noxworld_dev.OpenNox.metainfo.xml"
+        "${url}/raw/v${pkgver}${_suffix}/res/${_pkgname}_256.png"
+        "${url}/raw/v${pkgver}${_suffix}/res/${_pkgname}_512.png")
 sha256sums=('aea82f0dd8d41c7f3578a8b45647916604f204ceb1f2ce0204fbd7009405f838'
             'b51d66d76bf5721babef6b949d42a61a6c99b6e9f2648ccea98b1e7684b976c7'
             '88575fef50ae9898a815f45b284c21b895b68320bef53f7fafb40c96eef8a307'
