@@ -1,0 +1,5 @@
+pkg/
+src/
+opennox/
+
+*.tar.zst
