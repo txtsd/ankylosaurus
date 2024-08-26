@@ -1,0 +1,18 @@
+pkgbase = spoofdpi-git
+	pkgdesc = A simple and fast anti-censorship tool written in Go
+	pkgver = 0.10.11.r1.g774240e
+	pkgrel = 1
+	url = https://github.com/xvzc/SpoofDPI
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	options = !debug
+	source = git+https://github.com/xvzc/SpoofDPI
+	sha256sums = SKIP
+
+pkgname = spoofdpi-git
