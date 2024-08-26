@@ -27,12 +27,15 @@ repos=(
     linux-command-gpt
     linux-command-gpt-git
     makemkv
+    opennox
+    opennox-bin
+    opennox-git
     openssh-askpass
+    openssl-static
     otf-monocraft
     otf-unifont
     packwiz-git
     pcmanfm-qt-git
-    prismlauncher-bin
     prismlauncher-git
     prismlauncher-qt5
     prismlauncher-qt5-bin
