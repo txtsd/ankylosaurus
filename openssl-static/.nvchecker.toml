@@ -1,0 +1,6 @@
+[openssl-static]
+source = 'github'
+github = 'openssl/openssl'
+prefix = 'openssl-'
+include_regex = 'openssl-[0-9]\.[0-9]\.[0-9]+'
+use_latest_release = true
