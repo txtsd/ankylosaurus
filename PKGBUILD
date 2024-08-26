@@ -1,74 +1,69 @@
-# Maintainer: The one with the braid <info@braid.business>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: The one with the braid <info@braid.business>
 # Contributor: Robert Falkenberg <robert.falkenberg@srs.io>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-static
-_pkgname=openssl
-_ver=3.3.0
-# use a pacman compatible version scheme
-pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
+_pkgname=${pkgname%%-static}
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with static libs)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686' 'pentium4' 'riscv64')
 url='https://www.openssl.org'
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('perl')
 optdepends=('ca-certificates' 'perl')
 replaces=('openssl-perl' 'openssl-doc')
-provides=('libcrypto.so' 'libssl.so' "openssl=$pkgver")
+provides=('libcrypto.so' 'libssl.so' "openssl=${pkgver}")
+conflicts=("${_pkgname}")
 backup=('etc/ssl/openssl.cnf')
 options=('staticlibs')
-conflicts=('openssl')
-source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
-	'ca-dir.patch')
-sha256sums=('53e66b043322a606abf0087e7699a0e033a37fa13feb9742df35c3a33b18fb02'
+source=("https://www.openssl.org/source/${_pkgname}-${pkgver}.tar.gz"{,.asc}
+        'ca-dir.patch')
+sha256sums=('777cd596284c883375a2a7a11bf5d2786fc5413255efab20c50d6ffe6d020b7e'
             'SKIP'
             '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'
               'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C'
-              'B7C1C14360F353A36862E4D5231C84CDDCC69C45'
               'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5')
 
 prepare() {
-	cd "$srcdir/$_pkgname-$_ver"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 
 	# set ca dir to /etc/ssl by default
-	patch -Np1 -i "$srcdir/ca-dir.patch"
+	patch -Np1 -i "${srcdir}/ca-dir.patch"
 }
 
 build() {
-	cd "$srcdir/$_pkgname-$_ver"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 
-	export CFLAGS="-fPIC ${CFLAGS}"
-	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-${CARCH} \
-		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
+		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-${CARCH}
 
 	make depend
 	make
 }
 
 check() {
-	cd "$srcdir/$_pkgname-$_ver"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
-	patch -Rp1 -i "$srcdir/ca-dir.patch"
+	patch -Rp1 -i "${srcdir}/ca-dir.patch"
 
 	make HARNESS_JOBS=$(nproc) test
 
-	patch -Np1 -i "$srcdir/ca-dir.patch"
+	patch -Np1 -i "${srcdir}/ca-dir.patch"
 	# re-run make to re-generate CA.pl from the patched .in file.
 	make apps/CA.pl
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$_ver"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 
-	make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
+	make DESTDIR="${pkgdir}" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
 
-	install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
 }
