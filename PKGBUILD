@@ -2,18 +2,17 @@
 
 pkgname=spoofdpi
 _pkgname=SpoofDPI
-_binname=spoof-dpi
-pkgver=0.10.11
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='A simple and fast anti-censorship tool written in Go'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/xvzc/SpoofDPI'
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 options=('!debug')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4d907445a0c481c9b408907cb42757e90ab42c63cfcc146c96ec6eadea97ecba')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ebeb8c23b5c4c9b71023d893bbd29ff3211246236144fe3f6032ac31437d79a1')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
@@ -29,11 +28,11 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOPATH="${srcdir}/go"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o build ./cmd/spoof-dpi/
+    go build -o build ./cmd/${pkgname}/
 }
 
 package() {
     cd "${_pkgname}-${pkgver}/build"
-    install -Dm755 "${_binname}" "${pkgdir}/usr/bin/${_binname}"
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
