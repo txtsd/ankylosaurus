@@ -38,5 +38,5 @@ SystemCallArchitectures=native
 SystemCallFilter=@basic-io @file-system @io-event @ipc @network-io @process @signal @system-service
 
 [Install]
-WantedBy=network-online.target
+WantedBy=default.target
 
