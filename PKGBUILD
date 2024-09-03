@@ -4,7 +4,7 @@ pkgname=spoofdpi-git
 _pkgname=SpoofDPI
 __pkgname=${pkgname%%-git}
 pkgver=0.11.1.r6.g8a252f4
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple and fast anti-censorship tool written in Go'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/xvzc/SpoofDPI'
@@ -20,7 +20,7 @@ source=("git+${url}"
         "${__pkgname}.service")
 sha256sums=('SKIP'
             '6b7e46d23d15fbefaf8c1e031a2cea92a74f03a0ff7b19c2dd570f1b4bff324a'
-            '0bf85fb5e4f2b470d5aad94e2f0cd4cd00e461736ff483480b89d8cd069e53f4')
+            '2e07c009e36618ea7a005dc8b576a6c4d2e1d43cbd257803bae242a4cb785020')
 
 pkgver() {
     cd "${_pkgname}"
