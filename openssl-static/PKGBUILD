@@ -5,7 +5,7 @@
 
 pkgname=openssl-static
 _pkgname=${pkgname%%-static}
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with static libs)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686' 'pentium4' 'riscv64')
@@ -19,15 +19,13 @@ provides=('libcrypto.so' 'libssl.so' "openssl=${pkgver}")
 conflicts=("${_pkgname}")
 backup=('etc/ssl/openssl.cnf')
 options=('staticlibs')
-source=("https://www.openssl.org/source/${_pkgname}-${pkgver}.tar.gz"{,.asc}
+source=("https://github.com/${_pkgname}/${_pkgname}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"{,.asc}
         'ca-dir.patch')
-sha256sums=('777cd596284c883375a2a7a11bf5d2786fc5413255efab20c50d6ffe6d020b7e'
+sha256sums=('2e8a40b01979afe8be0bbfb3de5dc1c6709fedb46d6c89c10da114ab5fc3d281'
             'SKIP'
             '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7')
-validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
-              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'
-              'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C'
-              'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5')
+validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
+              'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
