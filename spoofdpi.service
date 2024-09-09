@@ -11,7 +11,7 @@ Type=simple
 User=root
 Group=root
 EnvironmentFile=/etc/conf.d/spoofdpi
-ExecStart=/usr/bin/spoofdpi -banner="false" -addr $LISTEN_ADDR -port $PORT -window-size $WINDOW_SIZE
+ExecStart=/usr/bin/spoofdpi -addr $LISTEN_ADDR -port $PORT -window-size $WINDOW_SIZE
 TimeoutStopSec=15
 CapabilityBoundingSet=CAP_NET_RAW
 IPAddressAllow=localhost link-local multicast
