@@ -1,7 +1,7 @@
 pkgbase = spoofdpi-bin
 	pkgdesc = A simple and fast anti-censorship tool written in Go
 	pkgver = 0.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xvzc/SpoofDPI
 	arch = x86_64
 	arch = armv7h
@@ -16,7 +16,7 @@ pkgbase = spoofdpi-bin
 	source = spoofdpi.conf.d
 	source = spoofdpi.service
 	sha256sums = 6b7e46d23d15fbefaf8c1e031a2cea92a74f03a0ff7b19c2dd570f1b4bff324a
-	sha256sums = cb9a145ebe23532cda3769f118fab5330ae5d41a785cfec7fb97277a3069bd30
+	sha256sums = a32456dfab36dd2dcfcdf9f7b24bbe3646c9cecda023180e2e658001427045da
 	source_x86_64 = spoofdpi-bin-0.12.0_x86_64.tar.gz::https://github.com/xvzc/SpoofDPI/releases/download/v0.12.0/spoofdpi-linux-amd64.tar.gz
 	sha256sums_x86_64 = 252dd379407bb1c853612e76697d2a092dbba45b1371432ed3d44c98ae07bd31
 	source_armv7h = spoofdpi-bin-0.12.0_armv7h.tar.gz::https://github.com/xvzc/SpoofDPI/releases/download/v0.12.0/spoofdpi-linux-arm.tar.gz
