@@ -4,26 +4,31 @@
 
 pkgname=trelby-git
 _pkgname=trelby
-pkgver=2.4.9.r0.gd02783b
-pkgrel=4
+pkgver=2.4.10.r0.g5ce6d0d
+pkgrel=1
 pkgdesc="The free, multiplatform, feature-rich screenwriting program!"
-url="https://github.com/limburgher/trelby"
+url="https://github.com/trelby/trelby"
 arch=('any')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=(
     'python'
     'python-lxml'
     'python-wxpython'
     'python-reportlab'
 )
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'docbook-xsl')
 checkdepends=('python-pytest')
-source=('git+https://github.com/limburgher/trelby.git'
+source=("git+${url}.git"
         "${_pkgname}.xml"
+        "${_pkgname}.sh"
+        "0001-chore-Adjust-docbook-patch-for-Arch.patch"
 )
 sha256sums=('SKIP'
-            'eb9332ff5bd22988ac87231851876df76220a581e1f5bfc5b782cff10ccffe42')
+            'eb9332ff5bd22988ac87231851876df76220a581e1f5bfc5b782cff10ccffe42'
+            '3e8cf39abbd1b00c6e8b8d6819e2a05e951271025d631e01c2ffa23c8986251d'
+            'fecea43670ce96944bbd0af7e7e5b39c000982ad67941e960e304ec1628a83ba')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -32,12 +37,14 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  gzip -c names.txt > names.txt.gz
-  gzip -c dict_en.dat > dict_en.dat.gz
+  patch -Np1 -i ../0001-chore-Adjust-docbook-patch-for-Arch.patch
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
+  gzip -c names.txt > names.txt.gz
+  gzip -c dict_en.dat > dict_en.dat.gz
+  make -C doc manpage
   python setup.py sdist
 
 }
@@ -54,5 +61,6 @@ package() {
   install -Dm644 "trelby.desktop" "${pkgdir}/usr/share/applications/trelby.desktop"
   install -Dm644 "resources/icon256.png" "${pkgdir}/usr/share/trelby/resources/icon256.png"
   install -Dm644 "${srcdir}/${_pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
-  install -Dm755 "${pkgdir}/opt/trelby/bin/trelby" "${pkgdir}/usr/bin/trelby"
+  install -Dm644 "doc/${_pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
+  install -Dm755 "${srcdir}/trelby.sh" "${pkgdir}/usr/bin/trelby"
 }
