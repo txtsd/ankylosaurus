@@ -1,0 +1,25 @@
+From 6662fb074b2fe8826011117b3b7db2884fb37302 Mon Sep 17 00:00:00 2001
+From: txtsd <code@ihavea.quest>
+Date: Tue, 10 Sep 2024 18:47:06 +0530
+Subject: [PATCH] chore: Adjust docbook patch for Arch
+
+Signed-off-by: txtsd <code@ihavea.quest>
+---
+ doc/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/Makefile b/doc/Makefile
+index 7b11a68..61033dc 100644
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -15,7 +15,7 @@ ifneq ($(wildcard /usr/share/sgml/docbook/stylesheet/xsl/),)
+   XSL_MANPAGE = /usr/share/sgml/docbook/stylesheet/xsl/docbook-xsl/manpages/docbook.xsl
+   XSL_HTML = html-stylesheet-deb.xsl
+ else
+-  XSL_MANPAGE = /usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl
++  XSL_MANPAGE = /usr/share/xml/docbook/xsl-stylesheets-1.79.2/manpages/profile-docbook.xsl
+   XSL_HTML = html-stylesheet.xsl
+ endif
+
+--
+2.46.0
