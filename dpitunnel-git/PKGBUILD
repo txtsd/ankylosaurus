@@ -3,8 +3,8 @@
 pkgname=dpitunnel-git
 _pkgname=${pkgname/-git}
 __pkgname=DPITunnel
-pkgver=1.0.0.r0.g4d2e735
-pkgrel=2
+pkgver=1.0.2.r0.g6f68863
+pkgrel=1
 pkgdesc="Free, simple and serverless solution against censorship for Linux PCs and routers"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/txtsd/DPITunnel"
@@ -13,10 +13,8 @@ depends=('libnl' 'gcc-libs' 'zlib' 'openssl' 'glibc' 'brotli')
 makedepends=('git' 'cpp-httplib')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}"
-        "git+https://github.com/yhirose/cpp-httplib")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${__pkgname}"
@@ -25,9 +23,6 @@ pkgver() {
 
 prepare() {
   cd "${__pkgname}"
-  git submodule init
-  git config submodule.cpp-httplib.url "${srcdir}/cpp-httplib"
-  git -c protocol.file.allow=always submodule update
 }
 
 build() {
