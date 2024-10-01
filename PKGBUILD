@@ -3,12 +3,12 @@
 
 pkgname="eza-git"
 _pkgname=${pkgname%-git}
-pkgver=0.18.15.r0.g7437c2a
+pkgver=0.20.0.r13.gc067990
 pkgrel=1
-pkgdesc="A modern replacement for ls"
+pkgdesc="A modern replacement for ls (community fork of exa)"
 arch=("x86_64")
 url="https://github.com/eza-community/eza"
-license=("MIT")
+license=("EUPL-1.2")
 depends=("libgit2" "zlib" "gcc-libs" "glibc")
 makedepends=("git" "cargo" "pandoc")
 checkdepends=("cargo")
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 prepare() {
     cd "${pkgname}"
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 pkgver() {
@@ -34,12 +34,13 @@ build() {
     cd "${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export LIBGIT2_NO_VENDOR=1
     export CFLAGS="${CFLAGS} -ffat-lto-objects"
 
     cargo build --frozen --release
 
     # Build man pages
-    mkdir -p target/man target/man
+    mkdir -p target/man
     for manpage in eza.1 eza_colors.5 eza_colors-explanation.5; do
         pandoc --standalone -f markdown -t man "man/${manpage}.md" > "target/man/${manpage}"
     done
@@ -72,5 +73,5 @@ package() {
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
-    install -Dm644 "LICENCE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-MIT"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "LICENSE.txt"
 }
