@@ -1,0 +1,2 @@
+db = "/var/lib/porla/porla.sqlite"
+workflow_dir = "/usr/lib/porla/workflows"
