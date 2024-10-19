@@ -1,0 +1,4 @@
+[jwt-cpp]
+source = "git"
+git = "https://github.com/Thalhammer/jwt-cpp.git"
+prefix = "v"
