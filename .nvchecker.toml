@@ -1,0 +1,4 @@
+[jsoncons]
+source = "git"
+git = "https://github.com/danielaparker/jsoncons.git"
+prefix = "v"
