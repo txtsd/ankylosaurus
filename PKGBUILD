@@ -1,55 +1,54 @@
-# Maintainer: Faerbit <faerbit at gmail dot com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: Faerbit <faerbit@gmail.com>
 
 pkgname=lxqt_wallet
-_pkgname=lxqt-wallet
+_pkgname=${pkgname//_/-}
 pkgver=3.2.2
-pkgrel=1
-pkgdesc="Secure storage of information for lxqt"
-arch=('i686' 'x86_64')
-url="https://github.com/mhogomchungu/lxqt_wallet"
-license=('BSD')
-depends=('libgcrypt')
-makedepends=('cmake' 'qt5-base' 'kwallet' 'libsecret' 'qt5-tools')
-optdepends=('libsecret: support for Gnome libsecret password storage (must recompile)'
-            'kwallet: support for KDE wallet storage (must recompile)')
-source=("https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-        "https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
-sha256sums=('1e41383cd60e1d23f96a9918f9eb552871afeb5abd202b3678305f59e70f0339'
-            'SKIP')
-validpgpkeys=('6855E493B5B2DF96E319BB6D16E2E1ACC6F51242')
+pkgrel=2
+pkgdesc='Secure information storage for LXQt'
+arch=('x86_64')
+url='https://github.com/lxqt/lxqt_wallet'
+license=('BSD-2-Clause')
+depends=(
+  'gcc-libs'
+  'glib2'
+  'glibc'
+  'libgcrypt'
+  'qt5-base'
+)
+makedepends=(
+  'cmake'
+  'kwallet'
+  'libsecret'
+  'qt5-tools'
+)
+optdepends=(
+  'libsecret: support for Gnome libsecret password storage'
+  'kwallet: support for KDE wallet storage'
+)
+source=("https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
+sha256sums=('1e41383cd60e1d23f96a9918f9eb552871afeb5abd202b3678305f59e70f0339')
 
 prepare() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  mkdir -p build
+  cd "${_pkgname}-${pkgver}"
 
-  if pacman -Qs "kwallet" > /dev/null ; then
-    skipkde="false"
-  else
-    skipkde="true"
-  fi
-
-  if pacman -Qs "libsecret" > /dev/null ; then
-    skipsecret="false"
-  else
-    skipsecret="true"
-  fi
+  cmake -S . -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release  \
+    -DNOSECRETSUPPORT=false \
+    -DNOKDESUPPORT=false \
+    -DCMAKE_INSTALL_LIBDIR=lib
 }
 
 build() {
-    mkdir -p build
-    cd build
-    cmake \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release  \
-        -DNOSECRETSUPPORT=$skipsecret \
-        -DNOKDESUPPORT=$skipkde \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        "$srcdir/$_pkgname-$pkgver"
-    make
+  cd "${_pkgname}-${pkgver}"
+
+  cmake --build build
 }
 
 package() {
-    cd build
-    make DESTDIR="$pkgdir" install
-    install -D "$srcdir/$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${_pkgname}-${pkgver}"
+
+    DESTDIR="${pkgdir}" cmake --install build
+    install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
