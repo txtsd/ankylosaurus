@@ -1,7 +1,7 @@
 pkgbase = opennox-git
 	pkgdesc = A modern implementation of the Nox game engine
-	pkgver = 1.9.0.alpha13.r102.g587b01679
-	pkgrel = 2
+	pkgver = 1.9.0.alpha13.r103.gabbdebbf4
+	pkgrel = 1
 	url = https://github.com/noxworld-dev/opennox
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,6 +15,7 @@ pkgbase = opennox-git
 	depends = lib32-openal
 	depends = hicolor-icon-theme
 	provides = opennox
+	conflicts = opennox
 	options = !debug
 	source = git+https://github.com/noxworld-dev/opennox
 	sha256sums = SKIP
