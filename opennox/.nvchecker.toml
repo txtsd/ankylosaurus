@@ -1,0 +1,7 @@
+[opennox]
+source = "github"
+github = "noxworld-dev/opennox"
+prefix = "v"
+from_pattern = "(\\d+\\.\\d+\\.\\d+)-(\\w+\\d+)"
+to_pattern = "\\1_\\2"
+use_latest_release = true
