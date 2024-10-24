@@ -1,0 +1,4 @@
+[usockets]
+source = "git"
+git = "https://github.com/uNetworking/uSockets.git"
+prefix = "v"
