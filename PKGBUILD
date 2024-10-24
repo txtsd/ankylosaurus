@@ -4,9 +4,9 @@
 
 pkgname=lxqt_wallet-git
 _pkgname=${pkgname%%-git}
-pkgver=3.2.2.r26.gcf7120f
+pkgver=4.0.0.r0.gd685689
 pkgrel=1
-pkgdesc="Secure information storage for LXQt"
+pkgdesc='Secure information storage for LXQt'
 arch=('x86_64')
 url='https://github.com/lxqt/lxqt_wallet'
 license=('BSD-2-Clause')
@@ -30,12 +30,8 @@ optdepends=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(
-  "git+https://github.com/lxqt/${_pkgname}.git"
-  '0001-fixes.patch'
-)
-sha256sums=('SKIP'
-            'bc7fe8c0283333d456672e34b1776c6553aaaec431d9191d3abc1e682fe3fa83')
+source=("git+https://github.com/lxqt/${_pkgname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -45,7 +41,6 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
 
-  patch -Np1 -i "${srcdir}/0001-fixes.patch"
 
   cmake -S . -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \

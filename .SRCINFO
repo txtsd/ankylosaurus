@@ -1,6 +1,6 @@
 pkgbase = lxqt_wallet-git
 	pkgdesc = Secure information storage for LXQt
-	pkgver = 3.2.2.r26.gcf7120f
+	pkgver = 4.0.0.r0.gd685689
 	pkgrel = 1
 	url = https://github.com/lxqt/lxqt_wallet
 	arch = x86_64
@@ -20,8 +20,6 @@ pkgbase = lxqt_wallet-git
 	provides = lxqt_wallet
 	conflicts = lxqt_wallet
 	source = git+https://github.com/lxqt/lxqt_wallet.git
-	source = 0001-fixes.patch
 	sha256sums = SKIP
-	sha256sums = bc7fe8c0283333d456672e34b1776c6553aaaec431d9191d3abc1e682fe3fa83
 
 pkgname = lxqt_wallet-git
