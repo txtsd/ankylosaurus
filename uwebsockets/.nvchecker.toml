@@ -1,0 +1,5 @@
+[uwebsockets]
+source = "git"
+git = "https://github.com/uNetworking/uWebSockets.git"
+prefix = "v"
+include_regex = "v(\\d+\\.\\d+\\.\\d+)"
