@@ -1,0 +1,114 @@
+From d7bcb9ccbb10662e98d621b55bda54038f5d0b73 Mon Sep 17 00:00:00 2001
+From: txtsd <code@ihavea.quest>
+Date: Thu, 24 Oct 2024 09:37:13 +0530
+Subject: [PATCH] fixes
+
+Signed-off-by: txtsd <code@ihavea.quest>
+---
+ backend/{lxqtwallet.h => lxqt-wallet.h} | 2 +-
+ backend/lxqt_wallet-cli.c               | 2 +-
+ backend/lxqtwallet.c                    | 2 +-
+ frontend/changepassworddialog.h         | 2 +-
+ frontend/lxqt_internal_wallet.h         | 2 +-
+ frontend/lxqt_wallet.cpp                | 2 +-
+ lxqt_wallet.pro                         | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+ rename backend/{lxqtwallet.h => lxqt-wallet.h} (99%)
+
+diff --git a/backend/lxqtwallet.h b/backend/lxqt-wallet.h
+similarity index 99%
+rename from backend/lxqtwallet.h
+rename to backend/lxqt-wallet.h
+index fbc6650..7d547b9 100644
+--- a/backend/lxqtwallet.h
++++ b/backend/lxqt-wallet.h
+@@ -226,7 +226,7 @@ extern "C" {
+ #if 0
+ 
+ 
+-#include "lxqtwallet.h"
++#include "lxqt-wallet.h"
+ #include <string.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+diff --git a/backend/lxqt_wallet-cli.c b/backend/lxqt_wallet-cli.c
+index 2a3f9d8..f7727f4 100644
+--- a/backend/lxqt_wallet-cli.c
++++ b/backend/lxqt_wallet-cli.c
+@@ -42,7 +42,7 @@
+ #include <libintl.h>
+ #include <locale.h>
+ 
+-#include "lxqtwallet.h"
++#include "lxqt-wallet.h"
+ 
+ #define PASSWORD_SIZE         512
+ #define WALLET_NAME_SIZE      512
+diff --git a/backend/lxqtwallet.c b/backend/lxqtwallet.c
+index 9bb8b48..296227e 100644
+--- a/backend/lxqtwallet.c
++++ b/backend/lxqtwallet.c
+@@ -28,7 +28,7 @@
+  * SUCH DAMAGE.
+  */
+ 
+-#include "lxqtwallet.h"
++#include "lxqt-wallet.h"
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
+diff --git a/frontend/changepassworddialog.h b/frontend/changepassworddialog.h
+index 55bb664..0001ede 100644
+--- a/frontend/changepassworddialog.h
++++ b/frontend/changepassworddialog.h
+@@ -38,7 +38,7 @@
+ #include <QEvent>
+ #include <QKeyEvent>
+ 
+-#include "../backend/lxqtwallet.h"
++#include "../backend/lxqt-wallet.h"
+ #include "task.h"
+ 
+ #include <functional>
+diff --git a/frontend/lxqt_internal_wallet.h b/frontend/lxqt_internal_wallet.h
+index e03fa8b..b4b5a9a 100644
+--- a/frontend/lxqt_internal_wallet.h
++++ b/frontend/lxqt_internal_wallet.h
+@@ -32,7 +32,7 @@
+ #define LXQT_INTERNAL_WALLET_H
+ 
+ #include "lxqt_wallet.h"
+-#include "../backend/lxqtwallet.h"
++#include "../backend/lxqt-wallet.h"
+ #include "password_dialog.h"
+ #include "task.h"
+ #include "changepassworddialog.h"
+diff --git a/frontend/lxqt_wallet.cpp b/frontend/lxqt_wallet.cpp
+index a95136a..b797876 100644
+--- a/frontend/lxqt_wallet.cpp
++++ b/frontend/lxqt_wallet.cpp
+@@ -30,7 +30,7 @@
+ 
+ #include "lxqt_wallet.h"
+ #include "lxqt_internal_wallet.h"
+-#include "../backend/lxqtwallet.h"
++#include "../backend/lxqt-wallet.h"
+ #include "translations_path.h"
+ #include "lxqt_kwallet-dbus.h"
+ 
+diff --git a/lxqt_wallet.pro b/lxqt_wallet.pro
+index b53fd47..66fe4ed 100644
+--- a/lxqt_wallet.pro
++++ b/lxqt_wallet.pro
+@@ -29,7 +29,7 @@ HEADERS += \
+     frontend/lxqt_kwallet.h \
+     frontend/lxqt_internal_wallet.h \
+     frontend/changepassworddialog.h \
+-    backend/lxqtwallet.h \
++    backend/lxqt-wallet.h \
+     /home/ink/src/build-lxde-wallet/mainwindow.h \
+     frontend/lxqt_secret_service.h \
+     frontend/secret_service.h
+-- 
+2.47.0
+
