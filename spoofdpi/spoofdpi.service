@@ -1,0 +1,42 @@
+[Unit]
+Description=SpoofDPI Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+SyslogIdentifier=spoofdpi
+Restart=always
+RestartSec=5
+Type=simple
+User=root
+Group=root
+EnvironmentFile=/etc/conf.d/spoofdpi
+ExecStart=/usr/bin/spoofdpi -silent -addr $LISTEN_ADDR -port $PORT -window-size $WINDOW_SIZE
+TimeoutStopSec=15
+CapabilityBoundingSet=CAP_NET_RAW
+IPAddressAllow=localhost link-local multicast
+LockPersonality=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProcSubset=pid
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=noaccess
+ProtectSystem=strict
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@basic-io @file-system @io-event @ipc @network-io @process @signal @system-service
+
+[Install]
+WantedBy=default.target
+
