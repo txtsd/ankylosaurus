@@ -2,4 +2,4 @@ pkg/
 src/
 opennox/
 
-*.tar.zst
+*.tar.*
