@@ -2,10 +2,10 @@
 
 pkgname=jsoncons
 pkgver=0.177.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++, header-only library for constructing JSON and JSON-like data formats'
 arch=('any')
-url='https://github.com/Thalhammer/jwt-cpp/'
+url='https://github.com/danielaparker/jsoncons'
 license=('BSL-1.0')
 makedepends=('cmake')
 options=(!debug)
