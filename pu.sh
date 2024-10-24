@@ -32,7 +32,6 @@ repos=(
     linux-command-gpt-git
     lxqt_wallet
     lxqt_wallet-git
-    makemkv
     opennox
     opennox-bin
     opennox-git
