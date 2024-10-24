@@ -2,6 +2,8 @@ repos=(
     archosaur
     archosaur-bin
     archosaur-git
+    bitmagnet
+    bitmagnet-bin
     blockbench
     blockbench-bin
     blockbench-git
@@ -23,6 +25,8 @@ repos=(
     illarion-bin
     imgbrd-grabber-appimage
     java-openjdk-wakefield
+    jsoncons
+    jwt-cpp
     libfm-qt-git
     linux-command-gpt
     linux-command-gpt-git
@@ -33,9 +37,11 @@ repos=(
     openssh-askpass
     openssl-static
     otf-monocraft
+    otf-sans-forgetica
     otf-unifont
     packwiz-git
     pcmanfm-qt-git
+    porla
     prismlauncher-git
     prismlauncher-qt5
     prismlauncher-qt5-bin
@@ -53,12 +59,17 @@ repos=(
     ripme-git
     soundsense
     soundsense-rs-git
+    spoofdpi
+    spoofdpi-bin
+    spoofdpi-git
     stevenarella-git
     thesage
     trelby
     trelby-git
     ttc-monocraft
     ttf-unifont
+    usockets
+    uwebsockets
     vimv-git
     yt-spammer-purge
     zaread-git

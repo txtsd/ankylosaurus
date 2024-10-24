@@ -33,7 +33,7 @@ jobs:
         id: packages
         run: |
           updates=()
-          for dir in $(fd --type d --regex ".*-git$|.*-cvs$|.*-svn$|.*-hg$|.*-darcs$|.*-bzr$")
+          for dir in $(fd --type d --regex ".*-git$|.*-cvs$|.*-svn$|.*-hg$|.*-darcs$|.*-bzr$") java-openjdk-wakefield
           do
             updates+=("${dir%/}")
           done
