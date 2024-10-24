@@ -1,0 +1,5 @@
+[bitmagnet]
+source = "git"
+git = "https://github.com/bitmagnet-io/bitmagnet.git"
+prefix = "v"
+include_regex = "v(\\d+\\.\\d+\\.\\d+)$"
