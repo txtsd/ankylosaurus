@@ -1,9 +1,8 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=opennox
-pkgver=1.9.0
-pkgrel=2
-_suffix="-alpha13"
+pkgver=1.9.0_alpha13
+pkgrel=1
 pkgdesc='A modern implementation of the Nox game engine'
 arch=('x86_64')
 url='https://github.com/noxworld-dev/opennox'
@@ -12,7 +11,7 @@ depends=('lib32-sdl2' 'lib32-libglvnd' 'lib32-glibc' 'lib32-openal'
          'hicolor-icon-theme')
 makedepends=('git' 'go' 'gcc-multilib' 'lib32-sdl_image')
 options=(!debug)
-source=("git+${url}#tag=v${pkgver}${_suffix}"
+source=("git+${url}#tag=v${pkgver//_/-}"
         "explicit_type_cast.patch")
 sha256sums=('5b7ff814c4ac78fabb49f2160d710712fbe0c48c1b4371602a88239b60926bb3'
             'bdd8b37ef814a44c890e4992dfcc1d5bf5731080df87553537041ae1484adf8a')
