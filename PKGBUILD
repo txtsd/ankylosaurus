@@ -4,7 +4,7 @@
 
 pkgname=librespot
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source client library for Spotify'
 arch=('x86_64')
 url='https://github.com/librespot-org/librespot'
@@ -23,7 +23,7 @@ optdepends=(
     'portaudio: Audio playback using PortAudio'
     'sdl2: Audio playback using SDL2'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('4ea500bb5673fbf4cc9dcbb7afdc228bf0cdb434cc3a0be79afa6bb385a8b5f8')
 
 prepare() {
