@@ -1,0 +1,8 @@
+pkg/
+src/
+porla/
+uWebSockets/
+uSockets/
+vcpkg/
+
+*.tar.*

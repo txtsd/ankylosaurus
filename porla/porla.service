@@ -1,0 +1,27 @@
+# Be sure to use `systemctl edit porla` to modify this service with an override.conf because
+# direct changes will be overwritten by package updates.
+#
+# A user per service w/ shared group setup would have an override like:
+# [Service]
+# Group=sharedgroupname
+# UMask=002
+
+[Unit]
+Description=Porla Daemon
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=porla
+Group=porla
+SyslogIdentifier=porla
+Environment=XDG_CONFIG_HOME=/etc
+WorkingDirectory=/var/lib/porla
+ExecStart=/usr/bin/porla --config-file=/etc/porla/config.toml --state-dir=/var/lib/porla
+Restart=on-failure
+RestartSec=5
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
