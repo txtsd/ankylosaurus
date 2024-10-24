@@ -39,7 +39,7 @@ prepare() {
         [portaudio]='portaudio-backend'
     )
     for pkg in "${!PKG_FEATURE_MAP[@]}"; do
-        if pacman -Qsq "$pkg" | sed -E "/^$pkg\$/b; /.+/d"; then
+        if [[ -n `pacman -Qsq "$pkg" | sed -E "/^$pkg\$/b; /.+/d"` ]]; then
             export PKG_FEATURES="$PKG_FEATURES,${PKG_FEATURE_MAP[$pkg]}"
         fi 2>/dev/null >&2
     done
