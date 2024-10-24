@@ -30,6 +30,8 @@ repos=(
     libfm-qt-git
     linux-command-gpt
     linux-command-gpt-git
+    lxqt_wallet
+    lxqt_wallet-git
     makemkv
     opennox
     opennox-bin
