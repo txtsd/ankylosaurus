@@ -1,18 +1,18 @@
 # Maintainer: Patrick Lühne <patrick-arch@luehne.de>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=aleo-fonts
 pkgver=2.0
-pkgrel=1
-pkgdesc="Slab serif type family designed by Alessio Laiso"
-url="https://alessiolaiso.com/aleo-font"
-arch=(any)
-license=(custom)
-source=("https://alessiolaiso.com/downloads/Aleo_v$pkgver.zip")
-sha512sums=('da1d87bec966be89e12db2013c6696e11754c75edc356280ed457bda3dff48c3065cc80f476150aeb33c68e85f8769a60217e082f1437441e7984d090126b349')
+pkgrel=2
+pkgdesc='Slab serif type family designed by Alessio Laiso'
+arch=('any')
+url='https://alessiolaiso.com/aleo-font'
+license=('OFL-1.1')
+source=("https://alessiolaiso.com/downloads/Aleo_v${pkgver}.zip")
+sha256sums=('ed8c6f6b04b3bf1df367ef0e0f272a09056e5dcd34d58f7e7cdb35ad504a1591')
 
 package() {
-	cd "Aleo_v$pkgver/"
-	install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
-	install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 "otf"/*.otf
-	install -Dm644 "SIL Open Font License 1.1.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "Aleo_v${pkgver}"
+  install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgname%-fonts}" "otf/"*.otf
+  install -Dm644 "SIL Open Font License 1.1.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
