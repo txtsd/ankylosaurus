@@ -2,37 +2,40 @@
 # Contributor: neeshy <neeshy@tfwno.gf>
 
 pkgname=ripme
-pkgver=2.1.9
+pkgver=2.1.11
+_pkgver=2.1.10-21-c94a9543
 pkgrel=1
-pkgdesc="Downloads albums in bulk"
+pkgdesc='Downloads albums in bulk'
 arch=('any')
-url="https://github.com/ripmeapp2/ripme"
+url='https://github.com/ripmeapp2/ripme'
 license=('MIT')
-depends=('java-runtime>=17' 'bash')
-makedepends=('java-environment>=17' 'gradle')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ripmeapp2/ripme/archive/${pkgver}.tar.gz"
-        "ripme-${pkgver}-gradle.patch")
-sha256sums=('0f47b41130e30440fb616e46da92239459f587ac5a24516be24490760a755150'
-            'c0860740059b15196d7ad8239014b51f5e979fcae714376c32aba36b6eda07e6')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/ripme-${pkgver}-gradle.patch"
-}
+depends=(
+  'java-runtime>=17'
+  'bash'
+)
+makedepends=(
+  'java-environment>=17'
+  'gradle'
+  'git'
+)
+source=("git+${url}#tag=${pkgver}")
+sha256sums=('11b8993350dd2714ccd03f093b0b0f5ff0849267ab340b415c9356855fe1f80d')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
+
   CURRENT_JAVA_VERSION=$(archlinux-java get | grep -P "\d+" -o)
-  gradle clean build -PjavacRelease=${CURRENT_JAVA_VERSION} -x test
+  gradle clean build -PjavacRelease=${CURRENT_JAVA_VERSION} -PcustomVersion=${_pkgver} -x test
   cat <<EOF >ripme.sh
 #!/bin/sh
-exec java -jar /usr/share/java/ripme.jar "\$@"
+exec java -jar /usr/share/java/${pkgname}/ripme.jar "\$@"
 EOF
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm644 "build/libs/ripme-${pkgver}.jar" "${pkgdir}/usr/share/java/ripme.jar"
-  install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/ripme/LICENSE"
-  install -Dm755 ripme.sh "${pkgdir}/usr/bin/ripme"
+  cd "${srcdir}/${pkgname}"
+
+  install -Dm644 "build/libs/ripme-${_pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/ripme.jar"
+  install -Dm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 'ripme.sh' "${pkgdir}/usr/bin/ripme"
 }

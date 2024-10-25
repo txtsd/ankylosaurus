@@ -1,5 +1,5 @@
 src/
 pkg/
+ripme/
 
-ripme-*.tar.gz
-*.pkg.*
+*.tar.*
