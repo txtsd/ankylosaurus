@@ -1,0 +1,7 @@
+[bitmagnet-beta]
+source = "git"
+git = "https://github.com/bitmagnet-io/bitmagnet.git"
+prefix = "v"
+from_pattern = "(\\d+)\\.(\\d+)\\.(\\d+)-beta\\.(\\d+)"
+to_pattern = "\\1.\\2.\\3_beta.\\4"
+
