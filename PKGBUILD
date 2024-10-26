@@ -3,7 +3,7 @@
 pkgname=llama.cpp-sycl-f32
 _pkgname=${pkgname%%-sycl-f32}
 pkgver=b3982
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F32)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/ggerganov/llama.cpp'
@@ -23,6 +23,8 @@ makedepends=(
   'openmp'
   'procps-ng'
 )
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 options=(lto)
 source=(
   "git+${url}#tag=${pkgver}"

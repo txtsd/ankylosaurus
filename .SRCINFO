@@ -1,7 +1,7 @@
 pkgbase = llama.cpp-sycl-f32
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F32)
 	pkgver = b3982
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
 	arch = armv7h
@@ -18,6 +18,8 @@ pkgbase = llama.cpp-sycl-f32
 	depends = python
 	depends = python-numpy
 	depends = python-sentencepiece
+	provides = llama.cpp
+	conflicts = llama.cpp
 	options = lto
 	source = git+https://github.com/ggerganov/llama.cpp#tag=b3982
 	source = git+https://github.com/nomic-ai/kompute.git
