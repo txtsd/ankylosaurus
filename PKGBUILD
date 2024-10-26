@@ -3,12 +3,14 @@
 pkgname=llama.cpp-cuda
 _pkgname=${pkgname%%-cuda}
 pkgver=b3982
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/ggerganov/llama.cpp'
 license=('MIT')
 depends=(
+  'blas-openblas'
+  'blas64-openblas'
   'cuda'
   'curl'
   'gcc-libs'
