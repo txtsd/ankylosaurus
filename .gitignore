@@ -1,0 +1,6 @@
+pkg/
+src/
+llama.cpp/
+kompute/
+
+*.tar.*
