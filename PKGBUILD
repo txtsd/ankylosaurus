@@ -3,8 +3,8 @@
 pkgname=llama.cpp-sycl-f16
 _pkgname=${pkgname%%-sycl-f16}
 pkgver=b3982
-pkgrel=1
-pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F32)"
+pkgrel=2
+pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F16)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/ggerganov/llama.cpp'
 license=('MIT')
