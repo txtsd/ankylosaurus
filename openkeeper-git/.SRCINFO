@@ -1,0 +1,21 @@
+pkgbase = openkeeper-git
+	pkgdesc = An open source remake of the Dungeon Keeper II game and engine.
+	pkgver = r2701.0923a080
+	pkgrel = 1
+	url = https://github.com/tonihele/OpenKeeper
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gradle
+	makedepends = java-environment>=21
+	depends = bash
+	depends = java-runtime>=21
+	depends = hicolor-icon-theme
+	provides = openkeeper
+	conflicts = openkeeper
+	source = git+https://github.com/tonihele/OpenKeeper
+	source = OpenKeeper.desktop
+	sha256sums = SKIP
+	sha256sums = 035182dfb1269e3fad55f273928ec323ed99da78c403d1e839f7b32cf15cc0b1
+
+pkgname = openkeeper-git
