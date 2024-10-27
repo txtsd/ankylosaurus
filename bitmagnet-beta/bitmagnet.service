@@ -1,0 +1,18 @@
+[Unit]
+Description=Bitmagnet Daemon
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=bitmagnet
+Group=bitmagnet
+SyslogIdentifier=bitmagnet
+Environment=XDG_CONFIG_HOME=/etc
+Environment=XDG_STATE_HOME=/var/lib
+ExecStart=/usr/bin/bitmagnet worker run --all
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
