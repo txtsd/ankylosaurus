@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=OpenKeeper
+Comment=An open source remake of the Dungeon Keeper II game and engine
+Exec=/opt/OpenKeeper/bin/OpenKeeper
+Icon=OpenKeeper
+Categories=Game;
+
