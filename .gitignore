@@ -3,6 +3,4 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
-!cdefs.h
-!queue.h
 !tree.h
