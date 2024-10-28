@@ -1,7 +1,7 @@
 pkgbase = wolfssl-jni
 	pkgdesc = Lightweight, portable, C-language-based SSL/TLS library (with jni support)
 	pkgver = 5.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wolfssl.com/
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = wolfssl-jni
 	depends = bash
 	depends = glibc
 	provides = libwolfssl.so
-	provides = wolfsssl
+	provides = wolfssl
 	conflicts = wolfssl
 	source = wolfssl-jni-5.7.4-stable.tar.gz::https://github.com/wolfssl/wolfssl/archive/refs/tags/v5.7.4-stable.tar.gz
 	validpgpkeys = A2A48E7BCB96C5BECB987314EBC80E415CA29677

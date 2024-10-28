@@ -4,7 +4,7 @@
 pkgname=wolfssl-jni
 _pkgname=${pkgname%%-jni}
 pkgver=5.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, portable, C-language-based SSL/TLS library (with jni support)"
 arch=(x86_64 aarch64 armv7h)
 url="https://www.wolfssl.com/"
@@ -16,7 +16,7 @@ depends=(
 makedepends=(cmake)
 provides=(
   libwolfssl.so
-  wolfsssl
+  wolfssl
 )
 conflicts=(wolfssl)
 source=(
