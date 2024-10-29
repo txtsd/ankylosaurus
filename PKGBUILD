@@ -4,7 +4,7 @@ pkgname=android_translation_layer-git
 _pkgname=${pkgname%%-git}
 _pkgname=${_pkgname//-/_}
 pkgver=r636.2e2a3c8
-pkgrel=1
+pkgrel=2
 pkgdesc='A translation layer for running Android apps on a Linux system'
 url='https://gitlab.com/android_translation_layer/android_translation_layer'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,6 +12,7 @@ license=('GPL-3.0-or-later')
 # libopensles-standalone is not strictly required but some Android applications depend on it
 depends=(
   alsa-lib
+  art_standalone
   bionic_translation
   ffmpeg
   gdk-pixbuf2
@@ -31,7 +32,6 @@ depends=(
   webkitgtk-6.0
 )
 makedepends=(
-  art_standalone
   git
   glib2-devel
   java-runtime-common
