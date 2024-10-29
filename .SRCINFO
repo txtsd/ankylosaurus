@@ -1,7 +1,7 @@
 pkgbase = android_translation_layer-git
 	pkgdesc = A translation layer for running Android apps on a Linux system
-	pkgver = r636.2e2a3c8
-	pkgrel = 2
+	pkgver = r637.3d02598
+	pkgrel = 1
 	url = https://gitlab.com/android_translation_layer/android_translation_layer
 	arch = x86_64
 	arch = aarch64

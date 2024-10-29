@@ -3,8 +3,8 @@
 pkgname=android_translation_layer-git
 _pkgname=${pkgname%%-git}
 _pkgname=${_pkgname//-/_}
-pkgver=r636.2e2a3c8
-pkgrel=2
+pkgver=r637.3d02598
+pkgrel=1
 pkgdesc='A translation layer for running Android apps on a Linux system'
 url='https://gitlab.com/android_translation_layer/android_translation_layer'
 arch=('x86_64' 'aarch64' 'armv7h')
