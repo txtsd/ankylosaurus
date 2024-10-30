@@ -5,10 +5,10 @@ pkgname=skia-sharp-atl-git
 _pkgname=${pkgname%%-git}
 __pkgname=${_pkgname%%-atl}
 pkgver=r67245.ced64f6f90
-pkgrel=1
-_major=999
-_minor=99
-_release=9
+pkgrel=2
+_major=99
+_minor=9
+_release=0
 pkgdesc='A complete 2D graphic library for drawing Text, Geometries, and Images (Mis012 fork)'
 arch=(x86_64 aarch64 armv7h)
 url=https://github.com/Mis012/skia/tree/with-patches-applied
@@ -151,9 +151,8 @@ prepare() {
 build(){
   cd skia
 
-  # CFLAGS="$CFLAGS \
-  #   -I/usr/include/freetype2 \
-  #   -DSKIA_C_DLL"
+  CFLAGS="$CFLAGS \
+    -DSKIA_C_DLL"
 
   extra_cflags=""
   for cflag in $CFLAGS; do
@@ -165,35 +164,37 @@ build(){
   done
 
   gn gen out \
-    --args="target_os=\"linux\" \
-            target_cpu=\"x64\" \
-            cc=\"clang\" \
-            cxx=\"clang++\" \
-            extra_cflags=[${extra_cflags}] \
-            extra_ldflags=[${extra_ldflags}] \
-            skia_enable_gpu=true \
-            skia_enable_tools=false \
-            skia_use_dng_sdk=true \
-            skia_use_icu=false \
-            skia_use_piex=true \
-            skia_use_sfntly=false \
-            skia_use_system_harfbuzz=true \
-            skia_use_system_expat=true \
-            skia_use_system_freetype2=true \
-            skia_use_system_libjpeg_turbo=true \
-            skia_use_system_libpng=true \
-            skia_use_system_libwebp=true \
-            skia_use_system_zlib=true \
-            is_component_build=false \
-            is_debug=false \
-            is_official_build=false \
-            linux_soname_version=\"${_major}.${_minor}.${_release}\""
+    --args="\
+      target_os=\"linux\" \
+      target_cpu=\"x64\" \
+      cc=\"clang\" \
+      cxx=\"clang++\" \
+      extra_cflags=[${extra_cflags}] \
+      extra_ldflags=[${extra_ldflags}] \
+      skia_enable_gpu=true \
+      skia_enable_tools=false \
+      skia_use_dng_sdk=true \
+      skia_use_icu=false \
+      skia_use_piex=true \
+      skia_use_sfntly=false \
+      skia_use_system_harfbuzz=true \
+      skia_use_system_expat=true \
+      skia_use_system_freetype2=true \
+      skia_use_system_libjpeg_turbo=true \
+      skia_use_system_libpng=true \
+      skia_use_system_libwebp=true \
+      skia_use_system_zlib=true \
+      is_component_build=false \
+      is_debug=false \
+      is_official_build=true \
+      linux_soname_version=\"${_major}.${_minor}.${_release}\""
   ninja -C out
 }
 
 package() {
   install -Dm755 "skia/out/libSkiaSharp.so.${_major}.${_minor}.${_release}" -t "${pkgdir}/usr/lib/"
   ln -s "libSkiaSharp.so.${_major}.${_minor}.${_release}" "${pkgdir}/usr/lib/libSkiaSharp.so.${_major}"
+  ln -s "libSkiaSharp.so.${_major}.${_minor}.${_release}" "${pkgdir}/usr/lib/libSkiaSharp.so.${_major}.${_minor}"
   ln -s "libSkiaSharp.so.${_major}" "${pkgdir}/usr/lib/libSkiaSharp.so"
   install -Dm644 'skia/LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
