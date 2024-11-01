@@ -3,40 +3,41 @@
 pkgname=art_standalone-git
 _pkgname=${pkgname%%-git}
 pkgver=r167.57f9bbd9
-pkgrel=1
+pkgrel=2
 pkgdesc='A standalone version of Dalvik with Art built in'
 url='https://gitlab.com/android_translation_layer/art_standalone'
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('LicenseRef-Unknown')
 depends=(
   wolfssl-jni
-	libbsd
-	icu
-	xz
-	lz4
+  libbsd
+  icu
+  xz
+  lz4
   java-runtime
-	zlib
-	expat
-	libunwind
-	openssl
-	bionic_translation
+  zlib
+  expat
+  libunwind
+  openssl
+  bionic_translation
   gcc-libs
   bash
   glibc
 )
 makedepends=(
   git
-	bsd-compat-headers
-	libcap
-	meson
-	jdk8-openjdk
-	python
-	valgrind
-	zip
+  bsd-compat-headers
+  libcap
+  meson
+  jdk8-openjdk
+  python
+  valgrind
+  zip
 )
+options=(!strip)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git")
+source=("git+${url}.git/")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -46,15 +47,15 @@ pkgver() {
 
 build() {
   cd ${_pkgname}
-	make PREFIX=/usr ____LIBDIR=lib
+  make PREFIX=/usr ____LIBDIR=lib
 }
 
 package() {
   cd ${_pkgname}
-	DESTDIR="$pkgdir" make \
-		____PREFIX="$pkgdir"/usr \
-		____INSTALL_ETC="$pkgdir"/etc \
-		____LIBDIR=lib \
-		install
+  DESTDIR="$pkgdir" make \
+    ____PREFIX="$pkgdir"/usr \
+    ____INSTALL_ETC="$pkgdir"/etc \
+    ____LIBDIR=lib \
+    install
 }
 

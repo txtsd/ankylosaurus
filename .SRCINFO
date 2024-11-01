@@ -1,7 +1,7 @@
 pkgbase = art_standalone-git
 	pkgdesc = A standalone version of Dalvik with Art built in
 	pkgver = r167.57f9bbd9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/android_translation_layer/art_standalone
 	arch = x86_64
 	arch = aarch64
@@ -31,7 +31,8 @@ pkgbase = art_standalone-git
 	depends = glibc
 	provides = art_standalone
 	conflicts = art_standalone
-	source = git+https://gitlab.com/android_translation_layer/art_standalone.git
+	options = !strip
+	source = git+https://gitlab.com/android_translation_layer/art_standalone.git/
 	sha256sums = SKIP
 
 pkgname = art_standalone-git
