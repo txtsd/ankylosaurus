@@ -1,7 +1,7 @@
 pkgbase = skia-sharp-atl-git
 	pkgdesc = A complete 2D graphic library for drawing Text, Geometries, and Images (Mis012 fork)
 	pkgver = r67245.ced64f6f90
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Mis012/skia/tree/with-patches-applied
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = skia-sharp-atl-git
 	license = BSD-3-Clause
 	makedepends = clang
 	makedepends = git
+	makedepends = git-lfs
 	makedepends = gn
 	makedepends = python
 	makedepends = ninja

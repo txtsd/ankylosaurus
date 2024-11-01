@@ -5,7 +5,7 @@ pkgname=skia-sharp-atl-git
 _pkgname=${pkgname%%-git}
 __pkgname=${_pkgname%%-atl}
 pkgver=r67245.ced64f6f90
-pkgrel=2
+pkgrel=3
 _major=99
 _minor=9
 _release=0
@@ -28,6 +28,7 @@ depends=(
 makedepends=(
   clang
   git
+  git-lfs
   gn
   python
   ninja
