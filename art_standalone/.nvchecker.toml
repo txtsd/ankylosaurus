@@ -1,0 +1,3 @@
+[art_standalone]
+source = "git"
+git = "https://gitlab.com/android_translation_layer/art_standalone.git"
