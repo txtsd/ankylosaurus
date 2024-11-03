@@ -1,9 +1,9 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=art_standalone
-pkgver=r167.57f9bbd9
+pkgver=r168.ce8fe1f0
 pkgrel=1
-_commit=57f9bbd9417b67a6d7bf70a7d7d457fc894250f5
+_commit=ce8fe1f089320a0d83c303661db4d2100119b053
 pkgdesc='A standalone version of Dalvik with Art built in'
 url='https://gitlab.com/android_translation_layer/art_standalone'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -14,7 +14,6 @@ depends=(
   icu
   xz
   lz4
-  java-runtime
   zlib
   expat
   libunwind
@@ -35,7 +34,7 @@ makedepends=(
 )
 options=(!strip)
 source=("${pkgname}-${_commit}::${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
-sha256sums=('9ab978af34adfaecf190f790bc2b2da17f8579f6a41ca2677bac6c14c3d718f8')
+sha256sums=('d51551ccd827066a4ca8fc0656f7b01ebdf9cea081a99768c3a54ff84229b22b')
 
 build() {
   cd "${pkgname}-${_commit}"
@@ -43,6 +42,7 @@ build() {
 }
 
 package() {
+  depends+=(java-runtime)
   cd "${pkgname}-${_commit}"
   DESTDIR="$pkgdir" make \
     ____PREFIX="$pkgdir"/usr \
