@@ -1,0 +1,3 @@
+[qbittorrent-nightwalker]
+source = "git"
+git = "https://github.com/binhex/fork-nightwalker.git"
