@@ -1,6 +1,6 @@
 pkgbase = dpitunnel
 	pkgdesc = Free, simple and serverless solution against censorship for Linux PCs and routers
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/txtsd/DPITunnel
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = dpitunnel
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cpp-httplib
+	makedepends = cmake
 	depends = libnl
 	depends = gcc-libs
 	depends = zlib
@@ -16,7 +17,8 @@ pkgbase = dpitunnel
 	depends = glibc
 	depends = brotli
 	depends = ca-certificates-utils
-	source = dpitunnel-1.0.2.tar.gz::https://github.com/txtsd/DPITunnel/archive/refs/tags/1.0.2.tar.gz
-	sha256sums = 58077ac04d529dc3cf094a67339c4d2a827e640dd11424b34412b21b1ca3b593
+	options = !debug
+	source = dpitunnel-1.0.3.tar.gz::https://github.com/txtsd/DPITunnel/archive/refs/tags/1.0.3.tar.gz
+	sha256sums = 294c3514ace51e6093a579f2db724b88d7565773bd82f2efc58756d0592880a5
 
 pkgname = dpitunnel
