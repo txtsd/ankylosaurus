@@ -1,4 +1,5 @@
-*.deb
-*.pkg*
-src
-pkg
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
