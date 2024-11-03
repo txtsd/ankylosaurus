@@ -3,16 +3,28 @@
 pkgname=dpitunnel-git
 _pkgname=${pkgname/-git}
 __pkgname=DPITunnel
-pkgver=1.0.2.r0.g6f68863
+pkgver=1.0.3.r2.gaa098e8
 pkgrel=1
-pkgdesc="Free, simple and serverless solution against censorship for Linux PCs and routers"
+pkgdesc='Free, simple and serverless solution against censorship for Linux PCs and routers'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-url="https://github.com/txtsd/DPITunnel"
+url='https://github.com/txtsd/DPITunnel'
 license=('GPL-3.0-or-later')
-depends=('libnl' 'gcc-libs' 'zlib' 'openssl' 'glibc' 'brotli')
-makedepends=('git' 'cpp-httplib')
+depends=(
+  'libnl'
+  'gcc-libs'
+  'zlib'
+  'openssl'
+  'glibc'
+  'brotli'
+)
+makedepends=(
+  'git'
+  'cpp-httplib'
+  'cmake'
+)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+options=(!debug)
 source=("git+${url}")
 sha256sums=('SKIP')
 
