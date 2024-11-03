@@ -1,23 +1,27 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
-# Contributor: mrAppleXZ <mr.applexz@gmail.com> 
+# Contributor: mrAppleXZ <mr.applexz@gmail.com>
 
 pkgname=blockbench
-pkgver=4.11.1
+pkgver=4.11.2
 pkgrel=1
 pkgdesc="A low-poly 3D model editor"
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 url="https://blockbench.net/"
 license=(GPL-3.0-or-later)
-provides=(blockbench)
-conflicts=(blockbench)
-
 _electron=electron
-
-depends=("${_electron}" 'giblib' 'bash' 'imlib2' 'glibc' 'libx11')
+depends=(
+  "${_electron}"
+  'giblib'
+  'bash'
+  'imlib2'
+  'glibc'
+  'libx11'
+)
 makedepends=(git npm)
+options=(!debug)
 source=("${pkgname}::git+https://github.com/JannisX11/blockbench#tag=v${pkgver}"
         "${pkgname}.desktop")
-sha256sums=('5e292936e02c27a3827578486a00ace5a65742b596af48de1048a15dd05b4ea2'
+sha256sums=('5542994c559512068dc55607abbcd646fda1a936c927e507daa96ddaa53a6861'
             '2dd94f6c807fac6e83fc2176098390100f3c227285671804a855a092c0a2a2e7')
 
 prepare() {
@@ -29,7 +33,7 @@ build() {
   cd "${srcdir}/${pkgname}"
   _electronDist=/usr/lib/${_electron}
   _electronVersion=$(cat ${_electronDist}/version)
-  npm run dist -- --linux --x64 --dir -c.electronDist=${_electronDist} -c.electronVersion=${_electronVersion}
+  npm run dist -- --linux --x64 --dir -c.electronDist=${_electronDist} -c.electronVersion="${_electronVersion}"
 }
 
 package() {
