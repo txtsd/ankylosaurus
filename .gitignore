@@ -1,5 +1,5 @@
-src
-pkg
-blockbench
-
-*.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
