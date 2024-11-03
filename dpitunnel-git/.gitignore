@@ -1,6 +1,5 @@
-pkg/
-src/
-DPITunnel/
-cpp-httplib/
-
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
