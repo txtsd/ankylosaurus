@@ -4,7 +4,7 @@
 pkgname=skia-sharp-atl
 _pkgname=${pkgname%%-atl}
 pkgver=r67245.ced64f6f90
-pkgrel=1
+pkgrel=2
 _major=99
 _minor=9
 _release=0
@@ -74,7 +74,7 @@ source=(
   "https://github.com/google/highway/archive/${_commit_highway}/highway-${_commit_highway}.tar.gz"
   "https://github.com/ocornut/imgui/archive/${_commit_imgui}/imgui-${_commit_imgui}.tar.gz"
   "https://github.com/AOMediaCodec/libavif/archive/${_commit_libavif}/libavif-${_commit_libavif}.tar.gz"
-  "libgav1-${_commit_libgav1}.tar.gz::https://chromium.googlesource.com/codecs/libgav1.git/+archive/${_commit_libgav}1.tar.gz"
+  "libgav1-${_commit_libgav1}.tar.gz::https://chromium.googlesource.com/codecs/libgav1.git/+archive/${_commit_libgav1}.tar.gz"
   "https://gitlab.com/wg1/jpeg-xl/-/archive/${_commit_jpeg_xl}/libjxl-${_commit_jpeg_xl}.tar.gz"
   "libyuv-${_commit_libyuv}.tar.gz::https://chromium.googlesource.com/libyuv/libyuv.git/+archive/${_commit_libyuv}.tar.gz"
   "microhttpd-${_commit_libmicrohttpd}.tar.gz::https://android.googlesource.com/platform/external/libmicrohttpd.git/+archive/${_commit_libmicrohttpd}.tar.gz"
@@ -96,7 +96,7 @@ source=(
 )
 noextract=(
   "dng_sdk-${_commit_dng_sdk}.tar.gz"
-  "libgav1-${_commit_libgav}1.tar.gz"
+  "libgav1-${_commit_libgav1}.tar.gz"
   "libyuv-${_commit_libyuv}.tar.gz"
   "microhttpd-${_commit_libmicrohttpd}.tar.gz"
   "perfetto-${_commit_perfetto}.tar.gz"
@@ -108,21 +108,21 @@ noextract=(
 sha256sums=('5312c10171306082da9de117188ff1c20f313b6a66a2991a398e2a5e38c49311'
             '0e8eea905081ce894d1616970a83b21265a13505ce06e8aa6a747fd686938d10'
             'da7d9db9bbebc504fdedf73c615f55c50c014095c65eb422d2ced86bc855a92b'
-            '658d0b58417cd8415160bf459846608197af90bedfc60a6c3b592ba8d6f38703'
+            '52896432e1cf5f11756185d43d003c9cafbd726dfbc155162b6757f03063861a'
             'b4f7710b158d2d9eaa7a35114613cc02f6325fd7bda82be08154720af0f48727'
             '4aa527b67ae477b4b1ea7664fa75a882be3d4e6ca60fae4c93d6feb61739986a'
             '684f95bd9600f97f677699320bfd77e5e33397209a74525080b8a4156b71a9fb'
             '4b432c3566e4ea1e252ec6632e1f1c1968d670c3f22a31ed8bc48b5a4508f29d'
-            '367b6bb63fdfd5db1a8341baa7d24a1f4c675f8b747386cbd84f0851b3da0db4'
+            '9aa319bf2098bfdc77a3ed90b93413aa64eadffd56f8739337ebe21d482b18a5'
             '0125fc24e2bb98f6fbd0ba364131d816c06955640b07ffe7f3a7cd26d73e1694'
-            'e020b40a15aaf119c6717eab2c4041c4308fc07f1a833f8f560f37ceaf0794db'
-            'aa2ffeacb1e6786d115ee73e3f7fe4b9fad15e3325e3068c79f6fe42d845becf'
+            '9f7d2030bec8c6d81596ccc421b6f9f56d349f1d2137dd790f387b06cc8351fd'
+            '6553bc3b31011efe3e1bbf8a28e882c129de39e3600cb8c6c2dd29a6b65c5db9'
             '5754de6ecd93f2afa9b9c25464806487fe037085c9fb65fb52d6a8f2a3a32831'
             'a8f0082af2720682a0cafddeaf88292308d17c09a80d7ba016c52ca027e73b63'
-            'e9bee7b597c021786d717d2fd221f41a2cd61bed9d84fc96e78fefa9c5162cf0'
-            'a499a8aa73f526818dc57d6dc9fdaa778922b00a59abd9cab00ab4c45faba81d'
+            '7cdfcbfe8c16004442a7a787c0a762cd70ed99b5089a6ca3c70faeef3fe99639'
+            '21610181406547fc87584828d3727348df2f4af9cd4b349fed450b9d844e6793'
             '17fc50d4c356b8513d2fbcb5809d6e7a2cacbe404db11cdf4ba10a396668dbde'
-            '4f2fae2c44d65ecf2de0bc7298017822c0e5635652f8aa17ead7cbf60780d71f'
+            'f694dbcbdb345d620bf26ad9177d8ce42cb913fe81de5d12d1c42f49b544801b'
             '15250ad527b850d8494c078509ac91d8bf829f3952f745fb72b5b226280aa9e7'
             '607e416d19ffab113fae2b4989f05ec6cb89809290525c02beb3a912ecfb7ed2'
             '0ba10742a1d2936758de98459447256c7ceb547b3b64ad96738fbcb26bc2cbf2'
@@ -130,8 +130,8 @@ sha256sums=('5312c10171306082da9de117188ff1c20f313b6a66a2991a398e2a5e38c49311'
             'c1fac868ca8542c2da41da092e6980d3447aac6d99b672e4ff7ef09ca606a09f'
             'ee947d584f8e2799c0036de4b0a1cd13fad0c8f4a663f9f8dc44418c0ac1ebb9'
             'fdd604d71af37bd81c2dc5f65c8e114c18814562fdef7c71bdd2837e81350d6f'
-            'bf8ea190921543974b4ebcf3fe446b27ab618376ef1282916341a9bfbbd78f0d'
-            '2e4562739a9ae285c22778425a87d08db41f8e374a74377ac42dc954fdd9302d')
+            'c65b04c7caf4469987bc1f390f007fb625fc6d5aea6bb66ef484c683891488c6'
+            'b8e8481c86c628a5176678b7cd722721b5b21bd71c743676d008805bacad1c4a')
 
 case "${CARCH}" in
   x86_64) _arch=x64 ;;
