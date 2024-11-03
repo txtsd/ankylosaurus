@@ -3,7 +3,7 @@
 pkgname=android_translation_layer
 _pkgname=${pkgname//-/_}
 pkgver=r651.e541d87f
-pkgrel=1
+pkgrel=2
 _commit=e541d87fc255160ca0559015db0cc57042246fff
 pkgdesc='A translation layer for running Android apps on a Linux system'
 url='https://gitlab.com/android_translation_layer/android_translation_layer'
@@ -20,7 +20,6 @@ depends=(
   glibc
   graphene
   gtk4
-  java-runtime
   libglvnd
   libgudev
   libopensles-standalone
@@ -64,5 +63,6 @@ check() {
 }
 
 package() {
+  depends+=(java-runtime)
   meson install --no-rebuild -C build --destdir "${pkgdir}"
 }
