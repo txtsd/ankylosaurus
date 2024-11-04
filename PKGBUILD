@@ -3,7 +3,7 @@
 
 pkgname=lxqt_wallet
 _pkgname=${pkgname//_/-}
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='Secure information storage for LXQt'
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
   'glib2'
   'glibc'
   'libgcrypt'
+  'libglvnd'
   'qt6-base'
 )
 makedepends=(
@@ -26,8 +27,9 @@ optdepends=(
   'libsecret: support for Gnome libsecret password storage'
   'kwallet: support for KDE wallet storage'
 )
+options=(!debug)
 source=("https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('d323d25e7ea4d1ea6a4553e4e8e340766d9ec9975ffd34a975b9b33803cef124')
+sha256sums=('3dbfc24555e88f6dd8aa79c2bf22e455f82d6a332e95418b08788d7adc226e50')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
