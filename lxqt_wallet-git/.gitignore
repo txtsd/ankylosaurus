@@ -1,5 +1,5 @@
-pkg/
-src/
-lxqt_wallet/
-
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
