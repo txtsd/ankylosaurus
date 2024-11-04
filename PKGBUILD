@@ -4,7 +4,7 @@
 
 pkgname=lxqt_wallet-git
 _pkgname=${pkgname%%-git}
-pkgver=4.0.0.r0.gd685689
+pkgver=4.0.2.r0.gda39cb3
 pkgrel=1
 pkgdesc='Secure information storage for LXQt'
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
   'glib2'
   'glibc'
   'libgcrypt'
+  'libglvnd'
   'qt6-base'
 )
 makedepends=(
@@ -30,7 +31,8 @@ optdepends=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/lxqt/${_pkgname}.git")
+options=(!debug)
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
