@@ -1,3 +1,6 @@
 [python-selenium]
-source = "pypi"
-pypi = "selenium"
+source = "git"
+git = "https://github.com/SeleniumHQ/selenium.git"
+include_regex = "selenium-\\d+\\.\\d+\\.\\d+-python"
+from_pattern = "selenium-(\\d+\\.\\d+\\.\\d+)-python"
+to_pattern = "\\1"

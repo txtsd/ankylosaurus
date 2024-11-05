@@ -3,4 +3,4 @@
 !.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
-!fix-selenium-manager-build.patch
+!0001-fix-selenium-manager-build.patch
