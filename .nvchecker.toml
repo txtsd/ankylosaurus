@@ -1,0 +1,3 @@
+[tile38-bin]
+source = "git"
+git = "https://github.com/tidwall/tile38.git"
