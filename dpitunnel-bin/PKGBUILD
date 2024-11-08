@@ -1,12 +1,12 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=dpitunnel-bin
-_pkgname=${pkgname%%-bin}
+_pkgname="${pkgname%-bin}"
 __pkgname=DPITunnel
 pkgver=1.0.3
 pkgrel=1
 pkgdesc='Free, simple and serverless solution against censorship for Linux PCs and routers'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=(x86_64 i686 armv7h aarch64)
 url='https://github.com/txtsd/DPITunnel'
 license=('GPL-3.0-or-later')
 provides=("${_pkgname}")
