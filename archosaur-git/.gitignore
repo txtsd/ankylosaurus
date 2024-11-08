@@ -1,5 +1,5 @@
-pkg/
-src/
-archosaur/
-
-*.pkg.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
