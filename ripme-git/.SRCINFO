@@ -1,13 +1,14 @@
 pkgbase = ripme-git
 	pkgdesc = Downloads albums in bulk
-	pkgver = 2.1.11.r2.g31c71f44
+	pkgver = 2.1.11.r15.g5d7897d2
 	pkgrel = 1
 	url = https://github.com/ripmeapp2/ripme
 	arch = any
 	license = MIT
+	makedepends = java-environment>=17
 	makedepends = git
 	makedepends = gradle
-	makedepends = java-environment>=17
+	depends = bash
 	depends = java-runtime>=17
 	provides = ripme
 	conflicts = ripme

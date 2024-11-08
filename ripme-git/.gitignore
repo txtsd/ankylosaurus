@@ -1,5 +1,5 @@
-src/
-pkg/
-ripme/
-
-*.pkg.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
