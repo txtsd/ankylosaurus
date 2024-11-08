@@ -2,49 +2,66 @@
 
 pkgname=opennox
 pkgver=1.9.0_alpha13
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern implementation of the Nox game engine'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/noxworld-dev/opennox'
 license=('GPL-3.0-or-later')
 depends=(
-  'lib32-sdl2'
-  'lib32-libglvnd'
-  'lib32-glibc'
-  'lib32-openal'
-  'hicolor-icon-theme'
+  hicolor-icon-theme
+  lib32-glibc
+  lib32-libglvnd
+  lib32-openal
+  lib32-sdl2
 )
 makedepends=(
-  'git'
-  'go'
-  'gcc-multilib'
-  'lib32-sdl_image'
+  gcc-multilib
+  git
+  go
+  lib32-sdl_image
 )
-options=(!debug)
 source=(
   "git+${url}#tag=v${pkgver//_/-}"
-  "explicit_type_cast.patch"
+  explicit_type_cast.patch
 )
 sha256sums=('5b7ff814c4ac78fabb49f2160d710712fbe0c48c1b4371602a88239b60926bb3'
             'bdd8b37ef814a44c890e4992dfcc1d5bf5731080df87553537041ae1484adf8a')
 
 prepare() {
   cd "${pkgname}"
+
   patch -Np1 -i "${srcdir}/explicit_type_cast.patch"
+
+  cd src
+
+  export GOPATH="${srcdir}"
+  go mod download
 }
 
 build() {
   cd "${pkgname}/src"
-  # https://wiki.archlinux.org/index.php/Go_package_guidelines
+
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   # Fails to build without this
   export CGO_CFLAGS+=" -Wno-format-security"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOPATH="${srcdir}/go"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go run ./internal/noxbuild -o build
+  export GOPATH="${srcdir}"
+  export GOFLAGS="\
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -trimpath \
+  "
+  local _ld_flags=" \
+    -compressdwarf=false \
+    -linkmode=external \
+  "
+  go run \
+    -ldflags "${_ldflags}" \
+    ./internal/noxbuild \
+    -o build
 }
 
 package() {
@@ -59,4 +76,3 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}/res/${pkgname}_256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${fqpn}.png"
   install -Dm644 "${srcdir}/${pkgname}/res/${pkgname}_512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${fqpn}.png"
 }
-
