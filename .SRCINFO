@@ -1,23 +1,23 @@
 pkgbase = blockbench
 	pkgdesc = A low-poly 3D model editor
 	pkgver = 4.11.2
-	pkgrel = 1
-	url = https://blockbench.net/
+	pkgrel = 2
+	url = https://blockbench.net
 	arch = x86_64
 	arch = armv7h
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = npm
 	depends = electron
-	depends = giblib
 	depends = bash
-	depends = imlib2
+	depends = giblib
 	depends = glibc
+	depends = imlib2
 	depends = libx11
 	options = !debug
 	source = blockbench::git+https://github.com/JannisX11/blockbench#tag=v4.11.2
 	source = blockbench.desktop
 	sha256sums = 5542994c559512068dc55607abbcd646fda1a936c927e507daa96ddaa53a6861
-	sha256sums = 2dd94f6c807fac6e83fc2176098390100f3c227285671804a855a092c0a2a2e7
+	sha256sums = 5a64727fcf696b3497190d441556322b4d0ffb70f560ba8eba6ef79ac5c36e8c
 
 pkgname = blockbench
