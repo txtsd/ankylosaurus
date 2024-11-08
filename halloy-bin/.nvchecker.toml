@@ -1,5 +1,4 @@
 [halloy-bin]
-source = "github"
-github = "squidowl/halloy"
+source = "git"
+git = "https://github.com/squidowl/halloy.git"
 include_regex = "\\d+\\.\\d+"
-use_max_tag = true
