@@ -1,6 +1,6 @@
-pkg
-src
-
-*.AppImage
-*.asc
-*.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!LICENSE
