@@ -1,5 +1,5 @@
-src/
-pkg/
-dissent/
-
-*.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
