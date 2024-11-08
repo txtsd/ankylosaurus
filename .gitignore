@@ -1,5 +1,7 @@
-pkg/
-src/
-SpoofDPI/
-
-*.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!spoofdpi.conf.d
+!spoofdpi.service
