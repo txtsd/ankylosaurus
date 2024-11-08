@@ -1,14 +1,16 @@
 pkgbase = progress-quest-bin
-	pkgdesc = Progress Quest is an antic and fantastical computer role-playing game
+	pkgdesc = An antic and fantastical computer role-playing game
 	pkgver = 6.4.4
-	pkgrel = 3
-	url = http://progressquest.com/
-	arch = i686
-	arch = x86_64
+	pkgrel = 4
+	url = http://progressquest.com
+	arch = any
 	license = MIT
+	depends = bash
 	depends = wine
 	provides = progress-quest
 	source = http://www.progressquest.com/dl/pq6-4-4.zip
+	source = http://progressquest.com/license.txt
 	sha256sums = 0c6982f6e9a4270968dfdec2874dc642957bddbdd55f4517fa013692ffe8e67e
+	sha256sums = cf01e19a835f40f72bc413eb0c668ff84e4d80c27eb65b6df8e28c30717b4f37
 
 pkgname = progress-quest-bin
