@@ -1,5 +1,6 @@
-pkg
-src
-
-*.deb
-*.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!illarion.desktop
