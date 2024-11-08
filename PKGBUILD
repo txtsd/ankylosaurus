@@ -2,23 +2,21 @@
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgbase=espanso-git
-pkgname=(
-  espanso-x11-git
-  espanso-wayland-git
-)
-_pkgbase=${pkgbase%-git}
+pkgname=(espanso-x11-git espanso-wayland-git)
+_pkgbase="${pkgbase%-git}"
 _branch=dev
-pkgver=2.2.0.r64.gd99e5d9
-pkgrel=4
-pkgdesc="Cross-platform Text Expander written in Rust"
+pkgver=2.2.2.r0.g42a6c95a
+pkgrel=1
+pkgdesc='Cross-platform Text Expander written in Rust'
 arch=(x86_64)
-url="https://github.com/espanso/espanso"
+url='https://espanso.org'
 license=('GPL-3.0-or-later')
 makedepends=(
   bzip2
   cargo
   dbus
   gcc-libs
+  git
   glibc
   libx11
   libxcb
@@ -30,9 +28,8 @@ makedepends=(
   wxwidgets-gtk3
   xclip
   xdotool
-  git
 )
-source=("git+${url}.git#branch=${_branch}")
+source=("git+https://github.com/espanso/espanso.git#branch=${_branch}")
 sha256sums=('SKIP')
 options=(!lto)
 
@@ -53,9 +50,9 @@ prepare() {
 }
 
 pkgver() {
-    cd "${_pkgbase}"
+  cd "${_pkgbase}"
 
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -102,9 +99,8 @@ package_espanso-x11-git() {
     xclip
     xdotool
   )
-  provides=(espanso)
-  conflicts=(espanso)
-  replaces=(espanso)
+  provides=("${_pkgbase}")
+  conflicts=("${_pkgbase}")
 
   cd "${_pkgbase}"
 
@@ -129,8 +125,8 @@ package_espanso-wayland-git() {
     wxwidgets-common
     wxwidgets-gtk3
   )
-  provides=(espanso)
-  conflicts=(espanso)
+  provides=("${_pkgbase}")
+  conflicts=("${_pkgbase}")
   install=espanso-wayland.install
 
   cd "${_pkgbase}"
@@ -139,6 +135,5 @@ package_espanso-wayland-git() {
   install -Dm644 -t "${pkgdir}/usr/lib/systemd/user" espanso.service
   install -Dm644 -t "${pkgdir}/usr/share/applications" espanso.desktop
   install -Dm644 -t "${pkgdir}/usr/share/doc/espanso" ./*.md
-  install -Dm644 espanso/src/res/linux/icon.png \
-    "${pkgdir}/usr/share/pixmaps/espanso.png"
+  install -Dm644 espanso/src/res/linux/icon.png "${pkgdir}/usr/share/pixmaps/espanso.png"
 }
