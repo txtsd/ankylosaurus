@@ -1,5 +1,4 @@
 [dpitunnel]
-source = "github"
-github = "txtsd/DPITunnel"
+source = "git"
+git = "https://github.com/txtsd/DPITunnel.git"
 include_regex = "\\d+\\.\\d+\\.\\d+"
-use_max_tag = true
