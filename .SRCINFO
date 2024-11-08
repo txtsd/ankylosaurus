@@ -9,8 +9,7 @@ pkgbase = linux-command-gpt
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	conflicts = linux-command-gpt-git
 	source = git+https://github.com/asrul10/linux-command-gpt#tag=v0.2.1
-	sha256sums = SKIP
+	sha256sums = b82ab79c3536c160bf4563c4df87f21acf5a312aa38bf3cf329636a63f2c7977
 
 pkgname = linux-command-gpt
