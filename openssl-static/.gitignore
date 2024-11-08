@@ -1,6 +1,6 @@
-pkg/
-src/
-
-*.tar.zst
-*.tar.gz
-*.tar.gz.asc
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!ca-dir.patch
