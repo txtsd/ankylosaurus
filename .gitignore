@@ -1,4 +1,5 @@
-pkg/
-src/
-vimv-git/
-*.tar.xz
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
