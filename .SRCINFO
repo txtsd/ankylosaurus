@@ -1,9 +1,9 @@
 pkgbase = java-openjdk-wakefield
-	pkgver = 21.0.1.0.r230.ge515e80
+	pkgver = 21.0.1.0.r274.g9758078
 	pkgrel = 1
 	url = https://openjdk.org/projects/wakefield/
 	arch = x86_64
-	license = LicenseRef-Java
+	license = GPL-2.0-or-later
 	makedepends = java-environment=21
 	makedepends = cpio
 	makedepends = unzip
@@ -19,37 +19,30 @@ pkgbase = java-openjdk-wakefield
 	makedepends = alsa-lib
 	makedepends = pandoc
 	makedepends = graphviz
-	makedepends = libfreetype.so
-	makedepends = libjpeg.so
-	makedepends = libgif.so
+	makedepends = freetype2
+	makedepends = libjpeg-turbo
+	makedepends = giflib
 	makedepends = libpng
-	makedepends = liblcms2.so
+	makedepends = lcms2
 	makedepends = libnet
 	makedepends = bash
-	makedepends = libharfbuzz.so
+	makedepends = harfbuzz
 	makedepends = gcc-libs
 	makedepends = glibc
 	makedepends = git
-	makedepends = jdk21-openjdk
 	makedepends = wayland
 	optdepends = gvfs: open links e.g. hyperlinks
 	source = git+https://github.com/openjdk/wakefield.git#branch=jdk21.0.1-wayland
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	source = install_jdk-openjdk.sh
-	source = install_jre-openjdk-headless.sh
-	source = install_jre-openjdk.sh
 	sha256sums = SKIP
 	sha256sums = 72111743ab6ab36854b0c85a504172983715d0798fce10bc4e35689b7d15fd93
 	sha256sums = 8ecdf5c1605bafa58b3f7da615e6d8d3d943e3a2d3831930d6efa7815aacce07
 	sha256sums = 50fc0d677489b73d549df2f08d759d5f057f200adbbab83ea5e87456152ee03e
-	sha256sums = 372ec6c61e53d5f52bd805ef4a7223ea39b6d55b8465ee41aa5b51f29a1394ba
-	sha256sums = e0815cc98f30d7ec1e9eb53b66794a87837de55cb47b5b0f5b857830937eda3e
-	sha256sums = 67cf0aed52028c8f2264b3e20c890d97b4c106d63ca23ba8ed262ea8ac638a95
 
 pkgname = jre-openjdk-wakefield-headless
-	pkgdesc = OpenJDK Java 21 headless wayland runtime environment
+	pkgdesc = OpenJDK Java 21 wayland headless runtime environment
 	install = install_jre-openjdk-headless.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -66,14 +59,10 @@ pkgname = jre-openjdk-wakefield-headless
 	depends = glibc
 	depends = gcc-libs
 	depends = wayland
-	depends = giflib
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.1.0.r230.ge515e80-1
-	provides = jre21-openjdk-wakefield-headless=21.0.1.0.r230.ge515e80-1
-	conflicts = jdk-openjdk
-	conflicts = jre-openjdk
+	provides = jre21-openjdk-wakefield-headless=21.0.1.0.r274.g9758078-1
 	conflicts = jdk-openjdk-wakefield
 	conflicts = jre-openjdk-wakefield
 	backup = etc/java-openjdk-wakefield/logging.properties
@@ -92,7 +81,7 @@ pkgname = jre-openjdk-wakefield-headless
 	backup = etc/java-openjdk-wakefield/sound.properties
 
 pkgname = jre-openjdk-wakefield
-	pkgdesc = OpenJDK Java 21 full wayland runtime environment
+	pkgdesc = OpenJDK Java 21 wayland full runtime environment
 	install = install_jre-openjdk.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -116,14 +105,11 @@ pkgname = jre-openjdk-wakefield
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.1.0.r230.ge515e80-1
+	provides = jre21-openjdk-wakefield=21.0.1.0.r274.g9758078-1
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.1.0.r230.ge515e80-1
-	provides = jre21-openjdk-wakefield=21.0.1.0.r230.ge515e80-1
-	conflicts = jdk-openjdk
+	provides = jre21-openjdk-wakefield-headless=21.0.1.0.r274.g9758078-1
 	conflicts = jdk-openjdk-wakefield
-	conflicts = jre-openjdk-headless
 	conflicts = jre-openjdk-wakefield-headless
 	backup = etc/java-openjdk-wakefield/logging.properties
 	backup = etc/java-openjdk-wakefield/management/jmxremote.access
@@ -179,17 +165,14 @@ pkgname = jdk-openjdk-wakefield
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=21
 	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.0.1.0.r230.ge515e80-1
+	provides = jdk21-openjdk-wakefield=21.0.1.0.r274.g9758078-1
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.1.0.r230.ge515e80-1
+	provides = jre21-openjdk-wakefield=21.0.1.0.r274.g9758078-1
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.1.0.r230.ge515e80-1
-	provides = jdk21-openjdk-wakefield=21.0.1.0.r230.ge515e80-1
-	conflicts = jre-openjdk
+	provides = jre21-openjdk-wakefield-headless=21.0.1.0.r274.g9758078-1
 	conflicts = jre-openjdk-wakefield
-	conflicts = jre-openjdk-headless
 	conflicts = jre-openjdk-wakefield-headless
 	backup = etc/java-openjdk-wakefield/logging.properties
 	backup = etc/java-openjdk-wakefield/management/jmxremote.access
@@ -209,11 +192,11 @@ pkgname = jdk-openjdk-wakefield
 pkgname = openjdk-wakefield-src
 	pkgdesc = OpenJDK Java 21 wayland sources
 	arch = any
-	depends = jdk21-openjdk-wakefield=21.0.1.0.r230.ge515e80-1
-	provides = openjdk21-src=21.0.1.0.r230.ge515e80-1
+	depends = jdk21-openjdk-wakefield=21.0.1.0.r274.g9758078-1
+	provides = openjdk21-src=21.0.1.0.r274.g9758078-1
 
 pkgname = openjdk-wakefield-doc
 	pkgdesc = OpenJDK Java 21 wayland documentation
 	arch = any
-	depends = jdk21-openjdk-wakefield=21.0.1.0.r230.ge515e80-1
-	provides = openjdk21-doc=21.0.1.0.r230.ge515e80-1
+	depends = jdk21-openjdk-wakefield=21.0.1.0.r274.g9758078-1
+	provides = openjdk21-doc=21.0.1.0.r274.g9758078-1

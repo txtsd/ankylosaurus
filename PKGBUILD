@@ -12,43 +12,34 @@ _majorver=21
 _minorver=0
 _securityver=1
 _updatever=0
-pkgver=21.0.1.0.r230.ge515e80
+pkgver=21.0.1.0.r274.g9758078
 pkgrel=1
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.org/projects/wakefield/'
-license=('LicenseRef-Java')
+license=('GPL-2.0-or-later')
 makedepends=('java-environment=21' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
-             'graphviz' 'libfreetype.so' 'libjpeg.so' 'libgif.so' 'libpng' 'liblcms2.so'
-             'libnet' 'bash' 'libharfbuzz.so' 'gcc-libs' 'glibc' 'git' 'jdk21-openjdk'
-             'wayland')
+             'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
+             'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'git' 'wayland')
 optdepends=('gvfs: open links e.g. hyperlinks')
 source=("git+https://github.com/openjdk/wakefield.git#branch=jdk21.0.1-wayland"
-        "freedesktop-java.desktop"
-        "freedesktop-jconsole.desktop"
-        "freedesktop-jshell.desktop"
-        "install_jdk-openjdk.sh"
-        "install_jre-openjdk-headless.sh"
-        "install_jre-openjdk.sh")
+        freedesktop-java.desktop
+        freedesktop-jconsole.desktop
+        freedesktop-jshell.desktop)
 sha256sums=('SKIP'
             '72111743ab6ab36854b0c85a504172983715d0798fce10bc4e35689b7d15fd93'
             '8ecdf5c1605bafa58b3f7da615e6d8d3d943e3a2d3831930d6efa7815aacce07'
-            '50fc0d677489b73d549df2f08d759d5f057f200adbbab83ea5e87456152ee03e'
-            '372ec6c61e53d5f52bd805ef4a7223ea39b6d55b8465ee41aa5b51f29a1394ba'
-            'e0815cc98f30d7ec1e9eb53b66794a87837de55cb47b5b0f5b857830937eda3e'
-            '67cf0aed52028c8f2264b3e20c890d97b4c106d63ca23ba8ed262ea8ac638a95')
+            '50fc0d677489b73d549df2f08d759d5f057f200adbbab83ea5e87456152ee03e')
 
 case "${CARCH}" in
-  x86_64) _JARCH='x86_64';;
-  i686)   _JARCH='x86';;
+  x86_64) _JARCH='x86_64' ;;
+  i686)   _JARCH='x86' ;;
 esac
 
-_jvmdir=/usr/lib/jvm/java-${_majorver}-openjdk
-_jdkdir=jdk${_majorver}u-${_git_tag//+/-}
+_jvmdir=/usr/lib/jvm/java-${_majorver}-openjdk-wakefield
 _jdkdir=wakefield
 _imgdir=${_jdkdir}/build/linux-${_JARCH}-server-release/images
-
 
 _nonheadless=(lib/libawt_xawt.so
               lib/libjawt.so
@@ -149,12 +140,11 @@ check() {
 }
 
 package_jre-openjdk-wakefield-headless() {
-  pkgdesc="OpenJDK Java ${_majorver} headless wayland runtime environment"
-  depends=("${_commondeps[@]}" 'giflib')
+  pkgdesc="OpenJDK Java ${_majorver} wayland headless runtime environment"
+  depends=("${_commondeps[@]}")
   optdepends=('java-rhino: for some JavaScript support')
-  provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
-            "jre${_majorver}-openjdk-wakefield-headless=${pkgver}-${pkgrel}")
-  conflicts=("jdk-openjdk" "jre-openjdk" "jdk-openjdk-wakefield" "jre-openjdk-wakefield")
+  provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-wakefield-headless=${pkgver}-${pkgrel}")
+  conflicts=("jdk-openjdk-wakefield" "jre-openjdk-wakefield")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template
@@ -197,7 +187,7 @@ package_jre-openjdk-wakefield-headless() {
   for f in bin/*; do
     f=$(basename "${f}")
     _man=../jdk/man/man1/"${f}.1"
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk${_majorver}.1"
+    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk-wakefield${_majorver}.1"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 
@@ -207,14 +197,13 @@ package_jre-openjdk-wakefield-headless() {
 }
 
 package_jre-openjdk-wakefield() {
-  pkgdesc="OpenJDK Java ${_majorver} full wayland runtime environment"
+  pkgdesc="OpenJDK Java ${_majorver} wayland full runtime environment"
   depends=("${_commondeps[@]}" 'giflib' 'libgif.so' 'libpng')
   optdepends=('alsa-lib: for basic sound support'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
-  provides=("java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
-            "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
-            "jre${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}")
-  conflicts=("jdk-openjdk" "jdk-openjdk-wakefield" "jre-openjdk-headless" "jre-openjdk-wakefield-headless")
+  provides=("java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}"
+            "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-wakefield-headless=${pkgver}-${pkgrel}")
+  conflicts=("jdk-openjdk-wakefield" "jre-openjdk-wakefield-headless")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template
@@ -257,7 +246,7 @@ package_jre-openjdk-wakefield() {
   for f in bin/*; do
     f=$(basename "${f}")
     _man=../jdk/man/man1/"${f}.1"
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk${_majorver}.1"
+    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk-wakefield${_majorver}.1"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 
@@ -283,11 +272,10 @@ package_jdk-openjdk-wakefield() {
   optdepends=('java-rhino: for some JavaScript support'
               'alsa-lib: for basic sound support'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
-  provides=("java-environment=${_majorver}" "java-environment-openjdk=${_majorver}" "jdk${_majorver}-openjdk=${pkgver}-${pkgrel}"
-            "java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
-            "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
-            "jdk${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}")
-  conflicts=("jre-openjdk" "jre-openjdk-wakefield" "jre-openjdk-headless" "jre-openjdk-wakefield-headless")
+  provides=("java-environment=${_majorver}" "java-environment-openjdk=${_majorver}" "jdk${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}"
+            "java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}"
+            "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-wakefield-headless=${pkgver}-${pkgrel}")
+  conflicts=("jre-openjdk-wakefield" "jre-openjdk-wakefield-headless")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template
@@ -308,8 +296,7 @@ package_jdk-openjdk-wakefield() {
 
   install -dm 755 "${pkgdir}${_jvmdir}"
 
-  cp -a bin demo include jmods lib release\
-    "${pkgdir}${_jvmdir}"
+  cp -a bin demo include jmods lib release "${pkgdir}${_jvmdir}"
 
   rm "${pkgdir}${_jvmdir}/lib/src.zip"
 
@@ -328,7 +315,7 @@ package_jdk-openjdk-wakefield() {
   for f in bin/*; do
     f=$(basename "${f}")
     _man=../jdk/man/man1/"${f}.1"
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk${_majorver}.1"
+    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk-wakefield${_majorver}.1"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 
@@ -379,4 +366,3 @@ package_openjdk-wakefield-doc() {
 }
 
 # vim: ts=2 sw=2 et:
-
