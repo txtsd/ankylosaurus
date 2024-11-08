@@ -1,19 +1,19 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=opennox-bin
-_pkgname=${pkgname%%-bin}
+_pkgname="${pkgname%-bin}"
 pkgver=1.9.0_alpha13
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern implementation of the Nox game engine'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/noxworld-dev/opennox'
 license=('GPL-3.0-or-later')
 depends=(
-  'lib32-sdl2'
-  'lib32-libglvnd'
-  'lib32-glibc'
-  'lib32-openal'
-  'hicolor-icon-theme'
+  lib32-sdl2
+  lib32-libglvnd
+  lib32-glibc
+  lib32-openal
+  hicolor-icon-theme
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -45,4 +45,3 @@ package() {
   install -Dm644 "${_pkgname}_256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${fqpn}.png"
   install -Dm644 "${_pkgname}_512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${fqpn}.png"
 }
-
