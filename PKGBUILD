@@ -1,22 +1,22 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=libopensles-standalone-git
-_pkgname=${pkgname%%-git}
+_pkgname="${pkgname%-git}"
 pkgver=r280.605a83f
 pkgrel=1
 pkgdesc="A lightly patched version of Google's libOpenSLES implementation"
 url='https://gitlab.com/android_translation_layer/libopensles-standalone'
-arch=('x86_64' 'aarch64' 'armv7h')
-license=("LicenseRef-Unknown")
+arch=(x86_64 aarch64 armv7h)
+license=('Apache-2.0')
 depends=(
-	libsndfile
-	sdl2
   glibc
+  libsndfile
+  sdl2
 )
 makedepends=(
   git
-	meson
-	jdk8-openjdk
+  jdk8-openjdk
+  meson
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -29,19 +29,18 @@ pkgver() {
 }
 
 prepare() {
-  meson subprojects download --sourcedir=${_pkgname}
+  meson subprojects download --sourcedir="${_pkgname}"
 }
 
 build() {
-  arch-meson ${_pkgname} build
-	meson compile -C build
+  arch-meson "${_pkgname}" build
+  meson compile -C build
 }
 
 check() {
-	meson test --no-rebuild --print-errorlogs -C build
+  meson test --no-rebuild --print-errorlogs -C build
 }
 
 package() {
-	meson install --no-rebuild -C build --destdir "${pkgdir}"
+  meson install --no-rebuild -C build --destdir "${pkgdir}"
 }
-
