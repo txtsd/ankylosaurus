@@ -1,4 +1,6 @@
-pkg
-src
-
-*.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!openssh-askpass.install
