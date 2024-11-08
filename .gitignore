@@ -1,6 +1,5 @@
-pkg/
-src/
-linux-command-gpt/
-
-*.pkg.*
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
