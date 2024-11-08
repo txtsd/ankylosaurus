@@ -1,5 +1,6 @@
-pkg/
-src/
-opennox/
-
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!explicit_type_cast.patch
