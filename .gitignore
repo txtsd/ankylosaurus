@@ -1,5 +1,5 @@
-pkg
-src
-stevenarella
-
-*.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
