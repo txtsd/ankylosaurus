@@ -10,11 +10,10 @@ pkgbase = bionic_translation
 	makedepends = elfutils
 	makedepends = mesa
 	makedepends = meson
-	depends = libbsd
-	depends = libunwind
-	depends = libglvnd
 	depends = glibc
-	options = !strip
+	depends = libbsd
+	depends = libglvnd
+	depends = libunwind
 	source = bionic_translation-e502e9273c5fb600751f53a1d843ad38c910b2d8::https://gitlab.com/android_translation_layer/bionic_translation/-/archive/e502e9273c5fb600751f53a1d843ad38c910b2d8/bionic_translation-e502e9273c5fb600751f53a1d843ad38c910b2d8.tar.gz
 	sha256sums = e8710740552f6e0124eb6ada8728cc81eb17fb937ec63ff51b1138ee903e3618
 
