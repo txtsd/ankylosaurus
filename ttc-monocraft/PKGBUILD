@@ -7,21 +7,9 @@ pkgdesc="A programming font based on the typeface used in Minecraft"
 arch=(any)
 url="https://github.com/IdreesInc/Monocraft"
 license=(OFL-1.1)
-makedepends=("fontforge")
-source=("Monocraft-$pkgver.tar.gz::https://github.com/IdreesInc/Monocraft/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a07fcb958aa6cf504d61eca8ab7b8641acb2844f11c9914fa3f5ead7d27c2b19')
-
-
-build() {
-    cd "Monocraft-$pkgver/src"
-
-    python monocraft.py --all --output-ttc
-}
+source=("${pkgname}-${pkgver}.ttc::https://github.com/IdreesInc/Monocraft/releases/download/v${pkgver}/Monocraft.ttc")
+sha256sums=('481ce5fd7d8f40eab5718e1d96a3bcf410f00ab3fefcb63067d5f6e29d8b0c2b')
 
 package() {
-    cd "Monocraft-$pkgver"
-
-    install -Dm644 "dist/Monocraft-no-ligatures.ttc" "$pkgdir/usr/share/fonts/TTF/Monocraft-no-ligatures.ttc"
-    install -Dm644 "dist/Monocraft.ttc" "$pkgdir/usr/share/fonts/TTF/Monocraft.ttc"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "${pkgname}-${pkgver}.ttc" "${pkgdir}/usr/share/fonts/${pkgname#ttc-}/Monocraft.ttc"
 }
