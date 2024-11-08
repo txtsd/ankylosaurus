@@ -7,14 +7,12 @@ pkgbase = libopensles-standalone
 	arch = aarch64
 	arch = armv7h
 	license = Apache-2.0
-	makedepends = meson
 	makedepends = jdk8-openjdk
+	makedepends = meson
+	depends = glibc
 	depends = libsndfile
 	depends = sdl2
-	depends = glibc
-	options = !strip
-	options = !debug
-	source = libopensles-standalone-605a83f47263a022427afb6e95801bd39b459b78::https://gitlab.com/android_translation_layer/libopensles-standalone/-/archive/605a83f47263a022427afb6e95801bd39b459b78/libopensles-standalone-605a83f47263a022427afb6e95801bd39b459b78.tar.gz
+	source = libopensles-standalone-605a83f47263a022427afb6e95801bd39b459b78.tar.gz::https://gitlab.com/android_translation_layer/libopensles-standalone/-/archive/605a83f47263a022427afb6e95801bd39b459b78/libopensles-standalone-605a83f47263a022427afb6e95801bd39b459b78.tar.gz
 	sha256sums = 4e928fe1caf0efb5a094f249ec95d8a5e58df7718d2112db973d309d84387b7b
 
 pkgname = libopensles-standalone
