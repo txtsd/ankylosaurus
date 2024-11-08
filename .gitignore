@@ -1,4 +1,6 @@
-pkg/
-src/
-
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!uwebsockets.pc
