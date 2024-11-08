@@ -1,7 +1,8 @@
-src/
-pkg/
-
-*.pkg.*
-*.tar.gz
-*.zip
-*.pyc
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!0001-chore-Adjust-docbook-patch-for-Arch.patch
+!trelby
+!trelby.xml
