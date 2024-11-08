@@ -1,45 +1,74 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=flaresolverr-bin
-_pkgname=flaresolverr
+_pkgname="${pkgname%-bin}"
 __pkgname=FlareSolverr
 pkgver=3.3.21
-pkgrel=2
+pkgrel=3
 pkgdesc='A proxy server to bypass Cloudflare protection'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/FlareSolverr/FlareSolverr'
 license=('MIT')
-depends=('alsa-lib' 'at-spi2-core' 'bash' 'bzip2' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'libcups' 'libdrm'
-         'libffi' 'libx11' 'libxcb' 'libxkbcommon' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxrandr'
-         'mesa' 'nspr' 'nss' 'openssl' 'pango' 'readline' 'util-linux-libs' 'xorg-server-xvfb' 'xz' 'zlib')
+depends=(
+  alsa-lib
+  at-spi2-core
+  bash
+  bzip2
+  cairo
+  dbus
+  expat
+  gcc-libs
+  glib2
+  glibc
+  libcups
+  libdrm
+  libffi
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxkbcommon
+  libxrandr
+  mesa
+  nspr
+  nss
+  openssl
+  pango
+  readline
+  util-linux-libs
+  xorg-server-xvfb
+  xz
+  zlib
+)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-options=('!strip' '!debug')
-install='flaresolverr.install'
-source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgver}/${_pkgname}_linux_x64.tar.gz"
-        "https://raw.githubusercontent.com/${__pkgname}/${__pkgname}/v${pkgver}/LICENSE"
-        "flaresolverr.service"
-        "flaresolverr.sysusers"
-        "flaresolverr.tmpfiles"
-        "flaresolverr.install")
+options=(!strip !debug)
+install=flaresolverr.install
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgver}/${_pkgname}_linux_x64.tar.gz"
+  "https://raw.githubusercontent.com/${__pkgname}/${__pkgname}/v${pkgver}/LICENSE"
+  flaresolverr.service
+  flaresolverr.sysusers
+  flaresolverr.tmpfiles
+  flaresolverr.install
+)
 sha256sums=('e6f34cfa8047561e5c11080cdb6515e71776b5c5bb4e391336972ccc7368c4d6'
             '822369fb1f97651e6d0b00128451987e0ce98adc3007dc886db68adbf891d2da'
-            'aaf9f1fd58b98583b2e5d2c9e2e0ceb31649a8d7034241833a0463861fbe00eb'
+            '98379aef64fb530a22bcd949ead5cefc66c745bc683e5cedb37be371ae25eab8'
             '62f114d4e559cf9dae22bfd90759eff697e42da5f700a52988e70e78f3048ae2'
             '4a61a6d9db1a9f4ec0812d86ef524a7f575a45f272404f0ebfc79376628feeb2'
-            'f3585f385fe8dd2d619144b8e666f1883d3501ce05d81e7c3ed4a57f0d093e85')
+            '8df556eb3a6c0d42419b21f6f1396f0e5f1222b7b4a187b7cb26ad3f5a0160b5')
 
 package() {
-    cd "${srcdir}"
-
     install -dm755 "${pkgdir}/opt/flaresolverr"
-    cp -a "${_pkgname}" "${pkgdir}/opt"
+
+    cp -dr "${_pkgname}" "${pkgdir}/opt"
     rm "${pkgdir}/opt/flaresolverr/libreadline.so.8"
 
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    install -Dm644 "flaresolverr.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-
-    install -Dm644 "flaresolverr.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
-    install -Dm644 "flaresolverr.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 flaresolverr.service "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    install -Dm644 flaresolverr.sysusers "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+    install -Dm644 flaresolverr.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 }
