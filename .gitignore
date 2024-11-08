@@ -1,5 +1,5 @@
-pkg
-src
-fast-discord-git
-
-*.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
