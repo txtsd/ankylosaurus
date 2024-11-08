@@ -1,5 +1,9 @@
-src/
-pkg/
-FlareSolverr/
-
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!flaresolverr.service
+!flaresolverr.sysusers
+!flaresolverr.tmpfiles
+!flaresolverr.install
