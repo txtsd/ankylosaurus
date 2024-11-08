@@ -1,4 +1,10 @@
-src/
-pkg/
-
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!LICENSE
+!flaresolverr.service
+!flaresolverr.sysusers
+!flaresolverr.tmpfiles
+!flaresolverr.install
