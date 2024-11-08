@@ -3,52 +3,58 @@
 pkgname=flaresolverr
 _pkgname=FlareSolverr
 pkgver=3.3.21
-pkgrel=1
+pkgrel=2
 pkgdesc='A proxy server to bypass Cloudflare protection'
-arch=('any')
+arch=(any)
 url='https://github.com/FlareSolverr/FlareSolverr'
 license=('MIT')
-depends=('chromium' 'python-bottle' 'python-waitress' 'python-selenium' 'python-func-timeout'
-         'python-pefile' 'python-requests' 'python-websockets' 'python-xvfbwrapper'
-         'python-prometheus_client' 'python' 'python-certifi')
-# checkdepends=('python-webtest')
-install='flaresolverr.install'
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-        "flaresolverr.service"
-        "flaresolverr.sysusers"
-        "flaresolverr.tmpfiles"
-        "flaresolverr.install")
+depends=(
+  chromium
+  python
+  python-bottle
+  python-certifi
+  python-func-timeout
+  python-pefile
+  python-prometheus_client
+  python-requests
+  python-selenium
+  python-waitress
+  python-websockets
+  python-xvfbwrapper
+)
+install=flaresolverr.install
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+  flaresolverr.service
+  flaresolverr.sysusers
+  flaresolverr.tmpfiles
+  flaresolverr.install
+)
 sha256sums=('79d24e60eb95525cda77e3b80b57f09aba471d24ae1234647f51a1f372ac79fc'
-            'c147d51e7fd78e5e2b4648db5d1052a36b151559bfa08aa7776bd34aa0897bd0'
+            '8f71d609bf31ec88930bf582e1fda0d894bbb4fe6b2049fdf6e98703830cc15c'
             '62f114d4e559cf9dae22bfd90759eff697e42da5f700a52988e70e78f3048ae2'
             '4a61a6d9db1a9f4ec0812d86ef524a7f575a45f272404f0ebfc79376628feeb2'
-            'f3585f385fe8dd2d619144b8e666f1883d3501ce05d81e7c3ed4a57f0d093e85')
+            '35881784db47d88cf6a3ee33e831f3655183c248282a348595bef013c7695f54')
 
+prepare() {
+  cd "${_pkgname}-${pkgver}"
 
-# check() {
-#     cd "${srcdir}/${_pkgname}-${pkgver}/src"
-#
-#     python tests.py
-#     python tests_sites.py
-# }
+  # Checks one directory above src/
+  # We don't want that
+  sed -i 's/os.pardir, //' src/utils.py
+}
 
 package() {
-    cd "${pkgdir}"
+  cd "${_pkgname}-${pkgver}"
 
-    install -dm755 "opt/${pkgname}"
+  install -dm755 "${pkgdir}/opt/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  rm LICENSE
 
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    rm "${srcdir}/${_pkgname}-${pkgver}/LICENSE"
+  cp -dr "${srcdir}/${_pkgname}-${pkgver}/src/"* "${pkgdir}/opt/${pkgname}"
+  cp package.json "${pkgdir}/opt/${pkgname}"
 
-    install -Dm644 "${srcdir}/flaresolverr.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-
-    # Checks one directory above src/
-    # We don't want that
-    sed -i "s/os.pardir, //" "${srcdir}/${_pkgname}-${pkgver}/src/utils.py"
-
-    cp -a "${srcdir}/${_pkgname}-${pkgver}/src/"* "${pkgdir}/opt/${pkgname}"
-    cp "${srcdir}/${_pkgname}-${pkgver}/package.json" "${pkgdir}/opt/${pkgname}"
-
-    install -Dm644 "${srcdir}/flaresolverr.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -Dm644 "${srcdir}/flaresolverr.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm644 "${srcdir}/flaresolverr.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 "${srcdir}/flaresolverr.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm644 "${srcdir}/flaresolverr.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
