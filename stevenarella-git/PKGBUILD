@@ -2,32 +2,63 @@
 
 pkgname=stevenarella-git
 _pkgname=stevenarella
-pkgver=r972.g45f9cd4
-pkgrel=4
+pkgver=r999.gecf829c
+pkgrel=1
 pkgdesc='Multi-protocol Minecraft-compatible client written in Rust'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/iceiix/stevenarella'
-license=('APACHE' 'MIT')
-depends=('openssl' 'rust' 'xcb-util')
-makedepends=('git' 'cmake' 'fontconfig')
-source=("git+https://github.com/iceiix/stevenarella.git")
-sha512sums=('SKIP')
+license=('Apache-2.0 AND MIT')
+depends=(
+  openssl
+  xcb-util
+  gcc-libs
+  libxcb
+  glibc
+  freetype2
+  fontconfig
+)
+makedepends=(
+  cmake
+  rust
+  git
+)
+source=('git+https://github.com/iceiix/stevenarella.git')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
 
-    echo r$(git rev-list --all --count).g$(git rev-parse --short HEAD)
+  echo r$(git rev-list --all --count).g$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd "${_pkgname}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "${_pkgname}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
+}
+
+check() {
+  cd "${_pkgname}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo test --frozen --release
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
 
-    CARGO_INSTALL_ROOT="${pkgdir}/usr" cargo install --path .
-
-    rm "${pkgdir}/usr/.crates.toml"
-    rm "${pkgdir}/usr/.crates2.json"
-
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE-APACHE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-APACHE"
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE-MIT" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-MIT"
-    install -Dm644 "${srcdir}/${_pkgname}/resources/icon128x128.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+  install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+  install -Dm644 resources/icon128x128.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
