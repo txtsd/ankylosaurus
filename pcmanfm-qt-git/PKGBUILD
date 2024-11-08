@@ -6,7 +6,7 @@
 pkgname=pcmanfm-qt-git
 _pkgname="${pkgname%-git}"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The LXQt file manager, Qt port of PCManFM'
 arch=(i686 x86_64)
 url='https://lxqt-project.org'
@@ -19,6 +19,7 @@ depends=(
   layer-shell-qt
   libfm-qt-git
   libxcb
+  lxqt-menu-data-git
   qt6-base
 )
 makedepends=(
