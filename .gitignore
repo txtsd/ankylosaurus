@@ -1,6 +1,5 @@
-*.AppImage
-LICENSE
-*.tar.zst
-
-pkg/
-src/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
