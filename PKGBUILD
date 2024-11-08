@@ -1,42 +1,42 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=bionic_translation-git
-_pkgname=${pkgname%%-git}
+_pkgname="${pkgname%-git}"
 pkgver=r68.e502e92
 pkgrel=2
 pkgdesc='A set of libraries for loading bionic-linked .so files on musl/glibc'
 url='https://gitlab.com/android_translation_layer/bionic_translation'
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=(x86_64 aarch64 armv7h)
 license=('MIT')
 depends=(
-  'libbsd'
-  'libunwind'
-  'libglvnd'
-  'glibc'
+  glibc
+  libbsd
+  libglvnd
+  libunwind
 )
 makedepends=(
-  'git'
-  'elfutils'
-  'mesa'
-  'meson'
+  git
+  elfutils
+  mesa
+  meson
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-options=(!strip)
 source=("git+${url}.git/")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
+  cd "${_pkgname}"
+
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  meson subprojects download --sourcedir=${_pkgname}
+  meson subprojects download --sourcedir="${_pkgname}"
 }
 
 build() {
-  arch-meson ${_pkgname} build
+  arch-meson "${_pkgname}" build
   meson compile -C build
 }
 
@@ -47,4 +47,3 @@ check() {
 package() {
   meson install --no-rebuild -C build --destdir "${pkgdir}"
 }
-
