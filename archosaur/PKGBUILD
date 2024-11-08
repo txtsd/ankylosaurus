@@ -4,22 +4,22 @@ pkgname=archosaur
 pkgver=1.0.0
 pkgrel=2
 pkgdesc='A PKGBUILD management framework for the Arch User Repository'
-arch=('any')
+arch=(any)
 url="https://github.com/txtsd/${pkgname}"
-license=('GPL-3.0-or-later')
-depends=('bash' 'openssh')
-makedepends=('asciidoc')
+license=('GPL-2.0-or-later')
+depends=(bash openssh)
+makedepends=(asciidoc)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('61c4abcd01ec8b1058d994c34725e7258c534c5f6c3f2b692785de41e322f662')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-    make PREFIX=/usr
+  make PREFIX=/usr
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
