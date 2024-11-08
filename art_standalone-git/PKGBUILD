@@ -1,61 +1,63 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=art_standalone-git
-_pkgname=${pkgname%%-git}
+_pkgname="${pkgname%-git}"
 pkgver=r167.57f9bbd9
-pkgrel=2
+pkgrel=3
 pkgdesc='A standalone version of Dalvik with Art built in'
 url='https://gitlab.com/android_translation_layer/art_standalone'
-arch=('x86_64' 'aarch64' 'armv7h')
-license=('LicenseRef-Unknown')
+arch=(x86_64 aarch64 armv7h)
+license=('Apache-2.0')
 depends=(
-  wolfssl-jni
-  libbsd
-  icu
-  xz
-  lz4
-  java-runtime
-  zlib
-  expat
-  libunwind
-  openssl
-  bionic_translation
-  gcc-libs
   bash
+  bionic_translation
+  expat
+  gcc-libs
   glibc
+  icu
+  libbsd
+  libunwind
+  lz4
+  openssl
+  wolfssl-jni
+  xz
+  zlib
 )
 makedepends=(
-  git
   bsd-compat-headers
+  git
+  jdk8-openjdk
   libcap
   meson
-  jdk8-openjdk
   python
   valgrind
   zip
 )
-options=(!strip)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git/")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
+  cd "${_pkgname}"
+
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${_pkgname}
+  cd "${_pkgname}"
+
   make PREFIX=/usr ____LIBDIR=lib
 }
 
 package() {
-  cd ${_pkgname}
-  DESTDIR="$pkgdir" make \
-    ____PREFIX="$pkgdir"/usr \
-    ____INSTALL_ETC="$pkgdir"/etc \
+  depends+=(java-runtime)
+
+  cd "${_pkgname}"
+
+  DESTDIR="${pkgdir}" make \
+    ____PREFIX="${pkgdir}/usr" \
+    ____INSTALL_ETC="${pkgdir}/etc" \
     ____LIBDIR=lib \
     install
 }
-
