@@ -1,5 +1,5 @@
-pkg/
-src/
-halloy/
-
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
