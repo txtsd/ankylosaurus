@@ -1,5 +1,10 @@
-/pkg/
-/src/
-/*.tar*
-/bitmagnet/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!bitmagnet.service
+!bitmagnet.sysusers
+!bitmagnet.tmpfiles
+!config.yml
 

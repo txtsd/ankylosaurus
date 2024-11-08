@@ -1,30 +1,33 @@
 pkgbase = bitmagnet-git
 	pkgdesc = A self-hosted BitTorrent indexer, DHT crawler, content classifier and torrent search engine with web UI, GraphQL API and Servarr stack integration.
-	pkgver = v0.7.14.r2.ge9e19a5
+	pkgver = 0.10.0.beta.4.r0.36d989b
 	pkgrel = 1
-	url = https://bitmagnet.io/
-	arch = any
+	url = https://bitmagnet.io
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = MIT
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	optdepends = postgresql: database
-	optdepends = redis: cache
-	optdepends = prometheus: metrics
-	optdepends = loki: logs
 	optdepends = grafana: dashboards
+	optdepends = loki: logs
+	optdepends = postgresql: database
+	optdepends = prometheus: metrics
 	optdepends = pyroscope: profiling
-	provides = bitmagnet=v0.7.14.r2.ge9e19a5
+	optdepends = redis: cache
+	provides = bitmagnet=0.10.0.beta.4.r0.36d989b
+	conflicts = bitmagnet
 	backup = etc/bitmagnet/config.yml
 	source = git+https://github.com/bitmagnet-io/bitmagnet
 	source = config.yml
 	source = bitmagnet.service
-	source = dirs.conf
-	source = user.conf
+	source = bitmagnet.sysusers
+	source = bitmagnet.tmpfiles
 	sha256sums = SKIP
-	sha256sums = 20f4a744e7b5f8549a66713bee5fcb65fcee58647370b2107adbc0f0bfc000c9
-	sha256sums = 3582219a0e0f932d97549f44cbe4c1f330d7edd58cc8fd88bb6912a655a7379f
-	sha256sums = 4ca44b64e567d5220843eaf7dcae90095806f644c561ed74ce01cd0143b00f51
-	sha256sums = 6289a984a94570fd25a0330646caabc20e6cb871d1b141d27cc98d6781d6b35a
+	sha256sums = 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+	sha256sums = a735d0434480bc357664648671c8ba92a82d7f262bdb54c093ad0ba3d6ba3242
+	sha256sums = 9eab02f76a22e3ff627bd6f7fe609480ced67c076f079e985a34d41d13fe8f08
+	sha256sums = bf2fc8cbf9d6191bee505c957e3e7642f20aa2de05ce92af8270913094de4498
 
 pkgname = bitmagnet-git

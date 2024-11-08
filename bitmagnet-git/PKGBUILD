@@ -1,60 +1,88 @@
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Maintainer: davispuh <davispuh@gmail.com>
+
 pkgname=bitmagnet-git
-pkgver=v0.7.14.r2.ge9e19a5
+_pkgname="${pkgname%-git}"
+pkgver=0.10.0.beta.4.r0.36d989b
 pkgrel=1
 pkgdesc='A self-hosted BitTorrent indexer, DHT crawler, content classifier and torrent search engine with web UI, GraphQL API and Servarr stack integration.'
-arch=('any')
-url="https://bitmagnet.io/"
-license=("MIT")
-depends=('glibc')
-makedepends=('git' 'go')
-optdepends=("postgresql: database"
-            "redis: cache"
-            "prometheus: metrics"
-            "loki: logs"
-            "grafana: dashboards"
-            "pyroscope: profiling")
-provides=("bitmagnet=${pkgver}")
-backup=("etc/bitmagnet/config.yml")
-source=('git+https://github.com/bitmagnet-io/bitmagnet'
-        'config.yml'
-        'bitmagnet.service'
-        'dirs.conf'
-        'user.conf')
+arch=(x86_64 aarch64 armv7h)
+url='https://bitmagnet.io'
+license=('MIT')
+depends=(glibc)
+makedepends=(git go)
+optdepends=(
+  'grafana: dashboards'
+  'loki: logs'
+  'postgresql: database'
+  'prometheus: metrics'
+  'pyroscope: profiling'
+  'redis: cache'
+)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+backup=(etc/bitmagnet/config.yml)
+source=(
+  'git+https://github.com/bitmagnet-io/bitmagnet'
+  config.yml
+  bitmagnet.service
+  bitmagnet.sysusers
+  bitmagnet.tmpfiles
+)
 sha256sums=('SKIP'
-            '20f4a744e7b5f8549a66713bee5fcb65fcee58647370b2107adbc0f0bfc000c9'
-            '3582219a0e0f932d97549f44cbe4c1f330d7edd58cc8fd88bb6912a655a7379f'
-            '4ca44b64e567d5220843eaf7dcae90095806f644c561ed74ce01cd0143b00f51'
-            '6289a984a94570fd25a0330646caabc20e6cb871d1b141d27cc98d6781d6b35a')
+            '01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b'
+            'a735d0434480bc357664648671c8ba92a82d7f262bdb54c093ad0ba3d6ba3242'
+            '9eab02f76a22e3ff627bd6f7fe609480ced67c076f079e985a34d41d13fe8f08'
+            'bf2fc8cbf9d6191bee505c957e3e7642f20aa2de05ce92af8270913094de4498')
 
 pkgver() {
-    cd "$srcdir/bitmagnet"
-    git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+
+  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+  cd "${_pkgname}"
+
+  export GOPATH="${srcdir}"
+  go mod download
 }
 
 build() {
-    cd "$srcdir/bitmagnet"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
+  cd "${_pkgname}"
 
-    go build -buildmode=pie -mod=readonly -trimpath -ldflags "-X github.com/bitmagnet-io/bitmagnet/internal/version.GitTag=$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPATH="${srcdir}"
+  export GOFLAGS="\
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -trimpath \
+  "
+  local _ld_flags=" \
+    -compressdwarf=false \
+    -linkmode=external \
+    -X github.com/bitmagnet-io/bitmagnet/internal/version.GitTag=v${pkgver} \
+  "
+  go build \
+    -ldflags "${_ldflags}" \
+    -o "${_pkgname}"
 }
 
 package() {
-    cd "$srcdir/bitmagnet"
+  cd "${_pkgname}"
 
-    install -Dm755 -t "$pkgdir/usr/bin" bitmagnet
-    install -Dm640 -t "$pkgdir/etc/bitmagnet" "$srcdir/config.yml"
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    install -D -t "$pkgdir/usr/lib/systemd/system/" "$srcdir/bitmagnet.service"
-    install -D "$srcdir/user.conf" "$pkgdir/usr/lib/sysusers.d/bitmagnet.conf"
-    install -D "$srcdir/dirs.conf" "$pkgdir/usr/lib/tmpfiles.d/bitmagnet.conf"
+  install -Dm644 "${srcdir}/config.yml" "${pkgdir}/etc/bitmagnet/config.yml"
+  install -Dm644 "${srcdir}/bitmagnet.service" "${pkgdir}/usr/lib/systemd/system/bitmagnet.service"
+  install -Dm644 "${srcdir}/bitmagnet.sysusers" "${pkgdir}/usr/lib/sysusers.d/bitmagnet.conf"
+  install -Dm644 "${srcdir}/bitmagnet.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/bitmagnet.conf"
 
-    mkdir -p "$pkgdir/usr/share/$pkgname" "$pkgdir/usr/share/$pkgname/doc"
-    cp -R "observability" "$pkgdir/usr/share/$pkgname/"
-    #cp -R "bitmagnet.io/"* "$pkgdir/usr/share/$pkgname/doc/"
-
-    find "$pkgdir/etc/bitmagnet" -type f -exec chmod 640 {} + -o -type d -exec chmod 2750 {} +
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  cp -dpr --no-preserve=ownership observability "${pkgdir}/usr/share/${pkgname}/"
 }
