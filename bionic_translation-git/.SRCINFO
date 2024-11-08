@@ -11,13 +11,12 @@ pkgbase = bionic_translation-git
 	makedepends = elfutils
 	makedepends = mesa
 	makedepends = meson
-	depends = libbsd
-	depends = libunwind
-	depends = libglvnd
 	depends = glibc
+	depends = libbsd
+	depends = libglvnd
+	depends = libunwind
 	provides = bionic_translation
 	conflicts = bionic_translation
-	options = !strip
 	source = git+https://gitlab.com/android_translation_layer/bionic_translation.git/
 	sha256sums = SKIP
 
