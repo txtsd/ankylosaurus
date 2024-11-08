@@ -1,5 +1,5 @@
 pkgbase = porla
-	pkgdesc = A high performance BitTorrent client for servers and seedboxes.
+	pkgdesc = A high performance BitTorrent client for servers and seedboxes
 	pkgver = 0.40.0
 	pkgrel = 1
 	url = https://porla.org
@@ -36,11 +36,11 @@ pkgbase = porla
 	depends = openssl
 	depends = sqlite
 	depends = tomlplusplus
-	options = !debug
 	backup = etc/porla/config.toml
 	source = git+https://github.com/porla/porla.git#tag=v0.40.0
 	source = git+https://github.com/uNetworking/uWebSockets.git
 	source = git+https://github.com/uNetworking/uSockets.git
+	source = https://github.com/curl/curl/archive/refs/tags/curl-8_10_1.tar.gz
 	source = 0001-patch-for-arch.patch
 	source = porla.toml
 	source = porla.service
@@ -49,6 +49,7 @@ pkgbase = porla
 	sha256sums = dd4e215c72822fe5fbaa212f87ccaebaba54281ccf9f6cc4f0ce51ee173401ad
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 5aaf131294f734756325dd99d849518c9a5060fc702517ab3064c76257dc700c
 	sha256sums = d7f7a09ffb68a773b805e68df3ea7cd1c55f5c33710e66e83926f3460cf631c4
 	sha256sums = fa1962c158eae8f47b99cf6e2c0403c1f2e00c430e15f33780b9b91123c6637f
 	sha256sums = 277760130b9c35ca5d009be5b3838fdccc7cc89d19392afea54322b91c3a9f08
