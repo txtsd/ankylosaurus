@@ -1,0 +1,17 @@
+pkgbase = lxqt-menu-data-git
+	pkgdesc = LXQt menu files
+	pkgver = 2.1.0.r1.eda2916
+	pkgrel = 1
+	url = https://lxqt-project.org
+	arch = any
+	license = LGPL-2.1-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = lxqt-build-tools-git
+	makedepends = qt6-tools
+	provides = lxqt-menu-data=2.1.0.r1.eda2916
+	conflicts = lxqt-menu-data
+	source = git+https://github.com/lxqt/lxqt-menu-data.git
+	sha256sums = SKIP
+
+pkgname = lxqt-menu-data-git
