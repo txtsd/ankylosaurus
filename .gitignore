@@ -1,3 +1,5 @@
-LICENSE
-*.ttf
-*.pkg.tar*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
