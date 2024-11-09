@@ -1,5 +1,8 @@
-src
-pkg
-
-*.tar.gz
-*.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!lionshead.license
+!batch.license
+!mdi.license
