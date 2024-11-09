@@ -1,6 +1,5 @@
-pkg/
-src/
-llama.cpp/
-kompute/
-
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
