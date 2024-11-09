@@ -3,7 +3,7 @@
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
 pkgver=b4053
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -35,9 +35,9 @@ source=(
   llama.cpp.service
 )
 sha256sums=('2e700ceb1142b07c1647d090027a5a5cbd230b316c88a78c7a47afe525ab3033'
-            'SKIP'
-            '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-            '065f69ccd7ac40d189fae723b58d6de2a24966e9b526e0dbfa3035a4c46a7669')
+  'SKIP'
+  '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
+  '065f69ccd7ac40d189fae723b58d6de2a24966e9b526e0dbfa3035a4c46a7669')
 
 prepare() {
   cd "${_pkgname}"
@@ -65,9 +65,6 @@ build() {
     -DLLAMA_CURL=ON
     -DGGML_BLAS=ON
     -DGGML_VULKAN=ON
-    -DGGML_VULKAN_CHECK_RESULTS=ON
-    -DGGML_VULKAN_RUN_TESTS=ON
-    -DGGML_VULKAN_VALIDATE=ON
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
