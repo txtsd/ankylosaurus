@@ -2,7 +2,7 @@
 
 pkgname=jwt-cpp
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A header only library for creating and validating JSON Web Tokens in C++'
 arch=(any)
 url='https://github.com/Thalhammer/jwt-cpp/'
@@ -21,8 +21,9 @@ build() {
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DJWT_BUILD_TESTS=ON
+    -DJWT_CMAKE_FILES_INSTALL_DIR='/usr/lib/cmake' \
+    -DJWT_BUILD_TESTS=ON \
+    -DJWT_BUILD_EXAMPLES=NO
   cmake --build build
 }
 
@@ -39,10 +40,10 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Handle files in incorrect directory
-  install -dm755 ${pkgdir}/usr/lib/cmake
-  mv "${pkgdir}/usr/cmake/jwt-cpp-config-version.cmake" "${pkgdir}/usr/lib/cmake/jwt-cpp-config-version.cmake"
-  mv "${pkgdir}/usr/cmake/jwt-cpp-config.cmake" "${pkgdir}/usr/lib/cmake/jwt-cpp-config.cmake"
-  mv "${pkgdir}/usr/cmake/jwt-cpp-targets.cmake" "${pkgdir}/usr/lib/cmake/jwt-cpp-targets.cmake"
-  rm -rf "${pkgdir}/usr/cmake"
+  # # Handle files in incorrect directory
+  # install -dm755 ${pkgdir}/usr/lib/cmake
+  # mv "${pkgdir}/usr/cmake/jwt-cpp-config-version.cmake" "${pkgdir}/usr/lib/cmake/jwt-cpp-config-version.cmake"
+  # mv "${pkgdir}/usr/cmake/jwt-cpp-config.cmake" "${pkgdir}/usr/lib/cmake/jwt-cpp-config.cmake"
+  # mv "${pkgdir}/usr/cmake/jwt-cpp-targets.cmake" "${pkgdir}/usr/lib/cmake/jwt-cpp-targets.cmake"
+  # rm -rf "${pkgdir}/usr/cmake"
 }
