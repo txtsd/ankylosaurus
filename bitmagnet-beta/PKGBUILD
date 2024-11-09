@@ -3,7 +3,7 @@
 pkgname=bitmagnet-beta
 _pkgname="${pkgname%-beta}"
 pkgver=0.10.0_beta.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A self-hosted BitTorrent indexer, DHT crawler, content classifier and torrent search engine with web UI, GraphQL API and Servarr stack integration.'
 arch=(x86_64 aarch64 armv7h)
 url='https://bitmagnet.io'
@@ -36,14 +36,14 @@ sha256sums=('1d46351df7215e41dfad056ed7215a031fd081cb7b5a3e581b6d37f82c53d2c4'
             '0972b20f948b5e685c659dfefa7a4e200f75fa12dfe9d4779ef3ad5c8ffdca86')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver//_/-}"
 
   export GOPATH="${srcdir}"
   go mod download
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver//_/-}"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -63,7 +63,7 @@ build() {
   "
   go build \
     -ldflags "${_ldflags}" \
-    -o "${pkgname}"
+    -o "${_pkgname}"
 }
 
 package() {
