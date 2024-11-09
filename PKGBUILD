@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=skia-sharp-atl
-_pkgname=${pkgname%%-atl}
+_pkgname=${pkgname%-atl}
 pkgver=r67245.ced64f6f90
 pkgrel=4
 _major=99
@@ -15,29 +15,26 @@ license=(BSD-3-Clause)
 depends=(
   expat
   fontconfig
+  gcc-libs
+  glibc
+  harfbuzz
   libfreetype.so
   libjpeg-turbo
   libpng
   libwebp
-  harfbuzz
   zlib
-  gcc-libs
-  glibc
 )
 makedepends=(
   clang
   gn
-  python
   ninja
+  python
 )
 provides=(
-  'libSkiaSharp.so'
+  libSkiaSharp.so
   "${_pkgname}"
 )
-conflicts=(
-  "${_pkgname}"
-)
-options=(!strip !debug)
+conflicts=("${_pkgname}")
 _commit_skia='ced64f6f90cb5349de58e349309d3514cb345c28'
 _commit_brotli='6d03dfbedda1615c4cba1211f8d81735575209c8'
 _commit_abseil_cpp='cb436cf0142b4cbe47aae94223443df7f82e2920'
