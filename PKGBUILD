@@ -2,8 +2,8 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=skia-sharp-atl-git
-_pkgname=${pkgname%%-git}
-__pkgname=${_pkgname%%-atl}
+_pkgname=${pkgname%-git}
+__pkgname=${_pkgname%-atl}
 pkgver=r67245.ced64f6f90
 pkgrel=3
 _major=99
@@ -16,22 +16,22 @@ license=(BSD-3-Clause)
 depends=(
   expat
   fontconfig
+  gcc-libs
+  glibc
+  harfbuzz
   libfreetype.so
   libjpeg-turbo
   libpng
   libwebp
-  harfbuzz
   zlib
-  gcc-libs
-  glibc
 )
 makedepends=(
   clang
   git
   git-lfs
   gn
-  python
   ninja
+  python
 )
 provides=(
   libSkiaSharp.so
@@ -132,7 +132,6 @@ case "$CARCH" in
   *) _arch="$CARCH" ;;
 esac
 
-
 pkgver() {
   cd skia
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -140,7 +139,7 @@ pkgver() {
 
 prepare() {
   cd skia
-  for ex_dep in {brotli,abseil-cpp,dng_sdk,egl-registry,harfbuzz,highway,imgui,libavif,libgav1,libyuv,oboe,opengl-registry,perfetto,piex,vulkanmemoryallocator,vulkan-deps,spirv-cross,spirv-headers,spirv-tools,vello,vulkan-headers,vulkan-tools,zlib} ; do
+  for ex_dep in {brotli,abseil-cpp,dng_sdk,egl-registry,harfbuzz,highway,imgui,libavif,libgav1,libyuv,oboe,opengl-registry,perfetto,piex,vulkanmemoryallocator,vulkan-deps,spirv-cross,spirv-headers,spirv-tools,vello,vulkan-headers,vulkan-tools,zlib}; do
     mkdir -p third_party/externals/${ex_dep}
     cp -r ${srcdir}/${ex_dep} third_party/externals/
   done
@@ -149,7 +148,7 @@ prepare() {
   cp -r ${srcdir}/wuffs-mirror-release-c third_party/externals/wuffs
 }
 
-build(){
+build() {
   cd skia
 
   CFLAGS="$CFLAGS \
