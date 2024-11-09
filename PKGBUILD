@@ -2,9 +2,9 @@
 
 pkgname=halloy
 pkgver=2024.14
-pkgrel=2
+pkgrel=3
 pkgdesc='An open-source IRC client written in Rust, with the Iced GUI library'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://github.com/squidowl/halloy'
 license=('GPL-3.0-or-later')
 depends=(
