@@ -3,7 +3,7 @@
 
 pkgname=python-confusables
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A python package providing functionality for matching words that can be confused for eachother, but contain different characters.'
 arch=(any)
 url='https://pypi.org/project/confusables/'
@@ -11,12 +11,12 @@ license=('MIT')
 _name="${pkgname#python-}"
 source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-  "license-${pkgver}::https://github.com/woodgern/confusables/blob/master/LICENSE"
+  "license-${pkgver}::https://github.com/woodgern/confusables/raw/master/LICENSE"
 )
 depends=(python)
 makedepends=(python-setuptools)
 sha256sums=('429caad05333832e1edabb80815704cd26530514369430f913002b2ba548c38e'
-            'f1fe10bcc1680a729e0232a7deb1b447bc04c4bae056cd6609fad3280d743278')
+            'b4d388d7b48d81d49e99939d564968733e99c316625a2a64e6a8103ca59ac596')
 
 build() {
   cd "${_name}-${pkgver}"
