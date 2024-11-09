@@ -1,0 +1,4 @@
+[aleo-fonts]
+source = "regex"
+url = "https://alessiolaiso.com/aleo-font"
+regex = "/downloads/Aleo_v(\\d+\\.\\d+)\\.zip"
