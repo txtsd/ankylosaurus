@@ -1,34 +1,45 @@
-diff --git i/CMakeLists.txt w/CMakeLists.txt
-index 6afe703..85a089b 100644
---- i/CMakeLists.txt
-+++ w/CMakeLists.txt
-@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.12)
- 
+From acc6ef53d87ab1a464beaf6203c64bf63006090f Mon Sep 17 00:00:00 2001
+From: txtsd <code@ihavea.quest>
+Date: Sat, 9 Nov 2024 15:59:24 +0530
+Subject: [PATCH] patch for arch
+
+Signed-off-by: txtsd <code@ihavea.quest>
+---
+ CMakeLists.txt       | 71 ++++++++++++--------------------------------
+ src/http/handler.hpp |  2 +-
+ 2 files changed, 20 insertions(+), 53 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6afe703..c208814 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,14 +2,15 @@ cmake_minimum_required(VERSION 3.12)
+
  cmake_policy(SET CMP0114 NEW)
  cmake_policy(SET CMP0135 NEW)
-+cmake_policy(SET CMP0167 NEW)
- 
++cmake_policy(SET CMP0167 OLD)
+
  project(porla)
- 
-@@ -9,7 +10,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
- 
+
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
++list(APPEND CMAKE_MODULE_PATH "/usr/share/cmake/Modules")
+
  set(CMAKE_CXX_STANDARD 20)
- 
+
 -include(ExternalAntlr4Cpp)
-+# include(ExternalAntlr4Cpp)
  include(FetchContent)
- 
+
  set(BUILD_SHARED_LIBS           OFF CACHE BOOL "Build static library" FORCE)
 @@ -24,7 +25,7 @@ set(ENABLE_ZSTD         OFF)
- 
+
  set(CMAKE_FIND_LIBRARY_SUFFIXES .a .lib .so .dll)
  set(LINK_WITH_STATIC_LIBRARIES  ON CACHE BOOL "Link with static libs" FORCE)
 -set(OPENSSL_USE_STATIC_LIBS     TRUE)
 +set(OPENSSL_USE_STATIC_LIBS     FALSE)
- 
+
  # uriparser options
  set(URIPARSER_BUILD_DOCS    OFF CACHE BOOL "Build docs"    FORCE)
-@@ -36,22 +37,33 @@ set(URIPARSER_SHARED_LIBS   OFF CACHE BOOL "Shared libs"   FORCE)
+@@ -36,22 +37,19 @@ set(URIPARSER_SHARED_LIBS   OFF CACHE BOOL "Shared libs"   FORCE)
  find_package(Boost               REQUIRED COMPONENTS log program_options system)
  find_package(LibtorrentRasterbar REQUIRED)
  find_package(Lua                 REQUIRED)
@@ -36,61 +47,119 @@ index 6afe703..85a089b 100644
 +find_package(OpenSSL             REQUIRED COMPONENTS SSL Crypto)
  find_package(SQLite3             REQUIRED)
  find_package(ZLIB                REQUIRED)
- 
+-
 -FetchContent_Declare(curl          URL https://github.com/curl/curl/archive/refs/tags/curl-8_6_0.tar.gz)
 -FetchContent_Declare(jwt-cpp       URL https://github.com/Thalhammer/jwt-cpp/archive/refs/tags/v0.7.0.tar.gz)
 -FetchContent_Declare(libzip        URL https://github.com/nih-at/libzip/archive/refs/tags/v1.10.1.tar.gz)
 -FetchContent_Declare(tomlplusplus  URL https://github.com/marzer/tomlplusplus/archive/refs/tags/v3.4.0.tar.gz)
 -FetchContent_Declare(uriparser     URL https://github.com/uriparser/uriparser/archive/refs/tags/uriparser-0.9.7.tar.gz)
-+find_package(libzip              REQUIRED)
-+find_package(tomlplusplus        REQUIRED)
-+find_package(uriparser           REQUIRED)
-+set(jwt-cpp_DIR /usr/lib/cmake/)
-+find_package(jwt-cpp             REQUIRED)
-+set(nlohmann-json_DIR /usr/share/cmake/nlohmann_json)
-+find_package(nlohmann_json       REQUIRED)
-+find_package(sol2                REQUIRED)
-+find_package(antlr4-runtime      REQUIRED)
-+
-+FetchContent_Declare(curl          URL https://github.com/curl/curl/archive/refs/tags/curl-8_10_1.tar.gz)
-+# FetchContent_Declare(jwt-cpp       URL https://github.com/Thalhammer/jwt-cpp/archive/refs/tags/v0.7.0.tar.gz)
-+# FetchContent_Declare(libzip        URL https://github.com/nih-at/libzip/archive/refs/tags/v1.10.1.tar.gz)
-+# FetchContent_Declare(tomlplusplus  URL https://github.com/marzer/tomlplusplus/archive/refs/tags/v3.4.0.tar.gz)
-+# FetchContent_Declare(uriparser     URL https://github.com/uriparser/uriparser/archive/refs/tags/uriparser-0.9.7.tar.gz)
- 
- FetchContent_MakeAvailable(
-     curl
+-
+-FetchContent_MakeAvailable(
+-    curl
 -    jwt-cpp
 -    libzip
 -    tomlplusplus
 -    uriparser)
-+    # jwt-cpp
-+    # libzip
-+    # tomlplusplus
-+    # uriparser
-+)
- 
++find_package(libzip              REQUIRED)
++find_package(tomlplusplus        REQUIRED)
++find_package(uriparser           REQUIRED)
++set(jwt-cpp_DIR /usr/lib/cmake)
++find_package(jwt-cpp             REQUIRED)
++find_package(sol2                REQUIRED)
++find_package(antlr4-runtime      REQUIRED)
++find_package(PkgConfig           REQUIRED)
++pkg_check_modules(usockets      REQUIRED IMPORTED_TARGET usockets)
++pkg_check_modules(curl       REQUIRED IMPORTED_TARGET libcurl)
+
  add_custom_command(
      OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/version.cpp
-@@ -237,8 +249,10 @@ target_include_directories(
-     ${JWT_CPP_INCLUDE_DIRS}
+@@ -65,38 +63,6 @@ add_custom_command(
+     COMMAND ${CMAKE_COMMAND} -P
+     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FileEmbed.cmake)
+
+-add_library(
+-    uSockets
+-    STATIC
+-    vendor/uWebSockets/uSockets/src/crypto/openssl.c
+-    vendor/uWebSockets/uSockets/src/eventing/asio.cpp
+-    vendor/uWebSockets/uSockets/src/bsd.c
+-    vendor/uWebSockets/uSockets/src/context.c
+-    vendor/uWebSockets/uSockets/src/loop.c
+-    vendor/uWebSockets/uSockets/src/quic.c
+-    vendor/uWebSockets/uSockets/src/socket.c
+-    vendor/uWebSockets/uSockets/src/udp.c
+-)
+-
+-target_compile_definitions(
+-    uSockets
+-    PRIVATE
+-    -DLIBUS_NO_SSL
+-    -DLIBUS_USE_ASIO
+-)
+-
+-target_include_directories(
+-    uSockets
+-    PUBLIC
+-    vendor/uWebSockets/uSockets/src
+-)
+-
+-target_link_libraries(
+-    uSockets
+-    PRIVATE
+-    Boost::boost
+-)
+-
+ add_library(
+     ${PROJECT_NAME}_utils
+     STATIC
+@@ -238,7 +204,7 @@ target_include_directories(
      ${LUA_INCLUDE_DIR}
      vendor/croncpp/include
--    vendor/nlohmann-json/include
+     vendor/nlohmann-json/include
 -    vendor/sol2/include
-+    # vendor/nlohmann-json/include
-+    ${INTERFACE_INCLUDE_DIRECTORIES}
-+    # vendor/sol2/include
 +    ${SOL2_INCLUDE_DIRS}
  )
- 
+
  target_link_libraries(
-@@ -250,6 +264,8 @@ target_link_libraries(
+@@ -248,16 +214,17 @@ target_link_libraries(
+     ${PROJECT_NAME}_utils
+
      Boost::boost Boost::log Boost::program_options
-     CURL::libcurl
+-    CURL::libcurl
++    PkgConfig::curl
      jwt-cpp::jwt-cpp
-+    # nlohmann_json::nlohmann_json
-+    # sol2
      libzip::zip
++    ZLIB::ZLIB
      lua
      sodium
+     SQLite::SQLite3
+     torrent-rasterbar
+     tomlplusplus::tomlplusplus
+     uriparser
+-    uSockets
++    PkgConfig::usockets
+     -lcrypto
+     -lssl
+     -lgit2
+@@ -271,5 +238,5 @@ add_executable(
+ target_link_libraries(
+     ${PROJECT_NAME}
+     ${PROJECT_NAME}_core
+-    uSockets
++    PkgConfig::usockets
+ )
+diff --git a/src/http/handler.hpp b/src/http/handler.hpp
+index e6ef4cd..a51f03b 100644
+--- a/src/http/handler.hpp
++++ b/src/http/handler.hpp
+@@ -2,7 +2,7 @@
+
+ #include <functional>
+
+-#include "../../vendor/uWebSockets/src/App.h"
++#include <uWebSockets/App.h>
+
+ namespace porla::Http
+ {
+--
+2.47.0
