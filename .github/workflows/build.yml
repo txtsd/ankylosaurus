@@ -73,9 +73,6 @@ jobs:
           packages_for_yay=()
           temp=$(pacman -S --noconfirm --asdeps ${depends[@]} ${makedepends[@]} ${checkdepends[@]} 2>&1 | rg "error: target not found: " -r "")
           IFS=$'\n' read -r -d '' -a packages_for_yay <<< "${temp}"
-          echo "packages_for_pacman: ${packages_for_pacman[@]}"
-          echo "packages_for_yay: ${packages_for_yay[@]}"
-          echo "packages_all: ${packages_all[@]}"
           for pkg in "${packages_all[@]}"
           do
             echo "pkg: ${pkg}"
