@@ -1,0 +1,6 @@
+[ttf-game-fonts]
+source = "regex"
+url = "http://www.thealmightyguru.com/GameFonts/Index.html"
+regex = "(\\d{4}-\\d{2}-\\d{2})"
+from_pattern = "(\\d{4})-(\\d{2})-(\\d{2})"
+to_pattern = "\\1\\2\\3"
