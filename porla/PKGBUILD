@@ -2,13 +2,14 @@
 
 pkgname=porla
 pkgver=0.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A high performance BitTorrent client for servers and seedboxes'
 arch=(x86_64 aarch64)
 url='https://porla.org'
 license=('MIT')
 depends=(
   boost-libs
+  curl
   gcc-libs
   glibc
   libgit2
@@ -24,16 +25,15 @@ depends=(
   openssl
   sqlite
   tomlplusplus
+  usockets
 )
 makedepends=(
   antlr4-runtime
   boost
   cmake
-  curl
   duktape
   git
   jwt-cpp
-  nlohmann-json
   npm
   sol2
   uriparser
@@ -42,12 +42,8 @@ makedepends=(
   zlib
 )
 backup=(etc/porla/config.toml)
-_tag_curl='curl-8_10_1'
 source=(
   "git+https://github.com/${pkgname}/${pkgname}.git#tag=v${pkgver}"
-  'git+https://github.com/uNetworking/uWebSockets.git'
-  'git+https://github.com/uNetworking/uSockets.git'
-  "https://github.com/curl/curl/archive/refs/tags/${_tag_curl}.tar.gz"
   0001-patch-for-arch.patch
   porla.toml
   porla.service
@@ -55,10 +51,7 @@ source=(
   porla.tmpfiles
 )
 sha256sums=('dd4e215c72822fe5fbaa212f87ccaebaba54281ccf9f6cc4f0ce51ee173401ad'
-            'SKIP'
-            'SKIP'
-            '5aaf131294f734756325dd99d849518c9a5060fc702517ab3064c76257dc700c'
-            'd7f7a09ffb68a773b805e68df3ea7cd1c55f5c33710e66e83926f3460cf631c4'
+            'faf57e78eb2de9ae96aa7b66565fb9fa42f7fc66f57d44e0cd21a8ac7a6ed55b'
             'fa1962c158eae8f47b99cf6e2c0403c1f2e00c430e15f33780b9b91123c6637f'
             '277760130b9c35ca5d009be5b3838fdccc7cc89d19392afea54322b91c3a9f08'
             'a1d0aed79d00d65c1a1dee38249adf0e94091f36b838bb31d734ce6d3d152baf'
@@ -69,14 +62,10 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/0001-patch-for-arch.patch"
 
-  git submodule init
-  git config submodule.vendor/uWebSockets.url "${srcdir}/uWebSockets"
-  git -c protocol.file.allow=always submodule update
-
-  pushd vendor/uWebSockets
-  git config submodule.uSockets.url "${srcdir}/uSockets"
-  git -c protocol.file.allow=always submodule update
-  popd
+  rm -rf vendor/vcpkg
+  rm -rf vendor/vcpkg-triplets
+  rm -rf vendor/uWebSockets
+  rm -rf vendor/sol2
 
   cd html
   npm install --frozen-lockfile
@@ -99,9 +88,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DLINK_WITH_STATIC_LIBRARIES=true \
     -DOPENSSL_USE_STATIC_LIBS=false \
-    -DBUILD_SHARED_LIBS=true \
-    -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
-    -DFETCHCONTENT_SOURCE_DIR_CURL="${srcdir}/curl-${_tag_curl}"
+    -DBUILD_SHARED_LIBS=true
   cmake --build build
 }
 
