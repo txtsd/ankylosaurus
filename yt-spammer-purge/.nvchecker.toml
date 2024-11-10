@@ -1,6 +1,5 @@
 [yt-spammer-purge]
-source = "github"
-github = "ThioJoe/YT-Spammer-Purge"
+source = "git"
+git = "https://github.com/ThioJoe/YT-Spammer-Purge.git"
 prefix = "v"
 include_regex = "v\\d+\\.\\d+\\.\\d+"
-use_max_tag = true
