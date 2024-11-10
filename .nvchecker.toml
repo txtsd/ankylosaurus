@@ -1,6 +1,5 @@
 [ttc-monocraft]
-source = "github"
-github = "IdreesInc/Monocraft"
+source = "git"
+git = "https://github.com/IdreesInc/Monocraft.git"
 prefix = "v"
 include_regex = "v\\d+\\.\\d+"
-use_max_tag = true
