@@ -1,3 +1,5 @@
 [android_translation_layer]
 source = "git"
 git = "https://gitlab.com/android_translation_layer/android_translation_layer.git"
+branch = "master"
+use_commit = true
