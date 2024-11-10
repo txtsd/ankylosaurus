@@ -5,6 +5,9 @@ These are PKGBUILDs for AUR packages that I
 the [Arch User Repository](https://aur.archlinux.org/) using
 [archosaur](https://github.com/txtsd/archosaur).
 
+My jackett updater can be found at [centaur](https://github.com/txtsd/centaur/)\
+The media stack section of my AUR packages can be found at [auricularr](https://github.com/txtsd/auricularr)
+
 ## Meaning
 
 ### Etymology
@@ -21,7 +24,7 @@ vertebrae.
 **ankylosaurus** (plural ankylosauri or ankylosauruses)
 
 1. A large herbivorous dinosaur, of genus Ankylosaurus, that lived in the
-Cretaceous period, noted for its heavy armor and club-like tail.
+   Cretaceous period, noted for its heavy armor and club-like tail.
 2. txtsd's favorite dinosaur.
 3. Certainly, definitely, absolutely, not just for the AUR in the word.
 
