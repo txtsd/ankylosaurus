@@ -1,11 +1,12 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=qbittorrent-nightwalker
+_pkgname="${pkgname#qbittorrent-}"
 pkgver=r29.e782565
-pkgrel=1
+pkgrel=2
 pkgdesc='A dark but not black qBittorrent WebUI'
 arch=(any)
-url='https://github.com/binhex/fork-nightwalker'
+url='https://github.com/CallMeBruce/nightwalker'
 license=('LicenseRef-Unknown')
 makedepends=('git')
 optdepends=(
@@ -22,13 +23,13 @@ sha256sums=('3971786c7aa0609102212f34226bda49870fc9dbdc22ecf885b68b1691071062'
             'e41cb7cd5693aad398e37a59ffabe0fc00833639b9e599a4c1fca0db126e52e2')
 
 pkgver() {
-  cd "fork-nightwalker"
+  cd "${_pkgname}"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "fork-nightwalker"
+  cd "${_pkgname}"
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 'webui.qrc' "${pkgdir}/usr/share/${pkgname}/weubui.qrc"

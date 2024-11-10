@@ -1,8 +1,8 @@
 pkgbase = qbittorrent-nightwalker
 	pkgdesc = A dark but not black qBittorrent WebUI
 	pkgver = r29.e782565
-	pkgrel = 1
-	url = https://github.com/binhex/fork-nightwalker
+	pkgrel = 2
+	url = https://github.com/CallMeBruce/nightwalker
 	install = qbittorrent-nightwalker.install
 	arch = any
 	license = LicenseRef-Unknown
@@ -10,7 +10,7 @@ pkgbase = qbittorrent-nightwalker
 	optdepends = qbittorrent: for use with qbittorrent
 	optdepends = qbittorrent-nox: for use with qbittorrent-nox
 	options = !debug
-	source = git+https://github.com/binhex/fork-nightwalker#commit=e782565e10ccb3f1ee801f5a5181c105eb3b1e1c
+	source = git+https://github.com/CallMeBruce/nightwalker#commit=e782565e10ccb3f1ee801f5a5181c105eb3b1e1c
 	source = qbittorrent-nightwalker.install
 	sha256sums = 3971786c7aa0609102212f34226bda49870fc9dbdc22ecf885b68b1691071062
 	sha256sums = e41cb7cd5693aad398e37a59ffabe0fc00833639b9e599a4c1fca0db126e52e2
