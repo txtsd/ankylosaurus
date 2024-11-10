@@ -1,7 +1,6 @@
 [opennox-bin]
-source = "github"
-github = "noxworld-dev/opennox"
+source = "git"
+git = "https://github.com/noxworld-dev/opennox.git"
 prefix = "v"
 from_pattern = "(\\d+\\.\\d+\\.\\d+)-(\\w+\\d+)"
 to_pattern = "\\1_\\2"
-use_latest_release = true
