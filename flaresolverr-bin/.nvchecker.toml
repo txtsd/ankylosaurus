@@ -1,6 +1,5 @@
 [flaresolverr-bin]
-source = "github"
-github = "FlareSolverr/FlareSolverr"
+source = "git"
+git = "https://github.com/flaresolverr/flaresolverr.git"
 prefix = "v"
 include_regex = "v\\d+\\.\\d+\\.\\d+"
-use_max_tag = true
