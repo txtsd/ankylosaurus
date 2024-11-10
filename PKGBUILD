@@ -1,10 +1,11 @@
-# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck/)
+# Maintainer:  <none>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck/)
 
 _upstreamname='ggml'
 _pkgbase="lib${_upstreamname}"
 pkgname="${_pkgbase}-git"
 pkgver=r1410.20241107.8a3d7994
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensor library for machine learning. Used by llama.cpp and whisper.cpp."
 arch=(
   'i686'
