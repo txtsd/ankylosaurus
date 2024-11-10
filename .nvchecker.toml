@@ -1,6 +1,5 @@
 [imgbrd-grabber-appimage]
-source = "github"
-github = "Bionus/imgbrd-grabber"
+source = "git"
+git = "https://github.com/Bionus/imgbrd-grabber.git"
 prefix = "v"
 include_regex = "v\\d+\\.\\d+\\.\\d+"
-use_max_tag = true
