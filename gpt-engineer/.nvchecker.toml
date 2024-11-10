@@ -1,6 +1,3 @@
 [gpt-engineer]
-source = "github"
-github = "gpt-engineer-org/gpt-engineer"
-prefix = "v"
-include_regex = "v\\d+\\.\\d+\\.\\d+"
-use_max_tag = true
+source = "pypi"
+pypi = "gpt-engineer"
