@@ -1,5 +1,0 @@
-d /etc/bitmagnet 0755 bitmagnet bitmagnet
-Z /etc/bitmagnet - bitmagnet bitmagnet
-d /var/lib/bitmagnet 0755 bitmagnet bitmagnet
-Z /var/lib/bitmagnet - bitmagnet bitmagnet
-
