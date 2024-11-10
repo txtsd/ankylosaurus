@@ -1,5 +1,4 @@
 [trelby]
-source = "github"
-github = "trelby/trelby"
+source = "git"
+git = "https://github.com/trelby/trelby.git"
 include_regex = "\\d+\\.\\d+\\.\\d+"
-use_max_tag = true
