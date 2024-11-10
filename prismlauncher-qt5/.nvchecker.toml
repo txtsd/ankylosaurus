@@ -1,5 +1,4 @@
 [prismlauncher-qt5]
-source = "github"
-github = "PrismLauncher/PrismLauncher"
+source = "git"
+git = "https://github.com/PrismLauncher/PrismLauncher.git"
 include_regex = "\\d+\\.\\d+"
-use_latest_release = true
