@@ -3,8 +3,8 @@
 pkgname=dissent-git
 _pkgname="${pkgname%-git}"
 _fqpn=so.libdb.${_pkgname}
-pkgver=r603.a788773
-pkgrel=2
+pkgver=0.0.30.r6.a788773
+pkgrel=1
 pkgdesc='Discord client written in go and gtk4'
 arch=(x86_64 aarch64)
 url='https://github.com/diamondburned/dissent'
@@ -32,7 +32,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s" "$(git describe --long --tags --exclude 'nightly' | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
