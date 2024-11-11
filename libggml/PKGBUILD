@@ -2,7 +2,7 @@
 
 pkgname=libggml
 pkgver=r1410.8a3d799
-pkgrel=1
+pkgrel=2
 pkgdesc='Tensor library for machine learning'
 url='https://github.com/ggerganov/ggml'
 license=('MIT')
@@ -16,6 +16,7 @@ makedepends=(
   cmake
   git
 )
+options=(lto)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
