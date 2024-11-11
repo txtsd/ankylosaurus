@@ -2,7 +2,7 @@
 
 pkgname=opennox
 pkgver=1.9.0_alpha13
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern implementation of the Nox game engine'
 arch=(x86_64)
 url='https://github.com/noxworld-dev/opennox'
@@ -35,6 +35,7 @@ prepare() {
   cd src
 
   export GOPATH="${srcdir}"
+  export GOFLAGS="-modcacherw"
   go mod download
 }
 
