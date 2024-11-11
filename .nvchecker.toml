@@ -1,0 +1,5 @@
+[libggml]
+source = "git"
+git = "https://github.com/ggerganov/ggml.git"
+branch = "master"
+use_commit = true
