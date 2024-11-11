@@ -4,7 +4,7 @@
 pkgname=linux-command-gpt-git
 _pkgname=linux-command-gpt
 pkgver=0.2.1.r1.g7a40d8d
-pkgrel=1
+pkgrel=2
 pkgdesc='Get Linux commands in natural language with the power of ChatGPT'
 arch=(x86_64 aarch64)
 url='https://github.com/asrul10/linux-command-gpt'
@@ -25,6 +25,7 @@ prepare() {
   cd "${_pkgname}"
 
   export GOPATH="${srcdir}"
+  export GOFLAGS="-modcacherw"
   go mod download
 }
 
