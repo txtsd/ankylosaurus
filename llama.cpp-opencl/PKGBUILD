@@ -3,7 +3,7 @@
 pkgname=llama.cpp-opencl
 _pkgname="${pkgname%-opencl}"
 pkgver=b4062
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with OpenCL optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -63,6 +63,8 @@ build() {
     -DGGML_FMA=OFF
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
+    -DBUILD_SHARED_LIBS=OFF
+    -DGGML_STATIC=ON
     -DGGML_LTO=ON
     -DGGML_RPC=ON
     -DLLAMA_CURL=ON
@@ -76,6 +78,8 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
+  rm "${pkgdir}/usr/include/"ggml*
+  rm "${pkgdir}/usr/lib/"lib*.a
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
