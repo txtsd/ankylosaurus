@@ -3,7 +3,7 @@
 pkgname=opennox-git
 _pkgname="${pkgname%-git}"
 pkgver=1.9.0.alpha13.r103.gabbdebbf4
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern implementation of the Nox game engine'
 arch=(x86_64)
 url='https://github.com/noxworld-dev/opennox'
@@ -25,6 +25,14 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "${_pkgname}/src"
+
+  export GOPATH="${srcdir}"
+  export GOFLAGS="-modcacherw"
+  go mod download
+}
 
 pkgver() {
   cd "${_pkgname}"
