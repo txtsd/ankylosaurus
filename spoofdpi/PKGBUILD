@@ -3,7 +3,7 @@
 pkgname=spoofdpi
 _pkgname=SpoofDPI
 pkgver=0.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple and fast anti-censorship tool written in Go'
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/xvzc/SpoofDPI'
@@ -27,6 +27,7 @@ prepare() {
   mkdir -p build
 
   export GOPATH="${srcdir}"
+  export GOFLAGS="-modcacherw"
   go mod download
 }
 
