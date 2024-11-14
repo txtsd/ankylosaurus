@@ -28,6 +28,7 @@ repos=(
   fast-discord-git
   flaresolverr
   flaresolverr-bin
+  funchook
   gpt-engineer
   halloy
   halloy-bin
