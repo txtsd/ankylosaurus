@@ -1,0 +1,157 @@
+
+image: archlinux
+
+packages:
+  - jq
+  - python-jq
+  - devtools
+  - nvchecker
+  - fd
+  - sd
+  - pacman-contrib
+
+environment:
+  packages: [llama.cpp, llama.cpp-cuda, llama.cpp-hip, llama.cpp-opencl, llama.cpp-sycl-f16, llama.cpp-sycl-f32, llama.cpp-vulkan]
+  GPG_TTY: /dev/pts/0
+
+secrets:
+  - 5cd32654-71c1-4163-b612-92c4188537b7
+  - 3ace5c97-3ff2-4ba7-a734-6e54e3baf050
+  - fcdf0051-d5ad-41a0-9337-1595a7fb8784
+
+tasks:
+  - system_update: |
+      sudo sd 'debug' '!debug' /etc/makepkg.conf
+      yay -Syu --noconfirm
+
+  - system_configure_ssh: |
+      mkdir -p ~/.ssh/
+      cat <<EOF > ~/.ssh/known_hosts
+      aur.archlinux.org ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBLMiLrP8pVi5BFX2i3vepSUnpedeiewE5XptnUnau+ZoeUOPkpoCgZZuYfpaIQfhhJJI5qgnjJmr4hyJbe/zxow=
+      aur.archlinux.org ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKF9vAFWdgm9Bi8uc+tYRBmXASBb5cB5iZsB7LOWWFeBrLp3r14w0/9S2vozjgqY5sJLDPONWoTTaVTbhe3vwO8CBKZTEt1AcWxuXNlRnk9FliR1/eNB9uz/7y1R0+c1Md+P98AJJSJWKN12nqIDIhjl2S1vOUvm7FNY43fU2knIhEbHybhwWeg+0wxpKwcAd/JeL5i92Uv03MYftOToUijd1pqyVFdJvQFhqD4v3M157jxS5FTOBrccAEjT+zYmFyD8WvKUa9vUclRddNllmBJdy4NyLB8SvVZULUPrP3QOlmzemeKracTlVOUG1wsDbxknF1BwSCU7CmU6UFP90kpWIyz66bP0bl67QAvlIc52Yix7pKJPbw85+zykvnfl2mdROsaT8p8R9nwCdFsBc9IiD0NhPEHcyHRwB8fokXTajk2QnGhL+zP5KnkmXnyQYOCUYo3EKMXIlVOVbPDgRYYT/XqvBuzq5S9rrU70KoI/S5lDnFfx/+lPLdtcnnEPk=
+      aur.archlinux.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuBKrPzbawxA/k2g6NcyV5jmqwJ2s+zpgZGZ7tpLIcN
+      EOF
+
+  - system_configure_git: |
+      git config --global user.email 'code@ihavea.quest'
+      git config --global user.name 'txtsd'
+      git config --global protocol.version 2
+      git config --global http.version 'HTTP/2'
+      git config --global init.defaultBranch master
+      git config --global user.signingkey 97C8848C2E4063CB
+      git config --global commit.gpgsign true
+      git config --global push.default 'simple'
+      git config --global push.gpgsign 'if-asked'
+      git config --global tag.gpgsign true
+      git config --global format.signOff no
+      git config --global gpg.program gpg2
+      # git ignore --global '*.log'
+
+  - system_configure_gpgagent: |
+      mkdir -p ~/.gnupg/
+      echo use-agent >> ~/.gnupg/gpg.conf
+      echo pinentry-mode loopback >> ~/.gnupg/gpg.conf
+      echo default-cache-ttl 14400 >> ~/.gnupg/gpg-agent.conf
+      echo max-cache-ttl 14400 >> ~/.gnupg/gpg-agent.conf
+      echo allow-preset-passphrase >> ~/.gnupg/gpg-agent.conf
+      echo allow-loopback-pinentry >> ~/.gnupg/gpg-agent.conf
+      gpgconf -R gpg-agent
+
+  - system_configure_gpg: |
+      gpg --batch --pinentry-mode loopback --passphrase-file ~/.gpgkeypassphrase --import ~/.gpgkey
+
+  - build_test_publish: |
+      cat ~/.gpgkeypassphrase | /usr/lib/gnupg/gpg-preset-passphrase --preset 6763F413B8C1DC577FCB62F4FAD4DB216AE194C4
+      for repo in ${packages[@]}; do
+        git clone "ssh://aur@aur.archlinux.org/${repo}.git"
+        cd "${repo}" || exit
+
+        (env TERM=xterm pkgctl version check > /dev/null 2>&1) && true
+
+        exit_code_1=$?
+        if [ ${exit_code_1} == 2 ]; then
+          echo 'New version available!'
+
+          source PKGBUILD
+
+          env TERM=xterm pkgctl version upgrade
+
+          case ${pkgname} in
+            llama.cpp)
+              yay -S --noconfirm --builddir ~/.cache/yay/ sentencepiece python-sentencepiece
+              (pkgctl build -I ~/.cache/yay/sentencepiece/sentencepiece-*.pkg.tar.zst -I ~/.cache/yay/sentencepiece/python-sentencepiece-*.pkg.tar.zst) && true
+              ;;
+
+            llama.cpp-cuda | llama.cpp-hip | llama.cpp-opencl | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
+              echo 'Skipping build'
+              updpkgsums && makepkg --printsrcinfo >| .SRCINFO
+              ;;
+
+            *)
+              (pkgctl build) && true
+              ;;
+          esac
+          exit_code_2=$?
+
+          if [ ${exit_code_2} == 0 ]; then
+
+            case ${pkgname} in
+              llama.cpp-cuda | llama.cpp-hip | llama.cpp-opencl | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
+                echo 'Skipping install'
+                ;;
+              *)
+                yay -U "${repo}"-*.pkg.tar.zst --noconfirm
+                ;;
+            esac
+
+            service_name=${repo%-bin}
+            service_name=${service_name%-beta}
+            service_name=${service_name%-develop}
+            service_name=${service_name%-nightly}
+
+            case ${service_name} in
+              llama.cpp)
+                llama-cli --help
+                ;;
+
+              llama.cpp-cuda | llama.cpp-hip | llama.cpp-opencl | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
+                echo 'Skipping test'
+                ;;
+
+              *)
+                echo 'Default'
+                ;;
+            esac
+
+            unset pkgname
+            unset pkgver
+            unset pkgrel
+            source PKGBUILD
+            git add -v PKGBUILD .SRCINFO
+            git commit --status -S -m "upgpkg: ${pkgname} ${pkgver}-${pkgrel}"
+            git push
+
+            case ${pkgname} in
+              llama.cpp)
+                yay -R "${pkgname}" --noconfirm
+                yay -Rsscn --noconfirm sentencepiece python-sentencepiece
+                ;;
+
+              llama.cpp-cuda | llama.cpp-hip | llama.cpp-opencl | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
+                echo 'Skipping removal'
+                ;;
+
+              *)
+                yay -R "${pkgname}" --noconfirm
+            esac
+
+          else
+            echo "Building ${pkgname} failed!"
+          fi
+        else
+          echo 'This is the latest version'
+        fi
+        cd ..
+        rm -rf "${repo}"
+        sudo rm -rf /var/lib/archbuild
+      done
