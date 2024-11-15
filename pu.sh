@@ -97,6 +97,7 @@ repos=(
   ttc-monocraft
   ttf-game-fonts
   ttf-miracode
+  ttf-signika
   ttf-unifont
   usockets
   uwebsockets
