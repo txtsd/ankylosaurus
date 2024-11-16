@@ -1,87 +1,86 @@
-# Maintainer:
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 # Contributor: 3Jl0y_PYCCKUi <3jl0y_pycckui@riseup.net>
 # Contributor: solopasha <daron439 at gmail dot com>
 # Contributor: Ilya Fedin <fedin-ilja2010@ya.ru>
 # Contributor: Auteiy <dmitry@auteiy.me>
 
-_pkgname="kotatogram-desktop"
-pkgname="$_pkgname"
+pkgname=kotatogram-desktop
 pkgver=1.4.9
-pkgrel=4
+pkgrel=5
 pkgdesc='Experimental fork of Telegram Desktop'
-url="https://github.com/kotatogram/kotatogram-desktop"
+url='https://github.com/kotatogram/kotatogram-desktop'
 license=('GPL-3.0-or-later')
-arch=('x86_64')
+arch=(x86_64)
 
 depends=(
-  'abseil-cpp'
-  'ffmpeg4.4'
-  'glib2'
-  'glibmm'
-  'hicolor-icon-theme'
-  'hunspell'
-  'jemalloc'
-  'kwayland5'
-  'libdispatch'
-  'libjpeg-turbo'
-  'libpipewire'
-  'libsigc++'
-  'libvpx'
-  'libx11'
-  'libxcb'
-  'libxcomposite'
-  'libxdamage'
-  'libxext'
-  'libxfixes'
-  'libxrandr'
-  'libxtst'
-  'lz4'
-  'minizip'
-  'openal'
-  'opus'
-  'qt5-imageformats'
-  'qt5-svg'
-  'qt5-wayland'
-  'rnnoise'
-  'ttf-opensans'
-  'wayland'
-  'xcb-util-keysyms'
-  'xxhash'
-  'zlib'
+  abseil-cpp
+  ffmpeg4.4
+  gcc-libs
+  glib2
+  glibc
+  glibmm
+  hicolor-icon-theme
+  hunspell
+  jemalloc
+  kwayland5
+  libdispatch
+  libjpeg-turbo
+  libpipewire
+  libsigc++
+  libvpx
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrandr
+  libxtst
+  lz4
+  minizip
+  openal
+  openssl
+  opus
+  qt5-base
+  qt5-imageformats
+  qt5-svg
+  qt5-wayland
+  rnnoise
+  ttf-opensans
+  wayland
+  xcb-util-keysyms
+  xxhash
+  zlib
 )
 makedepends=(
-  'cmake'
-  'extra-cmake-modules'
-  'git'
-  'glib2-devel'
-  'meson'
-  'microsoft-gsl'
-  'ninja'
-  'pipewire'
-  'plasma-wayland-protocols'
-  'python'
-  'range-v3'
-  'tl-expected'
-  'unzip'
-  'wayland-protocols'
-  'webkit2gtk'
-  'yasm'
+  cmake
+  extra-cmake-modules
+  git
+  glib2-devel
+  meson
+  microsoft-gsl
+  ninja
+  pipewire
+  plasma-wayland-protocols
+  python
+  range-v3
+  tl-expected
+  unzip
+  wayland-protocols
+  webkit2gtk
+  yasm
 )
 optdepends=(
   'webkit2gtk: embedded browser features'
   'xdg-desktop-portal: desktop integration'
 )
 
-provides=('kotatogram-desktop')
-conflicts=('kotatogram-desktop')
-
 _tg_owt_commit=63a934db1ed212ebf8aaaa20f0010dd7b0d7b396
 
-_pkgsrc="$_pkgname"
 source=(
   # kotatogram-desktop and patches
-  "$_pkgsrc"::"git+$url.git#tag=k${pkgver%%.r*}"
+  "$pkgname::git+$url.git#tag=k${pkgver%%.r*}"
 
   "include.patch"
   "kf594.patch"
@@ -144,65 +143,58 @@ source=(
   'pipewire'::'git+https://github.com/PipeWire/pipewire.git'
 )
 
-sha256sums=(
-  'SKIP'
-  '133cde2fb9e1b5f837396e487783adf5e1899e20d335f1654a71e6ef1121918c'
-  '25160a4a687b0032151f5c7a295996e4322b5c9ed1122dfa6c3985d57e866b2c'
-  '289b69c980fe4877ab94d3b68180e586ffabecd15c4205f008fe21498d12f7ee'
-  'd27016d67bd0baf5eb7c49ce1a0658e584d3892c344edde38843ca39a1d63a42'
-  '533576f87db701100b2fda4b4ccbbb9957234d86447960a7c6b1dd07c8830d19'
-  '26bd7d7e683dbf8d3fc7675afafac3fa3a140c21ca9087c8c98241a9041b981c'
-  'b794229b2b2cec355219fe6d33dba1efd782dc9ad53c50ab90f5f682db370bea'
-
-  'SKIP'
-  'f4d26c1048a7fd1ac3419042009c3b52c001458e44309a765d42d7df9f45f1ef'
-  '8d3a1c4b2e40eef7a4cc8e6f498c416af47a91b878ec3762b51476e89695cb13'
-
-  '639b0b659685ff11daee21efd0ca0e473ee1cfb533709ea8ecf357945e058f43'
-  '229c85f7fe86c11139b4d6b4fd44086d737e25ac94c89302aabe09eedb436f7e'
-  'bb2aa0ec20d9769a513a41033a7f00baf08afd7a40c710431576d0f8b3a27a0e'
-
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-
-  'SKIP'
-
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('fc761dd2900ca5f56bc2b180ee5a06a625d30ea9c4f4beb214c223b774c839a8'
+            '133cde2fb9e1b5f837396e487783adf5e1899e20d335f1654a71e6ef1121918c'
+            '25160a4a687b0032151f5c7a295996e4322b5c9ed1122dfa6c3985d57e866b2c'
+            '289b69c980fe4877ab94d3b68180e586ffabecd15c4205f008fe21498d12f7ee'
+            'd27016d67bd0baf5eb7c49ce1a0658e584d3892c344edde38843ca39a1d63a42'
+            '533576f87db701100b2fda4b4ccbbb9957234d86447960a7c6b1dd07c8830d19'
+            '26bd7d7e683dbf8d3fc7675afafac3fa3a140c21ca9087c8c98241a9041b981c'
+            'b794229b2b2cec355219fe6d33dba1efd782dc9ad53c50ab90f5f682db370bea'
+            'c5928e31bea341ecbfbda4bef77d7784ce9a58bd3651a2e9371d6a138f2dd019'
+            'f4d26c1048a7fd1ac3419042009c3b52c001458e44309a765d42d7df9f45f1ef'
+            '8d3a1c4b2e40eef7a4cc8e6f498c416af47a91b878ec3762b51476e89695cb13'
+            '639b0b659685ff11daee21efd0ca0e473ee1cfb533709ea8ecf357945e058f43'
+            '229c85f7fe86c11139b4d6b4fd44086d737e25ac94c89302aabe09eedb436f7e'
+            'bb2aa0ec20d9769a513a41033a7f00baf08afd7a40c710431576d0f8b3a27a0e'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 _prepare_kotatogram() (
-  cd "$srcdir/$_pkgsrc"
+  cd "$srcdir/$pkgname"
   local _submodules=(
     'apple.swift-corelibs-libdispatch'::'Telegram/ThirdParty/dispatch'
     'cyan4973.xxhash'::'Telegram/ThirdParty/xxHash'
@@ -248,7 +240,7 @@ _prepare_kotatogram() (
     _submodule_update
   )
 
-  cd "$srcdir/$_pkgsrc"
+  cd "$srcdir/$pkgname"
   apply-patch "$srcdir/kf594.patch"
   apply-patch "$srcdir/326.patch"
   apply-patch "$srcdir/333.patch"
@@ -293,6 +285,12 @@ prepare() {
 
   _prepare_kotatogram
   _prepare_tg_owt
+
+  for i in $(grep -Rln '<gsl/gsl_' "$pkgname"); do
+    sed -E -e '/#include/s|<gsl/gsl_([a-z_]+)>|<gsl/\1>|' -i "$i"
+  done
+
+  sed -E -e '1i #include <cstring>' -i "$pkgname/Telegram/lib_tl/tl/tl_basic_types.h"
 }
 
 _build_tg_owt() (
@@ -316,7 +314,7 @@ _build_tg_owt() (
 _build_kotatogram() (
   local _cmake_options=(
     -B build
-    -S "$_pkgsrc"
+    -S "$pkgname"
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX="/usr"
