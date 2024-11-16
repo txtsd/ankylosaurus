@@ -1,0 +1,19 @@
+pkgbase = python-user_agent2
+	pkgdesc = Generate random user agents
+	pkgver = 2021.12.11
+	pkgrel = 1
+	url = https://pypi.org/project/user-agent2/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-user_agent
+	source = https://files.pythonhosted.org/packages/source/u/user_agent2/user_agent2-2021.12.11.tar.gz
+	sha256sums = 3a7c94a6cba52597bfca2bfd649aa690a7ae56db0884aeb19152dbfea670a987
+
+pkgname = python-user_agent2
