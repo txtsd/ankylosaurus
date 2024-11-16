@@ -1,0 +1,3 @@
+[python-cfscrape]
+source = "pypi"
+pypi = "cfscrape"
