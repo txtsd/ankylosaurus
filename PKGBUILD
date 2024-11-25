@@ -1,10 +1,10 @@
-# Maintainer:  <none>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck/)
 
 pkgname=libggml-git
 _pkgname="${pkgname%-git}"
 pkgver=r1410.8a3d799
-pkgrel=1
+pkgrel=2
 pkgdesc='Tensor library for machine learning'
 url='https://github.com/ggerganov/ggml'
 license=('MIT')
@@ -36,11 +36,6 @@ build() {
     -S "${_pkgname}"
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DGGML_NATIVE=OFF
-    -DGGML_AVX2=OFF
-    -DGGML_AVX=OFF
-    -DGGML_F16C=OFF
-    -DGGML_FMA=OFF
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
     -DGGML_BUILD_EXAMPLES=ON
