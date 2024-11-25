@@ -11,7 +11,7 @@ packages:
   - pacman-contrib
 
 environment:
-  packages: [llama.cpp, llama.cpp-cuda, llama.cpp-hip, llama.cpp-opencl, llama.cpp-sycl-f16, llama.cpp-sycl-f32, llama.cpp-vulkan]
+  packages: [llama.cpp, llama.cpp-cuda, llama.cpp-hip, llama.cpp-sycl-f16, llama.cpp-sycl-f32, llama.cpp-vulkan]
   GPG_TTY: /dev/pts/0
 
 secrets:
@@ -82,7 +82,7 @@ tasks:
               (pkgctl build -I ~/.cache/yay/sentencepiece/sentencepiece-*.pkg.tar.zst -I ~/.cache/yay/sentencepiece/python-sentencepiece-*.pkg.tar.zst) && true
               ;;
 
-            llama.cpp-cuda | llama.cpp-hip | llama.cpp-opencl | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
+            llama.cpp-cuda | llama.cpp-hip | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
               echo 'Skipping build'
               updpkgsums && makepkg --printsrcinfo >| .SRCINFO
               ;;
@@ -96,7 +96,7 @@ tasks:
           if [ ${exit_code_2} == 0 ]; then
 
             case ${pkgname} in
-              llama.cpp-cuda | llama.cpp-hip | llama.cpp-opencl | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
+              llama.cpp-cuda | llama.cpp-hip | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
                 echo 'Skipping install'
                 ;;
               *)
@@ -114,7 +114,7 @@ tasks:
                 llama-cli --help
                 ;;
 
-              llama.cpp-cuda | llama.cpp-hip | llama.cpp-opencl | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
+              llama.cpp-cuda | llama.cpp-hip | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
                 echo 'Skipping test'
                 ;;
 
@@ -137,7 +137,7 @@ tasks:
                 yay -Rsscn --noconfirm sentencepiece python-sentencepiece
                 ;;
 
-              llama.cpp-cuda | llama.cpp-hip | llama.cpp-opencl | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
+              llama.cpp-cuda | llama.cpp-hip | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
                 echo 'Skipping removal'
                 ;;
 
