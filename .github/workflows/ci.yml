@@ -10,6 +10,8 @@ on:
       - 'pu.sh'
       - 'refre.sh'
       - 'renovate.json'
+      - 'llama.cpp-cuda/**'
+      - 'llama.cpp-hip/**'
   pull_request:
     types:
       - opened
@@ -21,6 +23,8 @@ on:
       - 'pu.sh'
       - 'refre.sh'
       - 'renovate.json'
+      - 'llama.cpp-cuda/**'
+      - 'llama.cpp-hip/**'
   workflow_dispatch:
 
 defaults:
