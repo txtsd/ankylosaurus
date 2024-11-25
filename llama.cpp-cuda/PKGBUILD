@@ -3,7 +3,7 @@
 pkgname=llama.cpp-cuda
 _pkgname="${pkgname%-cuda}"
 pkgver=b4157
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -25,7 +25,7 @@ makedepends=(
   git
 )
 provides=(${_pkgname})
-conflicts=(${_pkgname})
+conflicts=(${_pkgname} libggml)
 options=(lto)
 source=(
   "git+${url}#tag=${pkgver}"
@@ -36,7 +36,7 @@ source=(
 sha256sums=('fb29ddda4d220f9283360c4ba9233ebec475b755d286c31d5d27f207782c813f'
             'SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-            '065f69ccd7ac40d189fae723b58d6de2a24966e9b526e0dbfa3035a4c46a7669')
+            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
 prepare() {
   cd "${_pkgname}"
@@ -52,20 +52,16 @@ build() {
     -S "${_pkgname}"
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DGGML_NATIVE=OFF
-    -DGGML_AVX2=OFF
-    -DGGML_AVX=OFF
-    -DGGML_F16C=OFF
-    -DGGML_FMA=OFF
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
-    -DBUILD_SHARED_LIBS=OFF
-    -DGGML_STATIC=ON
+    -DBUILD_SHARED_LIBS=ON
+    -DGGML_STATIC=OFF
     -DGGML_LTO=ON
     -DGGML_RPC=ON
     -DLLAMA_CURL=ON
     -DGGML_BLAS=ON
     -DGGML_CUDA=ON
+    -DCMAKE_CUDA_ARCHITECTURES=native
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
@@ -75,7 +71,6 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
   rm "${pkgdir}/usr/include/"ggml*
-  rm "${pkgdir}/usr/lib/"lib*.a
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
