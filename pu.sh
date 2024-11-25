@@ -46,7 +46,6 @@ repos=(
   llama.cpp
   llama.cpp-cuda
   llama.cpp-hip
-  llama.cpp-opencl
   llama.cpp-sycl-f16
   llama.cpp-sycl-f32
   llama.cpp-vulkan
