@@ -1,7 +1,7 @@
 pkgbase = libggml
 	pkgdesc = Tensor library for machine learning
 	pkgver = r1410.8a3d799
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ggerganov/ggml
 	arch = x86_64
 	license = MIT
