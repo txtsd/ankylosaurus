@@ -3,7 +3,7 @@
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
 pkgver=b4157
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -27,6 +27,8 @@ makedepends=(
   vulkan-headers
   pkgconf
 )
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 options=(lto)
 source=(
   "git+${url}#tag=${pkgver}"
@@ -37,7 +39,7 @@ source=(
 sha256sums=('fb29ddda4d220f9283360c4ba9233ebec475b755d286c31d5d27f207782c813f'
             'SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-            '065f69ccd7ac40d189fae723b58d6de2a24966e9b526e0dbfa3035a4c46a7669')
+            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
 prepare() {
   cd "${_pkgname}"
@@ -53,11 +55,6 @@ build() {
     -S "${_pkgname}"
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DGGML_NATIVE=OFF
-    -DGGML_AVX2=OFF
-    -DGGML_AVX=OFF
-    -DGGML_F16C=OFF
-    -DGGML_FMA=OFF
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
     -DBUILD_SHARED_LIBS=OFF
