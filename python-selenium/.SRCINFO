@@ -1,11 +1,10 @@
 pkgbase = python-selenium
 	pkgdesc = Python language bindings for Selenium WebDriver
-	pkgver = 4.26.1
+	pkgver = 4.27.1
 	pkgrel = 1
 	url = https://github.com/SeleniumHQ/selenium
 	arch = x86_64
 	license = Apache-2.0
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -23,9 +22,7 @@ pkgbase = python-selenium
 	depends = python-websocket-client
 	depends = zlib
 	options = !lto
-	source = python-selenium-4.26.1.tar.gz::https://github.com/SeleniumHQ/selenium/archive/refs/tags/selenium-4.26.1-python.tar.gz
-	source = 0001-fix-selenium-manager-build.patch
-	sha256sums = 0e1ee5e523825a19e440b8bf91509139586767c1723af37b89685c121656fedb
-	sha256sums = af031d7fd32bb4b8216d8b16957e2102b4f319ae22d94460636db90947d2d6ba
+	source = https://files.pythonhosted.org/packages/source/s/selenium/selenium-4.27.1.tar.gz
+	sha256sums = 5296c425a75ff1b44d0d5199042b36a6d1ef76c04fb775b97b40be739a9caae2
 
 pkgname = python-selenium
