@@ -35,11 +35,13 @@ of giants:
 
 ### Tools
 
-- [eli-schwartz](https://github.com/eli-schwartz) - [eli-schwartz/aurpublish](https://github.com/eli-schwartz/aurpublish)
-- [AladW](https://github.com/AladW) - [AladW/aurutils](https://github.com/AladW/aurutils)
-- [Jguer](https://github.com/Jguer) - [Jguer/yay](https://github.com/Jguer/yay)
-- [simon04](https://github.com/simon04) - [simon04/aur-out-of-date](https://github.com/simon04/aur-out-of-date)
-- [bcryan](https://github.com/bcryan) - [bcyran/bumper](https://github.com/bcyran/bumper)
+- [eli-schwartz/aurpublish](https://github.com/eli-schwartz/aurpublish)
+- [AladW/aurutils](https://github.com/AladW/aurutils)
+- [Jguer/yay](https://github.com/Jguer/yay)
+- [simon04/aur-out-of-date](https://github.com/simon04/aur-out-of-date)
+- [bcyran/bumper](https://github.com/bcyran/bumper)
+- [lilydjwg/nvchecker](https://github.com/lilydjwg/nvchecker)
+- [archlinux/devtools](https://gitlab.archlinux.org/archlinux/devtools)
 
 ### PKGBUILD repositories
 

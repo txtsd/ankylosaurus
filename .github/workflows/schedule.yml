@@ -23,14 +23,7 @@ jobs:
       - name: Update system and install dependencies
         run: |
           pacman-key --init
-          pacman -Syu --noconfirm fd jq wget
-
-      - name: Download bumper binary
-        run: |
-          cd $HOME
-          wget 'https://github.com/bcyran/bumper/releases/download/v1.0.0/bumper-1.0.0-linux-amd64.tar.gz'
-          tar xf bumper-1.0.0-linux-amd64.tar.gz
-          chmod +x bumper
+          pacman -Syu --noconfirm fd jq wget nvchecker python-jq devtools
 
       - uses: actions/checkout@v4
         with:
@@ -43,10 +36,10 @@ jobs:
         shell: sh
         run: |
           updates=()
-          for dir in $(fd --type d --exclude="*-git" --exclude="*-cvs" --exclude="*-svn" --exclude="*-hg" --exclude="*-darcs" --exclude="*-bzr")
+          for dir in $(fd --type d --exclude="*-git" --exclude="*-cvs" --exclude="*-svn" --exclude="*-hg" --exclude="*-darcs" --exclude="*-bzr" --exclude='llama.cpp-cuda' --exclude='llama.cpp-hip' --exclude='android_translation_layer' --exclude='art_standalone' --exclude='bionic_translation' --exclude='libopensles-standalone' --exclude='libggml' --exclude='qbittorrent-nightwalker')
           do
             pushd ${dir%/}
-            result=$(${HOME}/bumper --bump=false | grep -i → | wc -l)
+            result=$(pkgctl version check | grep '!' | wc -l)
             if [ $result = 1 ]; then
               updates+=("${dir%/}")
             fi
