@@ -1,8 +1,8 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=porla
-pkgver=0.40.0
-pkgrel=2
+pkgver=0.41.0
+pkgrel=1
 pkgdesc='A high performance BitTorrent client for servers and seedboxes'
 arch=(x86_64 aarch64)
 url='https://porla.org'
@@ -50,8 +50,8 @@ source=(
   porla.sysusers
   porla.tmpfiles
 )
-sha256sums=('dd4e215c72822fe5fbaa212f87ccaebaba54281ccf9f6cc4f0ce51ee173401ad'
-            'faf57e78eb2de9ae96aa7b66565fb9fa42f7fc66f57d44e0cd21a8ac7a6ed55b'
+sha256sums=('c91a513051e0b64b0d4fb5b8202093d3a6ae70baa4155d28f6c521eb095aabb7'
+            'e95284505f6219cd43f5f7c53fabc040102656ca9a80de7d954890cbe3fa3d20'
             'fa1962c158eae8f47b99cf6e2c0403c1f2e00c430e15f33780b9b91123c6637f'
             '277760130b9c35ca5d009be5b3838fdccc7cc89d19392afea54322b91c3a9f08'
             'a1d0aed79d00d65c1a1dee38249adf0e94091f36b838bb31d734ce6d3d152baf'
