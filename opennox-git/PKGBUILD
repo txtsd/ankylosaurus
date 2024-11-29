@@ -3,10 +3,10 @@
 pkgname=opennox-git
 _pkgname="${pkgname%-git}"
 pkgver=1.9.0.alpha13.r103.gabbdebbf4
-pkgrel=3
+pkgrel=4
 pkgdesc='A modern implementation of the Nox game engine'
 arch=(x86_64)
-url='https://github.com/noxworld-dev/opennox'
+url='https://github.com/opennox/opennox'
 license=('GPL-3.0-or-later')
 depends=(
   hicolor-icon-theme
