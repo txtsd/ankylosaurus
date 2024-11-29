@@ -3,10 +3,10 @@
 pkgname=opennox-bin
 _pkgname="${pkgname%-bin}"
 pkgver=1.9.0_alpha13
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern implementation of the Nox game engine'
 arch=(x86_64)
-url='https://github.com/noxworld-dev/opennox'
+url='https://github.com/opennox/opennox'
 license=('GPL-3.0-or-later')
 depends=(
   lib32-sdl2
