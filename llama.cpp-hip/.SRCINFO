@@ -1,7 +1,7 @@
 pkgbase = llama.cpp-hip
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)
 	pkgver = b4273
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
 	arch = armv7h
@@ -12,6 +12,8 @@ pkgbase = llama.cpp-hip
 	makedepends = git
 	makedepends = rocm-hip-runtime
 	makedepends = rocm-hip-sdk
+	depends = blas-openblas
+	depends = blas64-openblas
 	depends = curl
 	depends = gcc-libs
 	depends = glibc

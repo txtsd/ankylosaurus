@@ -3,12 +3,14 @@
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
 pkgver=b4273
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
 license=('MIT')
 depends=(
+  blas-openblas
+  blas64-openblas
   curl
   gcc-libs
   glibc
