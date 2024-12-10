@@ -1,10 +1,11 @@
 pkgbase = aleo-fonts
 	pkgdesc = Slab serif type family designed by Alessio Laiso
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://alessiolaiso.com/aleo-font
 	arch = any
 	license = OFL-1.1
+	options = !debug
 	source = https://alessiolaiso.com/downloads/Aleo_v2.0.zip
 	sha256sums = ed8c6f6b04b3bf1df367ef0e0f272a09056e5dcd34d58f7e7cdb35ad504a1591
 
