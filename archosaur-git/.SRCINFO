@@ -1,7 +1,7 @@
 pkgbase = archosaur-git
 	pkgdesc = A PKGBUILD management framework for the Arch User Repository
-	pkgver = 1.0.0.r0.g1bc6939
-	pkgrel = 3
+	pkgver = 1.0.0.r3.gbba498a
+	pkgrel = 1
 	url = https://github.com/txtsd/archosaur
 	arch = any
 	license = GPL-2.0-or-later
@@ -11,6 +11,7 @@ pkgbase = archosaur-git
 	depends = openssh
 	provides = archosaur
 	conflicts = archosaur
+	options = !debug
 	source = git+https://github.com/txtsd/archosaur.git
 	sha256sums = SKIP
 
