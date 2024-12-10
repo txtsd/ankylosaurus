@@ -2,8 +2,8 @@
 
 pkgname=archosaur-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.0.r0.g1bc6939
-pkgrel=3
+pkgver=1.0.0.r3.gbba498a
+pkgrel=1
 pkgdesc='A PKGBUILD management framework for the Arch User Repository'
 arch=(any)
 url="https://github.com/txtsd/${_pkgname}"
@@ -12,6 +12,7 @@ depends=(bash openssh)
 makedepends=(asciidoc git)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+options=(!debug)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
