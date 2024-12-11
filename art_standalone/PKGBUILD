@@ -1,9 +1,9 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=art_standalone
-pkgver=r175.4951d336
+pkgver=r181.c4fba44a
 pkgrel=1
-_commit=4951d336de83ce9e65fecf0781ff3582206fa55e
+_commit=c4fba44a45e319b57801d81ef946ee953ff70b58
 pkgdesc='A standalone version of Dalvik with Art built in'
 url='https://gitlab.com/android_translation_layer/art_standalone'
 arch=(x86_64 aarch64 armv7h)
@@ -33,7 +33,7 @@ makedepends=(
   zip
 )
 source=("${pkgname}-${_commit}.tar.gz::${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
-sha256sums=('40d32f3fb6c7f95a32fded17f12dc71610ef9c513d183319afb1678aa767006e')
+sha256sums=('ba47e40fc72c66b1a709a8557a79cedb6ee531e77618fbfe385833ebb19930af')
 
 build() {
   cd "${pkgname}-${_commit}"
