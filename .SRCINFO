@@ -1,6 +1,6 @@
 pkgbase = android_translation_layer
 	pkgdesc = A translation layer for running Android apps on a Linux system
-	pkgver = r674.332d3d11
+	pkgver = r689.c4d20b82
 	pkgrel = 1
 	url = https://gitlab.com/android_translation_layer/android_translation_layer
 	arch = x86_64
@@ -38,8 +38,8 @@ pkgbase = android_translation_layer
 	depends = vulkan-icd-loader
 	depends = wayland
 	depends = webkitgtk-6.0
-	source = android_translation_layer-332d3d1137b6dbae579583b8fb8cb607795b925a.tar.gz::https://gitlab.com/android_translation_layer/android_translation_layer/-/archive/332d3d1137b6dbae579583b8fb8cb607795b925a/android_translation_layer-332d3d1137b6dbae579583b8fb8cb607795b925a.tar.gz
-	sha256sums = ffb1f31e41b7ce48830b7757b0c2eea97f93ea25a81ee24ff04e40f9b37d83d4
+	source = android_translation_layer-c4d20b828e03891448d970880822c4cfab516666.tar.gz::https://gitlab.com/android_translation_layer/android_translation_layer/-/archive/c4d20b828e03891448d970880822c4cfab516666/android_translation_layer-c4d20b828e03891448d970880822c4cfab516666.tar.gz
+	sha256sums = ea4d2113e7df8d4fb71c9902fc46433bcf594ba9a692b43ffc9b71d724547bff
 
 pkgname = android_translation_layer
 	depends = alsa-lib

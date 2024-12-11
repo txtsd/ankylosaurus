@@ -2,9 +2,9 @@
 
 pkgname=android_translation_layer
 _pkgname=${pkgname//-/_}
-pkgver=r674.332d3d11
+pkgver=r689.c4d20b82
 pkgrel=1
-_commit=332d3d1137b6dbae579583b8fb8cb607795b925a
+_commit=c4d20b828e03891448d970880822c4cfab516666
 pkgdesc='A translation layer for running Android apps on a Linux system'
 url='https://gitlab.com/android_translation_layer/android_translation_layer'
 arch=(x86_64 aarch64 armv7h)
@@ -46,7 +46,7 @@ makedepends=(
   wayland-protocols
 )
 source=("${pkgname}-${_commit}.tar.gz::${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
-sha256sums=('ffb1f31e41b7ce48830b7757b0c2eea97f93ea25a81ee24ff04e40f9b37d83d4')
+sha256sums=('ea4d2113e7df8d4fb71c9902fc46433bcf594ba9a692b43ffc9b71d724547bff')
 
 prepare() {
   meson subprojects download --sourcedir="${pkgname}-${_commit}"
