@@ -1,0 +1,4 @@
+[librespot]
+source = "git"
+git = "https://github.com/librespot-org/librespot.git"
+prefix = "v"
