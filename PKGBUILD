@@ -1,17 +1,16 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=tile38
-pkgver=1.33.4
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='An in-memory geolocation data store, spatial index, and realtime geofencing server'
 arch=(x86_64 armv7h aarch64)
 url='https://tile38.com'
 license=('MIT')
 depends=(ca-certificates)
-makedepends=(git go) # 'bzr', 'git', 'mercurial' or 'subversion'
-options=()
-source=("git+https://github.com/tidwall/tile38#tag=$pkgver")
-sha256sums=('83ce1567904a88501effe05ab158736e2202b4fa9dbff358e9c342fbd81e9373')
+makedepends=(git go)
+source=("git+https://github.com/tidwall/tile38#tag=${pkgver}")
+sha256sums=('eddcf31adc91f23aefb4ffc43be0eaacf4207f9f03dc0db2f83397cac1738a13')
 
 prepare() {
   cd "${pkgname}"
@@ -41,14 +40,15 @@ build() {
   local _ld_flags=" \
     -compressdwarf=false \
     -linkmode=external \
-    -X github.com/tidwall/tile38/core.Version=$(git describe --tags --abbrev=0) \
-    -X github.com/tidwall/tile38/core.GitSHA=$(git rev-parse --short HEAD) \
-    -X github.com/tidwall/tile38/core.BuildTime=$(date -u +'%Y-%m-%dT%H:%M:%SZ' --date=@${SOURCE_DATE_EPOCH})
+    -X github.com/tidwall/tile38/core.Version=${pkgver} \
+    -X github.com/tidwall/tile38/core.GitSHA=${sha256sums[0]:0:7} \
+    -X github.com/tidwall/tile38/core.BuildTime=$(date -u +'%Y-%m-%dT%H:%M:%SZ' --date=@${SOURCE_DATE_EPOCH}) \
   "
+  core/gen.sh
   go build \
     -ldflags "${_ldflags}" \
     -o build \
-    ./...
+    ./cmd/...
 }
 
 check() {
