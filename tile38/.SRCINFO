@@ -1,0 +1,16 @@
+pkgbase = tile38
+	pkgdesc = An in-memory geolocation data store, spatial index, and realtime geofencing server
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://tile38.com
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = ca-certificates
+	source = git+https://github.com/tidwall/tile38#tag=1.34.0
+	sha256sums = eddcf31adc91f23aefb4ffc43be0eaacf4207f9f03dc0db2f83397cac1738a13
+
+pkgname = tile38
