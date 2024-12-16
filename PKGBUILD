@@ -3,7 +3,7 @@
 _pkgname=RadeonDeveloperToolSuite-2024-09-26-1411
 pkgname=radeon-gpu-profiler
 pkgver=2.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A suite of GUI applications that provide detailed low-level information on Radeon GPUs. (rgp, rga)'
 arch=('x86_64')
 url="https://gpuopen.com/rgp/"
@@ -20,24 +20,28 @@ package()
   mkdir -p "${pkgdir}/opt/"
   cp -r "${srcdir}/${_pkgname}/" "${pkgdir}/opt/${pkgname}/"
 
-  # create launcher scripts (prepended with QT_QPA_PLATFORM= for wayland compat)
-  declare -A _binaries=(
-    RadeonGPUAnalyzer   rga
-    RadeonGPUProfiler   rgp
-  )
-
   mkdir -p "${pkgdir}/usr/bin/"
 
-  for _binary in "${!_binaries[@]}"
+  # create launcher scripts
+  # (prepended with QT_QPA_PLATFORM= for wayland compat)
+
+  local binaries=(
+    RadeonDeveloperPanel
+    RadeonGPUAnalyzer
+    RadeonGPUProfiler
+    RadeonMemoryVisualizer
+    RadeonRaytracingAnalyzer
+    )
+
+  for _binary in "${binaries[@]}"
   do
-    _bin="${_binaries[$_binary]}"
-    cat > "$pkgdir/usr/bin/$_bin"<< EOF
+    cat > "$pkgdir/usr/bin/$_binary"<< EOF
 #!/usr/bin/env sh
 export LD_LIBRARY_PATH=/opt/${pkgname}/lib/
 export QT_QPA_PLATFORM=
 exec /opt/${pkgname}/${_binary}
 EOF
 
-    chmod 0755 "$pkgdir/usr/bin/$_bin"
+    chmod 0755 "$pkgdir/usr/bin/$_binary"
   done
 }
