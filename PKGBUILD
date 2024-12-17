@@ -4,7 +4,7 @@
 # Contributor: Panagiotis Mavrogiorgos <pmav99@gmail.com>
 
 pkgname=nuitka
-pkgver=2.4
+pkgver=2.5.6
 pkgrel=1
 pkgdesc='Python compiler with full language support and CPython compatibility'
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=(gdb git python-build python-installer)
 checkdepends=(ccache fuse2 python-boto3 python-brotli strace)
 optdepends=('ccache: for caching builds')
 source=("$url/releases/${pkgname^}-$pkgver.tar.bz2")
-b2sums=('04824cb7fe0551bba2480d3b0e2478022a068a2a96b10cb906dd3c042fdb11df76e95ecfcc0ed2e783ac194e69dd47352d282a068416e49abde16292c09ff1bd')
+b2sums=('34829bb6c056e8c539a59d56faa86373b291f60d8b9e15b306b63260110e0eeac262ace7cd0f6ab567ba672d4cdbbc10a8dbb97a11ad457a1774e086138afbc0')
 
 build() {
   cd ${pkgname^}-$pkgver
