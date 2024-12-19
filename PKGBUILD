@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=llama.cpp
-pkgver=b4362
+pkgver=b4363
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with OpenBLAS CPU optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -29,7 +29,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('e3abb09d95ec4369fc29d7f61b78a12294d35ab3e4589a9c785f3c53910dbb8a'
+sha256sums=('788ddd3bce41a207c990c90a4cb377f4d37ef39b7439ce01d8e609b9e1ea14d1'
             'SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
