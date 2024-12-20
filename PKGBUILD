@@ -3,7 +3,7 @@
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
 pkgver=b4367
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -57,8 +57,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
-    -DBUILD_SHARED_LIBS=OFF
-    -DGGML_STATIC=ON
+    -DBUILD_SHARED_LIBS=ON
     -DGGML_LTO=ON
     -DGGML_RPC=ON
     -DLLAMA_CURL=ON
@@ -73,7 +72,6 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
   rm "${pkgdir}/usr/include/"ggml*
-  rm "${pkgdir}/usr/lib/"lib*.a
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
