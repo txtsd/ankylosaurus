@@ -4,13 +4,12 @@
 
 pkgname=trelby
 pkgver=2.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc='The free, multiplatform, feature-rich screenwriting program!'
 arch=(any)
 url='https://github.com/trelby/trelby'
 license=('GPL-2.0-or-later')
 depends=(
-  bash
   python
   python-lxml
   python-reportlab
@@ -28,12 +27,10 @@ options=(!debug)
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   "${pkgname}.xml"
-  "${pkgname}"
   0001-chore-Adjust-docbook-patch-for-Arch.patch
 )
 sha256sums=('b1dc77a32e065ab5983221635d29ae885c8e3ac7c824e9221ae93cfd2435eec7'
             'eb9332ff5bd22988ac87231851876df76220a581e1f5bfc5b782cff10ccffe42'
-            'ad7ee2bcb64510866b3ad4ba7cbb04e88358d66b12874ce348cf5bf074afc895'
             'fecea43670ce96944bbd0af7e7e5b39c000982ad67941e960e304ec1628a83ba')
 
 prepare() {
@@ -60,9 +57,11 @@ package() {
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
+  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+  rm -rf "${pkgdir}/usr/lib/python${python_version}/site-packages/tests/"
+
   install -Dm644 "trelby/resources/trelby.desktop" "${pkgdir}/usr/share/applications/trelby.desktop"
   install -Dm644 "trelby/resources/icon256.png" "${pkgdir}/usr/share/trelby/resources/icon256.png"
   install -Dm644 "${srcdir}/${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
   install -Dm644 "doc/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
-  install -Dm755 "${srcdir}/trelby" "${pkgdir}/usr/bin/trelby"
 }
