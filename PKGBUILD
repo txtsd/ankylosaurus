@@ -4,7 +4,7 @@
 # Contributor: Saghm Rossi <aur@saghm.com>
 
 pkgname=curseforge
-pkgver=1.264.0.20886
+pkgver=1.268.1.21898
 pkgrel=1
 pkgdesc="CurseForge desktop client for Linux"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.zip::https://curseforge.overwolf.com/downloads/cursefo
 license=('custom:overwolf' 'MIT' 'custom:chromium-licenses')
 options=(!strip !debug)
 # Skip checksum check for the CurseForge binary, to avoid breakage on updates
-sha256sums=('c32d16d673e64ec2b011435ed709202d3bd9cd755004d20a52590ece4e23a2a7'
+sha256sums=('4ea5f6d7d8cb85815df8573ec680737e163376337569f52013665c977fb4203e'
             'dbb87d28bb55affc7e442c1b65db5d59d16a8e8322d99092a27c31cfa3eb98c4'
             '135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f')
 
