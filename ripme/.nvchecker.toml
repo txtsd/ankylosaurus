@@ -1,4 +1,6 @@
 [ripme]
 source = "git"
-git = "https://github.com/ripmeapp2/ripme.git"
-include_regex = "\\d+\\.\\d+\\.\\d+"
+git = "https://github.com/RipMeApp/ripme.git"
+include_regex = "\\d+\\.\\d+\\.\\d+-\\d+-[0-9a-f]+"
+from_pattern = "(\\d+\\.\\d+\\.\\d+)-\\d+-[0-9a-f]+"
+to_pattern = "\\1"
