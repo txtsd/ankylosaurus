@@ -2,12 +2,12 @@
 # Contributor: neeshy <neeshy@tfwno.gf>
 
 pkgname=ripme
-pkgver=2.1.12
-_pkgver=2.1.11-20-ca96ce88
+pkgver=2.1.13
+_pkgver=2.1.13-7-fac3f8ea
 pkgrel=1
 pkgdesc='Downloads albums in bulk'
 arch=(any)
-url='https://github.com/ripmeapp2/ripme'
+url='https://github.com/RipMeApp/ripme'
 license=('MIT')
 depends=(
   'java-runtime>=17'
@@ -19,8 +19,8 @@ makedepends=(
   gradle
 )
 options=(!debug)
-source=("git+${url}#tag=${pkgver}")
-sha256sums=('5a5310c938beb58b9795203782e845dca4f8c8461a8784fa881aa231916283ff')
+source=("git+${url}#tag=${_pkgver}")
+sha256sums=('4154a38c8f2f927011364e5e3cd7f7e733fd7817cbb5580a4258db0aadbe5436')
 
 build() {
   cd "${pkgname}"
