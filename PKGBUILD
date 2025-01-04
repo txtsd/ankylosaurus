@@ -6,7 +6,7 @@
 pkgname=python-pyrate-limiter-2
 pkgdesc="Python Rate-Limiter using Leaky-Bucket Algorithm"
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url=https://github.com/vutran1710/PyrateLimiter
 license=(MIT)
@@ -39,5 +39,5 @@ build() {
 package() {
   cd PyrateLimiter
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python-pyrate-limiter/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
