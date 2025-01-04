@@ -1,0 +1,5 @@
+[comictagger-beta]
+source = "git"
+git = "https://github.com/comictagger/comictagger.git"
+from_pattern = "(\\d+\\.\\d+\\.\\d+)-(beta\\.\\d+)"
+to_pattern = "\\1_\\2"

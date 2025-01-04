@@ -1,0 +1,37 @@
+pkgbase = comictagger-beta
+	pkgdesc = A multi-platform app for writing metadata to digital comics
+	pkgver = 1.6.0_beta.2
+	pkgrel = 1
+	url = https://github.com/comictagger/comictagger
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-appdirs
+	depends = python-beautifulsoup4
+	depends = python-comicfn2dict
+	depends = python-importlib-metadata
+	depends = python-isocodes
+	depends = python-natsort
+	depends = python-pathvalidate
+	depends = python-pillow
+	depends = python-py7zr
+	depends = python-pyicu
+	depends = python-pyqt5
+	depends = python-pyrate-limiter-2
+	depends = python-rapidfuzz
+	depends = python-rarfile
+	depends = python-requests
+	depends = python-settngs
+	depends = python-text2digits
+	depends = python-typing_extensions
+	depends = python-wordninja
+	options = !debug
+	source = git+https://github.com/comictagger/comictagger.git#tag=1.6.0-beta.2
+	sha256sums = ae52d0e848b9f1a8733d7f88c09d46fdfa59d3ee7837c4c7782a8f6fb97c14d7
+
+pkgname = comictagger-beta
