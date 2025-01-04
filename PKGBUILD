@@ -3,8 +3,8 @@
 # Contributor: tdy <tdy@archlinux.info>
 
 pkgname=trelby
-pkgver=2.4.11
-pkgrel=2
+pkgver=2.4.13
+pkgrel=1
 pkgdesc='The free, multiplatform, feature-rich screenwriting program!'
 arch=(any)
 url='https://github.com/trelby/trelby'
@@ -29,7 +29,7 @@ source=(
   "${pkgname}.xml"
   0001-chore-Adjust-docbook-patch-for-Arch.patch
 )
-sha256sums=('b1dc77a32e065ab5983221635d29ae885c8e3ac7c824e9221ae93cfd2435eec7'
+sha256sums=('9c8a5f4a02c7eb363cd04dd4e425b951a61ec84730f53e6b2fd3a8acff1afa6c'
             'eb9332ff5bd22988ac87231851876df76220a581e1f5bfc5b782cff10ccffe42'
             'fecea43670ce96944bbd0af7e7e5b39c000982ad67941e960e304ec1628a83ba')
 
@@ -60,8 +60,8 @@ package() {
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
   rm -rf "${pkgdir}/usr/lib/python${python_version}/site-packages/tests/"
 
-  install -Dm644 "trelby/resources/trelby.desktop" "${pkgdir}/usr/share/applications/trelby.desktop"
-  install -Dm644 "trelby/resources/icon256.png" "${pkgdir}/usr/share/trelby/resources/icon256.png"
+  install -Dm644 trelby/resources/trelby.desktop "${pkgdir}/usr/share/applications/trelby.desktop"
+  install -Dm644 trelby/resources/icon256.png "${pkgdir}/usr/share/trelby/resources/icon256.png"
   install -Dm644 "${srcdir}/${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
   install -Dm644 "doc/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
