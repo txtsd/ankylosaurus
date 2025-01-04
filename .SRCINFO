@@ -1,6 +1,6 @@
 pkgbase = art_standalone
 	pkgdesc = A standalone version of Dalvik with Art built in
-	pkgver = r181.c4fba44a
+	pkgver = r184.1f3e7592
 	pkgrel = 1
 	url = https://gitlab.com/android_translation_layer/art_standalone
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = art_standalone
 	depends = wolfssl-jni
 	depends = xz
 	depends = zlib
-	source = art_standalone-c4fba44a45e319b57801d81ef946ee953ff70b58.tar.gz::https://gitlab.com/android_translation_layer/art_standalone/-/archive/c4fba44a45e319b57801d81ef946ee953ff70b58/art_standalone-c4fba44a45e319b57801d81ef946ee953ff70b58.tar.gz
-	sha256sums = ba47e40fc72c66b1a709a8557a79cedb6ee531e77618fbfe385833ebb19930af
+	source = art_standalone-1f3e7592da072900ebba6f045541600b26c17907.tar.gz::https://gitlab.com/android_translation_layer/art_standalone/-/archive/1f3e7592da072900ebba6f045541600b26c17907/art_standalone-1f3e7592da072900ebba6f045541600b26c17907.tar.gz
+	sha256sums = 2bc769022e5671de19b0cf19450eb08553bb11a74a687149bbedb1066b86dfc0
 
 pkgname = art_standalone
 	depends = bash
