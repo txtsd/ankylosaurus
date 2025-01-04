@@ -4,5 +4,4 @@
 !.gitignore
 !.nvchecker.toml
 !0001-chore-Adjust-docbook-patch-for-Arch.patch
-!trelby.sh
 !trelby.xml

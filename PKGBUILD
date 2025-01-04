@@ -4,8 +4,8 @@
 
 pkgname=trelby-git
 _pkgname=trelby
-pkgver=2.4.11.r0.g0671415
-pkgrel=2
+pkgver=2.4.13.r4.gdd1b514
+pkgrel=1
 pkgdesc='The free, multiplatform, feature-rich screenwriting program!'
 url='https://github.com/trelby/trelby'
 arch=(any)
