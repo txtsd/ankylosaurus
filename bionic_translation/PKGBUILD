@@ -1,9 +1,9 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=bionic_translation
-pkgver=r69.60f1f64d
+pkgver=r71.104abd18
 pkgrel=1
-_commit=60f1f64de330e734c2476c51ac6aec67396a4781
+_commit=104abd180b327487970a88b0743b3509d0e455a5
 pkgdesc='A set of libraries for loading bionic-linked .so files on musl/glibc'
 url='https://gitlab.com/android_translation_layer/bionic_translation'
 arch=(x86_64 aarch64 armv7h)
@@ -20,7 +20,7 @@ makedepends=(
   meson
 )
 source=("${pkgname}-${_commit}.tar.gz::${url}/-/archive/$_commit/${pkgname}-${_commit}.tar.gz")
-sha256sums=('87e20bfef66544decc261d7ebd8aaff3e48c19c9d2fe86b06c22c08da4b75bbe')
+sha256sums=('a6302c1d939f1b4ac986871983ccdc288b65956e182379ea8ace607b23fa487c')
 
 prepare() {
   meson subprojects download --sourcedir="${pkgname}-${_commit}"
