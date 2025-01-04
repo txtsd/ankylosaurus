@@ -1,7 +1,7 @@
 pkgbase = trelby
 	pkgdesc = The free, multiplatform, feature-rich screenwriting program!
-	pkgver = 2.4.11
-	pkgrel = 2
+	pkgver = 2.4.13
+	pkgrel = 1
 	url = https://github.com/trelby/trelby
 	arch = any
 	license = GPL-2.0-or-later
@@ -16,10 +16,10 @@ pkgbase = trelby
 	depends = python-reportlab
 	depends = python-wxpython
 	options = !debug
-	source = trelby-2.4.11.tar.gz::https://github.com/trelby/trelby/archive/refs/tags/2.4.11.tar.gz
+	source = trelby-2.4.13.tar.gz::https://github.com/trelby/trelby/archive/refs/tags/2.4.13.tar.gz
 	source = trelby.xml
 	source = 0001-chore-Adjust-docbook-patch-for-Arch.patch
-	sha256sums = b1dc77a32e065ab5983221635d29ae885c8e3ac7c824e9221ae93cfd2435eec7
+	sha256sums = 9c8a5f4a02c7eb363cd04dd4e425b951a61ec84730f53e6b2fd3a8acff1afa6c
 	sha256sums = eb9332ff5bd22988ac87231851876df76220a581e1f5bfc5b782cff10ccffe42
 	sha256sums = fecea43670ce96944bbd0af7e7e5b39c000982ad67941e960e304ec1628a83ba
 
