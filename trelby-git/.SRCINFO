@@ -1,7 +1,7 @@
 pkgbase = trelby-git
 	pkgdesc = The free, multiplatform, feature-rich screenwriting program!
-	pkgver = 2.4.11.r0.g0671415
-	pkgrel = 2
+	pkgver = 2.4.13.r4.gdd1b514
+	pkgrel = 1
 	url = https://github.com/trelby/trelby
 	arch = any
 	license = GPL-2.0-or-later
