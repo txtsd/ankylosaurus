@@ -6,7 +6,7 @@
 
 pkgname=nuitka
 pkgver=2.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Python compiler with full language support and CPython compatibility'
 arch=(any)
 url='https://nuitka.net'
@@ -18,12 +18,13 @@ depends=(
   patchelf
   python
   python-appdirs
-  python-setuptools
-  python-tqdm
-  python-zstandard
-  python-pyyaml
   python-jinja
   python-ordered-set
+  python-pyyaml
+  python-setuptools
+  python-six
+  python-tqdm
+  python-zstandard
   scons
 )
 makedepends=(
@@ -38,39 +39,48 @@ checkdepends=(
   strace
 )
 optdepends=('ccache: for caching builds')
-options=(!debug)
+options=(!debug lto)
 source=("https://github.com/Nuitka/Nuitka/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('1262be7189593db04c58a6af792f71c7ea0b34f71a54a323f693e39386b47ed2')
 
 build() {
-  cd ${pkgname^}-$pkgver
+  cd ${pkgname^}-${pkgver}
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd ${pkgname^}-$pkgver
+  cd ${pkgname^}-${pkgver}
 
+  # Needed to make LTO work with GCC
+  export CFLAGS="-fuse-linker-plugin"
+
+  # Catch testing failures early
+  echo '==> tests/basics/EmptyModuleTest.py'
   bin/nuitka --module --show-scons --run --report=compilation-report-module.xml --experimental=debug-report-traceback tests/basics/EmptyModuleTest.py
   bin/nuitka --show-scons --run --report=compilation-report-exe.xml --experimental=debug-report-traceback tests/basics/EmptyModuleTest.py
+
+  # Catch testing failures early
+  echo '==> data_files/DataFilesMain.py'
+  bin/nuitka --show-scons --run --report=compilation-report-exe.xml --experimental=debug-report-traceback tests/plugins/data_files/DataFilesMain.py
 
   # Check that compilation works
   echo 'print("[x] Can compile main.py to an executable.\n[x] Can run the resulting executable.")' > main.py
   bin/nuitka --output-filename=main --lto=yes --show-scons main.py
   ./main
 
-  # Tests are disabled for now. See:
+  # Tests were disabled. See:
   # https://github.com/Nuitka/Nuitka/issues/2595
   # https://github.com/Nuitka/Nuitka/issues/2609
   # https://github.com/Nuitka/Nuitka/issues/3272
-  # cd tests
-  # ./run-tests
+  # https://github.com/Nuitka/Nuitka/issues/3284
+  ./tests/run-tests --skip-standalone-tests --skip-reflection-test
 }
 
 package() {
-  cd ${pkgname^}-$pkgver
+  cd ${pkgname^}-${pkgver}
 
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -vDm 644 {Changelog,Developer_Manual,README}.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm644 {Changelog,Developer_Manual,README}.rst -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
