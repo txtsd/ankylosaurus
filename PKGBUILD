@@ -6,7 +6,7 @@
 
 pkgname=nuitka
 pkgver=2.5.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Python compiler with full language support and CPython compatibility'
 arch=(any)
 url='https://nuitka.net'
@@ -74,7 +74,7 @@ check() {
   # https://github.com/Nuitka/Nuitka/issues/2609
   # https://github.com/Nuitka/Nuitka/issues/3272
   # https://github.com/Nuitka/Nuitka/issues/3284
-  ./tests/run-tests --skip-standalone-tests --skip-reflection-test
+  ./tests/run-tests --skip-standalone-tests --skip-reflection-test --no-other-python
 }
 
 package() {

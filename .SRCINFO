@@ -1,7 +1,7 @@
 pkgbase = nuitka
 	pkgdesc = Python compiler with full language support and CPython compatibility
 	pkgver = 2.5.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nuitka.net
 	arch = any
 	license = Apache-2.0
