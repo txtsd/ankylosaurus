@@ -2,13 +2,12 @@
 
 pkgname=qbittorrent-nightwalker
 _pkgname="${pkgname#qbittorrent-}"
-pkgver=r33.71d6775
+pkgver=0.0.1
 pkgrel=1
 pkgdesc='A dark but not black qBittorrent WebUI'
 arch=(any)
 url='https://github.com/CallMeBruce/nightwalker'
 license=('MIT')
-makedepends=('git')
 optdepends=(
   'qbittorrent: for use with qbittorrent'
   'qbittorrent-nox: for use with qbittorrent-nox'
@@ -16,20 +15,14 @@ optdepends=(
 options=(!debug)
 install="${pkgname}.install"
 source=(
-  "git+${url}#commit=71d677596608adc776d3e078a712d7a09624d520"
+  "${url}/archive/refs/tags/v${pkgver}.tar.gz"
   ${pkgname}.install
 )
-sha256sums=('52b671e97194a4bca26acc1d47d0893f34a7a1b33f544ed0565643e3e9d6c6cb'
+sha256sums=('24ca2ec4dd34493f6aaa783f7a19100398ef9d4e2a3b4e9ff9be016a9bf376a3'
             'e41cb7cd5693aad398e37a59ffabe0fc00833639b9e599a4c1fca0db126e52e2')
 
-pkgver() {
-  cd "${_pkgname}"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
-  cd "${_pkgname}"
+  cd "${_pkgname}-${pkgver}"
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 webui.qrc "${pkgdir}/usr/share/${pkgname}/weubui.qrc"
