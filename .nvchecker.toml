@@ -1,5 +1,4 @@
 [qbittorrent-nightwalker]
 source = "git"
 git = "https://github.com/CallMeBruce/nightwalker.git"
-branch = "main"
-use_commit = true
+prefix = "v"
