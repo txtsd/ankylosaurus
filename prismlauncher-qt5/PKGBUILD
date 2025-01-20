@@ -9,8 +9,8 @@
 
 pkgname=prismlauncher-qt5
 _pkgname="${pkgname%-qt5}"
-pkgver=9.1
-pkgrel=2
+pkgver=9.2
+pkgrel=1
 pkgdesc='Minecraft launcher with ability to manage multiple instances'
 arch=(i686 x86_64 aarch64)
 url='https://prismlauncher.org'
@@ -51,7 +51,7 @@ source=(
   "https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz"
   {lionshead,batch,mdi}.license
 )
-sha256sums=('0aac56ec6b039e28f0605e7d86ebf602ee28dd9e4c7a16915ca974104954e832'
+sha256sums=('8702b40393b44a364633f1bab2a5c29abc634b5d053541fd8f85c4d1aaf50e83'
             '2ee3ba8d96e9882150783b6444651ea4a65d779532ecac8646f2ecd3a48c2770'
             '009e25d32aab6dbae193aac4b82fa1a26cb07f288225b2906da425a0f219bc4c'
             '32646946afc31ef5a4ce2cbb5a5a68a9f552c540a78ef23344c51c3efca58fa6')
