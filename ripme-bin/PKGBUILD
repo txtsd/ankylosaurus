@@ -2,8 +2,8 @@
 # Contributor: neeshy <neeshy@tfwno.gf>
 
 pkgname=ripme-bin
-pkgver=2.1.13
-_pkgver=2.1.13-7-fac3f8ea
+pkgver=2.1.16
+_pkgver=2.1.16-4-02372e85
 pkgrel=1
 pkgdesc='Downloads albums in bulk'
 arch=(any)
@@ -20,7 +20,7 @@ source=(
   "${url}/releases/download/${_pkgver}/ripme-${_pkgver}.jar"
   "${url}/raw/${_pkgver}/LICENSE.txt"
 )
-sha256sums=('196e0048aaf742ac44840675b46907502a144a0b3d27402e7666c29e94aea185'
+sha256sums=('0fdf9a774e6d2f7504118134142008e42b19dafec7176fe4236e82045c3a8e95'
             'f17abb5fb22a7dd6408518207f0f8e301322153585d9ad08941a0d498d7c4f9a')
 
 package() {
