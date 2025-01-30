@@ -3,7 +3,7 @@
 
 pkgname=imv-git
 _pkgname=imv
-pkgver=4.4.0.r0.g885e173
+pkgver=4.5.0.r0.g8f36d35
 pkgrel=1
 pkgdesc='imv is a command line image viewer intended for use with tiling window managers, with Wayland and X11 support.'
 url="https://git.sr.ht/~exec64/imv"
