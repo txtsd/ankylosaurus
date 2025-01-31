@@ -31,7 +31,7 @@ makedepends=(
 )
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-options=(lto)
+options+=(lto)
 source=(
   "git+${url}#tag=${pkgver}"
   "git+https://github.com/nomic-ai/kompute.git"
@@ -61,13 +61,13 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
-    -DBUILD_SHARED_LIBS=OFF
-    -DGGML_STATIC=ON
+    -DBUILD_SHARED_LIBS=ON
+    -DGGML_STATIC=OFF
     -DGGML_LTO=ON
     -DGGML_RPC=ON
     -DLLAMA_CURL=ON
     -DGGML_BLAS=ON
-    -DGGML_HIPBLAS=ON
+    -DGGML_HIP=ON
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
@@ -77,7 +77,7 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
   rm "${pkgdir}/usr/include/"ggml*
-  rm "${pkgdir}/usr/lib/"lib*.a
+  # rm "${pkgdir}/usr/lib/"lib*.a
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
