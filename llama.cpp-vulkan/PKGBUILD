@@ -2,7 +2,7 @@
 
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
-pkgver=b4333
+pkgver=b4600
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -36,7 +36,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('ad0ab1264915b69f31b87af6d832fa3db1b1d114ad80ab18e25aa8fd44dbe810'
+sha256sums=('04e4912e89866cbec1578d443ebb3697fafebcb9a334a1f2f4b307b313eb0163'
             'SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
@@ -57,8 +57,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
-    -DBUILD_SHARED_LIBS=OFF
-    -DGGML_STATIC=ON
+    -DBUILD_SHARED_LIBS=ON
     -DGGML_LTO=ON
     -DGGML_RPC=ON
     -DLLAMA_CURL=ON
@@ -73,7 +72,6 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
   rm "${pkgdir}/usr/include/"ggml*
-  rm "${pkgdir}/usr/lib/"lib*.a
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
