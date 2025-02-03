@@ -3,3 +3,5 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!pyo3.patch
+!cargo.patch
