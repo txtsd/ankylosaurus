@@ -1,9 +1,9 @@
 # Maintainer: Patrik Plihal <patrik dot plihal at gmail dot com>
 
-_pkgname=RadeonDeveloperToolSuite-2024-09-26-1411
+_pkgname=RadeonDeveloperToolSuite-2025-03-07-1606
 pkgname=radeon-gpu-profiler
-pkgver=2.3
-pkgrel=4
+pkgver=2.4
+pkgrel=1
 pkgdesc='A suite of GUI applications that provide detailed low-level information on Radeon GPUs. (rgp, rga)'
 arch=('x86_64')
 url="https://gpuopen.com/rgp/"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'sh')
 options=(!debug !strip)
 source=("https://gpuopen.com/download/radeon-developer-tool-suite/${_pkgname}.tgz")
-sha512sums=('cb4525bd813120752bef3bc84275b9ca6adce256fff1af0cba627b80e95c69fdac76af2aaba4d56b607c7b7d9e908a774ebd9d1fbb8d053d3aa2625b9a313e3a')
+sha512sums=('d245a22fbb3709b3f1fdbbf9cd13e4241dfba964c8defd7cb6a2b412839b6e035e2383cacfee51da97d802494b687d4f2735d403f2f2047e9e9fe72f7f9cabd0')
 install=radeon-gpu-profiler.install
 
 package()
