@@ -5,7 +5,7 @@
 pkgname=imv-git
 _pkgname=imv
 pkgver=4.5.0.r0.g8f36d35
-pkgrel=2
+pkgrel=3
 pkgdesc='imv is a command line image viewer intended for use with tiling window managers, with Wayland and X11 support.'
 url="https://git.sr.ht/~exec64/imv"
 arch=('x86_64' 'i686')
@@ -24,6 +24,11 @@ sha1sums=('SKIP')
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$_pkgname"
+    sed -i "s/unicode_lib = dependency('icu-io')/unicode_lib = dependency('icu-uc')/" meson.build
 }
 
 build() {
