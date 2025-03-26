@@ -1,6 +1,6 @@
 pkgbase = curseforge
 	pkgdesc = CurseForge desktop client for Linux
-	pkgver = 1.274.1.24051
+	pkgver = 1.275.0.24463
 	pkgrel = 1
 	url = https://curseforge.com/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = curseforge
 	depends = fuse2
 	options = !strip
 	options = !debug
-	source = curseforge-1.274.1.24051.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
+	source = curseforge-1.275.0.24463.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
 	source = curseforge
 	source = LICENSE
 	sha256sums = SKIP
