@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=jsoncons
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A C++, header-only library for constructing JSON and JSON-like data formats'
 arch=(any)
@@ -10,7 +10,7 @@ license=('BSL-1.0')
 makedepends=(cmake)
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/danielaparker/jsoncons/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3bdc0c8ceba1943b5deb889559911ebe97377971453a11227ed0a51a05e5d5d8')
+sha256sums=('8c05be174a919598591bffd848b5cbeba8858f6ca9b0ebcac8d3414bc3ec3708')
 
 build() {
   cd "${pkgname}-${pkgver}"
