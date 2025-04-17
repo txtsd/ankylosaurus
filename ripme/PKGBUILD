@@ -2,8 +2,8 @@
 # Contributor: neeshy <neeshy@tfwno.gf>
 
 pkgname=ripme
-pkgver=2.1.16
-_pkgver=2.1.16-4-02372e85
+pkgver=2.1.18
+_pkgver=2.1.18-16-1342b621
 pkgrel=1
 pkgdesc='Downloads albums in bulk'
 arch=(any)
@@ -20,7 +20,7 @@ makedepends=(
 )
 options=(!debug)
 source=("git+${url}#tag=${_pkgver}")
-sha256sums=('7647e47a604b65d92725887d9494660002587ed274159b567e2f3b0cb3c00788')
+sha256sums=('b8e2a7df8da746c268b34054f076bb5df5aa60aa2604f870c10f4a4d7f25b8bf')
 
 build() {
   cd "${pkgname}"
