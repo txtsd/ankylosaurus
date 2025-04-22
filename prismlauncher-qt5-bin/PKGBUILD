@@ -5,7 +5,7 @@
 pkgname=prismlauncher-qt5-bin
 _pkgname="${pkgname%-bin}"
 __pkgname="${_pkgname%-qt5}"
-pkgver=9.2
+pkgver=9.4
 pkgrel=1
 pkgdesc='Minecraft launcher with ability to manage multiple instances'
 arch=(x86_64)
@@ -51,7 +51,7 @@ source=(
   prismlauncher.tmpfiles
 )
 noextract=("PrismLauncher-Linux-Qt5-Portable-${pkgver}.tar.gz")
-sha256sums=('57bdd877ff1fb818e6d3cfa6745c61dad58db1fa3c51d4fe83bdb2775a317cef'
+sha256sums=('1830ff68458c400d67c272af406a977d9eb21bb92055dca9e29f69948e335015'
             '2ee3ba8d96e9882150783b6444651ea4a65d779532ecac8646f2ecd3a48c2770'
             '009e25d32aab6dbae193aac4b82fa1a26cb07f288225b2906da425a0f219bc4c'
             '32646946afc31ef5a4ce2cbb5a5a68a9f552c540a78ef23344c51c3efca58fa6'
