@@ -2,7 +2,7 @@
 
 pkgname=halloy-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2025.4
+pkgver=2025.5
 pkgrel=1
 pkgdesc='An open-source IRC client written in Rust, with the Iced GUI library'
 arch=(x86_64)
@@ -18,7 +18,7 @@ depends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('797ace996e2274ba0f38e76868ca9c83e468d6c48f1e1b9c6f2fbcb310ceea9d')
+sha256sums=('c633c1a97891fbc4e5f4c767d1a3ac9c5b9c95f3ac2ac97b3d2a1dfd2b70cd25')
 
 package() {
   install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
