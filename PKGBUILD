@@ -3,7 +3,7 @@
 # Contributor: tdy <tdy@archlinux.info>
 
 pkgname=trelby
-pkgver=2.4.14
+pkgver=2.4.15
 pkgrel=1
 pkgdesc='The free, multiplatform, feature-rich screenwriting program!'
 arch=(any)
@@ -29,7 +29,7 @@ source=(
   "${pkgname}.xml"
   0001-chore-Adjust-docbook-patch-for-Arch.patch
 )
-sha256sums=('18574463c10f3e6d080ad266688a0b7894c36f41365e991b53d18fd05f5eda3e'
+sha256sums=('cceb5893c8efe10a30eb3f84d444ab8616c2986c71a8c140047222dbd31e6571'
             'eb9332ff5bd22988ac87231851876df76220a581e1f5bfc5b782cff10ccffe42'
             'fecea43670ce96944bbd0af7e7e5b39c000982ad67941e960e304ec1628a83ba')
 
