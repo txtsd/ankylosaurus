@@ -1,7 +1,7 @@
 pkgbase = python-magika
 	pkgdesc = Detect file content types with deep learning
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/magika
 	arch = any
 	license = Apache-2.0

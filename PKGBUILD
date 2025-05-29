@@ -5,7 +5,7 @@
 pkgname=python-magika
 _name=magika
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Detect file content types with deep learning"
 arch=(any)
 url="https://github.com/google/magika"
@@ -45,6 +45,5 @@ check() {
 package() {
   cd "${_name}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}
 }
 # vim:set ts=2 sw=2 et:
