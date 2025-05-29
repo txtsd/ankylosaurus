@@ -1,0 +1,5 @@
+[python-magika]
+source='github'
+github='google/magika'
+use_latest_release=true
+prefix='python-v'
