@@ -2,8 +2,8 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=linux-command-gpt
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc='Get Linux commands in natural language with the power of ChatGPT'
 arch=(x86_64 aarch64)
 url='https://github.com/asrul10/linux-command-gpt'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(glibc)
 makedepends=(git go)
 source=("git+${url}#tag=v${pkgver}")
-sha256sums=('b82ab79c3536c160bf4563c4df87f21acf5a312aa38bf3cf329636a63f2c7977')
+sha256sums=('3470f614b863d988a123b43561210a7f28f35bc3567028dd240d90868b23de87')
 
 prepare() {
   cd "${pkgname}"
