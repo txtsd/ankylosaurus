@@ -12,7 +12,7 @@ _majorver=21
 _minorver=0
 _securityver=1
 _updatever=0
-pkgver=21.0.1.0.r274.g9758078
+pkgver=21.0.1.0.r326.gbbb9635
 pkgrel=1
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 arch=('x86_64')
@@ -23,6 +23,7 @@ makedepends=('java-environment=21' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
              'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'git' 'wayland')
 optdepends=('gvfs: open links e.g. hyperlinks')
+options=(!lto)
 source=("git+https://github.com/openjdk/wakefield.git#branch=jdk21.0.1-wayland"
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
