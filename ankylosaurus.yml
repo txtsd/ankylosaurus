@@ -86,8 +86,8 @@ tasks:
 
           case ${pkgname} in
             llama.cpp)
-              yay -S --noconfirm --builddir ~/.cache/yay/ sentencepiece python-sentencepiece
-              (pkgctl build -I ~/.cache/yay/sentencepiece/sentencepiece-0*.pkg.tar.zst -I ~/.cache/yay/sentencepiece/python-sentencepiece-0*.pkg.tar.zst) && true
+              yay -S --noconfirm --builddir ~/.cache/yay/ sentencepiece python-sentencepiece libggml-git
+              (pkgctl build -I ~/.cache/yay/sentencepiece/sentencepiece-0*.pkg.tar.zst -I ~/.cache/yay/sentencepiece/python-sentencepiece-0*.pkg.tar.zst -I ~/.cache/yay/libggml-git/libggml-git-r*.pkg.tar.zst) && true
               ;;
 
             llama.cpp-cuda | llama.cpp-cuda-f16 | llama.cpp-hip | llama.cpp-sycl-f16 | llama.cpp-sycl-f32 | llama.cpp-vulkan)
