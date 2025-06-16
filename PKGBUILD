@@ -2,7 +2,7 @@
 
 pkgname=illarion-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.0.0.47
+pkgver=1.0.0.48
 pkgrel=1
 pkgdesc='The Illarion Launcher that is used to download the actual game and start it'
 arch=(x86_64)
@@ -22,7 +22,7 @@ source=(
   "https://${_pkgname}.org/media/java/install/${_pkgname}-${pkgver}-amd64.deb"
   "${_pkgname}.desktop"
 )
-sha256sums=('861d642c12eee4ac41e0b1100f97ad2048ec2bfbf505067c5abbb78c2a85a454'
+sha256sums=('b5e1633397d40cab2c5e19dbe17fb653a55bd8aa8f3c6c119bc2d88193f4d5d5'
             '9f3a8e6c3224a98d203307a30fc622f35d22bf5ada4a64634307d634ec4f5f8a')
 
 package() {
