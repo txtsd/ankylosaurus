@@ -1,11 +1,16 @@
 [Unit]
-Description=Opentracker service
+Description=Opentracker Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/opentracker -f /etc/opentracker/opentracker.conf -u otracker
 Type=simple
+User=opentracker
+Group=opentracker
+ExecStart=/usr/bin/opentracker -f /etc/opentracker/opentracker.conf -d /var/lib/opentracker
 Restart=on-failure
+RestartSec=2
+SyslogIdentifier=opentracker
+WorkingDirectory=/var/lib/opentracker
 
 [Install]
 WantedBy=multi-user.target
