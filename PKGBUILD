@@ -4,7 +4,7 @@
 
 pkgname=opentracker
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A free and open torrent tracker'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -23,7 +23,7 @@ source=(
   'opentracker.tmpfiles'
 )
 sha256sums=('8109cbf271d4374020af719aca5448b1354517c0b2f4b74b167332944a61eb31'
-            '0a3a08287ad2f754d2e01c3a9f85f0d0d73ee5f27f851fad7390794eaee85c45'
+            '6bd91237855a0ed06eeaf4182d565a9125dbf89f2dfb3e83b5607f7c9a89d00d'
             'c0097bc231e0f6f7c8ff17e3cca99f2215218cc227476a4390936b04300c8fc7'
             '0c7f180db96168dd7546b30cb276ab1058201c919059b251d84868fe63990f08')
 
