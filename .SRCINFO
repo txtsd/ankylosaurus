@@ -1,0 +1,26 @@
+pkgbase = extracker-git
+	pkgdesc = A highly parallel bittorrent tracker made in Elixir
+	pkgver = r191.face96f
+	pkgrel = 1
+	url = https://github.com/Dahrkael/ExTracker
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = elixir
+	makedepends = erlang-asn1
+	makedepends = erlang-public_key
+	makedepends = erlang-sasl
+	makedepends = erlang-ssl
+	makedepends = git
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = ncurses
+	depends = openssl
+	depends = zlib
+	provides = extracker
+	conflicts = extracker
+	options = !debug
+	source = git+https://github.com/Dahrkael/ExTracker.git
+	sha256sums = SKIP
+
+pkgname = extracker-git
