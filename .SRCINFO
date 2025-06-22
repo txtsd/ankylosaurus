@@ -1,7 +1,7 @@
 pkgbase = nuitka
 	pkgdesc = Python compiler with full language support and CPython compatibility
-	pkgver = 2.5.9
-	pkgrel = 3
+	pkgver = 2.7.10
+	pkgrel = 1
 	url = https://nuitka.net
 	arch = any
 	license = Apache-2.0
@@ -29,7 +29,7 @@ pkgbase = nuitka
 	optdepends = ccache: for caching builds
 	options = !debug
 	options = lto
-	source = https://github.com/Nuitka/Nuitka/archive/refs/tags/2.5.9.tar.gz
-	sha256sums = 1262be7189593db04c58a6af792f71c7ea0b34f71a54a323f693e39386b47ed2
+	source = https://github.com/Nuitka/Nuitka/archive/refs/tags/2.7.10.tar.gz
+	sha256sums = 8c7c6edde4e818680714b4f551140615bbbed47e91a04b9ee8d27d9024818e9d
 
 pkgname = nuitka
