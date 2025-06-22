@@ -1,6 +1,6 @@
 pkgbase = comictagger-beta
 	pkgdesc = A multi-platform app for writing metadata to digital comics
-	pkgver = 1.6.0_beta.4
+	pkgver = 1.6.0_beta.5
 	pkgrel = 1
 	url = https://github.com/comictagger/comictagger
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = comictagger-beta
 	depends = python-typing_extensions
 	depends = python-wordninja
 	options = !debug
-	source = git+https://github.com/comictagger/comictagger.git#tag=1.6.0-beta.4
-	sha256sums = f5c1919c1f51ac7aab88a58d31f41b14cf9723fe71eec1974c6d7192be58a9ea
+	source = git+https://github.com/comictagger/comictagger.git#tag=1.6.0-beta.5
+	sha256sums = 46e7d894f77d39875a7cfbad63f2a153e0ed06fa4f53b8e0e89b6ca03287c0b1
 
 pkgname = comictagger-beta

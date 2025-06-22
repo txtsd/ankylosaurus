@@ -1,9 +1,9 @@
-# Maintainer: txtsd <auur.archlinux@ihavea.quest>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: loathingkernel <loathingkernel _a_ gmail _d_ com>
 # Contributor: RealStickman <mrc+aur _a_ frm01 _d_ net>
 
 pkgname=comictagger-beta
-pkgver=1.6.0_beta.4
+pkgver=1.6.0_beta.5
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc='A multi-platform app for writing metadata to digital comics'
@@ -15,9 +15,11 @@ depends=(
   python-appdirs
   python-beautifulsoup4
   python-comicfn2dict
+  python-idna
   python-importlib-metadata
   python-isocodes
   python-natsort
+  python-packaging
   python-pathvalidate
   python-pillow
   python-py7zr
@@ -30,6 +32,7 @@ depends=(
   python-settngs
   python-text2digits
   python-typing_extensions
+  python-urllib3
   python-wordninja
 )
 makedepends=(
@@ -41,7 +44,7 @@ makedepends=(
 )
 options=(!debug)
 source=(git+${url}.git#tag=${_pkgver})
-sha256sums=('f5c1919c1f51ac7aab88a58d31f41b14cf9723fe71eec1974c6d7192be58a9ea')
+sha256sums=('46e7d894f77d39875a7cfbad63f2a153e0ed06fa4f53b8e0e89b6ca03287c0b1')
 
 prepare() {
   cd comictagger
