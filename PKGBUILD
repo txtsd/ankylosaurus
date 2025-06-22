@@ -2,7 +2,7 @@
 
 pkgname=python-settngs
 _pkgname="${pkgname#python-}"
-pkgver=0.10.4
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A library for managing settings'
 arch=(any)
@@ -16,15 +16,22 @@ makedepends=(
   python-setuptools-scm
   python-wheel
 )
+# checkdepends=(python-pytest)
 options=(!debug)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f8a2b67e711bc0fb2c73e7e812ccd6f3699fa8f158f6053a802ff1304d410fee')
+sha256sums=('a59ece23c0d86f185a73b18f9d33cc8476175ce302ae2d4aad357a61cf50965d')
 
 build() {
   cd "${_pkgname}-${pkgver}"
 
   python -m build --wheel --no-isolation
 }
+
+# check() {
+#   cd "${_pkgname}-${pkgver}"
+#
+#   pytest tests
+# }
 
 package() {
   cd "${_pkgname}-${pkgver}"
