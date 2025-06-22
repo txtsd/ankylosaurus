@@ -1,13 +1,11 @@
 pkgbase = opentracker
 	pkgdesc = A free and open torrent tracker
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://erdgeist.org/arts/software/opentracker/
 	arch = x86_64
 	arch = i686
-	arch = arm
-	arch = armv6h
 	arch = armv7h
 	arch = aarch64
 	license = LicenseRef-Beerware

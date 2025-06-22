@@ -4,10 +4,10 @@
 
 pkgname=opentracker
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A free and open torrent tracker'
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=(x86_64 i686 armv7h aarch64)
 url='http://erdgeist.org/arts/software/opentracker/'
 license=('LicenseRef-Beerware')
 depends=(glibc zlib)
