@@ -1,0 +1,4 @@
+[scientifica-font]
+source = "git"
+git = "https://github.com/NerdyPepper/scientifica.git"
+prefix = "v"
