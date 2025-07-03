@@ -1,6 +1,6 @@
 pkgbase = dissent-bin
 	pkgdesc = Discord client written in go and gtk4 (binary version)
-	pkgver = 0.0.34
+	pkgver = 0.0.35
 	pkgrel = 1
 	url = https://github.com/diamondburned/dissent
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = dissent-bin
 	depends = vulkan-icd-loader
 	provides = dissent
 	conflicts = dissent
-	source_x86_64 = dissent-linux-amd64-0.0.34.tar.zst::https://github.com/diamondburned/dissent/releases/download/v0.0.34/dissent-linux-amd64.tar.zst
-	sha256sums_x86_64 = 864b83d92b39282041be189fa5c7b211f6726e9588713a2f588770c53cc63261
-	source_aarch64 = dissent-linux-arm64-0.0.34.tar.zst::https://github.com/diamondburned/dissent/releases/download/v0.0.34/dissent-linux-arm64.tar.zst
-	sha256sums_aarch64 = 29e6a0feb10d1e375cdc132657184159d41f7546bae7d1da1e09c6ea49748ca4
+	source_x86_64 = dissent-linux-amd64-0.0.35.tar.zst::https://github.com/diamondburned/dissent/releases/download/v0.0.35/dissent-linux-amd64.tar.zst
+	sha256sums_x86_64 = f92442c4d5e06d84a9af7bc48f1a6ada009846b594704e60d2670268b144cdaa
+	source_aarch64 = dissent-linux-arm64-0.0.35.tar.zst::https://github.com/diamondburned/dissent/releases/download/v0.0.35/dissent-linux-arm64.tar.zst
+	sha256sums_aarch64 = bcc11e05235f31ca7078ea380b511182d2b7a56cbe329e184e2ff46c658498f4
 
 pkgname = dissent-bin
