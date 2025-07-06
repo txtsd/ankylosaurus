@@ -2,7 +2,7 @@
 
 pkgname=libopensles-standalone
 pkgver=r280.605a83f
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightly patched version of Google's libOpenSLES implementation"
 _commit=605a83f47263a022427afb6e95801bd39b459b78
 url='https://gitlab.com/android_translation_layer/libopensles-standalone'
@@ -25,6 +25,8 @@ prepare() {
 }
 
 build() {
+  CFLAGS+=" -std=c11"
+
   arch-meson "${pkgname}-${_commit}" build
   meson compile -C build
 }
