@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=halloy
-pkgver=2025.7
+pkgver=2025.8
 pkgrel=1
 pkgdesc='An open-source IRC client written in Rust, with the Iced GUI library'
 arch=(x86_64 aarch64)
@@ -18,7 +18,7 @@ makedepends=(cargo)
 checkdepends=(cargo)
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/squidowl/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b7b9deee6cd5229fdfa32b995d962aee11f66b9acb79c0ff97314deb7638de67')
+sha256sums=('3d05105457408f63046bf7108a1938e8bac5b8e3017457da94873025e4550ea5')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
