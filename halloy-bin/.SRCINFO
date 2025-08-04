@@ -1,6 +1,6 @@
 pkgbase = halloy-bin
 	pkgdesc = An open-source IRC client written in Rust, with the Iced GUI library
-	pkgver = 2025.7
+	pkgver = 2025.8
 	pkgrel = 1
 	url = https://github.com/squidowl/halloy
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = halloy-bin
 	depends = openssl
 	provides = halloy
 	conflicts = halloy
-	source = https://github.com/squidowl/halloy/releases/download/2025.7/halloy-2025.7-x86_64-linux.tar.gz
-	sha256sums = 3d8f8c9ace26f7cceb3cb8db8d96a00240641424d892d9ba0c62d7f40186cf91
+	source = https://github.com/squidowl/halloy/releases/download/2025.8/halloy-2025.8-x86_64-linux.tar.gz
+	sha256sums = cf421876f60d721a020a0682fb35031c49d18bcab7b0e1f572928b369c7465fb
 
 pkgname = halloy-bin
