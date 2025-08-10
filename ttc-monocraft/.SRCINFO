@@ -1,11 +1,11 @@
 pkgbase = ttc-monocraft
 	pkgdesc = A programming font based on the typeface used in Minecraft
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://github.com/IdreesInc/Monocraft
 	arch = any
 	license = OFL-1.1
-	source = ttc-monocraft-4.0.ttc::https://github.com/IdreesInc/Monocraft/releases/download/v4.0/Monocraft.ttc
-	sha256sums = 481ce5fd7d8f40eab5718e1d96a3bcf410f00ab3fefcb63067d5f6e29d8b0c2b
+	source = ttc-monocraft-4.1.ttc::https://github.com/IdreesInc/Monocraft/releases/download/v4.1/Monocraft.ttc
+	sha256sums = 09eb83095442e8068ec843f15ccb35717fa783616f0a6079605c4c4522920381
 
 pkgname = ttc-monocraft
