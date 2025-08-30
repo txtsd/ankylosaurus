@@ -3,7 +3,7 @@
 pkgname=flaresolverr-bin
 _pkgname="${pkgname%-bin}"
 __pkgname=FlareSolverr
-pkgver=3.3.25
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=(x86_64)
@@ -54,7 +54,7 @@ source=(
   flaresolverr.tmpfiles
   flaresolverr.install
 )
-sha256sums=('170f8a08028c16c24e54cc78f696f04479fbd4db80969b0b661d9dc403747b66'
+sha256sums=('990f405bdc7172d2dc2e449570ceb49dd073c521320ee28462421fa88ce42edb'
             '822369fb1f97651e6d0b00128451987e0ce98adc3007dc886db68adbf891d2da'
             '98379aef64fb530a22bcd949ead5cefc66c745bc683e5cedb37be371ae25eab8'
             '62f114d4e559cf9dae22bfd90759eff697e42da5f700a52988e70e78f3048ae2'
@@ -62,13 +62,13 @@ sha256sums=('170f8a08028c16c24e54cc78f696f04479fbd4db80969b0b661d9dc403747b66'
             '8df556eb3a6c0d42419b21f6f1396f0e5f1222b7b4a187b7cb26ad3f5a0160b5')
 
 package() {
-    install -dm755 "${pkgdir}/opt/flaresolverr"
+  install -dm755 "${pkgdir}/opt/flaresolverr"
 
-    cp -dr "${_pkgname}" "${pkgdir}/opt"
-    rm "${pkgdir}/opt/flaresolverr/libreadline.so.8"
+  cp -dr "${_pkgname}" "${pkgdir}/opt"
+  # rm "${pkgdir}/opt/flaresolverr/libreadline.so.8"
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 flaresolverr.service "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-    install -Dm644 flaresolverr.sysusers "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
-    install -Dm644 flaresolverr.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 flaresolverr.service "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm644 flaresolverr.sysusers "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+  install -Dm644 flaresolverr.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 }
