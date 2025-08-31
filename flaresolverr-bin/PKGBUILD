@@ -4,7 +4,7 @@ pkgname=flaresolverr-bin
 _pkgname="${pkgname%-bin}"
 __pkgname=FlareSolverr
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=(x86_64)
 url='https://github.com/FlareSolverr/FlareSolverr'
@@ -65,7 +65,7 @@ package() {
   install -dm755 "${pkgdir}/opt/flaresolverr"
 
   cp -dr "${_pkgname}" "${pkgdir}/opt"
-  # rm "${pkgdir}/opt/flaresolverr/libreadline.so.8"
+  rm "${pkgdir}/opt/flaresolverr/_internal/libreadline.so.8"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 flaresolverr.service "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
