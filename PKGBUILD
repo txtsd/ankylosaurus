@@ -2,9 +2,9 @@
 
 pkgname=android_translation_layer
 _pkgname=${pkgname//-/_}
-pkgver=r739.7aea3a69
+pkgver=r932.9de91586
 pkgrel=1
-_commit=7aea3a6920f0731f5d9f7af37bfbae51d8477af3
+_commit=9de91586994af5078decda17db92ce50c5673951
 pkgdesc='A translation layer for running Android apps on a Linux system'
 url='https://gitlab.com/android_translation_layer/android_translation_layer'
 arch=(x86_64 aarch64 armv7h)
@@ -22,6 +22,7 @@ depends=(
   glibc
   graphene
   gtk4
+  gtk4-layer-shell
   harfbuzz
   libdrm
   libglvnd
@@ -37,6 +38,7 @@ depends=(
   webkitgtk-6.0
 )
 makedepends=(
+  cmake
   glib2-devel
   java-runtime-common
   jdk8-openjdk
@@ -46,7 +48,7 @@ makedepends=(
   wayland-protocols
 )
 source=("${pkgname}-${_commit}.tar.gz::${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
-sha256sums=('338dc89d324b84af20552362dd77e6b06acb1db2fbb77138d616c673c8259256')
+sha256sums=('810bfe751d4348158679b9f8ffbbbcce00b59f97c5dbc50ef8819beb1ae0c2a6')
 
 prepare() {
   meson subprojects download --sourcedir="${pkgname}-${_commit}"
