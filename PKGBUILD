@@ -1,10 +1,10 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=libopensles-standalone
-pkgver=r280.605a83f
-pkgrel=2
+pkgver=r281.bdb857a
+pkgrel=1
 pkgdesc="A lightly patched version of Google's libOpenSLES implementation"
-_commit=605a83f47263a022427afb6e95801bd39b459b78
+_commit=bdb857a4baadbc8c036db85a5da26c5269a751c5
 url='https://gitlab.com/android_translation_layer/libopensles-standalone'
 arch=(x86_64 aarch64 armv7h)
 license=('Apache-2.0')
@@ -18,15 +18,13 @@ makedepends=(
   meson
 )
 source=("${pkgname}-${_commit}.tar.gz::${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
-sha256sums=('4e928fe1caf0efb5a094f249ec95d8a5e58df7718d2112db973d309d84387b7b')
+sha256sums=('097ed0d1561b774faa03a3eca8ac787a16c1825d1a8ca8155b5a6b9092ed14f9')
 
 prepare() {
   meson subprojects download --sourcedir="${pkgname}-${_commit}"
 }
 
 build() {
-  CFLAGS+=" -std=c11"
-
   arch-meson "${pkgname}-${_commit}" build
   meson compile -C build
 }
