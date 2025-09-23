@@ -3,7 +3,7 @@
 pkgname=art_standalone-git
 _pkgname="${pkgname%-git}"
 pkgver=r213.35696d99
-pkgrel=1
+pkgrel=2
 pkgdesc='A standalone version of Dalvik with Art built in'
 url='https://gitlab.com/android_translation_layer/art_standalone'
 arch=(x86_64 aarch64 armv7h)
@@ -48,7 +48,8 @@ pkgver() {
 build() {
   cd "${_pkgname}"
 
-  make PREFIX=/usr ____LIBDIR=lib
+  make ____PREFIX=/usr ____LIBDIR=lib
+  # make adbd
 }
 
 package() {
@@ -61,4 +62,8 @@ package() {
     ____INSTALL_ETC="${pkgdir}/etc" \
     ____LIBDIR=lib \
     install
+
+  # DESTDIR="${pkgdir}" make \
+  #   ____PREFIX="${pkgdir}/usr" \
+  #   install_adbd
 }
