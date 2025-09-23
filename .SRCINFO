@@ -1,13 +1,13 @@
 pkgbase = jsoncons
 	pkgdesc = A C++, header-only library for constructing JSON and JSON-like data formats
-	pkgver = 1.3.2
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/danielaparker/jsoncons
 	arch = any
 	license = BSL-1.0
 	makedepends = cmake
 	options = !debug
-	source = jsoncons-1.3.2.tar.gz::https://github.com/danielaparker/jsoncons/archive/refs/tags/v1.3.2.tar.gz
-	sha256sums = f22fb163df1a12c2f9ee5f95cad9fc37c6cfbefe0ae6f30aba7440832ef70fbe
+	source = jsoncons-1.4.1.tar.gz::https://github.com/danielaparker/jsoncons/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = 30807a3f77a06ec234329174a43186d52d5cc096599c16a48df40ad621b334a6
 
 pkgname = jsoncons
