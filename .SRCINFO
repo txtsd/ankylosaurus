@@ -1,7 +1,7 @@
 pkgbase = librespot
 	pkgdesc = Open source client library for Spotify
-	pkgver = 0.6.0
-	pkgrel = 3
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://github.com/librespot-org/librespot
 	arch = x86_64
 	arch = armv7h
@@ -14,7 +14,6 @@ pkgbase = librespot
 	makedepends = portaudio
 	makedepends = sdl2
 	depends = alsa-lib
-	depends = avahi
 	depends = gcc-libs
 	depends = glibc
 	depends = gst-plugins-base-libs
@@ -26,7 +25,7 @@ pkgbase = librespot
 	optdepends = portaudio: Audio playback using PortAudio
 	optdepends = sdl2: Audio playback using SDL2
 	options = !lto
-	source = git+https://github.com/librespot-org/librespot#tag=v0.6.0
-	sha256sums = d3c81a50769223bf120689b9c7654a2d25fb5e4b03648149562c1c702ca3b467
+	source = git+https://github.com/librespot-org/librespot#tag=v0.7.1
+	sha256sums = f34649e8036ef2442c1c6554b721090b6a49f9e08770219fe4dbbc9daa3b6597
 
 pkgname = librespot

@@ -4,15 +4,14 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=librespot
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.7.1
+pkgrel=1
 pkgdesc='Open source client library for Spotify'
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/librespot-org/librespot'
 license=('MIT')
 depends=(
   alsa-lib
-  avahi
   gcc-libs
   glibc
   gst-plugins-base-libs
@@ -36,7 +35,7 @@ optdepends=(
 )
 options=(!lto)
 source=("git+${url}#tag=v${pkgver}")
-sha256sums=('d3c81a50769223bf120689b9c7654a2d25fb5e4b03648149562c1c702ca3b467')
+sha256sums=('f34649e8036ef2442c1c6554b721090b6a49f9e08770219fe4dbbc9daa3b6597')
 
 prepare() {
   cd "${pkgname}"
@@ -51,14 +50,14 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features --workspace
+  cargo build --frozen --release --features "native-tls rodio-backend alsa-backend portaudio-backend pulseaudio-backend jackaudio-backend rodiojack-backend sdl-backend gstreamer-backend with-libmdns passthrough-decoder"
 }
 
 check() {
   cd "${pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --release --all-features --workspace
+  cargo test --frozen --release --features "native-tls rodio-backend alsa-backend portaudio-backend pulseaudio-backend jackaudio-backend rodiojack-backend sdl-backend gstreamer-backend with-libmdns passthrough-decoder"
 }
 
 package() {
