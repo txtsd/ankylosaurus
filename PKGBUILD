@@ -2,7 +2,7 @@
 # Contributor: mrAppleXZ <mr.applexz@gmail.com>
 
 pkgname=blockbench
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc='A low-poly 3D model editor'
 arch=(x86_64 armv7h)
@@ -23,7 +23,7 @@ source=(
   "${pkgname}::git+https://github.com/JannisX11/blockbench#tag=v${pkgver}"
   "${pkgname}.desktop"
 )
-sha256sums=('94a468e684f323bd5ce036068a0fa983c0a4ef1fda621be9df91fccc10f21a12'
+sha256sums=('514812882ef0d2537c61d2908984be6a658977ec030044f24ea60e24132db7cc'
             '5a64727fcf696b3497190d441556322b4d0ffb70f560ba8eba6ef79ac5c36e8c')
 
 prepare() {
