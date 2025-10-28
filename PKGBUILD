@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=tile38
-pkgver=1.36.2
+pkgver=1.36.5
 pkgrel=1
 pkgdesc='An in-memory geolocation data store, spatial index, and realtime geofencing server'
 arch=(x86_64 armv7h aarch64)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(ca-certificates)
 makedepends=(git go)
 source=("git+https://github.com/tidwall/tile38#tag=${pkgver}")
-sha256sums=('3e3209180fc2e5542794381266b1ecd75080e431955c51802d3938201ab1552a')
+sha256sums=('aea9345368af3cd7dedefc29058afdd7ac64e56a027d565c9d93b08fb2d551c4')
 
 prepare() {
   cd "${pkgname}"
