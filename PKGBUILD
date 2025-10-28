@@ -1,8 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=superseedr
-pkgver=0.9.2
-_commit=80bc64086db418f329aed1ad2a51d80df32b8e28
+pkgver=0.9.7
 pkgrel=1
 pkgdesc='A BitTorrent Client in your Terminal'
 arch=(x86_64 aarch64)
@@ -15,19 +14,19 @@ depends=(
   openssl
 )
 makedepends=(cargo python)
-checkdepends=(cargo)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/80bc64086db418f329aed1ad2a51d80df32b8e28.zip")
-sha256sums=('4b4015e226f1f8e26fdf3a6e93c5dccfa66004b8920ad835cd54b7928cbb8885')
+# checkdepends=(cargo)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3d3045ef117bc8e78edbf22107cda2e595ad59cf2e45c2b17b088425c4974f95')
 
 prepare() {
-  cd "${pkgname}-${_commit}"
+  cd "${pkgname}-${pkgver}"
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${pkgname}-${_commit}"
+  cd "${pkgname}-${pkgver}"
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -35,7 +34,7 @@ build() {
 }
 
 # check() {
-#   cd "${pkgname}-${_commit}"
+#   cd "${pkgname}-${pkgver}"
 
 #   export RUSTUP_TOOLCHAIN=stable
 #   export CARGO_TARGET_DIR=target
@@ -43,7 +42,7 @@ build() {
 # }
 
 package() {
-  cd "${pkgname}-${_commit}"
+  cd "${pkgname}-${pkgver}"
 
   install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 

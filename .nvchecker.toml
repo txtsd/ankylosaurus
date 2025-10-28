@@ -1,0 +1,4 @@
+[superseedr]
+source = "git"
+git = "https://github.com/Jagalite/superseedr.git"
+prefix = "v"
