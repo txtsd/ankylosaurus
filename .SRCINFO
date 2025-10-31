@@ -1,6 +1,6 @@
 pkgbase = python-magika
 	pkgdesc = Detect file content types with deep learning
-	pkgver = 0.6.3
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/google/magika
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-magika
 	depends = python-onnxruntime
 	depends = python-numpy
 	depends = python-dotenv
-	source = python-magika-0.6.3.tar.gz::https://files.pythonhosted.org/packages/source/m/magika/magika-0.6.3.tar.gz
-	sha256sums = 7cc52aa7359af861957043e2bf7265ed4741067251c104532765cd668c0c0cb1
+	source = python-magika-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/m/magika/magika-1.0.1.tar.gz
+	sha256sums = 313f8cbfcdc9a7e55c24286273230a2732b89825e58a93de2b576531393b8398
 
 pkgname = python-magika
