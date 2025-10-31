@@ -1,5 +1,6 @@
 [python-magika]
-source='github'
-github='google/magika'
-use_latest_release=true
-prefix='python-v'
+source = 'github'
+github = 'google/magika'
+use_max_tag = true
+include_regex = '^python-v.*'
+prefix = 'python-v'
