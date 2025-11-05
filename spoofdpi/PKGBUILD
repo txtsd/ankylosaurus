@@ -2,8 +2,8 @@
 
 pkgname=spoofdpi
 _pkgname=SpoofDPI
-pkgver=0.12.0
-pkgrel=4
+pkgver=0.12.2
+pkgrel=1
 pkgdesc='A simple and fast anti-censorship tool written in Go'
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/xvzc/SpoofDPI'
@@ -17,7 +17,7 @@ source=(
   "${pkgname}.conf.d"
   "${pkgname}.service"
 )
-sha256sums=('8350cacb0a5cc7b3c1d9aa7cbd2e519dfb61e7d59d49475de11387f8229a01c0'
+sha256sums=('6b963e5c52e129f1bcac3b5adc59322715f5d31e593eb317e363c18c77f53a5b'
             '6b7e46d23d15fbefaf8c1e031a2cea92a74f03a0ff7b19c2dd570f1b4bff324a'
             'a32456dfab36dd2dcfcdf9f7b24bbe3646c9cecda023180e2e658001427045da')
 
