@@ -5,7 +5,7 @@
 
 pkgname=openssh-askpass
 pkgver=2.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A plasma-like passphrase dialog for ssh'
 arch=(x86_64)
 url='http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=openssh-askpass&full=0'
@@ -27,6 +27,12 @@ provides=(x11-ssh-askpass)
 source=("http://hugo.pereira.free.fr/software/tgz/${pkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
 sha256sums=('d7728ae61b49b2e390d9e2c1faba3441c0e9899a86be887e0686042ab302be4b')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  sed -i 's/cmake_minimum_required(VERSION 2.8.12)/cmake_minimum_required(VERSION 4.0.0)/' CMakeLists.txt
+}
 
 build() {
   cd "${pkgname}-${pkgver}"

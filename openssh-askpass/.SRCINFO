@@ -1,7 +1,7 @@
 pkgbase = openssh-askpass
 	pkgdesc = A plasma-like passphrase dialog for ssh
 	pkgver = 2.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=openssh-askpass&full=0
 	install = openssh-askpass.install
 	arch = x86_64
