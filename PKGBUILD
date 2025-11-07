@@ -3,8 +3,8 @@
 
 pkgname=blockbench-git
 _pkgname="${pkgname%-git}"
-pkgver=4.11.2.r1.g0dc5a949
-pkgrel=2
+pkgver=5.0.3.r1.g796597fd
+pkgrel=1
 pkgdesc='A low-poly 3D model editor (git version)'
 arch=(x86_64 aarch64)
 url='https://github.com/JannisX11/blockbench'
@@ -13,7 +13,6 @@ _electron=electron
 depends=(
   "${_electron}"
   bash
-  giblib
   glibc
   imlib2
   libx11
@@ -23,7 +22,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!debug)
 source=("${_pkgname}::git+https://github.com/JannisX11/blockbench.git"
-        "${_pkgname}.desktop")
+  "${_pkgname}.desktop")
 sha256sums=('SKIP'
             '5a64727fcf696b3497190d441556322b4d0ffb70f560ba8eba6ef79ac5c36e8c')
 
@@ -45,7 +44,7 @@ build() {
   _electronDist=/usr/lib/${_electron}
   _electronVersion=$(cat ${_electronDist}/version)
 
-  npm run dist -- --linux --x64 --dir -c.electronDist=${_electronDist} -c.electronVersion="${_electronVersion}"
+  npm run publish-linux -- --linux --x64 --dir -c.electronDist=${_electronDist} -c.electronVersion="${_electronVersion}"
 }
 
 package() {
@@ -62,7 +61,7 @@ package() {
 
   install "${_pkgname}/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install "${_pkgname}/dist/linux-unpacked/resources/app.asar" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${_pkgname}.asar"
+  install "${_pkgname}/dist-electron/linux-unpacked/resources/app.asar" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${_pkgname}.asar"
 
-  cp -r "${_pkgname}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${_pkgname}.asar.unpacked"
+  cp -r "${_pkgname}/dist-electron/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${_pkgname}.asar.unpacked"
 }
