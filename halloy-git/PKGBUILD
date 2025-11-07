@@ -2,7 +2,7 @@
 
 pkgname=halloy-git
 _pkgname="${pkgname%-git}"
-pkgver=2024.14.r12.g2d6bbb8
+pkgver=2025.11.r58.g4bee304
 pkgrel=1
 pkgdesc='An open-source IRC client written in Rust, with the Iced GUI library'
 arch=(x86_64 aarch64)
@@ -14,6 +14,7 @@ depends=(
   glibc
   hicolor-icon-theme
   openssl
+  libxcb
 )
 makedepends=(git cargo)
 checkdepends=(cargo)
