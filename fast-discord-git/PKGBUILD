@@ -3,7 +3,7 @@
 
 pkgname=fast-discord-git
 pkgver=r233.651f323
-pkgrel=2
+pkgrel=3
 pkgdesc='A new Discord client made in C++ and Qt'
 arch=(i686 x86_64 aarch64)
 url='https://github.com/EnyoYoen/Fast-Discord'
@@ -24,6 +24,12 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${pkgname}"
+
+  sed -i 's/cmake_minimum_required(VERSION 3.1.0)/cmake_minimum_required(VERSION 4.0.0)/' CMakeLists.txt
 }
 
 build() {
