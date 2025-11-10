@@ -19,7 +19,7 @@ _minorver=0
 _securityver=1
 _updatever=36
 pkgver=25.0.1.36.r327.g7689a7c
-pkgrel=1
+pkgrel=2
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.org/projects/wakefield/'
@@ -434,7 +434,7 @@ package_jdk-openjdk-wakefield() {
   for s in 16 24 32 48; do
     install -Dm 644 \
       "${srcdir}/${_jdkdir}/src/java.desktop/unix/classes/sun/awt/X11/java-icon${s}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/java${_majorver}-openjdk.png"
+      "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/java${_majorver}-openjdk-wakefield.png"
   done
 
   # Desktop files
