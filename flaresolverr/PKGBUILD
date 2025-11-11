@@ -2,7 +2,7 @@
 
 pkgname=flaresolverr
 _pkgname=FlareSolverr
-pkgver=3.4.4
+pkgver=3.4.5
 pkgrel=1
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=(any)
@@ -23,6 +23,7 @@ depends=(
   python-xvfbwrapper
 )
 install=flaresolverr.install
+options=(!debug)
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
   flaresolverr.service
@@ -30,7 +31,7 @@ source=(
   flaresolverr.tmpfiles
   flaresolverr.install
 )
-sha256sums=('f119d83f0b9c7543cadfe840e4f4b0613eb536ca9a2026cb7bdcafd772a8d32f'
+sha256sums=('847cf6a49ee7630ce13163d9bb00301bf5cdb379f76625c9c2517a4735d6cc1f'
             '8f71d609bf31ec88930bf582e1fda0d894bbb4fe6b2049fdf6e98703830cc15c'
             '62f114d4e559cf9dae22bfd90759eff697e42da5f700a52988e70e78f3048ae2'
             '4a61a6d9db1a9f4ec0812d86ef524a7f575a45f272404f0ebfc79376628feeb2'
