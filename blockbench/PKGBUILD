@@ -2,7 +2,7 @@
 # Contributor: mrAppleXZ <mr.applexz@gmail.com>
 
 pkgname=blockbench
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 pkgdesc='A low-poly 3D model editor'
 arch=(x86_64 armv7h)
@@ -12,7 +12,6 @@ _electron=electron
 depends=(
   "${_electron}"
   bash
-  giblib
   glibc
   imlib2
   libx11
@@ -23,7 +22,7 @@ source=(
   "${pkgname}::git+https://github.com/JannisX11/blockbench#tag=v${pkgver}"
   "${pkgname}.desktop"
 )
-sha256sums=('514812882ef0d2537c61d2908984be6a658977ec030044f24ea60e24132db7cc'
+sha256sums=('93e5220b4c4cffb6bef36f7b3e3b1cfac44744280362a2c79a90ab86bdc4e3fb'
             '5a64727fcf696b3497190d441556322b4d0ffb70f560ba8eba6ef79ac5c36e8c')
 
 prepare() {
@@ -56,6 +55,4 @@ package() {
   install "${pkgname}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install "${pkgname}/dist-electron/linux-unpacked/resources/app.asar" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${pkgname}.asar"
-
-  cp -r "${pkgname}/dist-electron/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${pkgname}.asar.unpacked"
 }
