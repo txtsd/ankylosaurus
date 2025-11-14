@@ -6,7 +6,7 @@
 pkgname=python-magika
 _name=magika-python
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Detect file content types with deep learning"
 arch=(any)
 url="https://github.com/google/magika"
@@ -14,18 +14,18 @@ license=('Apache-2.0')
 depends=(
   'python'
   'python-click'
-  'python-onnxruntime'
-  'python-numpy'
   'python-dotenv'
+  'python-numpy'
+  'python-onnxruntime'
 )
 makedepends=(
   'cargo'
   'python-build'
-  'python-installer'
   'python-hatchling'
-  'python-wheel'
-  'python-poetry'
+  'python-installer'
   'python-maturin'
+  'python-poetry'
+  'python-wheel'
 )
 checkdepends=(
   'protobuf'
@@ -33,6 +33,7 @@ checkdepends=(
   'python-pytest'
   'python-tqdm'
 )
+provides=(magika-cli)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/python-v${pkgver}.tar.gz")
 sha256sums=('f859a6b76333b0fe7bda88e97e36b6f7781f0b3a3c6d17b67b295fbf17e78e5f')
 
