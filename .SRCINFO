@@ -1,7 +1,7 @@
 pkgbase = curseforge-appimage
 	pkgdesc = CurseForge desktop client for Linux (AppImage)
 	pkgver = 1.290.0_28665
-	pkgrel = 1
+	pkgrel = 2
 	url = https://curseforge.com
 	arch = x86_64
 	license = LicenseRef-overwolf
@@ -11,6 +11,7 @@ pkgbase = curseforge-appimage
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = zlib
+	provides = curseforge
 	conflicts = curseforge
 	options = !strip
 	options = !debug

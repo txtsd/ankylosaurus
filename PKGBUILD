@@ -6,7 +6,7 @@
 
 pkgname=curseforge-appimage
 pkgver=1.290.0_28665
-pkgrel=1
+pkgrel=2
 pkgdesc="CurseForge desktop client for Linux (AppImage)"
 arch=('x86_64')
 depends=(
@@ -17,6 +17,7 @@ depends=(
 )
 url="https://curseforge.com"
 license=('LicenseRef-overwolf' 'MIT' 'LicenseRef-chromium-licenses')
+provides=(curseforge)
 conflicts=(curseforge)
 options=(!strip !debug)
 source=(
