@@ -1,41 +1,51 @@
-# Maintainer: Csubee <csubee@csubee.hu>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: Csubee <csubee@csubee.hu>
 # Contributor: Neptune <neptune650@proton.me>
 # Contributor: Polarian <polarian@polarian.dev>
 # Contributor: Saghm Rossi <aur@saghm.com>
 
 pkgname=curseforge-appimage
-pkgver=1.251.0.17831
+pkgver=1.290.0_28665
 pkgrel=1
-pkgdesc="CurseForge desktop client for Linux"
+pkgdesc="CurseForge desktop client for Linux (AppImage)"
 arch=('x86_64')
-depends=("fuse2")
-url="https://curseforge.com/"
-source=("$pkgname-$pkgver.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip"
-        'curseforge'
-        'LICENSE')
-license=('custom:overwolf' 'MIT' 'custom:chromium-licenses')
+depends=(
+  fuse2
+  glibc
+  hicolor-icon-theme
+  zlib
+)
+url="https://curseforge.com"
+license=('LicenseRef-overwolf' 'MIT' 'LicenseRef-chromium-licenses')
+conflicts=(curseforge)
 options=(!strip !debug)
-# Skip checksum check for the CurseForge binary, to avoid breakage on updates
-sha256sums=('e251258f07fb220503b5d7d702c7f304601ee9b4f85ab211e805c473f42eaea4'
-            '7ab749b52d805e828b3d30276e96ae4ab3bc56c3882b505a7732ee3f6e8eff95'
+source=(
+  "CurseForge-${pkgver/_/-}.AppImage::https://curseforge.overwolf.com/electron/linux/CurseForge-${pkgver/_/-}.AppImage"
+  'LICENSE'
+)
+sha256sums=('6586087defd1c84b564780b9b7b95c3ef8a68138afa7b72a54191eaa4ad90bb3'
             '135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f')
 
 prepare() {
-    mv ./build/CurseForge-*.AppImage CurseForge.AppImage
-    chmod +x CurseForge.AppImage
-    ./CurseForge.AppImage --appimage-extract >/dev/null
-    sed -i 's/Exec=.*/Exec=\/usr\/bin\/curseforge %U/' squashfs-root/curseforge.desktop
+  # mv CurseForge-*.AppImage CurseForge.AppImage
+  chmod +x "CurseForge-${pkgver/_/-}.AppImage"
+  ./CurseForge-${pkgver/_/-}.AppImage --appimage-extract > /dev/null
+  sed -i 's/Exec=.*/Exec=\/usr\/bin\/curseforge %U/' squashfs-root/curseforge.desktop
 }
 
 package() {
-    install -Dm755 "CurseForge.AppImage" "${pkgdir}/opt/$pkgname/CurseForge.AppImage"
-    install -Dm755 "curseforge" "${pkgdir}/usr/bin/curseforge"
-    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/CURSEFORGE-LICENSE
-    install -dm755 "${pkgdir}/usr/share/applications/"
-    install -dm755 "${pkgdir}/usr/share/icons"
+  install -Dm755 "CurseForge-${pkgver/_/-}.AppImage" "${pkgdir}/opt/${pkgname}/CurseForge-${pkgver/_/-}.AppImage"
 
-    cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
-    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/curseforge.desktop" "${pkgdir}/usr/share/applications/"
-    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/curseforge"
-    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/curseforge"
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/CurseForge-${pkgver/_/-}.AppImage" "${pkgdir}/usr/bin/curseforge"
+
+  install -dm755 "${pkgdir}/usr/share/icons"
+  cp -r --no-preserve=mode,ownership "squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
+
+  install -Dm644 "squashfs-root/curseforge.desktop" -t "${pkgdir}/usr/share/applications"
+
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/CURSEFORGE-LICENSE"
+  install -Dm644 "squashfs-root/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "squashfs-root/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
 }
