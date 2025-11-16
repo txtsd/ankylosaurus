@@ -1,6 +1,6 @@
-/pkg
-/src
-*.AppImage
-*.zst
-*.zip
-/squashfs-root
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+LICENSE
