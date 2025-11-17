@@ -4,8 +4,8 @@
 
 pkgname=imv-git
 _pkgname=imv
-pkgver=4.5.0.r0.g8f36d35
-pkgrel=3
+pkgver=5.0.0.r3.g2519cf2
+pkgrel=1
 pkgdesc='imv is a command line image viewer intended for use with tiling window managers, with Wayland and X11 support.'
 url="https://git.sr.ht/~exec64/imv"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ makedepends=('git' 'asciidoc' 'cmocka' 'meson')
 optdepends=(#wayland
             'wayland' 'egl-wayland'
             #image support
-            'libtiff' 'libpng' 'libjpeg-turbo' 'librsvg' 'libnsgif' 'libheif')
+            'libtiff' 'libpng' 'libjpeg-turbo' 'librsvg' 'libnsgif' 'libheif' 'libwebp')
 provides=('imv')
 conflicts=('renameutils' 'imv')
 source=("git+https://git.sr.ht/~exec64/imv")
