@@ -1,6 +1,6 @@
 pkgbase = comictagger-beta
 	pkgdesc = A multi-platform app for writing metadata to digital comics
-	pkgver = 1.6.0_beta.5
+	pkgver = 1.6.0_beta.8
 	pkgrel = 1
 	url = https://github.com/comictagger/comictagger
 	arch = any
@@ -13,15 +13,21 @@ pkgbase = comictagger-beta
 	depends = python
 	depends = python-appdirs
 	depends = python-beautifulsoup4
+	depends = python-chardet
 	depends = python-comicfn2dict
+	depends = python-idna
 	depends = python-importlib-metadata
 	depends = python-isocodes
 	depends = python-natsort
+	depends = python-niquests
+	depends = python-packaging
 	depends = python-pathvalidate
 	depends = python-pillow
+	depends = python-pillow-jpegxl-plugin
 	depends = python-py7zr
 	depends = python-pyicu
-	depends = python-pyqt5
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
 	depends = python-pyrate-limiter-2
 	depends = python-rapidfuzz
 	depends = python-rarfile
@@ -29,9 +35,14 @@ pkgbase = comictagger-beta
 	depends = python-settngs
 	depends = python-text2digits
 	depends = python-typing_extensions
+	depends = python-urllib3
 	depends = python-wordninja
+	depends = python-yaml
+	depends = python-zipremove
 	options = !debug
-	source = git+https://github.com/comictagger/comictagger.git#tag=1.6.0-beta.5
-	sha256sums = 46e7d894f77d39875a7cfbad63f2a153e0ed06fa4f53b8e0e89b6ca03287c0b1
+	source = git+https://github.com/comictagger/comictagger.git#tag=1.6.0-beta.8
+	source = 0001-Patch-for-outdated-python-isocodes.patch
+	sha256sums = 2e1c658eb4124344146d17773043e809b8eb80191917ae3de303518d8d7e4590
+	sha256sums = 098fc663b199a66258477a1368c4a484a57dcd4cca1c6075ca52cd058cf3a597
 
 pkgname = comictagger-beta

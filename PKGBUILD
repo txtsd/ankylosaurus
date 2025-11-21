@@ -3,7 +3,7 @@
 # Contributor: RealStickman <mrc+aur _a_ frm01 _d_ net>
 
 pkgname=comictagger-beta
-pkgver=1.6.0_beta.5
+pkgver=1.6.0_beta.8
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc='A multi-platform app for writing metadata to digital comics'
@@ -14,17 +14,21 @@ depends=(
   python
   python-appdirs
   python-beautifulsoup4
+  python-chardet
   python-comicfn2dict
   python-idna
   python-importlib-metadata
   python-isocodes
   python-natsort
+  python-niquests
   python-packaging
   python-pathvalidate
   python-pillow
+  python-pillow-jpegxl-plugin
   python-py7zr
   python-pyicu
-  python-pyqt5
+  python-pyqt6
+  python-pyqt6-webengine
   python-pyrate-limiter-2
   python-rapidfuzz
   python-rarfile
@@ -34,6 +38,8 @@ depends=(
   python-typing_extensions
   python-urllib3
   python-wordninja
+  python-yaml
+  python-zipremove
 )
 makedepends=(
   git
@@ -43,11 +49,17 @@ makedepends=(
   python-wheel
 )
 options=(!debug)
-source=(git+${url}.git#tag=${_pkgver})
-sha256sums=('46e7d894f77d39875a7cfbad63f2a153e0ed06fa4f53b8e0e89b6ca03287c0b1')
+source=(
+  git+${url}.git#tag=${_pkgver}
+  0001-Patch-for-outdated-python-isocodes.patch
+)
+sha256sums=('2e1c658eb4124344146d17773043e809b8eb80191917ae3de303518d8d7e4590'
+            '098fc663b199a66258477a1368c4a484a57dcd4cca1c6075ca52cd058cf3a597')
 
 prepare() {
   cd comictagger
+
+  patch -Np1 -i ../0001-Patch-for-outdated-python-isocodes.patch
 
   # sed -e 's/RequestRate/Rate/g' -i tests/conftest.py
   # sed -e 's/RequestRate/Rate/g' -i comictalker/talkers/comicvine.py
