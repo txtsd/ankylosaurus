@@ -1,6 +1,6 @@
 pkgbase = spoofdpi
 	pkgdesc = A simple and fast anti-censorship tool written in Go
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/xvzc/SpoofDPI
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = spoofdpi
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = go
-	makedepends = libpcap
 	depends = glibc
+	depends = libpcap
 	options = !debug
 	backup = etc/conf.d/spoofdpi
-	source = spoofdpi-1.0.2.tar.gz::https://github.com/xvzc/SpoofDPI/archive/refs/tags/v1.0.2.tar.gz
+	source = spoofdpi-1.0.3.tar.gz::https://github.com/xvzc/SpoofDPI/archive/refs/tags/v1.0.3.tar.gz
 	source = spoofdpi.conf.d
 	source = spoofdpi.service
-	sha256sums = ce784f8d00ef139659df2388a37604bb50c4008c6c957e43f647c2837a9da9d1
+	sha256sums = 102a78dfc9463f56f450542703d3511d4eaeb86724eb02286af01cd464d8312d
 	sha256sums = 6b7e46d23d15fbefaf8c1e031a2cea92a74f03a0ff7b19c2dd570f1b4bff324a
 	sha256sums = a32456dfab36dd2dcfcdf9f7b24bbe3646c9cecda023180e2e658001427045da
 
