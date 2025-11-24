@@ -1,44 +1,65 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: Ainola
 # Contributor: Johan Förberg <johan@forberg.se>
 
 pkgname=imv-git
 _pkgname=imv
-pkgver=5.0.0.r3.g2519cf2
+pkgver=5.0.0.r8.g7154405
 pkgrel=1
-pkgdesc='imv is a command line image viewer intended for use with tiling window managers, with Wayland and X11 support.'
+pkgdesc='A command line image viewer intended for use with tiling window managers'
 url="https://git.sr.ht/~exec64/imv"
-arch=('x86_64' 'i686')
+arch=(x86_64 i686)
 license=('MIT')
-depends=('libxkbcommon' 'libxkbcommon-x11' 'cairo' 'icu' 'libx11' 'glu' 'libxcb' 'freeimage' 'librsvg' 'desktop-file-utils')
-makedepends=('git' 'asciidoc' 'cmocka' 'meson')
-optdepends=(#wayland
-            'wayland' 'egl-wayland'
-            #image support
-            'libtiff' 'libpng' 'libjpeg-turbo' 'librsvg' 'libnsgif' 'libheif' 'libwebp')
-provides=('imv')
-conflicts=('renameutils' 'imv')
+depends=(
+  glu
+  libheif
+  libinih
+  libjpeg-turbo
+  libnsgif
+  libnsbmp
+  libpng
+  librsvg
+  librsvg
+  libtiff
+  libwebp
+  libxkbcommon
+  libxkbcommon-x11
+  pango
+  qoi
+  wayland-protocols
+)
+makedepends=(
+  asciidoc
+  cmake
+  cmocka
+  git
+  meson
+  tinyxxd
+)
+provides=(imv)
+conflicts=(renameutils imv)
 source=("git+https://git.sr.ht/~exec64/imv")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$_pkgname"
-    sed -i "s/unicode_lib = dependency('icu-io')/unicode_lib = dependency('icu-uc')/" meson.build
+  cd "${_pkgname}"
+  sed -i "s/unicode_lib = dependency('icu-io')/unicode_lib = dependency('icu-uc')/" meson.build
 }
 
 build() {
-    cd "$_pkgname"
-    meson setup --prefix /usr --buildtype=plain . build
-    ninja -C build
+  cd "${_pkgname}"
+  arch-meson build -D test=disabled
+  ninja -C build
 }
 
 package() {
-    cd "$_pkgname"
-    DESTDIR="$pkgdir" ninja -C build install
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  cd "${_pkgname}"
+  DESTDIR="${pkgdir}" ninja -C build install
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
