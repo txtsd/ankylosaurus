@@ -3,8 +3,8 @@
 pkgname=spoofdpi-git
 _pkgname=SpoofDPI
 __pkgname=${pkgname%%-git}
-pkgver=0.12.0.r1.ga2993ac
-pkgrel=2
+pkgver=1.1.1.r0.g4f8b22e
+pkgrel=1
 pkgdesc='A simple and fast anti-censorship tool written in Go'
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/xvzc/SpoofDPI'
@@ -50,14 +50,13 @@ build() {
     -modcacherw \
     -trimpath \
   "
-  local _ld_flags=" \
-    -compressdwarf=false \
-    -linkmode=external \
-  "
   go build \
-    -ldflags "${_ldflags}" \
+    -ldflags "-compressdwarf=false" \
+    -ldflags "-linkmode=external" \
+    -ldflags "-X main.commit=$(git rev-parse --short HEAD 2> /dev/null)" \
+    -ldflags "-X main.build=archlinux" \
     -o build \
-    ./...
+    ./cmd/spoofdpi
 }
 
 package() {
