@@ -3,7 +3,7 @@
 pkgname=spoofdpi
 _pkgname=SpoofDPI
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and fast anti-censorship tool written in Go'
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/xvzc/SpoofDPI'
@@ -34,22 +34,13 @@ prepare() {
 build() {
   cd "${_pkgname}-${pkgver}"
 
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}"
-  export GOFLAGS="\
+  go build \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
     -trimpath \
-  "
-  go build \
-    -ldflags "-compressdwarf=false" \
-    -ldflags "-linkmode=external" \
-    -ldflags "-X main.version=${pkgver}" \
-    -ldflags "-X main.build=archlinux" \
+    -ldflags "-compressdwarf=false -linkmode=external -X main.version=${pkgver} -X main.build=archlinux" \
     -o build \
     ./cmd/spoofdpi
 }
