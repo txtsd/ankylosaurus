@@ -1,0 +1,3 @@
+[python-isocodes]
+source = "git"
+git = "https://github.com/Atem18/isocodes.git"

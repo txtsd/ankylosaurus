@@ -1,16 +1,17 @@
 pkgbase = python-isocodes
-	pkgdesc = provides lists of various ISO standards (e.g. country, language, language scripts, and currency names) in one place
-	pkgver = 2024.2.2
+	pkgdesc = Provides lists of various ISO standards (e.g. country, language, language scripts, and currency names) in one place
+	pkgver = 2025.8.25
 	pkgrel = 1
-	url = https://github.com/sparkmicro/isocodes-api/
+	url = https://github.com/Atem18/isocodes
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = python-hatchling
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/i/isocodes/isocodes-2024.2.2.tar.gz
-	sha256sums = 50b747edb5f4e1e7bb740e972ec5062b9819fc1fd417c33ee6334436a3367f6a
+	options = !debug
+	source = python-isocodes-2025.8.25.tar.gz::https://github.com/Atem18/isocodes/archive/refs/tags/2025.8.25.tar.gz
+	sha256sums = f88335ca770888dbd730d74e22163c427ad1744049c5c8027c3f532eb95ecfec
 
 pkgname = python-isocodes

@@ -1,27 +1,33 @@
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
+
 pkgname=python-isocodes
-_name=${pkgname#python-}
-pkgver=2024.2.2
+_pkgname=${pkgname#python-}
+pkgver=2025.8.25
 pkgrel=1
-pkgdesc="provides lists of various ISO standards (e.g. country, language, language scripts, and currency names) in one place"
-url="https://github.com/sparkmicro/isocodes-api/"
-# the upstream doesn't know how to separate dev and prod deps; this has 0 deps
-# beyond Python
-depends=(
-    'python'
-)
-makedepends=(python-build python-installer python-wheel python-hatchling)
-license=('MIT')
+pkgdesc="Provides lists of various ISO standards (e.g. country, language, language scripts, and currency names) in one place"
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('50b747edb5f4e1e7bb740e972ec5062b9819fc1fd417c33ee6334436a3367f6a')
+url="https://github.com/Atem18/isocodes"
+license=('MIT')
+depends=(python)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+options=(!debug)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f88335ca770888dbd730d74e22163c427ad1744049c5c8027c3f532eb95ecfec')
 
 build() {
-	cd "$srcdir/$_name-$pkgver"
-    python -m build --wheel --no-isolation
+  cd "${_pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${_pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
