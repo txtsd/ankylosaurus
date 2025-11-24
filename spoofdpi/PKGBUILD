@@ -2,16 +2,13 @@
 
 pkgname=spoofdpi
 _pkgname=SpoofDPI
-pkgver=1.0.3
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A simple and fast anti-censorship tool written in Go'
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/xvzc/SpoofDPI'
 license=('Apache-2.0')
-depends=(
-  glibc
-  libpcap
-)
+depends=(glibc)
 makedepends=(go)
 backup=(etc/conf.d/spoofdpi)
 options=(!debug)
@@ -20,7 +17,7 @@ source=(
   "${pkgname}.conf.d"
   "${pkgname}.service"
 )
-sha256sums=('102a78dfc9463f56f450542703d3511d4eaeb86724eb02286af01cd464d8312d'
+sha256sums=('28c11f40cebe4ecbc7f27a7909b37b8ce8955a116dbe98cd018664da1e41a76a'
             '6b7e46d23d15fbefaf8c1e031a2cea92a74f03a0ff7b19c2dd570f1b4bff324a'
             'a32456dfab36dd2dcfcdf9f7b24bbe3646c9cecda023180e2e658001427045da')
 
@@ -48,14 +45,13 @@ build() {
     -modcacherw \
     -trimpath \
   "
-  local _ld_flags=" \
-    -compressdwarf=false \
-    -linkmode=external \
-  "
   go build \
-    -ldflags "${_ldflags}" \
+    -ldflags "-compressdwarf=false" \
+    -ldflags "-linkmode=external" \
+    -ldflags "-X main.version=${pkgver}" \
+    -ldflags "-X main.build=archlinux" \
     -o build \
-    ./...
+    ./cmd/spoofdpi
 }
 
 package() {
