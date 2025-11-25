@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!0001-Patch-for-outdated-python-isocodes.patch
