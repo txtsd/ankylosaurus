@@ -3,7 +3,7 @@
 pkgname=spoofdpi-bin
 _pkgname=SpoofDPI
 __pkgname=${pkgname%-bin}
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='A simple and fast anti-censorship tool written in Go'
 arch=(x86_64 armv7h aarch64)
@@ -22,9 +22,9 @@ source_armv7h=("${url}/releases/download/v${pkgver}/${__pkgname}_${pkgver}_linux
 source_aarch64=("${url}/releases/download/v${pkgver}/${__pkgname}_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('6b7e46d23d15fbefaf8c1e031a2cea92a74f03a0ff7b19c2dd570f1b4bff324a'
             'a32456dfab36dd2dcfcdf9f7b24bbe3646c9cecda023180e2e658001427045da')
-sha256sums_x86_64=('225116a3ebfde9d4f088087f00b343143c4ea8618725a3a96b7a329a7f744995')
-sha256sums_armv7h=('8fc58c4e85b9c1ce19ab67007c1e25a92594ae4ca8d0d1c9186b4eaa0db74558')
-sha256sums_aarch64=('a2e1130a93cb9e3fdc22d78698597b9b5aa07a3a3c862bcbb6cabd0f3d9a7af1')
+sha256sums_x86_64=('a7bc920f99575b0b1696a1f8b847b6b816e0075836b50267506eea0b362b0c01')
+sha256sums_armv7h=('8a61ab5cad3ad68b48ffca6076120f342115e1dee8cefd6e3bdb85204fbcdb15')
+sha256sums_aarch64=('01b2ae892bde49cac8334add3b045fe05f97092c5a9520886d20c84f7b4f8781')
 
 package() {
   cd "${srcdir}"
