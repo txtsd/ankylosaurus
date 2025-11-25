@@ -1,0 +1,4 @@
+[python-zipremove]
+source = "git"
+git = "https://github.com/danny0838/zipremove.git"
+prefix = "v"

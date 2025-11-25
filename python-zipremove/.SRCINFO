@@ -1,0 +1,17 @@
+pkgbase = python-zipremove
+	pkgdesc = Extends `zipfile` with `remove`-related functionalities
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/danny0838/zipremove
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	options = !debug
+	source = python-zipremove-0.8.0.tar.gz::https://github.com/danny0838/zipremove/archive/refs/tags/0.8.0.tar.gz
+	sha256sums = ee894ece5feb4d796c798cb8b7ee73710974835b91459c56496159abe237522c
+
+pkgname = python-zipremove
