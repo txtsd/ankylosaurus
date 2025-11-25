@@ -43,12 +43,6 @@ repos=(
   libopensles-standalone-git
   linux-command-gpt
   linux-command-gpt-git
-  llama.cpp
-  llama.cpp-cuda
-  llama.cpp-hip
-  llama.cpp-sycl-f16
-  llama.cpp-sycl-f32
-  llama.cpp-vulkan
   lxqt-menu-data-git
   lxqt_wallet
   lxqt_wallet-git
@@ -67,7 +61,6 @@ repos=(
   prismlauncher-git
   prismlauncher-qt5
   prismlauncher-qt5-bin
-  prismlauncher-qt5-git
   progress-quest-bin
   python-baycomp
   python-confusables
