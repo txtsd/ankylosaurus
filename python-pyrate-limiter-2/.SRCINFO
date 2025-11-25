@@ -1,0 +1,20 @@
+pkgbase = python-pyrate-limiter-2
+	pkgdesc = Python Rate-Limiter using Leaky-Bucket Algorithm
+	pkgver = 2.10.0
+	pkgrel = 2
+	url = https://github.com/vutran1710/PyrateLimiter
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	optdepends = python-filelock: concurrent sqlite backend
+	optdepends = python-redis: redis backend
+	conflicts = python-pyrate-limiter
+	options = !debug
+	source = git+https://github.com/vutran1710/PyrateLimiter.git#tag=v2.10.0
+	sha256sums = 4c0669c9ab517dbbac2d6bc460cb0d6996074e4534cc4cb9f65ae51836fedf18
+
+pkgname = python-pyrate-limiter-2
