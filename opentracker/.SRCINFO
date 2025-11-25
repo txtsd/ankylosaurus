@@ -1,0 +1,26 @@
+pkgbase = opentracker
+	pkgdesc = A free and open torrent tracker
+	pkgver = 1.0
+	pkgrel = 3
+	epoch = 1
+	url = http://erdgeist.org/arts/software/opentracker/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = LicenseRef-Beerware
+	makedepends = cvs
+	makedepends = gcc
+	depends = glibc
+	depends = zlib
+	backup = etc/opentracker/opentracker.conf
+	source = https://erdgeist.org/arts/software/opentracker/opentracker-1.0.tar.bz2
+	source = opentracker.service
+	source = opentracker.sysusers
+	source = opentracker.tmpfiles
+	sha256sums = 8109cbf271d4374020af719aca5448b1354517c0b2f4b74b167332944a61eb31
+	sha256sums = 6bd91237855a0ed06eeaf4182d565a9125dbf89f2dfb3e83b5607f7c9a89d00d
+	sha256sums = c0097bc231e0f6f7c8ff17e3cca99f2215218cc227476a4390936b04300c8fc7
+	sha256sums = 0c7f180db96168dd7546b30cb276ab1058201c919059b251d84868fe63990f08
+
+pkgname = opentracker

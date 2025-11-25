@@ -1,0 +1,8 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!opentracker.service
+!opentracker.sysusers
+!opentracker.tmpfiles
