@@ -2,7 +2,7 @@
 
 pkgname=tile38
 pkgver=1.36.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An in-memory geolocation data store, spatial index, and realtime geofencing server'
 arch=(x86_64 armv7h aarch64)
 url='https://tile38.com'
@@ -25,30 +25,22 @@ prepare() {
 build() {
   cd "${pkgname}"
 
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_ENABLED=0
+  export _LDFLAGS="${_LDFLAGS} -compressdwarf=false"
+  export _LDFLAGS="${_LDFLAGS} -bindnow"
+  export _LDFLAGS="${_LDFLAGS} -X github.com/tidwall/tile38/core.Version=${pkgver}"
+  export _LDFLAGS="${_LDFLAGS} -X github.com/tidwall/tile38/core.GitSHA=${sha256sums[0]:0:7}"
+  export _LDFLAGS="${_LDFLAGS} -X github.com/tidwall/tile38/core.BuildTime=$(date -u +'%Y-%m-%dT%H:%M:%SZ' --date=@${SOURCE_DATE_EPOCH})"
   export GOPATH="${srcdir}"
-  export GOFLAGS="\
+
+  core/gen.sh
+  go build \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
     -trimpath \
-  "
-  local _ld_flags=" \
-    -compressdwarf=false \
-    -linkmode=external \
-    -X github.com/tidwall/tile38/core.Version=${pkgver} \
-    -X github.com/tidwall/tile38/core.GitSHA=${sha256sums[0]:0:7} \
-    -X github.com/tidwall/tile38/core.BuildTime=$(date -u +'%Y-%m-%dT%H:%M:%SZ' --date=@${SOURCE_DATE_EPOCH}) \
-  "
-  core/gen.sh
-  go build \
-    -ldflags "${_ldflags}" \
+    -ldflags "${_LDFLAGS}" \
     -o build \
-    ./cmd/...
+    ./...
 }
 
 check() {
