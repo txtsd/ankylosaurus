@@ -4,7 +4,7 @@ pkgname=dissent-git
 _pkgname="${pkgname%-git}"
 _fqpn=so.libdb.${_pkgname}
 pkgver=0.0.31.r1.33d5428
-pkgrel=1
+pkgrel=2
 pkgdesc='Discord client written in go and gtk4'
 arch=(x86_64 aarch64)
 url='https://github.com/diamondburned/dissent'
@@ -54,18 +54,13 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}"
-  export GOFLAGS="\
+
+  go build \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
     -trimpath \
-  "
-  local _ld_flags=" \
-    -compressdwarf=false \
-    -linkmode=external \
-  "
-  go build \
-    -ldflags "${_ldflags}" \
+    -ldflags "-compressdwarf=false -linkmode=external" \
     -o build
 }
 
