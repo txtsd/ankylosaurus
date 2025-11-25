@@ -1,7 +1,7 @@
 pkgbase = tile38
 	pkgdesc = An in-memory geolocation data store, spatial index, and realtime geofencing server
 	pkgver = 1.36.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tile38.com
 	arch = x86_64
 	arch = armv7h
