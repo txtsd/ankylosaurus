@@ -3,20 +3,18 @@ repos=(
   android_translation_layer
   android_translation_layer-git
   archosaur
-  archosaur-bin
   archosaur-git
   art_standalone
   art_standalone-git
   bionic_translation
   bionic_translation-git
-  bitmagnet
-  bitmagnet-beta
-  bitmagnet-bin
-  bitmagnet-git
   blockbench
   blockbench-bin
   blockbench-git
   bsd-compat-headers
+  comictagger-beta
+  curseforge
+  curseforge-appimage
   dissent
   dissent-bin
   dissent-git
@@ -24,6 +22,7 @@ repos=(
   dpitunnel-bin
   dpitunnel-git
   espanso-git
+  extracker-git
   eza-git
   fast-discord-git
   flaresolverr
@@ -35,23 +34,27 @@ repos=(
   halloy-git
   illarion-bin
   imgbrd-grabber-appimage
+  imv-git
   java-openjdk-wakefield
   jsoncons
   jwt-cpp
   libfm-qt-git
   libopensles-standalone
   libopensles-standalone-git
+  librespot
   linux-command-gpt
   linux-command-gpt-git
   lxqt-menu-data-git
   lxqt_wallet
   lxqt_wallet-git
+  nuitka
   openkeeper-git
   opennox
   opennox-bin
   opennox-git
   openssh-askpass
   openssl-static
+  opentracker
   otf-monocraft
   otf-sans-forgetica
   otf-unifont
@@ -63,17 +66,29 @@ repos=(
   prismlauncher-qt5-bin
   progress-quest-bin
   python-baycomp
+  python-cfscrape
+  python-comicfn2dict
   python-confusables
+  python-isocodes
+  python-magika
+  python-niquests
   python-pox
-  python-pykakasi
+  python-pyrate-limiter-2
   python-selenium
+  python-settngs
   python-syncedlyrics
+  python-urllib3-future
+  python-user_agent2
+  python-wassima
+  python-xvfbwrapper
+  python-zipremove
   qbittorrent-nightwalker
   ripcord
   ripcord-arch-libs
   ripme
   ripme-bin
   ripme-git
+  scientifica-font
   skia-sharp-atl
   skia-sharp-atl-git
   soundsense
@@ -82,10 +97,13 @@ repos=(
   spoofdpi-bin
   spoofdpi-git
   stevenarella-git
+  superseedr
   thesage
+  tile38
   tile38-bin
   trelby
   trelby-git
+  trillian
   ttc-monocraft
   ttf-game-fonts
   ttf-miracode
