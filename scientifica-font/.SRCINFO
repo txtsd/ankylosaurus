@@ -1,0 +1,20 @@
+pkgbase = scientifica-font
+	pkgdesc = Tall and condensed bitmap font for geeks.
+	pkgver = 2.3
+	pkgrel = 2
+	url = https://github.com/NerdyPepper/scientifica
+	arch = any
+	license = OFL-1.1
+	provides = ttf-scientifica
+	provides = otb-scientifica
+	conflicts = scientifica-ttf
+	conflicts = scientifica-otb
+	conflicts = ttf-scientifica
+	conflicts = otb-scientifica
+	options = !debug
+	source = scientifica.tar::https://github.com/NerdyPepper/scientifica/releases/download/v2.3/scientifica.tar
+	source = scientifica-2.3.tar.gz::https://github.com/NerdyPepper/scientifica/archive/refs/tags/v2.3.tar.gz
+	sha256sums = f0857869a0e846c6f175dcb853dd1f119ea17a75218e63b7f0736d5a8e1e8a7f
+	sha256sums = 00ab57863c3004c5e2148426ef87649cffe66ed240a49b82243ca8916a2da096
+
+pkgname = scientifica-font
