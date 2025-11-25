@@ -3,7 +3,7 @@
 
 pkgname=linux-command-gpt
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Get Linux commands in natural language with the power of ChatGPT'
 arch=(x86_64 aarch64)
 url='https://github.com/asrul10/linux-command-gpt'
@@ -24,23 +24,17 @@ prepare() {
 build() {
   cd "${pkgname}"
 
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
+  export _LDFLAGS="${_LDFLAGS} -compressdwarf=false"
+  export _LDFLAGS="${_LDFLAGS} -linkmode=external"
+  export _LDFLAGS="${_LDFLAGS} -extldflags \"${LDFLAGS}\""
   export GOPATH="${srcdir}"
-  export GOFLAGS="\
+
+  go build \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
     -trimpath \
-  "
-  local _ld_flags=" \
-    -compressdwarf=false \
-    -linkmode=external \
-  "
-  go build \
-    -ldflags "${_ldflags}" \
+    -ldflags "${_LDFLAGS}" \
     -o lcg
 }
 
