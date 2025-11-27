@@ -1,0 +1,6 @@
+[curseforge]
+source = "regex"
+url = "https://curseforge.overwolf.com/electron/linux/latest-linux.yml"
+regex = "version: (\\d+\\.\\d+\\.\\d+-\\d+)"
+from_pattern = "(\\d+)\\.(\\d+)\\.(\\d+)-(\\d+)"
+to_pattern = "\\1.\\2.\\3_\\4"
