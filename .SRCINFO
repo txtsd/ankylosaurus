@@ -1,7 +1,7 @@
 pkgbase = comictagger-beta
 	pkgdesc = A multi-platform app for writing metadata to digital comics
 	pkgver = 1.6.0_beta.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/comictagger/comictagger
 	arch = any
 	license = Apache-2.0
@@ -41,8 +41,6 @@ pkgbase = comictagger-beta
 	depends = python-zipremove
 	options = !debug
 	source = git+https://github.com/comictagger/comictagger.git#tag=1.6.0-beta.8
-	source = 0001-Patch-for-outdated-python-isocodes.patch
 	sha256sums = 2e1c658eb4124344146d17773043e809b8eb80191917ae3de303518d8d7e4590
-	sha256sums = 098fc663b199a66258477a1368c4a484a57dcd4cca1c6075ca52cd058cf3a597
 
 pkgname = comictagger-beta

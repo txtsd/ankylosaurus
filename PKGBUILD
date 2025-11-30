@@ -5,7 +5,7 @@
 pkgname=comictagger-beta
 pkgver=1.6.0_beta.8
 _pkgver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A multi-platform app for writing metadata to digital comics'
 arch=(any)
 url='https://github.com/comictagger/comictagger'
@@ -49,17 +49,11 @@ makedepends=(
   python-wheel
 )
 options=(!debug)
-source=(
-  git+${url}.git#tag=${_pkgver}
-  0001-Patch-for-outdated-python-isocodes.patch
-)
-sha256sums=('2e1c658eb4124344146d17773043e809b8eb80191917ae3de303518d8d7e4590'
-            '098fc663b199a66258477a1368c4a484a57dcd4cca1c6075ca52cd058cf3a597')
+source=(git+${url}.git#tag=${_pkgver})
+sha256sums=('2e1c658eb4124344146d17773043e809b8eb80191917ae3de303518d8d7e4590')
 
 prepare() {
   cd comictagger
-
-  patch -Np1 -i ../0001-Patch-for-outdated-python-isocodes.patch
 
   # sed -e 's/RequestRate/Rate/g' -i tests/conftest.py
   # sed -e 's/RequestRate/Rate/g' -i comictalker/talkers/comicvine.py
