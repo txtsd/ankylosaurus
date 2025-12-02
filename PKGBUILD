@@ -3,9 +3,9 @@
 # Contributor: RealStickman <mrc+aur _a_ frm01 _d_ net>
 
 pkgname=comictagger-beta
-pkgver=1.6.0_beta.8
+pkgver=1.6.0_beta.9
 _pkgver="${pkgver//_/-}"
-pkgrel=2
+pkgrel=1
 pkgdesc='A multi-platform app for writing metadata to digital comics'
 arch=(any)
 url='https://github.com/comictagger/comictagger'
@@ -50,7 +50,7 @@ makedepends=(
 )
 options=(!debug)
 source=(git+${url}.git#tag=${_pkgver})
-sha256sums=('2e1c658eb4124344146d17773043e809b8eb80191917ae3de303518d8d7e4590')
+sha256sums=('8e56af1843cbd62f81eca73dfb4002af19ccb0bdc10a2d3345c08eb5c00bd316')
 
 prepare() {
   cd comictagger
