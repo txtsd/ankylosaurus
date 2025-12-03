@@ -75,6 +75,7 @@ repos=(
   python-niquests
   python-pox
   python-pyrate-limiter-2
+  python-rtfunicode
   python-selenium
   python-settngs
   python-syncedlyrics
