@@ -4,7 +4,7 @@
 
 pkgname=bugwarrior
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pull github, bitbucket, and trac issues into taskwarrior'
 arch=(any)
 url='https://bugwarrior.readthedocs.io'
@@ -14,6 +14,7 @@ depends=(
   python-click
   python-dateutil
   python-dogpile.cache
+  python-ini2toml
   python-jinja
   python-lockfile
   python-pydantic
