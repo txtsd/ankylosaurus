@@ -1,0 +1,7 @@
+post_install() {
+  cat <<- "EOF"
+  * /opt/radeon-gpu-profiler/EULA.txt
+  * https://radeon-gpuprofiler.readthedocs.io/en/latest/
+  * https://gpuopen.com/rgp/#requirements (supported GPUs)
+EOF
+}
