@@ -86,6 +86,7 @@ repos=(
   python-xvfbwrapper
   python-zipremove
   qbittorrent-nightwalker
+  qcomix
   radeon-gpu-profiler
   ripcord
   ripcord-arch-libs
