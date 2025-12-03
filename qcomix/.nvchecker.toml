@@ -1,0 +1,3 @@
+[qcomix]
+source = "git"
+git = "https://gitgud.io/qcomix/qcomix.git"
