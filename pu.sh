@@ -12,6 +12,7 @@ repos=(
   blockbench-bin
   blockbench-git
   bsd-compat-headers
+  bugwarrior
   comictagger-beta
   curseforge
   curseforge-appimage
