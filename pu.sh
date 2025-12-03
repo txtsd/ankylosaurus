@@ -80,6 +80,7 @@ repos=(
   python-settngs
   python-syncedlyrics
   python-urllib3-future
+  python-user_agent
   python-user_agent2
   python-wassima
   python-xvfbwrapper
