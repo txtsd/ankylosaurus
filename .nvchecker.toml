@@ -1,0 +1,3 @@
+[bugwarrior]
+source = "git"
+git = "https://github.com/GothenburgBitFactory/bugwarrior.git"
