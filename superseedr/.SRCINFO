@@ -1,6 +1,6 @@
 pkgbase = superseedr
 	pkgdesc = A BitTorrent Client in your Terminal
-	pkgver = 0.9.25
+	pkgver = 0.9.27
 	pkgrel = 1
 	url = https://github.com/Jagalite/superseedr
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = superseedr
 	depends = glibc
 	depends = libxcb
 	depends = openssl
-	source = superseedr-0.9.25.tar.gz::https://github.com/Jagalite/superseedr/archive/refs/tags/v0.9.25.tar.gz
-	sha256sums = 166608da2ccc7f7336ac992e819f8564028924fb3d4cfb61cf7f59f5bc16376a
+	source = superseedr-0.9.27.tar.gz::https://github.com/Jagalite/superseedr/archive/refs/tags/v0.9.27.tar.gz
+	sha256sums = 2bbbb596997ba156ae634e9f5911df60586d1356d6915c13fef1956d2328fc70
 
 pkgname = superseedr
