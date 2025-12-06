@@ -3,7 +3,7 @@
 pkgname=flaresolverr
 _pkgname=FlareSolverr
 pkgver=3.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=(any)
 url='https://github.com/FlareSolverr/FlareSolverr'
@@ -14,6 +14,7 @@ depends=(
   python-bottle
   python-certifi
   python-func-timeout
+  python-packaging
   python-pefile
   python-prometheus_client
   python-requests
