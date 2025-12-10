@@ -1,6 +1,6 @@
 pkgbase = curseforge-appimage
 	pkgdesc = CurseForge desktop client for Linux (AppImage)
-	pkgver = 1.292.0_28941
+	pkgver = 1.293.0_29621
 	pkgrel = 1
 	url = https://curseforge.com
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = curseforge-appimage
 	conflicts = curseforge
 	options = !strip
 	options = !debug
-	source = CurseForge-1.292.0-28941.AppImage::https://curseforge.overwolf.com/electron/linux/CurseForge-1.292.0-28941.AppImage
+	source = CurseForge-1.293.0-29621.AppImage::https://curseforge.overwolf.com/electron/linux/CurseForge-1.293.0-29621.AppImage
 	source = LICENSE
-	sha256sums = 4005bfba9293ab1d0e03eaf6ef6f4b1c069bb80a9a787b9bedecf1d0ba18ec60
+	sha256sums = b960232d8adacbc3bc3a919269a8f2045e3648a31c4bf7978edb6e69c4677136
 	sha256sums = 135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f
 
 pkgname = curseforge-appimage
