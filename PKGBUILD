@@ -6,9 +6,9 @@
 # Contributor: Doug Newgard <scimmia22@outlook.com>
 
 pkgname=trillian
-pkgver=6.3.0.1
+pkgver=6.3.0.2
 _pkgver="${pkgver%????}"
-pkgrel=2
+pkgrel=1
 pkgdesc='A commercial, multi-protocol and cross-platform IM client'
 arch=(x86_64)
 url='https://trillian.im'
@@ -27,24 +27,21 @@ depends=(
   gtkmm3
   hicolor-icon-theme
   libnotify
-  libpulse
-  librsvg
   libsecret
   libsigc++
   libx11
   libxss
-  libzip
-  openssl-1.0
+  openssl-1.1
   pango
   pangomm
   util-linux-libs
-  webkit2gtk
+  wayland
   zlib
 )
 optdepends=('libappindicator-gtk3: tray icon support')
 options=(!debug)
-source_x86_64=("https://www.trillian.im/get/linux/${_pkgver}/${pkgname}_${pkgver}_amd64.deb")
-sha256sums_x86_64=('42e3466ee236ac2644907059f0961eba3a6ed6b6156afb2c57f54ebe6065ac6f')
+source=("https://www.trillian.im/get/linux/${_pkgver}/${pkgname}_${pkgver}_amd64.deb")
+sha256sums=('e50bef02577d202fba0c0595b324fa068c8ac7ed16500f940bcab54419f08ea8')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
