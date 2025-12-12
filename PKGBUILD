@@ -18,8 +18,8 @@ _majorver=25
 _minorver=0
 _securityver=1
 _updatever=36
-pkgver=25.0.1.36.r327.g7689a7c
-pkgrel=2
+pkgver=25.0.1.36.r344.g0bf2bd4
+pkgrel=1
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.org/projects/wakefield/'
@@ -44,6 +44,7 @@ makedepends=(
   libpng
   libx11
   libxext
+  libxkbcommon
   libxrandr
   libxrender
   libxt
