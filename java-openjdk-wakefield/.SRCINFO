@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-wakefield
-	pkgver = 25.0.1.36.r327.g7689a7c
-	pkgrel = 2
+	pkgver = 25.0.1.36.r344.g0bf2bd4
+	pkgrel = 1
 	url = https://openjdk.org/projects/wakefield/
 	arch = x86_64
 	license = LicenseRef-Java
@@ -23,6 +23,7 @@ pkgbase = java-openjdk-wakefield
 	makedepends = libpng
 	makedepends = libx11
 	makedepends = libxext
+	makedepends = libxkbcommon
 	makedepends = libxrandr
 	makedepends = libxrender
 	makedepends = libxt
@@ -81,13 +82,13 @@ pkgname = jdk-openjdk-wakefield
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=25
 	provides = java-environment-openjdk=25
-	provides = jdk25-openjdk-wakefield=25.0.1.36.r327.g7689a7c-2
+	provides = jdk25-openjdk-wakefield=25.0.1.36.r344.g0bf2bd4-1
 	provides = java-runtime=25
 	provides = java-runtime-openjdk=25
-	provides = jre25-openjdk-wakefield=25.0.1.36.r327.g7689a7c-2
+	provides = jre25-openjdk-wakefield=25.0.1.36.r344.g0bf2bd4-1
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
-	provides = jre25-openjdk-wakefield-headless=25.0.1.36.r327.g7689a7c-2
+	provides = jre25-openjdk-wakefield-headless=25.0.1.36.r344.g0bf2bd4-1
 	conflicts = jre-openjdk-wakefield
 	conflicts = jre-openjdk-wakefield-headless
 	backup = etc/java-openjdk-wakefield/logging.properties
@@ -130,10 +131,10 @@ pkgname = jre-openjdk-wakefield
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=25
 	provides = java-runtime-openjdk=25
-	provides = jre25-openjdk-wakefield=25.0.1.36.r327.g7689a7c-2
+	provides = jre25-openjdk-wakefield=25.0.1.36.r344.g0bf2bd4-1
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
-	provides = jre25-openjdk-wakefield-headless=25.0.1.36.r327.g7689a7c-2
+	provides = jre25-openjdk-wakefield-headless=25.0.1.36.r344.g0bf2bd4-1
 	conflicts = jdk-openjdk-wakefield
 	conflicts = jre-openjdk-wakefield-headless
 	backup = etc/java-openjdk-wakefield/logging.properties
@@ -172,7 +173,7 @@ pkgname = jre-openjdk-wakefield-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
-	provides = jre25-openjdk-wakefield-headless=25.0.1.36.r327.g7689a7c-2
+	provides = jre25-openjdk-wakefield-headless=25.0.1.36.r344.g0bf2bd4-1
 	conflicts = jdk-openjdk-wakefield
 	conflicts = jre-openjdk-wakefield
 	backup = etc/java-openjdk-wakefield/logging.properties
@@ -192,10 +193,10 @@ pkgname = jre-openjdk-wakefield-headless
 
 pkgname = openjdk-wakefield-doc
 	pkgdesc = OpenJDK Java 25 wayland documentation
-	depends = jdk25-openjdk-wakefield=25.0.1.36.r327.g7689a7c-2
-	provides = openjdk25-doc=25.0.1.36.r327.g7689a7c-2
+	depends = jdk25-openjdk-wakefield=25.0.1.36.r344.g0bf2bd4-1
+	provides = openjdk25-doc=25.0.1.36.r344.g0bf2bd4-1
 
 pkgname = openjdk-wakefield-src
 	pkgdesc = OpenJDK Java 25 wayland sources
-	depends = jdk25-openjdk-wakefield=25.0.1.36.r327.g7689a7c-2
-	provides = openjdk25-src=25.0.1.36.r327.g7689a7c-2
+	depends = jdk25-openjdk-wakefield=25.0.1.36.r344.g0bf2bd4-1
+	provides = openjdk25-src=25.0.1.36.r344.g0bf2bd4-1
