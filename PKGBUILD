@@ -2,7 +2,7 @@
 
 pkgname=python-wassima
 _pkgname="${pkgname/python-/}"
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='No more certifi! System trust store at hand. In Pure Python.'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 )
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d4724f9b647e9499d0f0dff5c201bdbae74ea3f4eb3f57c39f0503f3c797d390')
+sha256sums=('056a0ad911aefa1a5257639aac58051bc8d5129c64dc2febd23f4df73fd655dc')
 
 build() {
   cd "${_pkgname}-${pkgver}"
