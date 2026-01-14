@@ -3,8 +3,8 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=bugwarrior
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Pull github, bitbucket, and trac issues into taskwarrior'
 arch=(any)
 url='https://bugwarrior.readthedocs.io'
@@ -42,7 +42,7 @@ optdepends=(
 )
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GothenburgBitFactory/bugwarrior/archive/${pkgver}.tar.gz")
-sha256sums=('403cb62b27cab97c8cd478a09fe01ff16a391a6a1a458f1f746a12a65d49753e')
+sha256sums=('d78830164689a91e2c2611b7533f92e16f9d3bd9842dfb1575b22c1db1e5d024')
 
 build() {
   cd "${pkgname}-${pkgver}"
