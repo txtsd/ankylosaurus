@@ -1,6 +1,6 @@
 pkgbase = python-selenium
 	pkgdesc = Python language bindings for Selenium WebDriver
-	pkgver = 4.39.0
+	pkgver = 4.40.0
 	pkgrel = 1
 	url = https://github.com/SeleniumHQ/selenium
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = python-selenium
 	depends = python-websocket-client
 	depends = zlib
 	options = !lto
-	source = https://files.pythonhosted.org/packages/source/s/selenium/selenium-4.39.0.tar.gz
-	sha256sums = 12f3325f02d43b6c24030fc9602b34a3c6865abbb1db9406641d13d108aa1889
+	source = https://files.pythonhosted.org/packages/source/s/selenium/selenium-4.40.0.tar.gz
+	sha256sums = a88f5905d88ad0b84991c2386ea39e2bbde6d6c334be38df5842318ba98eaa8c
 
 pkgname = python-selenium
