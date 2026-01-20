@@ -3,7 +3,7 @@
 
 pkgname=python-pox
 _pkgname="${pkgname#python-}"
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='Utilities for filesystem exploration and automated builds'
 url='https://github.com/uqfoundation/pox'
@@ -18,7 +18,7 @@ makedepends=(
 )
 _src_name="${_pkgname/-/_}-${pkgver}"
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('84eeed39600159a62804aacfc00e353edeaae67d8c647ccaaab73a6efed3f605')
+sha256sums=('0652f6f2103fe6d4ba638beb6fa8d3e8a68fd44bcb63315c614118515bcc3afb')
 
 build() {
   cd "${_src_name}"
