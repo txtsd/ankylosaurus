@@ -3,8 +3,8 @@
 
 pkgname=python-rtfunicode
 _pkgname=${pkgname#python-}
-pkgver=2.0
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc='Encoder for unicode to RTF 1.5 command sequences'
 arch=(any)
 url='https://pypi.org/project/rtfunicode'
@@ -13,12 +13,12 @@ depends=(python)
 makedepends=(
   python-build
   python-installer
-  python-setuptools
+  python-uv-build
   python-wheel
 )
 options=(!debug)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('97d2e860fd4abaae2de5df1e59bb18b85ba0caebf40c53de8ddb79ec8d884401')
+sha256sums=('800d1ef6dcc01505a5912958e7267332ccb1a58e0c6faf213af5f9cd85fa321a')
 
 build() {
   cd "${_pkgname}-${pkgver}"
