@@ -2,13 +2,16 @@
 
 pkgname=python-settngs
 _pkgname="${pkgname#python-}"
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc='A library for managing settings'
 arch=(any)
 url='https://github.com/lordwelch/settngs'
 license=('MIT')
-depends=(python)
+depends=(
+  python
+  python-typing_extensions
+)
 makedepends=(
   python-build
   python-installer
@@ -19,7 +22,7 @@ makedepends=(
 # checkdepends=(python-pytest)
 options=(!debug)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e0032724586143e5ef247fa523f4a258b78c2a37d45ab033eec4d986bab5771e')
+sha256sums=('f0947eed808b3adca0be20b7098580d1f8648f2a80e6ca32bcd2d0456ae387ee')
 
 build() {
   cd "${_pkgname}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = python-settngs
 	pkgdesc = A library for managing settings
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/lordwelch/settngs
 	arch = any
@@ -11,8 +11,9 @@ pkgbase = python-settngs
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
+	depends = python-typing_extensions
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/s/settngs/settngs-0.11.1.tar.gz
-	sha256sums = e0032724586143e5ef247fa523f4a258b78c2a37d45ab033eec4d986bab5771e
+	source = https://files.pythonhosted.org/packages/source/s/settngs/settngs-0.11.2.tar.gz
+	sha256sums = f0947eed808b3adca0be20b7098580d1f8648f2a80e6ca32bcd2d0456ae387ee
 
 pkgname = python-settngs
