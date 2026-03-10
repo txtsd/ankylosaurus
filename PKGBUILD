@@ -5,7 +5,7 @@
 
 pkgname=uwebsockets
 _pkgname=uWebSockets
-pkgver=20.74.0
+pkgver=20.75.0
 pkgrel=1
 pkgdesc='Simple, secure & standards compliant web server for the most demanding of applications'
 arch=(any)
@@ -17,7 +17,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/uNetworking/uWebSockets/archive/v${pkgver}.tar.gz"
   uwebsockets.pc
 )
-sha256sums=('e1d9c99b8e87e78a9aaa89ca3ebaa450ef0ba22304d24978bb108777db73676c'
+sha256sums=('05c384e410d374ce81abc17c9ee9574f33611d4a020f1da26f444f0dfe9691d7'
             '5433dee099ea6f6fe97ef200cc19aadc71ca5066d7f5238070c25cd040dfb520')
 
 package() {
