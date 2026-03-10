@@ -2,7 +2,7 @@
 
 pkgname=python-niquests
 _pkgname="${pkgname/python-/}"
-pkgver=3.17.0
+pkgver=3.18.0
 pkgrel=1
 pkgdesc='Drop-in replacement for Requests. Automatic HTTP/1.1, HTTP/2, and HTTP/3. WebSocket, and SSE included.'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
 )
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('18c27e6be7879149083fd17d5093509328fbe2dfde283357692154d1a657beec')
+sha256sums=('f32214aff92710d75563343934e9e6709b7c75329e4a49b5740a827a22c6c314')
 
 build() {
   cd "${_pkgname}-${pkgver}"
