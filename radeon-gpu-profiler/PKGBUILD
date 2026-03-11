@@ -1,9 +1,9 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Maintainer: Patrik Plihal <patrik dot plihal at gmail dot com>
 
-_pkgname=RadeonDeveloperToolSuite-2025-10-29-1732
+_pkgname=RadeonDeveloperToolSuite-2026-02-02-1757
 pkgname=radeon-gpu-profiler
-pkgver=2.6
+pkgver=2.6.1
 pkgrel=2
 pkgdesc='A suite of GUI applications that provide detailed low-level information on Radeon GPUs. (rgp, rga)'
 arch=(x86_64)
