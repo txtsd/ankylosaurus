@@ -1,6 +1,4 @@
 [radeon-gpu-profiler]
-source = "httpheader"
-url = "https://gpuopen.com/rdts-linux/"
-# method = "HEAD"
-# header = "location"
-regex = "/download/RadeonDeveloperToolSuite-(\\d+-\\d+-\\d+-\\d+).tgz"
+source = "git"
+git = "https://github.com/GPUOpen-Tools/radeon_gpu_profiler.git"
+prefix = "v"
