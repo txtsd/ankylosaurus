@@ -30,8 +30,6 @@ repos=(
   flaresolverr-bin
   funchook
   gpt-engineer
-  halloy
-  halloy-bin
   halloy-git
   illarion-bin
   imgbrd-grabber-appimage
