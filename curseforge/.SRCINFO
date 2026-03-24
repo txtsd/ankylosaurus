@@ -1,0 +1,25 @@
+pkgbase = curseforge
+	pkgdesc = CurseForge desktop client for Linux
+	pkgver = 1.300.0_31983
+	pkgrel = 1
+	url = https://curseforge.com
+	arch = x86_64
+	license = LicenseRef-overwolf
+	license = MIT
+	license = LicenseRef-chromium-licenses
+	depends = dbus
+	depends = expat
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = systemd-libs
+	depends = zlib
+	options = !strip
+	options = !debug
+	source = CurseForge_1.300.0-31983_amd64.deb::https://curseforge.overwolf.com/electron/linux/CurseForge_1.300.0-31983_amd64.deb
+	source = LICENSE
+	sha256sums = 8dbd88f9fccdb76534f040e0d90d25de426a7cd59e0d520880ecf10eed45311b
+	sha256sums = 135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f
+
+pkgname = curseforge
