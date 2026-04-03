@@ -1,6 +1,6 @@
 pkgbase = nuitka
 	pkgdesc = Python compiler with full language support and CPython compatibility
-	pkgver = 4.0.6
+	pkgver = 4.0.7
 	pkgrel = 1
 	url = https://nuitka.net
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = nuitka
 	optdepends = ccache: for caching builds
 	options = !debug
 	options = lto
-	source = https://github.com/Nuitka/Nuitka/archive/refs/tags/4.0.6.tar.gz
-	sha256sums = 111e7356c24d5d296fc7025133b6c7f8ef49d758fa465ad17da9bdfa172ff661
+	source = https://github.com/Nuitka/Nuitka/archive/refs/tags/4.0.7.tar.gz
+	sha256sums = 4793345487c8229b1c2817064401a48499d31902ec4610f3d89757237b9ec1bf
 
 pkgname = nuitka
