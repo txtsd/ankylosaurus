@@ -5,7 +5,7 @@
 
 pkgname=python-magika
 _name=magika-python
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Detect file content types with deep learning"
 arch=(any)
@@ -35,7 +35,7 @@ checkdepends=(
 )
 provides=(magika-cli)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/python-v${pkgver}.tar.gz")
-sha256sums=('2b8d38205576c95ce1110d2a46f0046781a7377f62d3be41911df79474378d59')
+sha256sums=('8d24d6638f30f4c89e5b71fd2f6dee665e5381215b8f9d1ba88b065e57edaff4')
 
 prepare() {
   cd "${_name}-v${pkgver}"
