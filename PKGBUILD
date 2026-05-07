@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=spoofdpi
-pkgver=1.3.1
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A simple and fast anti-censorship tool written in Go'
 arch=(x86_64 armv7h aarch64)
@@ -16,7 +16,7 @@ source=(
   "${pkgname}.conf.d"
   "${pkgname}.service"
 )
-sha256sums=('124f4848c2b095538618071700780b506930d033e8a32ae9ba9b606ad66dd6b5'
+sha256sums=('4bd43de5575aff15403a1d96d096d8c3ceefe17a54153d3b2c8d9ace8e96b389'
             '6aa0ecb1d0073b970d0f0a71fae521ed1342a4aa9d8ed1887fdadb2f751edb92'
             '76a22a11e7ffa2c362f32d2e05cee16b056a6ce9b64b3ea10ece8732e77e917a')
 
