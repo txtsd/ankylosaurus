@@ -1,6 +1,6 @@
 pkgbase = python-comicfn2dict
 	pkgdesc = Parse common comic filenames and return a dict of metadata attributes
-	pkgver = 0.2.5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ajslater/comicfn2dict
 	arch = any
@@ -8,13 +8,16 @@ pkgbase = python-comicfn2dict
 	checkdepends = python-deepdiff
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
+	checkdepends = python-uv
+	checkdepends = git
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
+	makedepends = python-uv-build
 	makedepends = python-wheel
 	depends = python
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/c/comicfn2dict/comicfn2dict-0.2.5.tar.gz
-	sha256sums = 716197559a3ad77783ece68f452ab8669b473b452c638961981829677f32ec4b
+	source = https://files.pythonhosted.org/packages/source/c/comicfn2dict/comicfn2dict-0.3.0.tar.gz
+	sha256sums = 70a4baafc5212726f2958da5e7c52720a4c137d1ba04ad9cfaf5bcb607d3a21c
 
 pkgname = python-comicfn2dict
