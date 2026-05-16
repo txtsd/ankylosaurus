@@ -2,7 +2,7 @@
 
 pkgname=spoofdpi
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and fast anti-censorship tool written in Go'
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/xvzc/SpoofDPI'
