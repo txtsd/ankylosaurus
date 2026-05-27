@@ -2,7 +2,7 @@
 
 pkgname=qbittorrent-nightwalker
 _pkgname="${pkgname#qbittorrent-}"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='A dark but not black qBittorrent WebUI'
 arch=(any)
@@ -18,7 +18,7 @@ source=(
   "${url}/archive/refs/tags/v${pkgver}.tar.gz"
   ${pkgname}.install
 )
-sha256sums=('24ca2ec4dd34493f6aaa783f7a19100398ef9d4e2a3b4e9ff9be016a9bf376a3'
+sha256sums=('ad00cbccc60d05f5a60841070770d969b7c8c594e24ff253ab81b447ca28866d'
             'e41cb7cd5693aad398e37a59ffabe0fc00833639b9e599a4c1fca0db126e52e2')
 
 package() {
