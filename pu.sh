@@ -1,12 +1,9 @@
 repos=(
   aleo-fonts
-  android_translation_layer
   android_translation_layer-git
   archosaur
   archosaur-git
-  art_standalone
   art_standalone-git
-  bionic_translation
   bionic_translation-git
   blockbench
   blockbench-bin
@@ -38,7 +35,6 @@ repos=(
   jsoncons
   jwt-cpp
   libfm-qt-git
-  libopensles-standalone
   libopensles-standalone-git
   librespot
   linux-command-gpt
@@ -92,7 +88,6 @@ repos=(
   ripme-bin
   ripme-git
   scientifica-font
-  skia-sharp-atl
   skia-sharp-atl-git
   soundsense
   soundsense-rs-git
