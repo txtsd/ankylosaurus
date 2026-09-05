@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: Arch Linux Contributors
+# SPDX-License-Identifier: 0BSD
+
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!LICENSE
+!LICENSES/
+!REUSE.toml

@@ -1,0 +1,4 @@
+[lexbor]
+source = "git"
+git = "https://github.com/lexbor/lexbor.git"
+prefix = "v"

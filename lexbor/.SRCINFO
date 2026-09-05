@@ -1,0 +1,14 @@
+pkgbase = lexbor
+	pkgdesc = A set of fast, standards-compliant tools for working with modern web technologies — HTML parsing, CSS processing, URL handling, and more.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://lexbor.com
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	source = git+https://github.com/lexbor/lexbor.git#tag=v3.0.0
+	sha256sums = b738cffc343868268d59109be5a1378dc854bfc06ddd5564954060398d3016e6
+
+pkgname = lexbor
