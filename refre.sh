@@ -4,6 +4,7 @@ repos=(
   archosaur
   archosaur-git
   art_standalone-git
+  bdf2psf
   bionic_translation-git
   blockbench
   blockbench-bin
@@ -11,6 +12,7 @@ repos=(
   bsd-compat-headers
   bugwarrior
   comictagger-beta
+  cpx-copy
   curseforge
   curseforge-appimage
   dissent
@@ -34,14 +36,16 @@ repos=(
   java-openjdk-wakefield
   jsoncons
   jwt-cpp
+  lexbor
   libfm-qt-git
   libopensles-standalone-git
-  librespot
   linux-command-gpt
   linux-command-gpt-git
   lxqt-menu-data-git
   lxqt_wallet
   lxqt_wallet-git
+  melia-appimage
+  ntfysh-bin
   nuitka
   openkeeper-git
   opennox
@@ -57,18 +61,19 @@ repos=(
   pcmanfm-qt-git
   porla
   prismlauncher-git
-  prismlauncher-qt5
-  prismlauncher-qt5-bin
   progress-quest-bin
   python-baycomp
+  python-bencoding
   python-cfscrape
   python-comicfn2dict
   python-confusables
+  python-cozempic
   python-isocodes
   python-magika
   python-niquests
   python-pox
   python-pyrate-limiter-2
+  python-qh3
   python-rtfunicode
   python-selenium
   python-settngs
