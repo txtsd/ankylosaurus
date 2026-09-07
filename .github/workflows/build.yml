@@ -145,7 +145,7 @@ jobs:
 
       - name: Upload artifact
         if: env.filename_1
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.filename_1 }}
           path: |
@@ -153,7 +153,7 @@ jobs:
 
       - name: 'Upload artifact #2'
         if: env.filename_2
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.filename_2 }}
           path: |
@@ -161,7 +161,7 @@ jobs:
 
       - name: 'Upload artifact #3'
         if: env.filename_3
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.filename_3 }}
           path: |
@@ -169,7 +169,7 @@ jobs:
 
       - name: 'Upload artifact #4'
         if: env.filename_4
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.filename_4 }}
           path: |
@@ -177,7 +177,7 @@ jobs:
 
       - name: 'Upload artifact #5'
         if: env.filename_5
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.filename_5 }}
           path: |
@@ -185,7 +185,7 @@ jobs:
 
       - name: Upload debug artifacts
         if: env.filename_debug
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.filename_debug }}
           path: |
